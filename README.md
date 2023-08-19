@@ -43,7 +43,7 @@ There's one thing that's missing from this download and that's the file mod *you
 2. Open the editor and click on File -> New... or press Ctrl-N
 3. Select Dependent Mod and click Next
 4. Choose Custom dependencies, click on Modify... and then Add Other...
-5. Select and add the VanillaPlusCMP_BASE.SC2Mod file you copied in step 1
+5. Select and add the VanillaPlusCMP_BASE.SC2Mod file you copied in step 1.
 6. Save your new mod with any name you want. Place it (or a copy of it) into your StarCraft II\Mods folder.
 7. Open the VanillaPlusCMP_EXT.SC2Mod file in the editor.
 8. Go to File -> Dependencies. And remove VanillaPlusCMP_BASE.SC2Mod.
