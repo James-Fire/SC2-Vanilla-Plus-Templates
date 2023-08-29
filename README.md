@@ -52,8 +52,8 @@ There's one thing that's missing from this download and that's the file mod *you
 
 # Vanilla+ Banks
 
-VanillaPlusLOTV
 VanillaPlusLOTVPrologue
+VanillaPlusLOTV
 VanillaPlusNCO
 
 # Rules
