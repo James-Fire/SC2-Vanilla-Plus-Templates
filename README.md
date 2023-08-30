@@ -20,7 +20,7 @@ Let's get started!
 
 
 # Campaigns
-Vanilla+ Templates support the four Blizzard SC2 campaigns, *Wings of Liberty*, *Heart of the Swarm*, *Legacy of the Void* and *Nova: Covert Ops*. We will always abbreviate them as WOL, HOTS, LOTV and NCO respectively in this project. We will also use **CMP** when we need to refer to a generic campaign, if you see this just mentally replace it with the abbreviation for the campaign you are working with. Vanilla+ does not provide support for custom campaigns such as StarCraft Mass Recall.
+Vanilla+ Templates support the five Blizzard SC2 campaigns, *Wings of Liberty*, *Heart of the Swarm*, *Legacy of the Void: Prologue*, *Legacy of the Void*, and *Nova: Covert Ops*. We will always abbreviate them as WOL, HOTS, LOTV:P, LOTV, and NCO respectively in this project. We will also use **CMP** when we need to refer to a generic campaign, if you see this just mentally replace it with the abbreviation for the campaign you are working with. Vanilla+ does not provide support for custom campaigns such as StarCraft Mass Recall.
 
 # Download
 TODO: Like do they just download this repo? Do we use the releases function? GoogleDrive?
@@ -34,7 +34,7 @@ Every Vanilla+ Template comes with two mod files one that ends in _BASE and one 
 ### Base Mod (VanillaPlusCMP_BASE.SC2Mod)
 This mod connects your project to the vanilla dependencies made by Blizzard. It is crucial for providing the base level functionality of the campaign. We may update this mod to use more depenencies, add additional functionality for trigger work, or to fix bugs present in the vanilla game. It is absolutely crucial that you **do not edit the base mod file**. Doing so can adversely harm our ability to patch the templates and other mods that rely on this template.
 ### Extender Mod (VanillaPlusCMP_EXT.SC2Mod)
-This mod file is empty, like very much empty. However, all of the map files use this as their one and only dependency, which means all of the map files use the extender's dependencies as their own absolutely no changes in between. Note that we call this an **extender** mod not an **extension** mod, they may achieve a similar affect as extension mods on Battle.net but they are very different. Please be careful to use the correct term in discussions to avoid confusion.
+This mod file is empty, like very much empty. However, all of the map files use this as their one and only dependency, which means all of the map files use the extender's dependencies as their own with absolutely no changes in between. Note that we call this an **extender** mod not an **extension** mod, they may achieve a similar affect as extension mods on Battle.net but they are very different. Please be careful to use the correct term in discussions to avoid confusion.
 
 # What's Not Inside (Your Mod!)
 There's one thing that's missing from this download and that's the file mod *you* need to make. Now it's time for some actual step by step instructions on getting started.
