@@ -1,6 +1,0 @@
-title=VanillaPlusTemplates_Test2
-desc=Testing 7thAce's Change
-portable=VanillaPlusWOL_EXT.SC2Mod
-author=OrcaFire2
-campaign=WoL
-version=TEST_2
