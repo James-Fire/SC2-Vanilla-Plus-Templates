@@ -23,7 +23,7 @@ Let's get started!
 Vanilla+ Templates support the five Blizzard SC2 campaigns, *Wings of Liberty*, *Heart of the Swarm*, *Legacy of the Void: Prologue*, *Legacy of the Void*, and *Nova: Covert Ops*. We will always abbreviate them as WOL, HOTS, LOTV:P, LOTV, and NCO respectively in this project. We will also use **CMP** when we need to refer to a generic campaign, if you see this just mentally replace it with the abbreviation for the campaign you are working with. Vanilla+ does not provide support for custom campaigns such as StarCraft Mass Recall.
 
 # Download
-TODO: Like do they just download this repo? Do we use the releases function? GoogleDrive?
+Download the folder of your desired campaign, and the VanillaPlusLibrary file.
 
 # What's Inside
 So you just downloaded the template of your chosen campaign, what did you just get? 
