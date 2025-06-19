@@ -1,0 +1,6 @@
+title=<YOUR MOD NAME HERE>
+desc=<YOUR DESCRIPTION HERE>
+template=VanillaPlusWOL_EXT.SC2Mod
+author=<YOUR NAME HERE>
+campaign=WoL
+version=###
