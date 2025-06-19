@@ -4,7 +4,7 @@
         <Value>Untitled Section</Value>
     </Sections>
     <Dependencies>
-        <Value>file:Mods\kit_liberty_story.SC2Mod</Value>
+        <Value>file:Mods\VanillaPlusWOL_EXT.SC2Mod</Value>
     </Dependencies>
     <Preload>
         <Value>Bank;WArmy</Value>
