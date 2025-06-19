@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="TZeratul03ReviveBeacon" parent="Unit" Race="Protoss">
+        <Model value="Assets\COOP\Zeratul\Buildings\RespawnPad_Zeratul_COOP\RespawnPad_Zeratul_COOP.m3"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="TZeratul03ReviveBeacon_RingExplosion2"/>
+            <Type value="Sound"/>
+            <Time value="0.125000"/>
+            <Payload value="TZeratul03ReviveBeacon_RingExplosion2"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="TZeratul03ReviveBeacon_RingExplosion"/>
+            <Type value="Sound"/>
+            <Time value="0.930000"/>
+            <Payload value="TZeratul03ReviveBeacon_RingExplosion"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="TZeratul03ReviveBeacon_NearCompletion"/>
+            <Type value="Sound"/>
+            <Time value="0.100000"/>
+            <Payload value="TZeratul03ReviveBeacon_NearCompletion"/>
+        </Events>
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+</Catalog>

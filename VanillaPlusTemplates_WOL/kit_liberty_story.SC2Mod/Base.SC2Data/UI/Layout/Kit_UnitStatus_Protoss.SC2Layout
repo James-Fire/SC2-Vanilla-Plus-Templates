@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="UnitStatusFrame" name="Urun_StatusFrame" template="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate">
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar">
+            <SegmentValue val="50"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar">
+            <SegmentValue val="50"/>
+        </Frame>
+    </Frame> 
+    <Frame type="UnitStatusFrame" name="Mohandar_StatusFrame" template="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate">
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Height val="40"/>
+            <Width val="118"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar">
+            <Width val="100"/>
+            <SegmentValue val="50"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar">
+            <Width val="100"/>
+            <SegmentValue val="50"/>
+        </Frame>
+    </Frame> 
+    <Frame type="UnitStatusFrame" name="Selendis_StatusFrame" template="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate">
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Height val="40"/>
+            <Width val="175"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar">
+            <Width val="156"/>
+            <SegmentValue val="100"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar">
+            <Width val="156"/>
+            <SegmentValue val="100"/>
+        </Frame>
+
+        <Frame type="UnitStatusProgressBar" name="ProgressBar">
+            <Width val="156"/>
+        </Frame>
+    </Frame> 
+    <Frame type="UnitStatusFrame" name="Artanis_StatusFrame" template="LotV_UnitStatus/HeroUnitEnergyStatusFrameTemplate">
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-50"/>
+        </Frame>
+
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Height val="47"/>
+            <Width val="234"/>
+            <TextureType val="NineSlice"/>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar">
+            <Width val="216"/>
+            <SegmentValue val="100"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar">
+            <Width val="216"/>
+            <SegmentValue val="100"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar">
+            <Width val="216"/>
+            <SegmentValue val="100"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="UnitStatusFrame" name="Maar_StatusFrame">
+        <Height val="55"/>
+        <Width val="124"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="58"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+        
+        <Frame type="Image" name="HeroUnitBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="30"/>
+            <Width val="90"/>
+            <Texture val="Assets\Textures\ui_ingame_lotv_timerpanel_framewarning_zerg.dds"/>
+            <RenderPriority val="500"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="UnitStatusUnitName" name="UnitNameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+
+            <Frame type="Label" name="Label">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Style val="Kit_MaarUnitStatusNameLabel"/>
+                <RenderType val="HDR"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="UnitStatusShieldsBar" name="ShieldsBar" template="LotV_UnitStatus/UnitStatusSegmentedShieldsBarTemplate">
+            <Anchor side="Top" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="5"/>
+            <Anchor side="Left" relative="$parent/HeroUnitBackgroundImage" pos="Min" offset="5"/>
+            <Height val="9"/>
+            <SegmentValue val="200"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar" template="LotV_UnitStatus/UnitStatusSegmentedHealthBarTemplate">
+            <Anchor side="Top" relative="$parent/ShieldsBar" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/ShieldsBar" pos="Min" offset="0"/>
+            <Segmented val="False"/>
+        </Frame>
+    </Frame>
+</Desc>

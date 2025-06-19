@@ -1,0 +1,62 @@
+include "LibWCMI_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+static int root = -1;
+
+static int[5] icons;
+static int[5] labels;
+
+static void Create() {
+    int i;
+    if (root != -1) {
+        return;
+    }
+
+    root = DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/DamageStatContainer");
+
+    for (i = 0; i < 5; i += 1) {
+        icons[i] = DialogControlHookup(root, c_triggerControlTypeImage, "Icon" + IntToString(i));
+        labels[i] = DialogControlHookup(root, c_triggerControlTypeLabel, "Damage" + IntToString(i));
+    }
+}
+
+const int StatArrayLen = libWCMI_gv_wMC_DamageStat_UnitTypeCount + 1;
+typedef libWCMI_gs_WM_DamageStat_Record[StatArrayLen] StatArray;
+
+void Kit_DamageStat_Update(arrayref<StatArray> stat) {
+    int i;
+    string unit_type;
+    string actor_type;
+    string unit_icon;
+    text damage;
+    
+    Create();
+
+    for (i = 0; i < 5; i += 1) {
+        unit_type = stat[i + 1].lv_unitType;
+        if (unit_type == null) { break; }
+
+        actor_type = Kit_GetUnitActorType(unit_type);
+        unit_icon = CatalogFieldValueGet(c_gameCatalogActor, actor_type, "UnitIcon", 1);
+
+        damage = FixedToText(stat[i + 1].lv_damage, 0);
+
+        libNtve_gf_SetDialogItemImage(icons[i], unit_icon, PlayerGroupAll());
+        DialogControlSetVisible(icons[i], PlayerGroupAll(), true);
+        
+        libNtve_gf_SetDialogItemText(labels[i], damage, PlayerGroupAll());
+        DialogControlSetVisible(labels[i], PlayerGroupAll(), true);
+    }
+
+    for (; i < 5; i += 1) {
+        DialogControlSetVisible(icons[i], PlayerGroupAll(), false);
+        DialogControlSetVisible(labels[i], PlayerGroupAll(), false);
+    }
+}
+
+void Kit_DamageStat_ShowHide(bool show) {
+    Create();
+
+    DialogControlSetVisible(root, PlayerGroupAll(), show);
+}

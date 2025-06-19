@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Image" name="IconTemplate">
+        <Width val="24"/>
+        <Height val="24"/>
+        <!-- <Alpha val="190"/> -->
+    </Frame>
+
+    <Frame type="Label" name="DamageTemplate">
+        <Style val="ObjectivePanelActive"/>
+        <!-- <Alpha val="190"/> -->
+    </Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Frame" name="DamageStatContainer">
+            <Anchor side="Right" relative="$parent/TriggerWindowPanel" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/TriggerWindowPanel" pos="Max" offset="0"/>
+            <Width val="100"/>
+            <Height val="200"/>
+            <Visible val="False"/>
+
+            <Animation name="OnShown">
+                <Event event="OnShown" action="Reset,Play" frame="$this"/>
+                <Controller type="Fade" end="Pause" frame="$this">
+                    <Key type="Curve" time="0.0" value="0"/>
+                    <Key type="Curve" time="0.1" value="170"/>
+                    <Key type="Curve" time="0.3" value="255"/>
+                </Controller>
+            </Animation>
+            <Animation name="OnHidden">
+                <Event event="OnHidden" action="Reset,Play" frame="$this"/>
+                <Controller type="Fade" end="Pause" frame="$this">
+                    <Key type="Curve" time="0.0" value="255"/>
+                    <Key type="Curve" time="0.1" value="170"/>
+                    <Key type="Curve" time="0.3" value="0"/>
+                </Controller>
+            </Animation>
+
+            <Frame type="Image" name="Icon0" template="Kit_DamageStat/IconTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\btn-unit-terran-marine.dds"/>
+            </Frame>
+            <Frame type="Label" name="Damage0" template="Kit_DamageStat/DamageTemplate">
+                <Anchor side="Top" relative="$parent/Icon0" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Icon0" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon0" pos="Max" offset="2"/>
+                <Text val="99,999"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon1" template="Kit_DamageStat/IconTemplate">
+                <Anchor side="Top" relative="$parent/Icon0" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon0" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\btn-unit-terran-marauder.dds"/>
+            </Frame>
+            <Frame type="Label" name="Damage1" template="Kit_DamageStat/DamageTemplate">
+                <Anchor side="Top" relative="$parent/Icon1" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Icon1" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon1" pos="Max" offset="2"/>
+                <Text val="99,999"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon2" template="Kit_DamageStat/IconTemplate">
+                <Anchor side="Top" relative="$parent/Icon1" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon1" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\btn-unit-terran-marauder.dds"/>
+            </Frame>
+            <Frame type="Label" name="Damage2" template="Kit_DamageStat/DamageTemplate">
+                <Anchor side="Top" relative="$parent/Icon2" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Icon2" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon2" pos="Max" offset="2"/>
+                <Text val="99,999"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon3" template="Kit_DamageStat/IconTemplate">
+                <Anchor side="Top" relative="$parent/Icon2" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon2" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\btn-unit-terran-marauder.dds"/>
+            </Frame>
+            <Frame type="Label" name="Damage3" template="Kit_DamageStat/DamageTemplate">
+                <Anchor side="Top" relative="$parent/Icon3" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Icon3" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon3" pos="Max" offset="2"/>
+                <Text val="99,999"/>
+            </Frame>
+
+            <Frame type="Image" name="Icon4" template="Kit_DamageStat/IconTemplate">
+                <Anchor side="Top" relative="$parent/Icon3" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon3" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\btn-unit-terran-marauder.dds"/>
+            </Frame>
+            <Frame type="Label" name="Damage4" template="Kit_DamageStat/DamageTemplate">
+                <Anchor side="Top" relative="$parent/Icon4" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/Icon4" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/Icon4" pos="Max" offset="2"/>
+                <Text val="99,999"/>
+            </Frame>
+        </Frame>
+    </Frame>    
+    
+</Desc>

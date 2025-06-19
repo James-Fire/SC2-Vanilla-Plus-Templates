@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Asset path="assets\textures\ui_options_selectonbutton_anim_terran.dds" Type="Image"/>
+<Asset path="assets\textures\white.dds" Type="Image"/>
+<Asset path="assets\textures\blank.dds" Type="Image"/>
+<Asset path="assets\textures\ui_tipicon_story-archives.dds" Type="Image"/>
+<Asset path="assets\textures\white32.dds" Type="Image"/>
+<Asset path="assets\textures\ui_protoss_glass_stroke.dds" Type="Image"/>
+<Asset path="assets\textures\ui_ingame_effects_splash2.dds" Type="Image"/>
+<Asset path="assets\textures\ui_options_selectonbutton_selected.dds" Type="Image"/>
+<Asset path="assets\textures\ui_roomselectionframe.dds" Type="Image"/>
+<Asset path="assets\textures\ui_options_selectonbutton_normalpressed_terran.dds" Type="Image"/>
+<Achievement id="WingsofLiberty"/>
+<Actor id="SYSTEM_ActorConfig"/>
+<Actor id="TriggerRegion"/>
+<Behavior id="DeepShadows"/>
+<Effect id="StrikeAmonStart"/>
+<Effect id="StrikeAmonArcStart"/>
+<Effect id="StrikeAmonArcArrive"/>
+<Effect id="StrikeAmonBeamHit0"/>
+<Effect id="StrikeAmonBeamHit1"/>
+<Effect id="StrikeAmonBeamHit2"/>
+<Effect id="StrikeAmonBeamHit3"/>
+<Effect id="StrikeAmonBeamHit4"/>
+<Effect id="StrikeAmonReturnStart"/>
+<Effect id="StrikeAmonReturnArrive"/>
+<Effect id="AlarakTriggerUnitKnockback"/>
+<Effect id="DiamondbackAttackTrackerUnitSet"/>
+<Effect id="DiamondbackAttackTrackerDP"/>
+<Effect id="DiamondbackChasingRB"/>
+<Effect id="BattlecruiserAttackTrackerUnitSet"/>
+<Effect id="BattlecruiserAttackTrackerDP"/>
+<Effect id="BattlecruiserChasingRB"/>
+<Model id="StaticPortrait"/>
+<Model id="PingAlert"/>
+<Model id="TalkIcon"/>
+<Race id="Terr"/>
+<Reward id="ThorCE"/>
+<Sound id="UI_TerranHint" Variations="0"/>
+<Sound id="Medivac_Unload" Variations="0"/>
+<Sound id="Alert_ProtossForcesUnderAttack"/>
+<Sound id="Alert_ProtossNeedMoreFood"/>
+<Sound id="Alert_ProtossProtossWarpInComplete"/>
+<Sound id="Alert_ProtossBuildError"/>
+<Sound id="Silent"/>
+<Sound id="PlaceholderSoundFile"/>
+<Sound id="UI_TerranMissionFailed" Variations="1"/>
+<Sound id="UI_TerranNewTechAvailable" Variations="0"/>
+<Sound id="UI_TerranNewUnitAcquired" Variations="0"/>
+<Sound id="UI_TerranNewUnitAvailable" Variations="0"/>
+<Sound id="UI_TerranPing"/>
+<Sound id="TUISecret" Variations="0"/>
+<Sound id="UI_ResourcePickup" Variations="0"/>
+<Sound id="TextCrawlType"/>
+<Sound id="UI_LowHealthWarning_BreathLoop"/>
+<Sound id="UI_LowHealthWarning_HeartBeatLoop"/>
+<Sound id="UI_LowHealthWarning_Start"/>
+<Sound id="UI_ZergWarning" Variations="0"/>
+<Sound id="UI_Evolutions_PlanetaryZoom"/>
+<Sound id="UI_ZergWarningPing"/>
+<Sound id="UI_Void_TextCallout"/>
+<Unit id="Pylon"/>
+<Unit id="Gateway"/>
+<Unit id="Forge"/>
+<Unit id="FleetBeacon"/>
+<Unit id="Stargate"/>
+<Unit id="TemplarArchive"/>
+<Unit id="DarkShrine"/>
+<Unit id="RoboticsBay"/>
+<Unit id="RoboticsFacility"/>
+<Unit id="CyberneticsCore"/>
+<Unit id="ZergDropPodCreep"/>
+<Unit id="ZergDropPod"/>
+<Unit id="TerranDropPod"/>
+<Unit id="FlyoverUnit"/>
+<Unit id="KerriganEpilogue03StrikeAmon"/>
+</Preload>

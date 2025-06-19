@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="HeroPanelTemplate">
+        <StateGroup name="State">
+            <DefaultState val="Default"/>
+        
+            <State name="HaveShields"> <!-- Protoss Only -->
+                <When type="AnimationState" State="HaveShields"/>
+                <Action type="SetProperty" frame="BorderImage" Visible="True"/>
+                <Action type="SetProperty" frame="BorderNoEnergyImage" Visible="False"/>
+                <Action type="SetProperty" frame="BorderImageAll" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldBarImage" Visible="True"/>
+                <Action type="SetProperty" frame="ShieldBarBackground" Visible="True"/>
+                <!-- <Action type="SetProperty" frame="ShieldLabel" Visible="True"/> -->
+                <Action type="SetProperty" frame="EnergyBarImage" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyBarBackground" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyLabel" Visible="False"/>
+            </State>
+        
+            <State name="HaveEnergy"> <!-- Terran and Zerg Only -->
+                <When type="AnimationState" State="HaveEnergy"/>
+                <Action type="SetProperty" frame="BorderImage" Visible="True"/>
+                <Action type="SetProperty" frame="BorderNoEnergyImage" Visible="False"/>
+                <Action type="SetProperty" frame="BorderImageAll" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldBarImage" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldBarBackground" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldLabel" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyBarImage" Visible="True"/>
+                <Action type="SetProperty" frame="EnergyBarBackground" Visible="True"/>
+                <!-- <Action type="SetProperty" frame="EnergyLabel" Visible="True"/> -->
+            </State>
+        
+            <State name="HaveShieldsAndEnergy">
+                <When type="AnimationState" State="HaveShieldsAndEnergy"/>
+                <Action type="SetProperty" frame="BorderImage" Visible="False"/>
+                <Action type="SetProperty" frame="BorderNoEnergyImage" Visible="False"/>
+                <Action type="SetProperty" frame="BorderImageAll" Visible="True"/>
+                <Action type="SetProperty" frame="ShieldBarImage" Visible="True"/>
+                <Action type="SetProperty" frame="ShieldBarBackground" Visible="True"/>
+                <!-- <Action type="SetProperty" frame="ShieldLabel" Visible="True"/> -->
+                <Action type="SetProperty" frame="EnergyBarImage" Visible="True"/>
+                <Action type="SetProperty" frame="EnergyBarBackground" Visible="True"/>
+                <!-- <Action type="SetProperty" frame="EnergyLabel" Visible="True"/> -->
+            </State>
+        
+            <State name="SingleBar">
+                <When type="AnimationState" State="SingleBar"/>
+                <Action type="SetProperty" frame="BorderImage" Visible="False"/>
+                <Action type="SetProperty" frame="BorderNoEnergyImage" Visible="True"/>
+                <Action type="SetProperty" frame="BorderImageAll" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldBarImage" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldBarBackground" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldLabel" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyBarImage" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyBarBackground" Visible="False"/>
+                <Action type="SetProperty" frame="EnergyLabel" Visible="False"/>
+                <Action type="SetProperty" frame="ShieldHealthBarDivider" Visible="False"/>
+                <Action type="SetAnchor" frame="HealthBarImage" side="Bottom" relative="$parent" pos="Min" offset="68"/>
+                <Action type="SetAnchor" frame="BarBackground" side="Bottom" relative="$parent" pos="Min" offset="70"/>
+            </State>
+
+            <State name="Default"/>
+        </StateGroup>
+
+        <Frame type="UnitTargetFrame" name="UnitTargetFrame">
+            <Anchor side="Top" relative="$parent/BorderImage" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/BorderImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/BorderImage" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/BorderImage" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Label" name="HealthLabel">
+            <Visible val="{$parent/UnitTargetFrame/@Hovering}"/>
+        </Frame>
+        <Frame type="Label" name="ShieldLabel">
+            <Visible val="{$parent/UnitTargetFrame/@Hovering}"/>
+        </Frame>
+        <Frame type="Label" name="EnergyLabel">
+            <Visible val="{$parent/UnitTargetFrame/@Hovering}"/>
+        </Frame>
+
+        <Frame type="Label" name="DamageTakenLabel">
+            <Visible val="True"/>
+            <Alpha val="0"/>
+        </Frame>
+        <Frame type="Image" name="DamageTakenImage">
+            <Visible val="True"/>
+            <Alpha val="0"/>
+        </Frame>
+
+        <Animation name="DamageAnimation">
+            <Event event="Damage" action="Reset,Play" frame="$this"/>
+            <Controller type="Fade" end="Pause" frame="DamageTakenImage">
+                <Key type="Curve" time="0" value="255" out="Linear"/>
+                <Key type="Curve" time="0.5" value="200" out="Linear"/>
+                <Key type="Curve" time="1.0" value="0" out="Linear"/>
+            </Controller>
+        </Animation>
+    </Frame>
+
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Frame" name="VoidHeroUnitFrame" template="Kit_HeroPanel/HeroPanelTemplate">
+            <!-- <Anchor side="Top" relative="$parent/$parent/FullscreenUpperContainer/LeaderPanel/LeaderAnchorPanel" pos="Max" offset="10"/>
+            <PreserveAnchorOffset val="true"/> -->
+        </Frame>
+
+        <Frame type="Frame" name="SecondaryVoidHeroUnitFrame" template="Kit_HeroPanel/HeroPanelTemplate">
+        </Frame>
+    </Frame>
+</Desc>

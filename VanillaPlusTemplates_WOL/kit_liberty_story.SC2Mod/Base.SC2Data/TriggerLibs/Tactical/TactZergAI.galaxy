@@ -1,0 +1,96 @@
+//--------------------------------------------------------------------------------------------------
+//  *** Tactical Zerg AI ***
+//--------------------------------------------------------------------------------------------------
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  *** INFESTOR ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_infestedTerransCooldown = c_tactTimerFirst;
+
+order InfestedTerrans (int player, unit aiUnit, unitgroup scanGroup, bool lowVitality) {
+    order ord;
+    int energy;
+    aifilter filter;
+    point castPoint;
+    unit target;
+    unitgroup targetGroup;
+    
+    if (!AITactCooldownAllow(aiUnit, c_infestedTerransCooldown)) {
+        return null;
+    }
+
+    ord = AICreateOrder(player, c_AB_InfestedTerrans, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    if (!lowVitality) {
+        energy = UnitGetPropertyInt(aiUnit, c_unitPropEnergy, c_unitPropCurrent);
+        if (energy < AIAbilityFixed(player, c_AB_InfestedTerrans, c_fieldEnergyCost) && !lowVitality) {
+            return null;
+        }
+        if (UnitGroupCount(scanGroup, c_unitCountAll) < 4) {
+            return null;
+        }
+    }
+
+    //  Cast on top of the weakest unit.
+    //
+    filter = AIFilter(player);
+    AISetFilterAlliance(filter, c_playerGroupEnemy);
+    AISetFilterBits(filter, UnitFilterStr(AIWeaponStr(player, c_WE_InfestedTerran, c_fieldTargetFilters)));
+    AISetFilterRange(filter, aiUnit, AIAbilityFixed(player, c_AB_InfestedTerrans, c_fieldRange0) + 1);
+    AISetFilterLife(filter, c_noMin, c_noMax);
+    targetGroup = AIGetFilterGroup(filter, scanGroup);
+
+    //  Check for valid target
+    //
+    target = UnitGroupUnit(targetGroup, UnitGroupCount(targetGroup, c_unitCountAll));
+    if (target == null) {
+        return null;
+    }
+    
+    castPoint = AIPlacementNearbyFindTest(player, UnitGetPosition(target), 5.0, c_ZU_InfestedTerranEgg);
+    if (castPoint == c_nullPoint) {
+        return null;
+    }
+
+    OrderSetTargetPoint(ord, castPoint);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+
+    return ord;
+}
+
+//---------------------------------------------------------------------------------------------
+const int infestorLowVitalityPercent = 60;
+
+void AIThinkInfestor (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    bool lowVitality;
+    fixed cooldown;
+
+    // burrow
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+
+    lowVitality = (UnitGetPropertyInt(aiUnit, c_unitPropLifePercent, true) < infestorLowVitalityPercent);
+    
+    // infested terrans
+    ord = InfestedTerrans(player, aiUnit, scanGroup, lowVitality);
+    if (ord != null) {
+        if (AIPlayerDifficulty(player) < c_campAdvanced) {
+            cooldown = 3.0;
+        }
+        else {
+            cooldown = 0.0;
+        }
+
+        AICastCooldown(aiUnit, ord, c_noMarker, c_castRetreat, c_infestedTerransCooldown, cooldown);
+    }
+}

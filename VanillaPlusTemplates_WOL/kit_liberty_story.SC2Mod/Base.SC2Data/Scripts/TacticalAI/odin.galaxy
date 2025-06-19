@@ -1,0 +1,118 @@
+void THorner03AIThinkOdin (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord = AICreateOrder(player, c_AB_OdinBarrage, 0);
+    order enemyOrd;
+    order curOrd;
+    point loc;
+    fixed barrageRadius = AIEffectFixed(player, c_EF_OdinBarrageArea, c_fieldAreaRadius0);
+    unitgroup threatGroup;
+    unitgroup barrageGroup;
+    unitgroup barrageThreatGroup;
+    unit unitToCheck;
+    int numPossibleThreats = 0;
+    int numActualThreats = 0;
+    int numPossibleThreatsInBarrage = 0;
+    int numActualThreatsInBarrage = 0;
+
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    curOrd = UnitOrder(aiUnit, 0);
+    if ((curOrd != null) && !AIIsAttackOrder(curOrd)) {
+        // don't cast again if casting
+        return;
+    }
+
+    // Is there a threat in the area
+    threatGroup = UnitGroupFilterThreat(scanGroup, aiUnit, null, 0);
+    numPossibleThreats = UnitGroupCount(threatGroup, c_unitCountAll);
+    while (numPossibleThreats > 0) {
+        unitToCheck = UnitGroupUnit(threatGroup, numPossibleThreats);
+        numPossibleThreats = numPossibleThreats - 1;
+
+        enemyOrd = UnitOrder(unitToCheck, 0);
+        if (AIIsAttackOrder(enemyOrd) && OrderGetTargetUnit(enemyOrd) == aiUnit) {
+            numActualThreats = numActualThreats + 1;
+        }
+    }
+
+    loc = AIBestTargetPoint(
+        AIEffectGroup(player, c_EF_OdinBarrageArea, scanGroup),
+        3, // min hits
+        200, // damage base
+        3.0, // min score 
+        barrageRadius,
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_AB_OdinBarrage, c_fieldRange0)+3, 
+        c_unitAttributeNone
+    );
+    if (loc == null) {
+        return;
+    }
+
+    barrageGroup = UnitGroup(null, c_playerAny, RegionCircle(loc, barrageRadius), null, 0);
+    barrageThreatGroup = UnitGroupFilterThreat(barrageGroup, aiUnit, null, 0);
+    numPossibleThreatsInBarrage = UnitGroupCount(barrageThreatGroup, c_unitCountAll);
+    while (numPossibleThreatsInBarrage > 0) {
+        unitToCheck = UnitGroupUnit(barrageThreatGroup, numPossibleThreatsInBarrage);
+        numPossibleThreatsInBarrage = numPossibleThreatsInBarrage - 1;
+
+        enemyOrd = UnitOrder(unitToCheck, 0);
+        if (AIIsAttackOrder(enemyOrd) && OrderGetTargetUnit(enemyOrd) == aiUnit) {
+            numActualThreatsInBarrage = numActualThreatsInBarrage + 1;
+        }
+    }
+
+    if ((numActualThreats > numActualThreatsInBarrage*2) ) {
+        return;  // too many threats not in the barrage
+    }
+
+    OrderSetTargetPoint(ord, loc);
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+//--------------------------------------------------------------------------------------------------
+void THorner03AIChannelOdin (int player, unit aiUnit, unitgroup scanGroup) {
+    order cancelOrd = AICreateOrder(player, c_AB_OdinBarrage, 1);
+    order curOrd;
+    abilcmd curAbilCmd;
+    point loc;
+    fixed barrageRadius = AIEffectFixed(player, c_EF_OdinBarrageArea, c_fieldAreaRadius0);
+    unit unitToCheck;
+    int loop = 0;
+    bool enemyInBarrage = false;
+
+    if (!UnitOrderIsValid(aiUnit, cancelOrd)) {
+        return;
+    }
+
+    curOrd = UnitOrder(aiUnit, 0);
+    if ((curOrd == null) && AIIsAttackOrder(curOrd)) {
+        return;
+    }
+
+    curAbilCmd = OrderGetAbilityCommand(curOrd);
+    if (AbilityCommandGetAbility(curAbilCmd) != c_AB_OdinBarrage || 
+        AbilityCommandGetCommand(curAbilCmd) != 0) {
+            return;
+    }
+
+    loc = OrderGetTargetPoint(curOrd);
+    loop = UnitGroupCount(scanGroup, c_unitCountAll);
+    while (loop > 0) {
+        unitToCheck = UnitGroupUnit(scanGroup, loop);
+        loop = loop - 1;
+
+        if (PointsInRange(UnitGetPosition(unitToCheck), loc, barrageRadius)) {
+            enemyInBarrage = true;
+            break;
+        }
+    }
+
+    if (enemyInBarrage) {
+        return;
+    }
+
+    // cast a cancel order to stop barraging the empty area
+    AICast(aiUnit, cancelOrd, c_noMarker, c_castHold);
+}

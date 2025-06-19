@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="Kit@PerditionTurretHoldingFire2">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorKit@Kit@PerditionTurretHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@PerditionTurretNotHoldingFire">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorKit@Kit@PerditionTurretHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@RegenerativeBioSteel">
+        <NodeArray index="Show" Link="CountUpgradeKit@RegenerativeBioSteelCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@LaserDrillHoldingFire">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorKit@LaserDrillHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@LaserDrillNotHoldingFire">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorKit@LaserDrillHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@CanBuildGhostAcademy">
+        <EditorCategories value="TechType:Unit"/>
+        <NodeArray index="Use" Link="CountUnitAlias_BarracksCompleteOnly789532539TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Kit@CanBuildFusionCore">
+        <EditorCategories value="TechType:Unit"/>
+        <NodeArray index="Use" Link="CountUnitAlias_StarportCompleteOnly4195804750TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Kit@DisableBuildSupplyDepot">
+        <NodeArray index="Show" Link="CountUpgradeKit@DisableBuildSupplyDepotCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabBarracks">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="Or2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabBarracksAndGhostAcademy">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="AndOr2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnitCountUnitGhostAcademyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabBarracksOrMedicTraining">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="Or2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnitCountUpgradeAdvancedMedicTrainingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@CanBuildMercCompound">
+        <EditorCategories value="TechType:Unit"/>
+        <NodeArray index="Use" Link="AndCountUnitAlias_BarracksCompleteOnly789532539TechTreeCheatEq3804783965CountUnitMercCompoundQueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseHellionSmartServos">
+        <NodeArray index="Show" Link="CountUpgradeKit@HellionSmartServosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveMedicTraining">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeAdvancedMedicTrainingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabFactory">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="Or2589852481CountUnitFactoryTechLabCompleteOnlyAtUnitCountUnitFactoryTechReactorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabFactoryAndArmory">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="AndOr2589852481CountUnitFactoryTechLabCompleteOnlyAtUnitCountUnitFactoryTechReactorCompleteOnlyAtUnitCountUnitArmoryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabStarport">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="Or2589852481CountUnitStarportTechLabCompleteOnlyAtUnitCountUnitStarportTechReactorCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Kit@HaveAttachedTechLabStarportAndFusionCore">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="AndOr2589852481CountUnitStarportTechLabCompleteOnlyAtUnitCountUnitStarportTechReactorCompleteOnlyAtUnitCountUnitFusionCoreCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseMedivacCaduceusReactor">
+        <NodeArray index="Show" Link="CountUpgradeKit@MedivacCaduceusReactorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseImprovedSiegeMode">
+        <NodeArray index="Show" Link="CountUpgradeKit@ImprovedSiegeModeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseHighCapacityBarrels">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradeHighCapacityBarrelsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseBansheeSpeed">
+        <NodeArray index="Show" Link="CountUpgradeKit@BansheeSpeedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseBattlecruiserTacticalJump">
+        <NodeArray index="Show" Link="CountUpgradeKit@BattlecruiserTacticalJumpCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UsePerditionAutoTracking">
+        <NodeArray index="Show" Link="CountUpgradeKit@PerditionAutoTrackingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UsePredatorElectromagneticField">
+        <NodeArray index="Show" Link="CountUpgradeKit@PredatorElectromagneticFieldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseSCVAdvancedConstruction">
+        <NodeArray index="Show" Link="CountUpgradeAdvancedConstructionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UsePerditionMineField">
+        <NodeArray index="Show" Link="CountUpgradeKit@PerditionMineFieldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseThorEmergencyRepair">
+        <NodeArray index="Show" Link="CountUpgradeKit@ThorEmergencyRepairCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseThorHeavyServos">
+        <NodeArray index="Show" Link="CountUpgradeKit@ThorHeavyServosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UseWraithPulseAmplifier">
+        <NodeArray index="Show" Link="CountUpgradeKit@WraithPulseAmplifierCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Kit@UsePunisherGrenades">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="CountUpgradePunisherGrenadesCompleteOnly"/>
+    </CRequirement>
+</Catalog>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTerrain id="Kit@Redstone" parent="CharEx2">
+        <Name value="Terrain/Name/Kit@Redstone"/>
+        <!-- <FogColor value="255,198,0,0"/>
+        <FogFalloff value="0.250000"/>
+        <FogStartingHeight value="-0.500000"/> -->
+        <!-- <FogColor value="255,170,21,0"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="2.000000"/> -->
+        <FogColor value="255,198,21,0"/>
+        <FogFalloff value="0.250000"/>
+        <FogStartingHeight value="2.000000"/>
+        <LoadingScreen value="Assets\Textures\loading-redstone.dds"/>
+        <Ambience value="Ambience_Redstone"/>
+        <CliffSets index="0" value="RedstoneEx1Cliff0"/>
+        <CliffSets index="1" value="RedstoneEx1Cliff1"/>
+        <BlendTextures index="2" value="CharRedCracksEx2"/>
+        <BlendTextures index="3" value="CharDirtCrackedEx2"/>
+        <BlendTextures index="4" value="KorhalCityEx2_6"/>
+        <BlendTextures index="5" value="KorhalCityEx2_2"/>
+        <BlendTextures index="6" value="CharMudEx2"/>
+        <BlendTextures index="7" value="CharSpongeEx2"/>
+    </CTerrain>
+    <CTerrain id="Kit@Xil">
+        <EditorCategories value="Climate:Wasteland"/>
+        <Lighting value="Xil"/>
+        <LoadingScreen value="Assets\Textures\loading-xil.dds"/>
+        <TextureProp value="xil"/>
+        <Ambience value="Ambience_Xil"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="Purification_Desert_2"/>
+        <BlendTextures value="DesertWorld8"/>
+        <BlendTextures value="DesertWorld6"/>
+        <BlendTextures value="DesertWorld1"/>
+        <BlendTextures value="DesertWorld2"/>
+        <BlendTextures value="DesertWorld3"/>
+        <BlendTextures value="KorhalCityEx2_7"/>
+        <BlendTextures value="DesertWorld4"/>
+        <HardTiles value="MarSaraTile"/>
+        <CliffSets value="XilEx1Cliff0"/>
+        <CliffSets value="XilEx1Cliff1"/>
+        <FixedSkyboxModel value="XilSkybox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,184,239,239"/>
+        <FogDensity value="0.100000"/>
+        <FogFalloff value="0.260000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <CreepEdgeNormalMap value="Assets\Textures\CreepEdgeNormal.dds"/>
+        <CreepSettingsArray index="Low" CreepOpaqueAlphaThreshold="0.180000" CreepTranslucentMinThreshold="0.050000" CreepTranslucentPassTint="1.000000,0.850000,0.750000"/>
+        <CreepSettingsArray index="Medium">
+            <CreepOpaqueAlphaThreshold value="0.180000"/>
+            <CreepTranslucentMinThreshold value="0.050000"/>
+            <CreepTranslucentMaxThreshold value="0.150000"/>
+            <CreepTranslucentPassTint value="1.000000,0.850000,0.750000"/>
+        </CreepSettingsArray>
+        <CreepSettingsArray index="High">
+            <CreepOpaqueAlphaThreshold value="0.180000"/>
+            <CreepTranslucentMinThreshold value="0.050000"/>
+            <CreepTranslucentMaxThreshold value="0.150000"/>
+            <CreepTranslucentPassTint value="1.000000,0.850000,0.750000"/>
+        </CreepSettingsArray>
+        <CreepSettingsArray index="Ultra">
+            <CreepOpaqueAlphaThreshold value="0.180000"/>
+            <CreepTranslucentMinThreshold value="0.050000"/>
+            <CreepTranslucentMaxThreshold value="0.150000"/>
+            <CreepTranslucentPassTint value="1.000000,0.850000,0.750000"/>
+        </CreepSettingsArray>
+        <CreepSettingsArray index="Extreme">
+            <CreepOpaqueAlphaThreshold value="0.180000"/>
+            <CreepTranslucentMinThreshold value="0.050000"/>
+            <CreepTranslucentMaxThreshold value="0.150000"/>
+            <CreepTranslucentPassTint value="1.000000,0.850000,0.750000"/>
+        </CreepSettingsArray>
+    </CTerrain>
+</Catalog>

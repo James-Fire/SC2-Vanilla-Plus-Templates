@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Frame" name="ArtifactGlobalCommandPanel">
+            <Anchor side="Top" relative="$parent/ProgressFrameTemplate" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/ProgressFrameTemplate" pos="Min" offset="0"/>
+            <Width val="92"/>
+            <Height val="92"/>
+            <Handle val="ArtifactGlobalContainer"/>
+            <Visible val="False"/>
+
+            <Frame type="Image" name="BackgroundImage">
+                <Anchor relative="$parent"/>
+                <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_Frame"/>
+                <TextureType val="Nineslice"/>
+                <Tiled val="false"/>
+            </Frame>
+
+            <Frame type="CommandPanel" name="CommandPanel" template="CommandPanel/CommandPanelTemplate">
+                <Anchor side="Top" relative="$parent/BackgroundImage" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/BackgroundImage" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent/BackgroundImage" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent/BackgroundImage" pos="Mid" offset="0"/>
+                <Width val="76"/>
+                <Height val="76"/>
+
+                <HideUnusedButtons val="true"/>
+                <DisplayCancelCommandCard val="false"/>
+                <UseGridHotkeys val="false"/>
+
+                <Frame type="CommandTooltip" name="ArtifactCommandTooltip" template="CommandButton/CommandTooltipTemplate">
+                    <Anchor side="Top" relative="$ArtifactGlobalContainer" pos="Max" offset="0"/>
+                    <Anchor side="Left" relative="$ArtifactGlobalContainer" pos="Mid" offset="0"/>
+                    <Anchor side="Right" relative="$ArtifactGlobalContainer" pos="Mid" offset="0"/>
+                    <Unclipped val="True"/>
+                </Frame>        
+
+                <Frame type="CommandButton" name="CommandButton10" template="CommandButton/CommandButtonTemplate">
+                    <Anchor relative="$parent"/>
+                    <TooltipFrame val="ArtifactCommandTooltip"/>
+
+                    <ClickSound val="*@UI_SoA_SpellClick"/>
+                    <HotkeyUse val="CommanderAbility0"/>
+        
+                    <Frame type="CommandHotkeyFrame" name="HotkeyFrame">
+                        <Anchor side="Top" relative="$parent" pos="Min" offset="3"/>
+                        <Anchor side="Left" relative="$parent" pos="Min" offset="2"/>
+                        
+                        <Frame type="Label" name="HotkeyLabel">
+                            <Style val="GameButtonChargeSmall"/>
+                        </Frame>
+                    </Frame>
+
+                    <Frame type="Label" name="ChargeLabel">
+                        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-3"/>
+                        <Anchor side="Right" relative="$parent" pos="Max" offset="-4"/>
+                    </Frame>
+                    
+                    <Frame type="Image" name="GameButtonBorderImage">
+                        <Anchor side="Top" relative="$parent" pos="Max" offset="500"/>
+                        <Anchor side="Bottom" relative="$parent" pos="Max" offset="550"/>
+                        <Anchor side="Left" relative="$parent" pos="Max" offset="500"/>
+                        <Anchor side="Right" relative="$parent" pos="Max" offset="550"/>
+                        <Alpha val="0"/>
+                    </Frame>
+                </Frame>
+
+                <Frame type="CommandButton" name="CommandButton01" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+
+                <Frame type="CommandButton" name="CommandButton02" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+
+                <Frame type="CommandButton" name="CommandButton03" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+
+                <Frame type="CommandButton" name="CommandButton04" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+                
+                <Frame type="CommandButton" name="CommandButton05" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+                
+                <Frame type="CommandButton" name="CommandButton06" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton07" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton08" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton09" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton00" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton11" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton12" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton13" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="CommandButton" name="CommandButton14" template="CommandButton/CommandButtonTemplate">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="-1000"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Label" name="RowText0">
+                    <Anchor side="Top" relative="$parent/CommandButton00" pos="Min" offset="0"/>
+                    <Anchor side="Bottom" relative="$parent/CommandButton00" pos="Max" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                    <Style val="@@CommandRow"/>
+                </Frame>
+        
+                <Frame type="Label" name="RowText1">
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Label" name="RowText2">
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Image" name="CommandTargetImage">
+                    <Anchor side="Left" relative="$parent" pos="Max" offset="200"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="200"/>
+                    <Anchor side="Top" relative="$parent" pos="Max" offset="200"/>
+                    <Anchor side="Bottom" relative="$parent" pos="Max" offset="200"/>
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Label" name="CommandTargetName">
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Label" name="CommandTargetPrompt">
+                    <Visible val="false"/>
+                </Frame>
+        
+                <Frame type="Frame" name="UncontrollableUnitFrame">
+                    <Visible val="false"/>
+                    
+                    <Frame type="Label" name="UncontrollableUnitTitleLabel">
+                        <Visible val="false"/>
+                    </Frame>
+                    
+                    <Frame type="Label" name="UncontrollableUnitPromptLabel">
+                        <Visible val="false"/>
+                    </Frame>
+                </Frame>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>

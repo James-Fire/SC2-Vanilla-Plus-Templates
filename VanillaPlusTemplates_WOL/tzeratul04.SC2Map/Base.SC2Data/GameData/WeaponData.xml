@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CWeaponLegacy id="UrunEnergyBeam">
+        <Range value="10"/>
+    </CWeaponLegacy>
+</Catalog>

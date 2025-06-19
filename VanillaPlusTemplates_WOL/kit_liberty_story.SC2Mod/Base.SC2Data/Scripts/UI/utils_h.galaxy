@@ -1,0 +1,8 @@
+
+void Kit_SetDialogItemCustomValue(int item, int index, string value);
+string Kit_GetDialogItemCustomValue(int item, int index);
+
+void Kit_PopulateDifficultyPulldown(int pulldown);
+void Kit_PopulateAllInPulldown(int pulldown);
+
+string Kit_GetUnitActorType(string unit_type);

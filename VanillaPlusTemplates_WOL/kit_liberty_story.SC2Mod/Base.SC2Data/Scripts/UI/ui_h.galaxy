@@ -1,0 +1,3 @@
+void Kit_UITechPurchase_Show(trigger exit_trigger);
+void Kit_UIResearch_Show(trigger exit_trigger);
+void Kit_UIMercenary_Show(trigger exit_trigger);

@@ -1,0 +1,313 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+
+static int dialog = -1;
+static int root;
+
+static int background_portrait;
+
+static int contact_portrait;
+static int contact_fluff;
+static int pitch_play_button;
+static int pitch_stop_button;
+
+static int mission_text;
+static int objective_text;
+
+static int primary_reward_heading;
+static int[5] primary_reward_label;
+static int bonus_reward_heading;
+static int[5] bonus_reward_label;
+
+static int subtitle_frame;
+
+static int difficulty_pulldown;
+
+static int launch_button;
+static int close_button;
+
+
+static trigger StopPitch = TriggerCreate("Kit_UITravelZeratul_StopPitch");
+static trigger PlayPitch = TriggerCreate("Kit_UITravelZeratul_PlayPitch");
+
+static trigger DifficultyUp = TriggerCreate("Kit_UITravelZeratul_DifficultyUp");
+static trigger DifficultyDown = TriggerCreate("Kit_UITravelZeratul_DifficultyDown");
+
+static trigger PitchPlayButtonClicked = TriggerCreate("Kit_UITravelZeratul_PitchPlayButtonClicked");
+static trigger PitchStopButtonClicked = TriggerCreate("Kit_UITravelZeratul_PitchStopButtonClicked");
+
+static trigger CloseButtonClicked = TriggerCreate("Kit_UITravelZeratul_CloseButtonClicked");
+static trigger LaunchButtonClicked = TriggerCreate("Kit_UITravelZeratul_LaunchButtonClicked");
+
+static string mission;
+
+
+static void Create() {
+    int i = 0;
+    int portrait_dialog;
+
+    if (dialog != -1) {
+        return;
+    }
+
+    dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+    DialogSetImageVisible(dialog, false);
+    DialogSetFullscreen(dialog, true);
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    
+    root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_TravelPanelProtoss/TravelPanelProtossTemplate");
+    DialogControlSetFullDialog(root, PlayerGroupAll(), true);
+
+    portrait_dialog = DialogControlHookup(root, c_triggerControlTypePortrait, "BackgroundPortrait");
+    background_portrait = PortraitGetTriggerControl(portrait_dialog);
+
+    close_button = DialogControlHookup(root, c_triggerControlTypeButton, "BackButton");
+    TriggerAddEventDialogControl(CloseButtonClicked, 1, close_button, c_triggerControlEventTypeClick);
+
+    launch_button = DialogControlHookup(root, c_triggerControlTypeButton, "LaunchButton");
+    TriggerAddEventDialogControl(LaunchButtonClicked, 1, launch_button, c_triggerControlEventTypeClick);
+
+    difficulty_pulldown = DialogControlHookup(root, c_triggerControlTypePulldown, "DifficultyPulldown");
+    Kit_PopulateDifficultyPulldown(difficulty_pulldown);
+    
+    portrait_dialog = DialogControlHookup(root, c_triggerControlTypePortrait, "ContactPortrait");
+    contact_portrait = PortraitGetTriggerControl(portrait_dialog);
+
+    contact_fluff = DialogControlHookup(root, c_triggerControlTypeLabel, "ContactFluff");
+
+    pitch_play_button = DialogControlHookup(root, c_triggerControlTypeButton, "PitchFrame/PlayButton");
+    TriggerAddEventDialogControl(PitchPlayButtonClicked, 1, pitch_play_button, c_triggerControlEventTypeClick);
+    pitch_stop_button = DialogControlHookup(root, c_triggerControlTypeButton, "PitchFrame/StopButton");
+    TriggerAddEventDialogControl(PitchStopButtonClicked, 1, pitch_stop_button, c_triggerControlEventTypeClick);
+
+    mission_text = DialogControlHookup(root, c_triggerControlTypeLabel, "Title");
+    objective_text = DialogControlHookup(root, c_triggerControlTypeLabel, "Objective");
+
+    primary_reward_heading = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/PrimaryRewardContainer/Heading");
+    for (i = 0; i < 5; i += 1) {
+        primary_reward_label[i] = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/PrimaryRewardContainer/Label" + IntToString(i));
+    }
+    bonus_reward_heading = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/BonusRewardContainer/Heading");
+    for (i = 0; i < 5; i += 1) {
+        bonus_reward_label[i] = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/BonusRewardContainer/Label" + IntToString(i));
+    }
+
+    subtitle_frame = DialogControlHookup(root, c_triggerControlTypePanel, "SubtitleFrame");
+
+    TriggerAddEventKeyPressed(DifficultyUp, 1, c_keyUp, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(DifficultyDown, 1, c_keyDown, true, 0, 0, 0);
+}
+
+static void Update() {
+    string location;
+    int reward_credits;
+    int reward_protoss;
+    int reward_zerg;
+
+    if (mission == null) {
+        return;
+    }
+    
+    location = libWoLC_gf_StoryMapPlanet(mission);
+
+    // Title
+    libNtve_gf_SetDialogItemText(mission_text, libWoLC_gf_WC_CampaignMapName(mission), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(objective_text, libWoLC_gf_WC_CampaignMapPrimaryObjective(mission), PlayerGroupAll());
+
+    // Background
+    PortraitSetModel(background_portrait, libWoLC_gf_WC_LocationBackgroundModel(location), true);
+    // PortraitSetCamera(background_portrait, "Star2 BattleNetGlue");
+
+    // Portrait
+    PortraitSetModel(contact_portrait, libWoLC_gf_WC_CampaignMapContactPortrait(mission), false);
+    libNtve_gf_SetDialogItemText(contact_fluff, libWoLC_gf_WC_CampaignMapContactName(mission), PlayerGroupAll());
+
+    // Primary Reward
+    reward_credits = libWoLC_gf_WC_MissionRewardsCredits(mission);
+    DialogControlSetVisible(primary_reward_label[0], PlayerGroupAll(), reward_credits > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[0], libWoLC_gf_WC_FormatReward(reward_credits, "Credits"), PlayerGroupAll());
+
+    reward_protoss = libWoLC_gf_WC_MissionRewardsProtoss(mission);
+    DialogControlSetVisible(primary_reward_label[1], PlayerGroupAll(), reward_protoss > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[1], libWoLC_gf_WC_FormatReward(reward_protoss, "ProtossResearch"), PlayerGroupAll());
+
+    reward_zerg = libWoLC_gf_WC_MissionRewardsZerg(mission);
+    DialogControlSetVisible(primary_reward_label[2], PlayerGroupAll(), reward_zerg > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[2], libWoLC_gf_WC_FormatReward(reward_zerg, "ZergResearch"), PlayerGroupAll());
+
+    DialogControlSetVisible(primary_reward_heading, PlayerGroupAll(), (reward_credits > 0) || (reward_protoss > 0) || (reward_zerg > 0));
+
+    // Bonus Reward
+    reward_credits = libWoLC_gf_WC_MissionRewardsBonusPossible(mission, "Credits");
+    DialogControlSetVisible(bonus_reward_label[0], PlayerGroupAll(), reward_credits > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[0], libWoLC_gf_WC_FormatReward(reward_credits, "Credits"), PlayerGroupAll());
+
+    reward_protoss = libWoLC_gf_WC_MissionRewardsBonusPossible(mission, "ProtossResearch");
+    DialogControlSetVisible(bonus_reward_label[1], PlayerGroupAll(), reward_protoss > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[1], libWoLC_gf_WC_FormatReward(reward_protoss, "ProtossResearch"), PlayerGroupAll());
+
+    reward_zerg = libWoLC_gf_WC_MissionRewardsBonusPossible(mission, "ZergResearch");
+    DialogControlSetVisible(bonus_reward_label[2], PlayerGroupAll(), reward_zerg > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[2], libWoLC_gf_WC_FormatReward(reward_zerg, "ZergResearch"), PlayerGroupAll());
+
+    DialogControlSetVisible(bonus_reward_heading, PlayerGroupAll(), (reward_credits > 0) || (reward_protoss > 0) || (reward_zerg > 0));
+}
+
+
+void Kit_UITravelZeratul_Show(string lp_mission) {
+    mission = lp_mission;
+
+    Create();
+    Update();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+
+    DialogSetSubtitlePositionOverrideControl(subtitle_frame);
+
+    if (!libWoLC_gf_StoryInSimulation()) {
+        TriggerExecute(PlayPitch, true, false);
+    }
+
+    TriggerEnable(DifficultyUp, true);
+    TriggerEnable(DifficultyDown, true);
+}
+
+void Kit_UITravelZeratul_Hide() {
+    TriggerEnable(DifficultyUp, false);
+    TriggerEnable(DifficultyDown, false);
+
+    TriggerExecute(StopPitch, true, false);
+    DialogClearSubtitlePositionOverrideControl();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+}
+
+int Kit_UITravelZeratul_LastSelectedDifficulty() {
+    return DialogControlGetSelectedItem(difficulty_pulldown, 1);
+}
+
+bool Kit_UITravelZeratul_LaunchButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerSendEvent(libWCUI_gv_wUC_TravelPanelEventMissionStarted);
+
+    return true;
+}
+
+bool Kit_UITravelZeratul_CloseButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerSendEvent(libWCUI_gv_wUC_TravelPanelEventClosed);
+
+    return true;
+}
+
+bool Kit_UITravelZeratul_PitchPlayButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerExecute(StopPitch, true, true);
+    TriggerExecute(PlayPitch, false, true);
+
+    return true;
+}
+
+bool Kit_UITravelZeratul_PitchStopButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerExecute(StopPitch, true, true);
+
+    return true;
+}
+
+static int pitch_playing_count = 0;
+
+bool Kit_UITravelZeratul_StopPitch(bool check, bool run) {
+    if (!run) { return true; }
+
+    ConversationDataStop();
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), true);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), false);
+
+    return true;
+}
+
+bool Kit_UITravelZeratul_PlayPitch(bool check, bool run) {
+    int pitch_count = ConversationDataStateIndexCount("MissionPitch");
+    int characters_count = ConversationDataStateIndexCount("Characters");
+    string state;
+    int i;
+
+    if (check && DataTableGetBool(true, "Kit_PitchPlayed|" + mission)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    for (i = 1; i <= pitch_count; i += 1) {
+        state = ConversationDataStateIndex("MissionPitch", i);
+        ConversationDataStateSetValue(state, 0);
+    }
+    ConversationDataStateSetValue("MissionPitch|" + mission, 1);
+
+    for (i = 1; i <= characters_count; i += 1) {
+        state = ConversationDataStateIndex("Characters", i);
+        ConversationDataRegisterPortrait(state, contact_portrait);
+    }
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), false);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), true);
+
+    DataTableSetBool(true, "Kit_PitchPlayed|" + mission, true);
+
+    pitch_playing_count += 1;
+    ConversationDataRun("Missionpitches", PlayerGroupAll(), c_conversationSkipNone, true);
+    pitch_playing_count -= 1;
+
+    if (pitch_playing_count > 0) {
+        return true;
+    }
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), true);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), false);
+
+    for (i = 0; i < characters_count; i += 1) {
+        state = ConversationDataStateIndex("Characters", i);
+        ConversationDataRegisterPortrait(state, c_invalidPortraitId);
+    }
+
+    return true;
+}
+
+
+bool Kit_UITravelZeratul_DifficultyUp(bool check, bool run) {
+    int difficulty = DialogControlGetSelectedItem(difficulty_pulldown, 1);
+    int new_difficulty = difficulty - 1;
+
+    if (check && !DifficultyEnabled(new_difficulty)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogControlSelectItem(difficulty_pulldown, PlayerGroupAll(), new_difficulty);
+
+    return true;
+}
+
+bool Kit_UITravelZeratul_DifficultyDown(bool check, bool run) {
+    int difficulty = DialogControlGetSelectedItem(difficulty_pulldown, 1);
+    int new_difficulty = difficulty + 1;
+
+    if (check && !DifficultyEnabled(new_difficulty)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogControlSelectItem(difficulty_pulldown, PlayerGroupAll(), new_difficulty);
+
+    return true;
+}

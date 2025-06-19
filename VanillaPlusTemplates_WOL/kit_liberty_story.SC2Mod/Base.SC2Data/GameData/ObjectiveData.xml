@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CObjective default="1">
+        <Name value="ConversationState/MissionObjective/##id##"/>
+        <UserReference value="MissionObjective;##id##"/>
+        <Type value="Primary"/>
+    </CObjective>
+    <CObjective id="TRaynor01_1"/>
+    <CObjective id="TRaynor01_2"/>
+    <CObjective id="TRaynor01_3">
+        <Type value="Optional"/>
+        <RequiredCount value="6"/>
+    </CObjective>
+    <CObjective id="TRaynor02_1"/>
+    <CObjective id="TRaynor02_2">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TRaynor03_1"/>
+    <CObjective id="TRaynor03_2">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+        <Name value="Objective/Name/TRaynor03_2"/>
+    </CObjective>
+    <CObjective id="THanson01_1"/>
+    <CObjective id="THanson01_2">
+        <Name value="Objectives/Name/THanson01_2"/>
+        <RequiredCount value="50"/>
+    </CObjective>
+    <CObjective id="THanson01_3">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+        <Name value="Objective/Name/THanson01_3"/>
+    </CObjective>
+    <CObjective id="THanson01_4">
+        <Name value="Objectives/Name/THanson01_4"/>
+        <RequiredCount value="20"/>
+    </CObjective>
+    <CObjective id="THanson02_1">
+        <Name value="Objectives/Name/THanson02_1"/>
+    </CObjective>
+    <CObjective id="THanson02_2">
+        <Type value="Optional"/>
+        <RequiredCount value="2"/>
+    </CObjective>
+    <CObjective id="THanson03A_1">
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="THanson03A_2"/>
+    <CObjective id="THanson03A_3">
+        <Type value="Optional"/>
+        <Name value="Objectives/Name/THanson03A_3"/>
+    </CObjective>
+    <CObjective id="THanson03A_4">
+        <Name value="Objectives/Name/THanson03A_4"/>
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="THanson03A_5">
+        <Name value="Objectives/Name/THanson03A_5"/>
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="THanson03B_1"/>
+    <CObjective id="TTosh01_1">
+        <Name value="Objectives/Name/TTosh01_1"/>
+        <RequiredCount value="8000"/>
+    </CObjective>
+    <CObjective id="TTosh01_2">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TTosh01_3">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TTosh02_1">
+        <RequiredCount value="7"/>
+    </CObjective>
+    <CObjective id="TTosh02_2">
+        <Name value="Objectives/Name/TTosh02_2"/>
+        <RequiredCount value="7"/>
+    </CObjective>
+    <CObjective id="TTosh02_3">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TTosh03A_1">
+        <Name value="Objectives/Name/TTosh03A_1"/>
+    </CObjective>
+    <CObjective id="TTosh03A_2">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TTosh03A_3">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TTosh03A_4"/>
+    <CObjective id="TTosh03B_1"/>
+    <CObjective id="TTosh03B_2"/>
+    <CObjective id="TTosh03B_3"/>
+    <CObjective id="TTosh03B_4">
+        <Type value="Optional"/>
+        <RequiredCount value="10"/>
+    </CObjective>
+    <CObjective id="TTosh03B_5"/>
+    <CObjective id="THorner01_1">
+        <RequiredCount value="8"/>
+    </CObjective>
+    <CObjective id="THorner01_2">
+        <Type value="Optional"/>
+        <RequiredCount value="6"/>
+    </CObjective>
+    <CObjective id="THorner01_3">
+        <RequiredCount value="2"/>
+    </CObjective>
+    <CObjective id="THorner01_4">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+        <Name value="Objectives/Name/THorner01_4"/>
+    </CObjective>
+    <CObjective id="THorner02_1"/>
+    <CObjective id="THorner02_2"/>
+    <CObjective id="THorner02_3">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+        <Name value="Objectives/Name/THorner02_3"/>
+    </CObjective>
+    <CObjective id="THorner03_1"/>
+    <CObjective id="THorner03_2"/>
+    <CObjective id="THorner03_3">
+        <RequiredCount value="5"/>
+    </CObjective>
+    <CObjective id="THorner03_4"/>
+    <CObjective id="THorner03_5">
+        <Type value="Optional"/>
+        <Name value="Objectives/Name/THorner03_5"/>
+    </CObjective>
+    <CObjective id="THorner03_6">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="THorner04_1"/>
+    <CObjective id="THorner04_2">
+        <Name value="Objectives/Name/THorner04_2"/>
+        <RequiredCount value="100"/>
+    </CObjective>
+    <CObjective id="THorner04_3">
+        <Name value="Objectives/Name/THorner04_3"/>
+        <RequiredCount value="100"/>
+    </CObjective>
+    <CObjective id="THorner04_4">
+        <Name value="Objectives/Name/THorner04_4"/>
+        <RequiredCount value="100"/>
+    </CObjective>
+    <CObjective id="THorner05_1"/>
+    <CObjective id="THorner05_2"/>
+    <CObjective id="THorner05_3"/>
+    <CObjective id="THorner05_4">
+        <Name value="Objectives/Name/THorner05_4"/>
+    </CObjective>
+    <CObjective id="THorner05_5">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="THorner05_6">
+        <Type value="Optional"/>
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TTychus01_1"/>
+    <CObjective id="TTychus01_2">
+        <Type value="Optional"/>
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TTychus01_3">
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TTychus02_1"/>
+    <CObjective id="TTychus02_2"/>
+    <CObjective id="TTychus02_3">
+        <Name value="Objectives/Name/TTychus02_3"/>
+    </CObjective>
+    <CObjective id="TTychus02_4">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TTychus03_1">
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TTychus03_2"/>
+    <CObjective id="TTychus03_3">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TTychus04_1"/>
+    <CObjective id="TTychus04_2"/>
+    <CObjective id="TTychus04_3">
+        <Type value="Optional"/>
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TTychus05_1"/>
+    <CObjective id="TTychus05_2">
+        <Name value="Objectives/Name/TTychus05_2"/>
+    </CObjective>
+    <CObjective id="TTychus05_3">
+        <Type value="Optional"/>
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TZeratul01_1">
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TZeratul01_2"/>
+    <CObjective id="TZeratul01_3">
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TZeratul01_4"/>
+    <CObjective id="TZeratul02_1">
+        <RequiredCount value="6"/>
+    </CObjective>
+    <CObjective id="TZeratul02_2">
+        <Name value="Objectives/Name/TZeratul02_2"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TZeratul02_3">
+        <Name value="Objectives/Name/TZeratul02_3"/>
+        <Type value="Optional"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TZeratul03_1"/>
+    <CObjective id="TZeratul03_2">
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TZeratul03_3">
+        <Type value="Optional"/>
+        <RequiredCount value="2"/>
+    </CObjective>
+    <CObjective id="TZeratul03_4"/>
+    <CObjective id="TZeratul04_1">
+        <Name value="Objectives/Name/TZeratul04_1"/>
+    </CObjective>
+    <CObjective id="TZeratul04_2">
+        <Name value="Objectives/Name/TZeratul04_2"/>
+    </CObjective>
+    <CObjective id="TZeratul04_3">
+        <Type value="Optional"/>
+        <Name value="Objectives/Name/TZeratul04_3"/>
+    </CObjective>
+    <CObjective id="TValerian01_1">
+        <RequiredCount value="100"/>
+    </CObjective>
+    <CObjective id="TValerian01_2">
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TValerian02A_1">
+        <Name value="Objectives/Name/TValerian02A_1"/>
+        <RequiredCount value="3"/>
+    </CObjective>
+    <CObjective id="TValerian02A_2"/>
+    <CObjective id="TValerian02B_1">
+        <RequiredCount value="4"/>
+    </CObjective>
+    <CObjective id="TValerian02B_2">
+        <Type value="Optional"/>
+    </CObjective>
+    <CObjective id="TValerian03_1"/>
+</Catalog>

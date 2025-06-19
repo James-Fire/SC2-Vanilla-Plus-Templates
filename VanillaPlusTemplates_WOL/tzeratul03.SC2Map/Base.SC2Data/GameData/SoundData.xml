@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="TZeratul03ReviveBeacon_RingExplosion2" parent="Spell">
+        <AssetArray File="Assets\Sounds\Keystone_Explosion2.wav" FacialGroup=""/>
+        <Pitch value="2.000000,2.000000"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="TZeratul03ReviveBeacon_RingExplosion" parent="Spell">
+        <AssetArray File="Assets\Sounds\SOA_TemporalField_Impact01_1ch.wav" FacialGroup=""/>
+        <Pitch value="4.000000,4.000000"/>
+        <Volume value="5.000000,5.000000"/>
+    </CSound>
+    <CSound id="TZeratul03ReviveBeacon_NearCompletion" parent="Spell">
+        <AssetArray File="Assets\Sounds\Tempest_Ground_Impact_Glow_06.wav" FacialGroup=""/>
+        <Volume value="2.000000,2.000000"/>
+    </CSound>
+    <CSound id="TZeratul03ReviveBeacon_Birth" parent="Spell">
+        <AssetArray File="Assets\Sounds\Zeratul_BlinkCloud01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zeratul_BlinkCloud03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zeratul_BlinkCloud04.wav" FacialGroup=""/>
+        <DupeDestroyCount value="3"/>
+        <DupeMaximumMethod value="Replace"/>
+        <DupeMuteCount value="3"/>
+        <Pitch value="-3.000000,-3.000000"/>
+        <PlayDelay value="0,30"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+    <CSound id="TZeratul03ReviveBeacon_What" parent="Voice">
+        <EditorCategories value="Race:Protoss"/>
+        <AssetArray File="Assets\Sounds\UI_\UI_SetPiece_Select_Lo_3.wav" FacialGroup=""/>
+        <OffsetFadeIn Volume="-96.000000"/>
+        <OffsetFadeIn Time="250"/>
+        <Volume value="-1.000000,-1.000000"/>
+    </CSound>
+</Catalog>

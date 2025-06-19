@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CFootprint id="HoldingPenDestructible">
+        <Layers index="Check" Area="-3,-3,3,3">
+            <Rows value="x....."/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+        </Layers>
+        <Layers index="Place" Area="-3,-3,3,3">
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+        </Layers>
+        <Layers index="Pathing" Area="-6,-6,6,6">
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+            <Rows value="......"/>
+        </Layers>
+        <Shape>
+            <Radius value="3.1623"/>
+            <Offsets value="-1,-3;1,-3;-1,3;1,3;-3,-1;-3,1;3,-1;3,1"/>
+            <Borders value="0,4,1;1,0,1;2,3,1;3,7,1;4,5,1;5,2,1;6,1,1;7,6,1"/>
+        </Shape>
+    </CFootprint>
+</Catalog>

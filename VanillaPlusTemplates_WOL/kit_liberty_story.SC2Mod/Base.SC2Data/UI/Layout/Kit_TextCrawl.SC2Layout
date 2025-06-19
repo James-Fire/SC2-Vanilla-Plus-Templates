@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/FullscreenUpperContainer" file="GameUI">
+        <Frame type="TextCrawlPanel" name="TextCrawlPanel">
+            <Frame type="FlashFrame" name="FlashFrame">
+               <File val="UI/Flash/GameUI/TextCrawl_Green.swf"/>
+            </Frame>
+        </Frame>
+    </Frame>    
+    
+</Desc>

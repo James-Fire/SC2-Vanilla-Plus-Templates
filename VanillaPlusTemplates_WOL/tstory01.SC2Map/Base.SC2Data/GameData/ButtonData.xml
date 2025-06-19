@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="TStory01ABChoiceBroodLords">
+        <Icon value="Assets\Textures\btn-unit-zerg-broodlord.dds"/>
+    </CButton>
+    <CButton id="TStory01ABChoiceMutalisk">
+        <Icon value="Assets\Textures\btn-unit-zerg-mutalisk.dds"/>
+    </CButton>
+    <CButton id="TStory01ABChoiceSpectre">
+        <Icon value="Assets\Textures\btn-unit-terran-spectre.dds"/>
+    </CButton>
+    <CButton id="TStory01ABChoiceNydusWorm">
+        <Icon value="Assets\Textures\btn-building-zerg-nydusworm.dds"/>
+    </CButton>
+    <CButton id="TStory01ABChoiceGhost">
+        <Icon value="Assets\Textures\btn-unit-terran-ghost.dds"/>
+    </CButton>
+</Catalog>

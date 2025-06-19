@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectInstant id="PurifierPlanetCracker">
+        <Effect index="0" value="PurifierPlanetCracker"/>
+    </CAbilEffectInstant>
+</Catalog>

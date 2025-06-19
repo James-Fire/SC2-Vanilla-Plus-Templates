@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StyleFile>
+    <Style name="Kit_ProductionPanelUnitCount" template="InternationalTemplate" height="20" styleflags="Shadow" fontflags="Bold"/>
+    <Style name="Kit_DamageStat" template="InternationalTemplate" height="16" styleflags="Shadow" fontflags="Bold" hjustify="Left" vjustify="Middle" textcolor="beffffff"/>
+
+    <Style name="Kit_MissionRewardHeading" font="#FontHeaderExtended" height="15" vjustify="Middle" hjustify="Left" textcolor="4b7dd4ec" styleflags="Shadow|UpperCase" shadowoffset="1"/>
+    <Style name="Kit_MissionRewardCurrency" font="#FontHeaderExtended" height="18" hjustify="Left" textcolor="bea2dceb"/>
+    <Style name="Kit_TravelRewardUnitTitle" font="#FontHeaderExtended" height="18" hjustify="Center" vjustify="Bottom" textcolor="bea2dceb"/>
+
+    <Style name="Kit_MissionTitle" font="#FontHeaderExtended" height="34" hjustify="Center" vjustify="Bottom" textcolor="aaffffff" styleflags="Uppercase"/>
+    <Style name="Kit_MissionObjective" font="#FontHeaderExtended" height="18" hjustify="Center" vjustify="Top" textcolor="bea2dceb" styleflags="Shadow|Uppercase"/>
+    <Style name="Kit_MissionContactFluff" font="#FontHeaderExtended" height="12" hjustify="Left" vjustify="Bottom" styleflags="UpperCase|Shadow" shadowoffset="1" textcolor="bea2dceb"/>
+
+    <Style name="Kit_TravelPlanetSelectedTitle" font="#FontHeaderExtended" height="24" hjustify="Left" vjustify="Top" textcolor="aaffffff"/>
+    <Style name="Kit_TravelPlanetTitle" font="#FontHeaderExtended" height="20" hjustify="Left" vjustify="Top" textcolor="bea2dceb"/>
+
+    <Style name="Kit_DifficultyPulldown" template="HeaderExtendedTemplate" styleflags="!Shadow" height="18" vjustify="Middle" hjustify="Left" textcolor="be7eff87" hotkeycolor="ffffff" highlightcolor="ffffff"/>
+    <Style name="Kit_CampaignActionButton" template="HeaderExtendedTemplate" height="20" vjustify="Middle" hjustify="Center" textcolor="be7eff87" hotkeycolor="ffffff" highlightcolor="ffffff"/>
+
+    <Style name="Kit_MissionArchiveScreenTitle" font="#FontHeaderExtended" height="38" hjustify="Center" vjustify="Middle" textcolor="7dd4ec" styleflags="Uppercase"/>
+    <Style name="Kit_MissionArchiveScreenPrompt" font="#FontHeaderExtended" height="24" hjustify="Center" vjustify="Top" textcolor="bea2dceb"/>
+    <Style name="Kit_MissionArchiveTitle" font="#FontHeaderExtended" height="34" hjustify="Center" vjustify="Bottom" textcolor="aaffffff" styleflags="Uppercase"/>
+    <Style name="Kit_MissionArchiveBonusObjective" font="#FontHeaderExtended" height="18" hjustify="Center" vjustify="Top" textcolor="bea2dceb"/>
+    <Style name="Kit_MissionArchiveListItem" template="HeaderTemplate" height="18" hjustify="Left" vjustify="Middle" styleflags="Uppercase"/>
+    <Style name="Kit_MissionArchiveCompletedTitle" template="HeaderExtendedTemplate" height="18" hjustify="Right" vjustify="Middle" textcolor="4b7dd4ec" styleflags="Shadow|UpperCase"/>
+    <Style name="Kit_MissionArchiveCompletedValue" template="HeaderExtendedTemplate" height="18" hjustify="Left" vjustify="Middle" textcolor="4b7dd4ec" styleflags="Shadow|UpperCase"/>
+    <Style name="Kit_MissionArchivesDifficultyLabel" font="#FontHeaderExtended" height="18" vjustify="Middle" hjustify="Center" styleflags="Shadow|Uppercase" textcolor="545b60"/>
+    <Style name="Kit_MissionArchivesDifficultyTimeLabel" font="#FontStandard" height="18" styleflags="Shadow" textcolor="8a97a1"/>
+    <Style name="Kit_MissionArchivesDifficultyCompletedLabel" template="Kit_MissionArchivesDifficultyLabel" textcolor="84d9ec"/>
+    <Style name="Kit_MissionArchivesDifficultyTimeCompletedLabel" template="Kit_MissionArchivesDifficultyTimeLabel" textcolor="84d9ec"/>
+
+    <Style name="Kit_VictoryTitleLabel" template="Void_BoldExtendedXXLarge" height="50" hjustify="Center" vjustify="Bottom" textcolor="aaffffff" styleflags="Uppercase"/>
+    <Style name="Kit_VictoryMissionLabel" template="Void_BoldExtendedMedium1" height="18" hjustify="Center" vjustify="Middle" textcolor="bea2dceb" styleflags="Shadow|Uppercase"/>
+    <Style name="Kit_VictoryTimerTitle" template="Void_RegularExtendedXSmall" hjustify="Center" vjustify="Bottom" textcolor="a2dceb" styleflags="Uppercase"/>
+    <Style name="Kit_VictoryTimerText" template="Void_BoldExtendedXLarge28" hjustify="Center" vjustify="Bottom" textcolor="beffffff"/>
+    <Style name="Kit_VictoryMissionRewardTitle" template="Void_BoldExtendedSmall" hjustify="Left" vjustify="Middle" textcolor="beffffff"/>
+    <Style name="Kit_VictoryMissionRewardText" template="Void_RegularExtendedXSmall" hjustify="Left" vjustify="Middle" textcolor="a2dceb"/>
+
+    <Style name="TooltipTitle_Tech" textcolor="c887f2f5"/>
+    <Style name="TooltipDescription_Tech" textcolor="c887f2f5"/>
+
+    <Style name="Kit_MaarUnitStatusNameLabel" template="Swarm_BoldExtendedXSmall" styleflags="Shadow" hjustify="Center" textcolor="#Swarm_ColorOrange4"/>
+</StyleFile>

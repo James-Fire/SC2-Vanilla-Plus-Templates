@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="RewardContainerTemplate">
+        <CollapseLayout val="True"/>
+        <Visible val="{$this/Heading/@Visible}"/>
+    
+        <Frame type="Label" name="Heading">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardHeading"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+        
+        <Frame type="Image" name="Bullet0">
+            <Anchor side="Top" relative="$parent/Heading" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Heading" pos="Min" offset="-4"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label0/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label0">
+            <Anchor side="Top" relative="$parent/Bullet0" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet0" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet1">
+            <Anchor side="Top" relative="$parent/Bullet0" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet0" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label1/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label1">
+            <Anchor side="Top" relative="$parent/Bullet1" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet1" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet2">
+            <Anchor side="Top" relative="$parent/Bullet1" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet1" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label2/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label2">
+            <Anchor side="Top" relative="$parent/Bullet2" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet2" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet3">
+            <Anchor side="Top" relative="$parent/Bullet2" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet2" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label3/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label3">
+            <Anchor side="Top" relative="$parent/Bullet3" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet3" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet4">
+            <Anchor side="Top" relative="$parent/Bullet3" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet3" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label4/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label4">
+            <Anchor side="Top" relative="$parent/Bullet4" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet4" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Void_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+    
+    <Frame type="Frame" name="TravelPanelProtossTemplate">
+        <Anchor relative="$parent"/>
+        
+        <Frame type="Image" name="WorldBlocker">
+            <Anchor relative="$parent"/>
+            <Texture val="Assets\Textures\white.dds"/>
+            <Color val="000000"/>
+            <AcceptsMouse val="true"/>
+            <RenderPriority val="1"/>
+            <RenderType val="HDR"/>
+        </Frame>
+        
+        <Frame type="Portrait" name="BackgroundPortrait">
+            <Anchor relative="$parent"/>
+            <!-- <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="1200"/>
+            <Width val="2134"/> -->
+            <BorderImage val="BackgroundPortraitBorderImage"/>
+            <AcceptsMouse val="false"/>
+            <UseTransition val="false"/>
+
+            <Frame type="Image" name="BackgroundPortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+        
+        <Frame type="Frame" name="BottomBorder" template="VoidShared_GenericTemplates/BottomBorderPulldownTemplate"/>
+        
+        <Frame type="Frame" name="TopBorder" template="VoidShared_GenericTemplates/TopBorderTemplate"/>
+        
+        <Frame type="Image" name="TitleScanLines">
+            <Anchor side="Left" relative="$parent/Title" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Title" pos="Mid" offset="0"/>
+            <Anchor side="Top" relative="$parent/Title" pos="Min" offset="-10"/>
+            <Anchor side="Bottom" relative="$parent/Objective" pos="Max" offset="40"/>
+            <Width val="550"/>
+            <Texture val="@UI/LoTV_Shared_HeaderScanLines"/>
+            <RenderPriority val="400"/>
+        </Frame>
+            
+        <Frame type="Label" name="Title">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Height val="53"/>
+            <Style val="Void_MissionTitle2D"/>
+        </Frame>
+
+        <Frame type="Label" name="Objective">
+            <Anchor side="Top" relative="$parent/Title" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/Title" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent/Title" pos="Max" offset="0"/>
+            <Height val="32"/>
+            <Style val="Void_MissionObjective2D"/>
+        </Frame>
+        
+        <Frame type="Portrait" name="ContactPortrait">
+            <Width val="284"/>
+            <Height val="433"/>
+            <Anchor side="Top" relative="$parent/ContactPortraitBG" pos="Min" offset="7"/>
+            <Anchor side="Left" relative="$parent/ContactPortraitBG" pos="Min" offset="10"/>
+            <BackgroundImage val="BackgroundImage"/>
+            <BorderImage val="ContactPortraitBorderImage"/>
+            <UseTransition val="false"/>
+            <RenderType val="HDR"/>
+            <AlphaMaskTexture val="@UI/LotV_StoryMode_MissionLaunch_Callout_PortraitFramePortraitMask"/>
+
+            <Frame type="Image" name="ContactPortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+                
+            <Frame type="Image" name="BackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Label" name="ContactFluff">
+            <Anchor side="Bottom" relative="$parent/ContactPortrait" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="-10"/>
+            <Height val="100"/>
+            <Text val="Fluff"/>
+            <Style val="Void_MissionContactFluff"/>
+        </Frame>
+        
+        <Frame type="Image" name="ContactPortraitBG">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="120"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="80"/>
+            <Texture val="@UI/LotV_StoryMode_MissionLaunch_Callout_PortraitFrame"/>
+            <TextureType val="Normal"/>
+        </Frame>
+        
+        <Frame type="Image" name="ContactPortraitFrameHighlight">
+            <Anchor relative="$parent/ContactPortraitBG"/>
+            <LayerCount val="2"/>
+            <Alpha val="0"/>
+
+            <Texture val="@UI/LotV_StoryMode_MissionLaunch_Callout_PortraitFrameHighlightMask" layer="0"/>
+            <TextureCoords top="0" left="0" bottom="1" right="1" layer="0"/>
+            <AlphaLayer val="true" layer="0"/>
+            <TextureType val="Normal" layer="0"/>
+            <StateCount val="1" layer="0"/>
+            
+            <Texture val="@UI/LotV_StoryMode_MissionLaunch_Callout_PortraitFrameHighlight" layer="1"/>
+            <TextureCoords top="0" left="0" bottom="1" right="1" layer="1"/>
+            
+            <Animation name="Highlight">
+                <Event event="OnShown" action="Reset" frame="$parent"/>
+                <Event event="OnShown" action="DirectionForward" frame="$parent"/>
+                <Event event="OnShown" action="Play" frame="$parent"/>
+                
+                <Controller type="LayerUV" layer="0" side="Top" relative="false" sidelock="true" end="Loop">
+                    <Key type="Curve" time="0" value="1" out="auto"/>
+                    <Key type="Curve" time="6.0" value="-1" in="auto"/>
+                </Controller>
+                
+                <Controller type="Fade" end="Loop">
+                    <Key type="Curve" time="0" value="0" out="Fast"/>
+                    <Key type="Curve" time="1.0" value="255" in="Slow"/>
+                    <Key type="Curve" time="5.0" value="255" in="Slow"/>
+                    <Key type="Curve" time="6.0" value="0" in="Slow"/>
+                </Controller>
+            </Animation>
+        </Frame>
+        
+        <Frame type="Frame" name="PitchFrame">
+            <Anchor side="Top" relative="$parent/ContactPortrait" pos="Min" offset="3"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="-3"/>
+            <Height val="52"/>
+            <Width val="52"/>
+            
+            <Frame type="Button" name="PlayButton" template="VoidShared_GenericTemplates/PlayButtonTemplate">
+                <Anchor relative="$parent"/>
+                <Shortcut val="W"/>
+            </Frame>
+            
+            <Frame type="Button" name="StopButton" template="VoidShared_GenericTemplates/StopButtonTemplate">
+                <Anchor relative="$parent"/>
+                <Shortcut val="W"/>
+                <Visible val="false"/>
+            </Frame>
+        </Frame>
+
+        
+        <Frame type="Frame" name="RewardsFrame">
+            <Anchor side="Top" relative="$parent/ContactPortrait" pos="Max" offset="50"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <CollapseLayout val="true"/>
+            <Height val="800"/>
+            
+            <Frame type="Frame" name="PrimaryRewardContainer" template="Kit_TravelPanelProtoss/RewardContainerTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$this/Label4" pos="Max" offset="0"/>
+
+                <Frame type="Label" name="Heading">
+                    <Text val="@UI/StoryMissionLaunch/MissionRewards"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="BonusRewardContainer" template="Kit_TravelPanelProtoss/RewardContainerTemplate">
+                <Anchor side="Top" relative="$parent/PrimaryRewardContainer" pos="Max" offset="20"/>
+                <Anchor side="Left" relative="$parent/PrimaryRewardContainer" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$this/Label4" pos="Max" offset="0"/>
+
+                <Frame type="Label" name="Heading">
+                    <Text val="@UI/StoryMissionLaunch/BonusRewards"/>
+                </Frame>
+            </Frame>
+        </Frame>	
+        
+        <Frame type="DifficultyPulldown" name="DifficultyPulldown" template="VoidShared_GenericTemplates/DifficultyPulldownTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-4"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="15"/>
+            <Tooltip val=""/>
+        </Frame>
+
+        <Frame type="Button" name="LaunchButton" template="VoidShared_GenericTemplates/StoryBigButtonTemplate">
+            <Handle val="Kit_TravelPanelProtoss_LaunchButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-60"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Width val="410"/>
+            <Height val="90"/>
+            <Shortcut val="@Button/Hotkey/MissionPanelStartMission"/>
+            <Text val="@UI/MissionPanelStartMission"/>
+            <HoverSound val="@UI_LaunchButtonHover"/>
+        </Frame>
+        
+        <Frame type="Button" name="BackButton" template="VoidShared_GenericTemplates/StoryButtonTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-4"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-15"/>
+            <Width val="240"/>  
+            <Shortcut val="@Button/Hotkey/MissionPanelBack"/>
+            <Shortcut val="Escape"/>
+            <Text val="@UI/VoidStoryBack"/>
+        </Frame>
+
+        <Frame type="Frame" name="SubtitleFrame">
+            <Anchor side="Bottom" relative="$parent/ContactPortrait" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Max" offset="30"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="820"/>
+            <Height val="200"/>
+        </Frame>
+    </Frame>
+</Desc>

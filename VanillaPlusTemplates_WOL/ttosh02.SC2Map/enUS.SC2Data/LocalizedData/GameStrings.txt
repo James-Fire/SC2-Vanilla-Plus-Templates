@@ -1,0 +1,51 @@
+﻿Abil/Name/Kit@SCVHarvestTerrazine=Kit@Gather Terrazine (SCV)
+DocInfo/Author=Blizzard Entertainment
+DocInfo/DescLong=
+DocInfo/DescShort=TTosh02
+DocInfo/Name=Welcome to the Jungle
+LoadingScreen/TextBody=Harvest terrazine gas from the rich planet of Albion while defending against the protoss.
+MapInfo/Player00/Name=Neutral
+MapInfo/Player01/Name=Raynor's Raiders
+MapInfo/Player02/Name=Tal'darim Guardians
+MapInfo/Player03/Name=Tal'darim Guardians
+MapInfo/Player04/Name=Tal'darim Guardians
+MapInfo/Player05/Name=Terrazine
+Param/Value/00034CFD=>>SCV Died
+Param/Value/02D689D4=Terrazine can no longer<n/>be gathered here
+Param/Value/100E53BD=/
+Param/Value/20E5CE1C=Mission Start
+Param/Value/222F31F7=SCV with Terrazine
+Param/Value/24E1C1CC=All of your buildings have been destroyed.
+Param/Value/34420977=
+Param/Value/35F0325E=Protoss Relics Found
+Param/Value/3FE711A5=Gas Control = 
+Param/Value/4EC474D8=
+Param/Value/4F1E5374=
+Param/Value/5087FBB9=Gas Harvest = 
+Param/Value/5146E82B=Anniversary_TTosh_02 granted
+Param/Value/5A4AC463=
+Param/Value/5B573431=
+Param/Value/6130E297=SCV returning to base.
+Param/Value/625C8228=The protoss have sealed off too many terrazine altars.
+Param/Value/748DDD80=Harvesting node = 
+Param/Value/77033FDB=Use any ground unit to pickup.
+Param/Value/77DB2CB9=
+Param/Value/7C611772=
+Param/Value/7DAF9358=Third Terrazine Gathered
+Param/Value/81E96079=SCVs Lost
+Param/Value/833EFEF2=Altar Being Sealed
+Param/Value/8985286D=<c val="00FF00">Protoss Relic</c>
+Param/Value/8CA221DD=<c val="ff0000">The Protoss are sealing an altar!</c>
+Param/Value/99147108=Player Score = 
+Param/Value/9F7DE18C=>>SCV Cancel Harvest
+Param/Value/A9379847=SCV Lost
+Param/Value/B283104A=
+Param/Value/C206B757=Sealing Attempts Stopped
+Param/Value/E3E743A5=First Terrazine Gathered
+Param/Value/E7F007A7=Sixth Terrazine Gathered
+Param/Value/ECDBCAF7=Terrazine Shrines Sealed
+Param/Value/EE6316B3=
+Param/Value/F03BE3FA=Use an SCV to gather<n/>Raw Terrazine.
+Water/Name/Template 1=Template 1
+Water/Name/Template 2=Template 2
+Water/Name/Template 3=Template 3

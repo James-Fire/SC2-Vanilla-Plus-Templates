@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilHarvest id="SCVHarvest">
+        <CmdButtonArray index="Gather" Requirements="Kit@NotHarvestingTerrazine"/>
+        <CmdButtonArray index="Cancel" Requirements="Kit@NotHarvestingTerrazine"/>
+    </CAbilHarvest>
+</Catalog>

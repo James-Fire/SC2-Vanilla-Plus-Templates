@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="ContractWindowTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="108"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-50"/>
+        <Anchor side="Left" relative="$this" pos="Max" offset="0"/>
+        <Width val="316"/>
+        <Height val="124"/>
+        <CollapseLayout val="true"/>
+        
+        <Frame type="Image" name="BackgroundImage">
+            <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_Frame"/>
+            <TextureType val="Nineslice"/>
+            <Tiled val="false"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        </Frame>
+        
+        <Frame type="Label" name="NameLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="7"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="-4"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            <Style val="@TimerTitleCentered"/>
+            <Text val="NameLabel"/>
+        </Frame>
+<!--  -->
+        <Frame type="Image" name="RaynorBorderImage">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-42"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Width val="296"/>
+            <Height val="36"/>
+            <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_ProgressFrame"/>
+            <TextureType val="Nineslice"/>
+        </Frame>
+
+        <Frame type="Image" name="RaynorBarBackground">
+            <Anchor side="Top" relative="$parent/RaynorBorderImage" pos="Min" offset="6"/>
+            <Anchor side="Left" relative="$parent/RaynorBorderImage" pos="Min" offset="6"/>
+            <Anchor side="Bottom" relative="$parent/RaynorBorderImage" pos="Max" offset="-6"/>
+            <Anchor side="Right" relative="$parent/RaynorBorderImage" pos="Max" offset="-6"/>
+            <Color val="000000"/>
+            <Alpha val="150"/>
+        </Frame>
+
+        <Frame type="Image" name="RaynorBarImage">
+            <Anchor side="Top" relative="$parent/RaynorBorderImage" pos="Min" offset="8"/>
+            <Anchor side="Left" relative="$parent/RaynorBorderImage" pos="Min" offset="8"/>
+            <Width val="280"/>
+            <Height val="20"/>
+            <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_ProgressFill"/>
+            <!-- <Texture val="Assets\Textures\ui_ingame_lotv_progressbarfill.dds"/> -->
+            <TextureType val="Nineslice"/>
+        </Frame>
+
+        <Frame type="Label" name="RaynorBarLabel">
+            <Anchor side="Top" relative="$parent/RaynorBarImage" pos="Min" offset="2"/>
+            <Anchor side="Bottom" relative="$parent/RaynorBarImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/RaynorBorderImage" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent/RaynorBorderImage" pos="Max" offset="-10"/>
+            <Style val="TimerWindowProgressBarValue"/>
+            <Text val="RaynorBarLabel"/>
+        </Frame>
+<!--  -->
+        <Frame type="Image" name="OrlanBorderImage">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Width val="296"/>
+            <Height val="36"/>
+            <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_ProgressFrame"/>
+            <TextureType val="Nineslice"/>
+        </Frame>
+
+        <Frame type="Image" name="OrlanBarBackground">
+            <Anchor side="Top" relative="$parent/OrlanBorderImage" pos="Min" offset="6"/>
+            <Anchor side="Left" relative="$parent/OrlanBorderImage" pos="Min" offset="6"/>
+            <Anchor side="Bottom" relative="$parent/OrlanBorderImage" pos="Max" offset="-6"/>
+            <Anchor side="Right" relative="$parent/OrlanBorderImage" pos="Max" offset="-6"/>
+            <Color val="000000"/>
+            <Alpha val="150"/>
+        </Frame>
+
+        <Frame type="Image" name="OrlanBarImage">
+            <Anchor side="Top" relative="$parent/OrlanBorderImage" pos="Min" offset="8"/>
+            <Anchor side="Left" relative="$parent/OrlanBorderImage" pos="Min" offset="8"/>
+            <Width val="280"/>
+            <Height val="20"/>
+            <Texture val="@@UI/LotV_Shared_InGame_TimerPanel_ProgressFill"/>
+            <!-- <Texture val="Assets\Textures\ui_ingame_lotv_progressbarfill_zerg.dds"/> -->
+            <TextureType val="Nineslice"/>
+        </Frame>
+
+        <Frame type="Label" name="OrlanBarLabel">
+            <Anchor side="Top" relative="$parent/OrlanBarImage" pos="Min" offset="2"/>
+            <Anchor side="Bottom" relative="$parent/OrlanBarImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/OrlanBorderImage" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent/OrlanBorderImage" pos="Max" offset="-10"/>
+            <Style val="TimerWindowProgressBarValue"/>
+            <Text val="OrlanBarLabel"/>
+        </Frame>
+    </Frame>
+
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Frame" name="ContractWindow" template="Horner02ContractWindow/ContractWindowTemplate">
+            <Anchor side="Right" relative="$parent/ProgressFrameTemplate" pos="Max" offset="0"/>
+            <Anchor side="Top" relative="$parent/ProgressFrameTemplate" pos="Min" offset="0"/>
+            <Visible val="False"/>
+        </Frame>
+    </Frame>    
+</Desc>

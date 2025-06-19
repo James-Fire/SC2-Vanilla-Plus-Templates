@@ -1,0 +1,247 @@
+struct hero_panel {
+    int container;
+    int border_image;
+    int border_image_no_energy;
+    int border_image_all;
+    int level_box;
+    int level_label;
+    int cooldown_image;
+    int damage_taken_image;
+    int damage_taken_label;
+    int energy_bar_image;
+    int energy_bar_label;
+    int energy_bar_background;
+    int health_bar_image;
+    int health_bar_label;
+    int health_bar_background;
+    int shield_bar_image;
+    int shield_bar_label;
+    int shield_bar_background;
+    int icon;
+    int name;
+    int unit_target;
+};
+
+static bool HeroPanelInitialized = false;
+
+static hero_panel[2] HeroPanels;
+static unit[2] HeroUnits;
+
+static trigger HeroVitalsChange = TriggerCreate("Kit_UIHeroPanel_HeroVitalsChange");
+
+static void HeroPanelHookup(string path, structref<hero_panel> panel) {
+    panel.container = DialogControlHookupStandard(c_triggerControlTypePanel, path);
+
+    panel.border_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "BorderImage");
+    panel.border_image_no_energy = DialogControlHookup(panel.container, c_triggerControlTypeImage, "BorderNoEnergyImage");
+    panel.border_image_all = DialogControlHookup(panel.container, c_triggerControlTypeImage, "BorderImageAll");
+    panel.level_box = DialogControlHookup(panel.container, c_triggerControlTypeImage, "LevelBox");
+    panel.level_label = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "LevelLabel");
+    panel.cooldown_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "CooldownImage");
+    panel.damage_taken_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "DamageTakenImage");
+    panel.damage_taken_label = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "DamageTakenLabel");
+    panel.energy_bar_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "EnergyBarImage");
+    panel.energy_bar_background = DialogControlHookup(panel.container, c_triggerControlTypeImage, "EnergyBarBackground");
+    panel.health_bar_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "HealthBarImage");
+    panel.health_bar_background = DialogControlHookup(panel.container, c_triggerControlTypeImage, "BarBackground");
+    panel.shield_bar_image = DialogControlHookup(panel.container, c_triggerControlTypeImage, "ShieldBarImage");
+    panel.shield_bar_background = DialogControlHookup(panel.container, c_triggerControlTypeImage, "ShieldBarBackground");
+    panel.energy_bar_label = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "EnergyLabel");
+    panel.health_bar_label = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "HealthLabel");
+    panel.shield_bar_label = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "ShieldLabel");
+    panel.icon = DialogControlHookup(panel.container, c_triggerControlTypeImage, "IconImage");
+    panel.name = DialogControlHookup(panel.container, c_triggerControlTypeLabel, "NameLabel");
+    panel.unit_target = DialogControlHookup(panel.container, c_triggerControlTypeUnitTarget, "UnitTargetFrame");
+
+    libNtve_gf_SetDialogItemRenderPriority(panel.energy_bar_background, 505, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(panel.health_bar_background, 505, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(panel.shield_bar_image, 511, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(panel.shield_bar_background, 510, PlayerGroupAll());
+
+    DialogControlSetVisible(panel.cooldown_image, PlayerGroupAll(), false);
+    DialogControlSetVisible(panel.level_box, PlayerGroupAll(), false);
+    DialogControlSetVisible(panel.level_label, PlayerGroupAll(), false);
+}
+
+static void UpdateVitalBar(structref<hero_panel> panel, playergroup display_players, unit hero_unit, int property) {
+    const fixed max_bar_width = 200;
+    fixed value_current = UnitGetPropertyFixed(hero_unit, property, c_unitPropCurrent);
+    fixed value_percent = UnitGetPropertyFixed(hero_unit, property + 1, c_unitPropCurrent);
+    fixed value_max = UnitGetPropertyFixed(hero_unit, property + 2, c_unitPropCurrent);
+
+    int width = FixedToInt((value_percent / 100) * max_bar_width);
+    int height;
+    int bar_image;
+    int bar_label;
+
+    text label;
+    //~CurrentValue~/~MaxValue~
+    TextExpressionSetToken("Param/Expression/HeroPanelVitalLabel", "CurrentValue", FixedToText(value_current, 0));
+    TextExpressionSetToken("Param/Expression/HeroPanelVitalLabel", "MaxValue", FixedToText(value_max, 0));
+    label = TextExpressionAssemble("Param/Expression/HeroPanelVitalLabel");
+
+    if (property == c_unitPropEnergy) {
+        bar_image = panel.energy_bar_image;
+        bar_label = panel.energy_bar_label;
+        height = 8;
+    }
+    else if (property == c_unitPropLife) {
+        bar_image = panel.health_bar_image;
+        bar_label = panel.health_bar_label;
+        height = 20;
+    }
+    else if (property == c_unitPropShields) {
+        bar_image = panel.shield_bar_image;
+        bar_label = panel.shield_bar_label;
+        height = 8;
+    } else {
+        return;
+    }
+
+    if (value_current > 0) {
+        DialogControlSetSize(bar_image, display_players, width, height);
+        DialogControlSetVisible(bar_image, display_players, true);
+    } else {
+        DialogControlSetVisible(bar_image, display_players, false);
+    }
+    libNtve_gf_SetDialogItemText(bar_label, label, display_players);
+}
+
+static void DisplayDamageBar(structref<hero_panel> panel, playergroup display_players, unit hero_unit, int property, fixed change) {
+    int damage_bar_width = 0;
+    int damage_bar_height = 0;
+    int damage_bar;
+
+    if (change > 0) {
+        return;
+    }
+
+    DialogControlSendAnimationEvent(panel.container, display_players, "Damage");
+
+    if (property == c_unitPropEnergy) {
+        damage_bar = DialogControlCreateInPanelFromTemplate(panel.container, c_triggerControlTypeImage, "HotS_GameUnitFrame/HeroEnergyBarDamageTemplate/DamageBar");
+        DialogControlSetPositionRelative(damage_bar, display_players, c_anchorLeft, panel.energy_bar_image, c_anchorLeft, 0, 0);
+        damage_bar_width = FixedToInt(((UnitGetPropertyFixed(hero_unit, c_unitPropEnergy, c_unitPropCurrent) - change) / UnitGetPropertyFixed(hero_unit, c_unitPropEnergyMax, c_unitPropCurrent)) * 200.0);
+        damage_bar_height = 8;
+    }
+    else if (property == c_unitPropLife) {
+        damage_bar = DialogControlCreateInPanelFromTemplate(panel.container, c_triggerControlTypeImage, "HotS_GameUnitFrame/HeroHealthBarDamageTemplate/DamageBar");
+        DialogControlSetPositionRelative(damage_bar, display_players, c_anchorLeft, panel.health_bar_image, c_anchorLeft, 0, 0);
+        damage_bar_width = FixedToInt(((UnitGetPropertyFixed(hero_unit, c_unitPropLife, c_unitPropCurrent) - change) / UnitGetPropertyFixed(hero_unit, c_unitPropLifeMax, c_unitPropCurrent)) * 200.0);
+        damage_bar_height = 20;
+    }
+    else if (property == c_unitPropShields) {
+        damage_bar = DialogControlCreateInPanelFromTemplate(panel.container, c_triggerControlTypeImage, "HotS_GameUnitFrame/HeroHealthBarDamageTemplate/DamageBar");
+        DialogControlSetPositionRelative(damage_bar, display_players, c_anchorLeft, panel.shield_bar_image, c_anchorLeft, 0, 0);
+        damage_bar_width = FixedToInt(((UnitGetPropertyFixed(hero_unit, c_unitPropShields, c_unitPropCurrent) - change) / UnitGetPropertyFixed(hero_unit, c_unitPropShieldsMax, c_unitPropCurrent)) * 200.0);
+        damage_bar_height = 8;
+    } else {
+        return;
+    }
+
+    libNtve_gf_SetDialogItemRenderPriority(damage_bar, 506, display_players);
+
+    DialogControlSetVisible(damage_bar, PlayerGroupAll(), false);
+    DialogControlSetVisible(damage_bar, display_players, true);
+
+    DialogControlSetSize(damage_bar, display_players, MaxI(MinI(damage_bar_width, 244), 1), damage_bar_height);
+
+    Wait(1.0, c_timeReal);
+    DialogControlFadeTransparency(damage_bar, display_players, 1.0, 100.0);
+
+    Wait(1.1, c_timeReal);
+    DialogControlDestroy(damage_bar);
+}
+
+static void InitializeHeroPanelDialogs() {
+    if (HeroPanelInitialized) {
+        return;
+    }
+
+    HeroPanelInitialized = true;
+
+    HeroPanelHookup("UIContainer/ConsoleUIContainer/VoidHeroUnitFrame", HeroPanels[0]);
+    HeroPanelHookup("UIContainer/ConsoleUIContainer/SecondaryVoidHeroUnitFrame", HeroPanels[1]);
+
+    libNtve_gf_SetDialogItemHotkey(HeroPanels[0].unit_target, c_hotkeyHeroSelect0, PlayerGroupAll());
+    libNtve_gf_SetDialogItemHotkey(HeroPanels[1].unit_target, c_hotkeyHeroSelect1, PlayerGroupAll());
+}
+
+void Kit_UIHeroPanel_SetHeroUnit(int index, unit hero_unit, string hero_icon) {
+    int player = UnitGetOwner(hero_unit);
+    playergroup display_players = PlayerGroupSingle(1);
+    bool have_energy = UnitGetPropertyInt(hero_unit, c_unitPropEnergyMax, c_unitPropNormal) > 0;
+    bool have_shields = UnitGetPropertyInt(hero_unit, c_unitPropShieldsMax, c_unitPropNormal) > 0;
+    text hero_name = UnitGetName(hero_unit) + StringToText(" ") + UIHotKeyString(c_hotkeyHeroSelect0 + index, 1, false, true);
+
+    HeroUnits[index] = hero_unit;
+
+    InitializeHeroPanelDialogs();
+
+    libNtve_gf_SetDialogItemImage(HeroPanels[index].icon, hero_icon, display_players);
+    libNtve_gf_SetDialogItemText(HeroPanels[index].name, hero_name, display_players);
+    libNtve_gf_SetDialogItemUnit(HeroPanels[index].unit_target, hero_unit, display_players);
+
+    // Set borders and bars textures
+    if (PlayerRace(player) == "Zerg") { // Zerg
+        DialogControlSendAnimationEvent(HeroPanels[index].container, display_players, "SwitchZerg");
+    }
+    else if (PlayerRace(player) == "Terr") { // Terran
+        DialogControlSendAnimationEvent(HeroPanels[index].container, display_players, "SwitchTerran");
+    }
+    else if (have_energy) { // Protoss with energy
+        DialogControlSendAnimationEvent(HeroPanels[index].container, display_players, "EnergyBarOffset");
+    }
+    else { // Protoss without energy
+        DialogControlSendAnimationEvent(HeroPanels[index].container, display_players, "DefaultBarOffset");
+    }
+
+    // Set borders and bars visibility
+    if (have_energy && !have_shields) {
+        DialogControlSetAnimationState(HeroPanels[index].container, display_players, "State", "HaveEnergy");
+    } else if (!have_energy && have_shields) {
+        DialogControlSetAnimationState(HeroPanels[index].container, display_players, "State", "HaveShields");
+    } else if (have_energy && have_shields) {
+        DialogControlSetAnimationState(HeroPanels[index].container, display_players, "State", "HaveShieldsAndEnergy");
+    } else {
+        DialogControlSetAnimationState(HeroPanels[index].container, display_players, "State", "SingleBar");
+    }
+
+    // Add triggers
+    UpdateVitalBar(HeroPanels[index], display_players, hero_unit, c_unitPropLife);
+    TriggerAddEventUnitProperty(HeroVitalsChange, UnitRefFromUnit(hero_unit), c_unitPropLife);
+    if (have_energy) {
+        UpdateVitalBar(HeroPanels[index], display_players, hero_unit, c_unitPropEnergy);
+        TriggerAddEventUnitProperty(HeroVitalsChange, UnitRefFromUnit(hero_unit), c_unitPropEnergy);
+    }
+    if (have_shields) {
+        UpdateVitalBar(HeroPanels[index], display_players, hero_unit, c_unitPropShields);
+        TriggerAddEventUnitProperty(HeroVitalsChange, UnitRefFromUnit(hero_unit), c_unitPropShields);
+    }
+
+    DialogControlSetVisible(HeroPanels[index].container, display_players, true);
+}
+
+//-----------------------------------------------------------
+// TRIGGERS
+//-----------------------------------------------------------
+
+bool Kit_UIHeroPanel_HeroVitalsChange(bool check, bool run) {
+    int property = EventUnitProperty();
+    fixed property_change = EventUnitPropertyChangeFixed();
+    unit hero = EventUnit();
+    playergroup display_players = PlayerGroupSingle(1);
+
+    int i;
+
+    if (!run) { return true; }
+
+    for (i = 0; i < 2; i += 1) {
+        if (HeroUnits[i] == hero) {
+            UpdateVitalBar(HeroPanels[i], display_players, hero, property);
+            DisplayDamageBar(HeroPanels[i], display_players, hero, property, property_change);
+        }
+    }
+
+    return true;
+}

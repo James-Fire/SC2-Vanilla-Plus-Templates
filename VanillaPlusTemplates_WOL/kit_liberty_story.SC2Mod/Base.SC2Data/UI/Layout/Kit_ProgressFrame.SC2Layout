@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Frame" name="ProgressFrameTemplate">
+            <Anchor side="Right" relative="$parent/TriggerWindowPanel" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="VoidBossUnitFrame">
+            <Anchor side="Right" relative="$parent/TriggerWindowPanel" pos="Max" offset="0"/>
+        </Frame>
+    </Frame>    
+    
+</Desc>

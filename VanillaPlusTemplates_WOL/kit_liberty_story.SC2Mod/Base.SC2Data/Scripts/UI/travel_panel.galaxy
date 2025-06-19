@@ -1,0 +1,644 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+struct TravelPlanet {
+    int container;
+    int portrait;
+    int selected_portrait;
+    int button;
+    int name_label;
+};
+static const int planet_count = 6;
+
+static int dialog = -1;
+static int root;
+
+static int background_portrait;
+
+static TravelPlanet[planet_count] planets;
+
+static int contact_portrait;
+static int contact_fluff;
+static int pitch_play_button;
+static int pitch_stop_button;
+
+static int mission_text;
+static int objective_text;
+
+static int primary_reward_heading;
+static int[5] primary_reward_label;
+static int bonus_reward_heading;
+static int[5] bonus_reward_label;
+
+struct TravelUnitReward {
+    int container;
+    int model;
+    int label;
+};
+
+static int unit_reward_heading;
+static TravelUnitReward[3] unit_reward;
+
+static int subtitle_frame;
+
+static int difficulty_pulldown;
+static int all_in_pulldown;
+
+static int launch_button;
+static int close_button;
+
+static int archives_armory_button;
+static int archives_lab_button;
+static int archives_merc_button;
+
+static trigger StopPitch = TriggerCreate("Kit_UITravel_StopPitch");
+static trigger PlayPitch = TriggerCreate("Kit_UITravel_PlayPitch");
+
+static trigger PlanetButtonClicked = TriggerCreate("Kit_UITravel_PlanetButtonClicked");
+static trigger SelectNextPlanet = TriggerCreate("Kit_UITravel_SelectNextPlanet");
+static trigger SelectPreviousPlanet = TriggerCreate("Kit_UITravel_SelectPreviousPlanet");
+static trigger DifficultyUp = TriggerCreate("Kit_UITravel_DifficultyUp");
+static trigger DifficultyDown = TriggerCreate("Kit_UITravel_DifficultyDown");
+
+static trigger PitchPlayButtonClicked = TriggerCreate("Kit_UITravel_PitchPlayButtonClicked");
+static trigger PitchStopButtonClicked = TriggerCreate("Kit_UITravel_PitchStopButtonClicked");
+
+static trigger CloseButtonClicked = TriggerCreate("Kit_UITravel_CloseButtonClicked");
+static trigger LaunchButtonClicked = TriggerCreate("Kit_UITravel_LaunchButtonClicked");
+
+static trigger ArchivesReturn = TriggerCreate("Kit_UITravel_ArchivesReturn");
+static trigger ArchivesArmoryClicked = TriggerCreate("Kit_UITravel_ArchivesArmoryClicked");
+static trigger ArchivesLabClicked = TriggerCreate("Kit_UITravel_ArchivesLabClicked");
+static trigger ArchivesMercClicked = TriggerCreate("Kit_UITravel_ArchivesMercClicked");
+
+string selected_mission;
+
+
+static void Create() {
+    int i = 0;
+    int portrait_dialog;
+
+    if (dialog != -1) {
+        return;
+    }
+
+    dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+    DialogSetImageVisible(dialog, false);
+    DialogSetFullscreen(dialog, true);
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    
+    root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_TravelPanel/TravelPanelTemplate");
+    DialogControlSetFullDialog(root, PlayerGroupAll(), true);
+
+    portrait_dialog = DialogControlHookup(root, c_triggerControlTypePortrait, "BackgroundPortrait");
+    background_portrait = PortraitGetTriggerControl(portrait_dialog);
+
+    close_button = DialogControlHookup(root, c_triggerControlTypeButton, "CloseButton");
+    TriggerAddEventDialogControl(CloseButtonClicked, 1, close_button, c_triggerControlEventTypeClick);
+
+    launch_button = DialogControlHookup(root, c_triggerControlTypeButton, "LaunchButton");
+    TriggerAddEventDialogControl(LaunchButtonClicked, 1, launch_button, c_triggerControlEventTypeClick);
+
+    archives_armory_button = DialogControlHookup(root, c_triggerControlTypeButton, "ArchivesArmoryButton");
+    TriggerAddEventDialogControl(ArchivesArmoryClicked, 1, archives_armory_button, c_triggerControlEventTypeClick);
+    
+    archives_lab_button = DialogControlHookup(root, c_triggerControlTypeButton, "ArchivesLaboratoryButton");
+    TriggerAddEventDialogControl(ArchivesLabClicked, 1, archives_lab_button, c_triggerControlEventTypeClick);
+    
+    archives_merc_button = DialogControlHookup(root, c_triggerControlTypeButton, "ArchivesMercenaryButton");
+    TriggerAddEventDialogControl(ArchivesMercClicked, 1, archives_merc_button, c_triggerControlEventTypeClick);
+
+    difficulty_pulldown = DialogControlHookup(root, c_triggerControlTypePulldown, "DifficultyPulldown");
+    Kit_PopulateDifficultyPulldown(difficulty_pulldown);
+
+    all_in_pulldown = DialogControlHookup(root, c_triggerControlTypePulldown, "AllInPulldown");
+    Kit_PopulateAllInPulldown(all_in_pulldown);
+    
+    portrait_dialog = DialogControlHookup(root, c_triggerControlTypePortrait, "ContactPortrait");
+    contact_portrait = PortraitGetTriggerControl(portrait_dialog);
+
+    contact_fluff = DialogControlHookup(root, c_triggerControlTypeLabel, "ContactFluff");
+
+    pitch_play_button = DialogControlHookup(root, c_triggerControlTypeButton, "PitchFrame/PlayButton");
+    TriggerAddEventDialogControl(PitchPlayButtonClicked, 1, pitch_play_button, c_triggerControlEventTypeClick);
+    pitch_stop_button = DialogControlHookup(root, c_triggerControlTypeButton, "PitchFrame/StopButton");
+    TriggerAddEventDialogControl(PitchStopButtonClicked, 1, pitch_stop_button, c_triggerControlEventTypeClick);
+
+    mission_text = DialogControlHookup(root, c_triggerControlTypeLabel, "MissionTextLabel");
+    objective_text = DialogControlHookup(root, c_triggerControlTypeLabel, "ObjectiveTextLabel");
+
+    primary_reward_heading = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/PrimaryRewardContainer/Heading");
+    for (i = 0; i < 5; i += 1) {
+        primary_reward_label[i] = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/PrimaryRewardContainer/Label" + IntToString(i));
+    }
+    bonus_reward_heading = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/BonusRewardContainer/Heading");
+    for (i = 0; i < 5; i += 1) {
+        bonus_reward_label[i] = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/BonusRewardContainer/Label" + IntToString(i));
+    }
+    unit_reward_heading = DialogControlHookup(root, c_triggerControlTypeLabel, "RewardsFrame/UnitsRewardContainer/Heading");
+    for (i = 0; i < 3; i += 1) {
+        unit_reward[i].container = DialogControlHookup(root, c_triggerControlTypePanel, "RewardsFrame/UnitsRewardContainer/RewardUnitFrame" + IntToString(i));
+        unit_reward[i].model = DialogControlHookup(unit_reward[i].container, c_triggerControlTypeUnitModel, "RewardUnitFrame");
+        unit_reward[i].label = DialogControlHookup(unit_reward[i].container, c_triggerControlTypeLabel, "RewardUnitNameLabelContainer/RewardUnitNameLabel");
+    }
+
+    subtitle_frame = DialogControlHookup(root, c_triggerControlTypePanel, "SubtitleFrame");
+
+    for (i = 0; i < planet_count; i += 1) {
+        planets[i].container = DialogControlHookup(root, c_triggerControlTypePanel, "PlanetFrame" + IntToString(i));
+        planets[i].name_label = DialogControlHookup(planets[i].container, c_triggerControlTypeLabel, "NameLabel");
+
+        planets[i].button = DialogControlHookup(planets[i].container, c_triggerControlTypeButton, "Button");
+        TriggerAddEventDialogControl(PlanetButtonClicked, 1, planets[i].button, c_triggerControlEventTypeClick);
+
+        portrait_dialog = DialogControlHookup(planets[i].container, c_triggerControlTypePortrait, "Portrait");
+        planets[i].portrait = PortraitGetTriggerControl(portrait_dialog);
+
+        portrait_dialog = DialogControlHookup(planets[i].container, c_triggerControlTypePortrait, "SelectedPortrait");
+        planets[i].selected_portrait = PortraitGetTriggerControl(portrait_dialog);
+    }
+
+    // Hotkeys
+    // TriggerAddEventKeyPressed(SelectNextPlanet, 1, c_keyD, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(SelectNextPlanet, 1, c_keyRight, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(SelectNextPlanet, 1, c_keyTab, true, 0, 0, 0);
+    // TriggerAddEventKeyPressed(SelectPreviousPlanet, 1, c_keyA, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(SelectPreviousPlanet, 1, c_keyLeft, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(SelectPreviousPlanet, 1, c_keyTab, true, 1, 0, 0);
+    TriggerAddEventKeyPressed(DifficultyUp, 1, c_keyUp, true, 0, 0, 0);
+    TriggerAddEventKeyPressed(DifficultyDown, 1, c_keyDown, true, 0, 0, 0);
+}
+
+static void UpdatePlanets() {
+    int maps_count = CatalogEntryCount(c_gameCatalogMap);
+    int i;
+    string map;
+    string location;
+    int planet_index = 0;
+
+    for (i = 1; i <= maps_count; i += 1) {
+        map = CatalogEntryGet(c_gameCatalogMap, i);
+        if (!libWoLC_gf_WC_CampaignMapTypeCheck(map, c_mapKindMission)) {
+            continue;
+        }
+
+        if (!libWoLC_gf_StoryInSimulation() && !libWoLC_gf_WC_MissionVisibleInUI(map)) {
+            continue;
+        }
+
+        if (!libWoLC_gf_StoryInSimulation() && (map == "THorner05S") && !libWoLC_gf_WC_SecretMissionFound()) {
+            continue;
+        }
+
+        if (libWoLC_gf_WC_CampaignMapIsZeratul(map)) {
+            continue;
+        }
+
+        if (!libWoLC_gf_MissionStatusCheck(map, libWoLC_ge_MissionStatus_Available)) {
+            continue;
+        }
+
+        if (selected_mission == null) {
+            selected_mission = map;
+        }
+
+        location = libWoLC_gf_StoryMapPlanet(map);
+
+        libNtve_gf_SetDialogItemText(planets[planet_index].name_label, libWoLC_gf_WC_LocationName(location), PlayerGroupAll());
+        PortraitSetModel(planets[planet_index].portrait, libWoLC_gf_WC_LocationPlanetModel(location), false);
+        PortraitSetModel(planets[planet_index].selected_portrait, libWoLC_gf_WC_LocationPlanetModel(location), false);
+
+        if (map == selected_mission) {
+            DialogControlSetAnimationState(planets[planet_index].container, PlayerGroupAll(), "SelectionState", "On");
+        } else {
+            DialogControlSetAnimationState(planets[planet_index].container, PlayerGroupAll(), "SelectionState", "Off");
+        }
+
+        if (map == "THorner05S") {
+            DialogControlSetAnimationState(planets[planet_index].container, PlayerGroupAll(), "SecretState", "On");
+        } else {
+            DialogControlSetAnimationState(planets[planet_index].container, PlayerGroupAll(), "SecretState", "Off");
+        }
+
+        Kit_SetDialogItemCustomValue(planets[planet_index].button, 0, map);
+        Kit_SetDialogItemCustomValue(planets[planet_index].button, 1, location);
+
+        planet_index += 1;
+        if (planet_index >= planet_count) {
+            break;
+        }
+    }
+
+    DialogControlSetAnimationState(root, PlayerGroupAll(), "Planets", IntToString(planet_index));
+}
+
+static void UpdateSelectedPlanet() {
+    string location;
+    int reward_credits;
+    int reward_protoss;
+    int reward_zerg;
+    string reward_army;
+    string reward_unit_type;
+    string reward_unit_actor;
+    string reward_unit_model;
+    string reward_unit_camera;
+
+    if (selected_mission == null) {
+        return;
+    }
+    
+    location = libWoLC_gf_StoryMapPlanet(selected_mission);
+
+    // Title
+    libNtve_gf_SetDialogItemText(mission_text, libWoLC_gf_WC_CampaignMapName(selected_mission), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(objective_text, libWoLC_gf_WC_CampaignMapPrimaryObjective(selected_mission), PlayerGroupAll());
+
+    // Background
+    PortraitSetModel(background_portrait, libWoLC_gf_WC_LocationBackgroundModel(location), true);
+    // PortraitSetCamera(background_portrait, "Star2 BattleNetGlue");
+
+    // Portrait
+    PortraitSetModel(contact_portrait, libWoLC_gf_WC_CampaignMapContactPortrait(selected_mission), false);
+    libNtve_gf_SetDialogItemText(contact_fluff, libWoLC_gf_WC_CampaignMapContactName(selected_mission), PlayerGroupAll());
+
+    // Primary Reward
+    reward_credits = libWoLC_gf_WC_MissionRewardsCredits(selected_mission);
+    DialogControlSetVisible(primary_reward_label[0], PlayerGroupAll(), reward_credits > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[0], libWoLC_gf_WC_FormatReward(reward_credits, "Credits"), PlayerGroupAll());
+
+    reward_protoss = libWoLC_gf_WC_MissionRewardsProtoss(selected_mission);
+    DialogControlSetVisible(primary_reward_label[1], PlayerGroupAll(), reward_protoss > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[1], libWoLC_gf_WC_FormatReward(reward_protoss, "ProtossResearch"), PlayerGroupAll());
+
+    reward_zerg = libWoLC_gf_WC_MissionRewardsZerg(selected_mission);
+    DialogControlSetVisible(primary_reward_label[2], PlayerGroupAll(), reward_zerg > 0);
+    libNtve_gf_SetDialogItemText(primary_reward_label[2], libWoLC_gf_WC_FormatReward(reward_zerg, "ZergResearch"), PlayerGroupAll());
+
+    DialogControlSetVisible(primary_reward_heading, PlayerGroupAll(), (reward_credits > 0) || (reward_protoss > 0) || (reward_zerg > 0));
+
+    // Bonus Reward
+    reward_credits = libWoLC_gf_WC_MissionRewardsBonusPossible(selected_mission, "Credits");
+    DialogControlSetVisible(bonus_reward_label[0], PlayerGroupAll(), reward_credits > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[0], libWoLC_gf_WC_FormatReward(reward_credits, "Credits"), PlayerGroupAll());
+
+    reward_protoss = libWoLC_gf_WC_MissionRewardsBonusPossible(selected_mission, "ProtossResearch");
+    DialogControlSetVisible(bonus_reward_label[1], PlayerGroupAll(), reward_protoss > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[1], libWoLC_gf_WC_FormatReward(reward_protoss, "ProtossResearch"), PlayerGroupAll());
+
+    reward_zerg = libWoLC_gf_WC_MissionRewardsBonusPossible(selected_mission, "ZergResearch");
+    DialogControlSetVisible(bonus_reward_label[2], PlayerGroupAll(), reward_zerg > 0);
+    libNtve_gf_SetDialogItemText(bonus_reward_label[2], libWoLC_gf_WC_FormatReward(reward_zerg, "ZergResearch"), PlayerGroupAll());
+
+    DialogControlSetVisible(bonus_reward_heading, PlayerGroupAll(), (reward_credits > 0) || (reward_protoss > 0) || (reward_zerg > 0));
+
+    // Unit Reward
+    if (selected_mission != "TRaynor01") {
+        reward_army = libWoLC_gf_MissionArmyCategoryUnlocked(selected_mission);
+    } else {
+        reward_army = null;
+    }
+    if (reward_army != null) {
+        reward_unit_type = libWoLC_gf_WC_ArmyCategoryUnitType(reward_army);
+        reward_unit_actor = Kit_GetUnitActorType(reward_unit_type);
+        reward_unit_model = CatalogFieldValueGet(c_gameCatalogActor, reward_unit_actor, "Model", 1);
+        reward_unit_camera = CatalogFieldValueGet(c_gameCatalogModel, reward_unit_model, "TechPurchaseCamera", 1);
+        // reward_unit_camera = CatalogFieldValueGet(c_gameCatalogModel, reward_unit_model, "PlanetPanelCamera", 1);
+
+        libNtve_gf_SetDialogItemUnitLink(unit_reward[0].model, reward_unit_type, PlayerGroupAll());
+        libNtve_gf_SetDialogItemCamera(unit_reward[0].model, reward_unit_camera, PlayerGroupAll());
+        if (reward_unit_type != "Ghost" && UnitTypeTestFlag(reward_unit_type, c_unitFlagTurnable)) {
+            DialogControlSetAnimationState(unit_reward[0].model, PlayerGroupAll(), "Rotation", "45");
+        } else {
+            DialogControlSetAnimationState(unit_reward[0].model, PlayerGroupAll(), "Rotation", "Default");
+        }
+
+        libNtve_gf_SetDialogItemText(unit_reward[0].label, libWoLC_gf_WC_ArmyCategoryName(reward_army), PlayerGroupAll());
+        libNtve_gf_SetDialogItemTooltip(unit_reward[0].container, libWoLC_gf_WC_ArmyCategoryDescriptionShort(reward_army), PlayerGroupAll());
+    }
+
+    DialogControlSetVisible(unit_reward_heading, PlayerGroupAll(), reward_army != null);
+    DialogControlSetVisible(unit_reward[0].container, PlayerGroupAll(), reward_army != null);
+    DialogControlSetVisible(unit_reward[1].container, PlayerGroupAll(), false);
+    DialogControlSetVisible(unit_reward[2].container, PlayerGroupAll(), false);
+
+    // Archive
+    if (libWoLC_gf_StoryInSimulation() && (location != "MarSara")) {
+        DialogControlSetVisible(archives_armory_button, PlayerGroupAll(), true);
+        DialogControlSetVisible(archives_lab_button, PlayerGroupAll(), true);
+        DialogControlSetVisible(archives_merc_button, PlayerGroupAll(), libWoLC_gf_NumberOfMissions(libWoLC_ge_MissionCountOptions_Completed) >= 4);
+    } else {
+        DialogControlSetVisible(archives_armory_button, PlayerGroupAll(), false);
+        DialogControlSetVisible(archives_lab_button, PlayerGroupAll(), false);
+        DialogControlSetVisible(archives_merc_button, PlayerGroupAll(), false);
+    }
+
+    // All In Pulldown
+    DialogControlSetVisible(all_in_pulldown, PlayerGroupAll(), selected_mission == "TValerian03");
+}
+
+static void SelectPlanet(string mission) {
+    selected_mission = mission;
+    UpdateSelectedPlanet();
+    UpdatePlanets();
+
+    TriggerExecute(StopPitch, true, false);
+    TriggerExecute(PlayPitch, true, false);
+}
+
+void Kit_UITravel_Show() {
+    selected_mission = null;
+
+    Create();
+    UpdatePlanets();
+    UpdateSelectedPlanet();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+
+    DialogSetSubtitlePositionOverrideControl(subtitle_frame);
+
+    if (!libWoLC_gf_StoryInSimulation()) {
+        TriggerExecute(PlayPitch, true, false);
+    }
+
+    TriggerEnable(SelectNextPlanet, true);
+    TriggerEnable(SelectPreviousPlanet, true);
+    TriggerEnable(DifficultyUp, true);
+    TriggerEnable(DifficultyDown, true);
+}
+
+void Kit_UITravel_Hide() {
+    TriggerEnable(SelectNextPlanet, false);
+    TriggerEnable(SelectPreviousPlanet, false);
+    TriggerEnable(DifficultyUp, false);
+    TriggerEnable(DifficultyDown, false);
+
+    TriggerExecute(StopPitch, true, false);
+    DialogClearSubtitlePositionOverrideControl();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+}
+
+string Kit_UITravel_LastSelectedMission() {
+    return selected_mission;
+}
+
+int Kit_UITravel_LastSelectedDifficulty() {
+    return DialogControlGetSelectedItem(difficulty_pulldown, 1);
+}
+
+bool Kit_UITravel_LaunchButtonClicked(bool check, bool run) {
+    int all_in = DialogControlGetSelectedItem(all_in_pulldown, 1);
+    
+    if (!run) { return true; }
+    
+    UserDataSetInt("StoryStates", "TValerian03Enemy", "Value", 1, all_in);
+    TriggerSendEvent(libWCUI_gv_wUC_TravelPanelEventMissionStarted);
+
+    return true;
+}
+
+bool Kit_UITravel_CloseButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerSendEvent(libWCUI_gv_wUC_TravelPanelEventClosed);
+
+    return true;
+}
+
+bool Kit_UITravel_PlanetButtonClicked(bool check, bool run) {
+    int event_button = EventDialogControl();
+    string mission = Kit_GetDialogItemCustomValue(event_button, 0);
+
+    if (!run) { return true; }
+
+    SelectPlanet(mission);
+
+    return true;
+}
+
+bool Kit_UITravel_PitchPlayButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerExecute(StopPitch, true, true);
+    TriggerExecute(PlayPitch, false, true);
+
+    return true;
+}
+
+bool Kit_UITravel_PitchStopButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    TriggerExecute(StopPitch, true, true);
+
+    return true;
+}
+
+static int pitch_playing_count = 0;
+
+bool Kit_UITravel_StopPitch(bool check, bool run) {
+    if (!run) { return true; }
+
+    ConversationDataStop();
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), true);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), false);
+
+    return true;
+}
+
+bool Kit_UITravel_PlayPitch(bool check, bool run) {
+    string mission = selected_mission;
+    int pitch_count = ConversationDataStateIndexCount("MissionPitch");
+    int characters_count = ConversationDataStateIndexCount("Characters");
+    string state;
+    int i;
+
+    if (check && DataTableGetBool(true, "Kit_PitchPlayed|" + mission)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    for (i = 1; i <= pitch_count; i += 1) {
+        state = ConversationDataStateIndex("MissionPitch", i);
+        ConversationDataStateSetValue(state, 0);
+    }
+    ConversationDataStateSetValue("MissionPitch|" + mission, 1);
+
+    for (i = 1; i <= characters_count; i += 1) {
+        state = ConversationDataStateIndex("Characters", i);
+        ConversationDataRegisterPortrait(state, contact_portrait);
+    }
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), false);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), true);
+
+    DataTableSetBool(true, "Kit_PitchPlayed|" + mission, true);
+
+    pitch_playing_count += 1;
+    ConversationDataRun("Missionpitches", PlayerGroupAll(), c_conversationSkipNone, true);
+    pitch_playing_count -= 1;
+
+    if (pitch_playing_count > 0) {
+        return true;
+    }
+
+    DialogControlSetVisible(pitch_play_button, PlayerGroupAll(), true);
+    DialogControlSetVisible(pitch_stop_button, PlayerGroupAll(), false);
+
+    for (i = 0; i < characters_count; i += 1) {
+        state = ConversationDataStateIndex("Characters", i);
+        ConversationDataRegisterPortrait(state, c_invalidPortraitId);
+    }
+
+    return true;
+}
+
+bool Kit_UITravel_SelectNextPlanet(bool check, bool run) {
+    string maybe_mission;
+    int i;
+    int j;
+
+    if (check && (EventKeyPressed() == c_keyTab) && EventKeyShift()) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    for (i = 0; i < planet_count; i += 1) {
+        if (Kit_GetDialogItemCustomValue(planets[i].button, 0) != selected_mission) {
+            continue;
+        }
+
+        j = (i + 1) % planet_count;
+        while (j != i) {
+            maybe_mission = Kit_GetDialogItemCustomValue(planets[j].button, 0);
+            if (maybe_mission != null) {
+                SelectPlanet(maybe_mission);
+                return true;
+            }
+
+            j = (j + 1) % planet_count;
+        }
+
+        return false;
+    }
+
+    return false;
+}
+
+bool Kit_UITravel_SelectPreviousPlanet(bool check, bool run) {
+    string maybe_mission;
+    int i;
+    int j;
+
+    if (check && (EventKeyPressed() == c_keyTab) && !EventKeyShift()) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    for (i = 0; i < planet_count; i += 1) {
+        if (Kit_GetDialogItemCustomValue(planets[i].button, 0) != selected_mission) {
+            continue;
+        }
+
+        j = i - 1;
+        if (j == -1) {
+            j = planet_count - 1;
+        }
+
+        while (j != i) {
+            maybe_mission = Kit_GetDialogItemCustomValue(planets[j].button, 0);
+            if (maybe_mission != null) {
+                SelectPlanet(maybe_mission);
+
+                return true;
+            }
+
+            j -= 1;
+        }
+
+        return false;
+    }
+
+    return false;
+}
+
+bool Kit_UITravel_DifficultyUp(bool check, bool run) {
+    int difficulty = DialogControlGetSelectedItem(difficulty_pulldown, 1);
+    int new_difficulty = difficulty - 1;
+
+    if (check && !DifficultyEnabled(new_difficulty)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogControlSelectItem(difficulty_pulldown, PlayerGroupAll(), new_difficulty);
+
+    return true;
+}
+
+bool Kit_UITravel_DifficultyDown(bool check, bool run) {
+    int difficulty = DialogControlGetSelectedItem(difficulty_pulldown, 1);
+    int new_difficulty = difficulty + 1;
+
+    if (check && !DifficultyEnabled(new_difficulty)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogControlSelectItem(difficulty_pulldown, PlayerGroupAll(), new_difficulty);
+
+    return true;
+}
+
+bool Kit_UITravel_ArchivesReturn(bool check, bool run) {
+    if (!run) { return true; }
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+
+    return true;
+}
+
+bool Kit_UITravel_ArchivesArmoryClicked(bool check, bool run) {
+    if (check && !libWoLC_gf_StoryInSimulation()) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    Kit_UITechPurchase_Show(ArchivesReturn);
+
+    return true;
+}
+
+bool Kit_UITravel_ArchivesLabClicked(bool check, bool run) {
+    if (check && !libWoLC_gf_StoryInSimulation()) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    Kit_UIResearch_Show(ArchivesReturn);
+
+    return true;
+}
+
+bool Kit_UITravel_ArchivesMercClicked(bool check, bool run) {
+    if (check && !libWoLC_gf_StoryInSimulation()) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    Kit_UIMercenary_Show(ArchivesReturn);
+
+    return true;
+}

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CArmyUpgrade default="1">
+        <Requirements value="ArmyUpgrade/Requirements/##id##"/>
+        <UserReference value="TechUpgrade;##id##"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Bunker_1">
+        <Name value="ConversationState/Tech/Tech_Bunker_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-neosteelbunker.dds"/>
+        <Movie value="Assets\Textures\terranarmory_bunker_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Bunker_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Bunker_1/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="NeoSteelFrame"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Bunker_2">
+        <Name value="ConversationState/Tech/Tech_Bunker_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-projectileaccelerator.dds"/>
+        <Movie value="Assets\Textures\terranarmory_bunker_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Bunker_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Bunker_2/Info/Tooltip"/>
+        <Cost value="40000"/>
+        <UpgradeArray value="ProjectileAccelerators"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Predator_1">
+        <Name value="ConversationState/Tech/Tech_Predator_1"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-invulnerabilityshield.dds"/>
+        <Description value="ConversationState/Tech/Tech_Predator_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Predator_1/Info/Tooltip"/>
+        <Cost value="90000"/>
+        <UpgradeArray value="Kit@PredatorShieldModule"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Predator_2">
+        <Name value="ConversationState/Tech/Tech_Predator_2"/>
+        <Icon value="Assets\Textures\btn-ability-mengsk-ghost-staticempblast.dds"/>
+        <Description value="ConversationState/Tech/Tech_Predator_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Predator_2/Info/Tooltip"/>
+        <Cost value="75000"/>
+        <UpgradeArray value="Kit@PredatorElectromagneticField"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_SCV_1">
+        <Name value="ConversationState/Tech/Tech_SCV_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-scvdoublerepair.dds"/>
+        <Movie value="Assets\Textures\terranarmory_scv_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_SCV_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_SCV_1/Info/Tooltip"/>
+        <Cost value="80000"/>
+        <UpgradeArray value="DualFusionWelders"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_SCV_2">
+        <Name value="ConversationState/Tech/Tech_SCV_2"/>
+        <Icon value="Assets\Textures\talent-swann-level08-improvedscvs.dds"/>
+        <Movie value="Assets\Textures\terranarmory_scv_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_SCV_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_SCV_2/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="AdvancedConstruction"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_CommandCenter_1">
+        <Name value="ConversationState/Tech/Tech_CommandCenter_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-firesuppressionsystem.dds"/>
+        <Movie value="Assets\Textures\terranarmory_commandcenter_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_CommandCenter_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_CommandCenter_1/Info/Tooltip"/>
+        <Cost value="90000"/>
+        <UpgradeArray value="FireSuppressionSystems"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_CommandCenter_2">
+        <Name value="ConversationState/Tech/Tech_CommandCenter_2"/>
+        <Icon value="Assets\Textures\BTN-Building-Terran-SurveillanceStation.dds"/>
+        <Movie value="Assets\Textures\terranarmory_commandcenter_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_CommandCenter_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_CommandCenter_2/Info/Tooltip"/>
+        <Cost value="125000"/>
+        <AbilCommandArray value="UpgradeToOrbital,Execute"/>
+        <AbilCommandArray value="UpgradeToOrbital,Cancel"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_MissileTurret_1">
+        <Name value="ConversationState/Tech/Tech_MissileTurret_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-titaniumhousing.dds"/>
+        <Movie value="Assets\Textures\terranarmory_missileturret_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_MissileTurret_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_MissileTurret_2/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="ReinforcedSuperstructure"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_MissileTurret_2">
+        <Name value="ConversationState/Tech/Tech_MissileTurret_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-hellstormbatteries.dds"/>
+        <Movie value="Assets\Textures\terranarmory_missileturret_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_MissileTurret_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_MissileTurret_1/Info/Tooltip"/>
+        <Cost value="80000"/>
+        <UpgradeArray value="HailstormMissilePods"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Marine_1">
+        <Name value="ConversationState/Tech/Tech_Marine_1"/>
+        <Icon value="Assets\Textures\btn-ability-terran-stimpack-color.dds"/>
+        <Movie value="Assets\Textures\terranarmory_marine_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Marine_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Marine_1/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="Stimpack"/>
+        <AbilCommandArray value="Stimpack,Execute"/>
+        <AbilCommandArray value="StimpackMarauder,Execute"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Marine_2">
+        <Name value="ConversationState/Tech/Tech_Marine_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-combatshield-color.dds"/>
+        <Movie value="Assets\Textures\terranarmory_marine_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Marine_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Marine_2/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="CombatShield"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Medic_1">
+        <Name value="ConversationState/Tech/Tech_Medic_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-stabilizermedpacks.dds"/>
+        <Movie value="Assets\Textures\terranarmory_medic_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Medic_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Medic_2/Info/Tooltip"/>
+        <Cost value="105000"/>
+        <UpgradeArray value="StabilizerMedPacks"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Medic_2">
+        <Name value="ConversationState/Tech/Tech_Medic_2"/>
+        <Icon value="Assets\Textures\btn-building-terran-reactor.dds"/>
+        <Movie value="Assets\Textures\terranarmory_medic_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Medic_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Medic_1/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="AdvancedMedicTraining"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Firebat_1">
+        <Name value="ConversationState/Tech/Tech_Firebat_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-incineratorgauntlets.dds"/>
+        <Movie value="Assets\Textures\terranarmory_firebat_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Firebat_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Firebat_1/Info/Tooltip"/>
+        <Cost value="40000"/>
+        <UpgradeArray value="BearclawNozzles"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Firebat_2">
+        <Name value="ConversationState/Tech/Tech_Firebat_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-hellarmor.dds"/>
+        <Movie value="Assets\Textures\terranarmory_firebat_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Firebat_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Firebat_2/Info/Tooltip"/>
+        <Cost value="85000"/>
+        <UpgradeArray value="FirebatJuggernautPlating"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Marauder_1">
+        <Name value="ConversationState/Tech/Tech_Marauder_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-kineticfoam.dds"/>
+        <Movie value="Assets\Textures\terranarmory_marauder_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Marauder_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Marauder_2/Info/Tooltip"/>
+        <Cost value="90000"/>
+        <UpgradeArray value="MarauderLifeBoost"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Marauder_2">
+        <Name value="ConversationState/Tech/Tech_Marauder_2"/>
+        <Icon value="Assets\Textures\btn-ability-terran-punishergrenade-color.dds"/>
+        <Movie value="Assets\Textures\terranarmory_marauder_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Marauder_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Marauder_1/Info/Tooltip"/>
+        <Cost value="70000"/>
+        <UpgradeArray value="PunisherGrenades"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Reaper_1">
+        <Name value="ConversationState/Tech/Tech_Reaper_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-u238rounds.dds"/>
+        <Movie value="Assets\Textures\terranarmory_reaper_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Reaper_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Reaper_2/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="ReaperU238Rounds"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Reaper_2">
+        <Name value="ConversationState/Tech/Tech_Reaper_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-kd8chargeex3.dds"/>
+        <Movie value="Assets\Textures\terranarmory_reaper_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Reaper_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Reaper_1/Info/Tooltip"/>
+        <Cost value="75000"/>
+        <UpgradeArray value="ClusterBomb"/>
+        <AbilCommandArray value="D8Charge,Execute"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Hellion_1">
+        <Name value="ConversationState/Tech/Tech_Hellion_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <Description value="ConversationState/Tech/Tech_Hellion_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Hellion_2/Info/Tooltip"/>
+        <Cost value="40000"/>
+        <UpgradeArray value="Kit@HellionSmartServos"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Hellion_2">
+        <Name value="ConversationState/Tech/Tech_Hellion_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-infernalpreigniter.dds"/>
+        <Description value="ConversationState/Tech/Tech_Hellion_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Hellion_1/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <Movie value="Assets\Textures\terranarmory_hellion_upgrade2.ogv"/>
+        <UpgradeArray value="HighCapacityBarrels"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Goliath_1">
+        <Name value="ConversationState/Tech/Tech_Goliath_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-aresclasstargetingsystem.dds"/>
+        <Movie value="Assets\Textures\terranarmory_goliath_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Goliath_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Goliath_1/Info/Tooltip"/>
+        <Cost value="80000"/>
+        <UpgradeArray value="AresClassWeaponsSystem"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Goliath_2">
+        <Name value="ConversationState/Tech/Tech_Goliath_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-multilockweaponsystem.dds"/>
+        <Movie value="Assets\Textures\terranarmory_goliath_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Goliath_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Goliath_2/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="MultilockTargetingSystems"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Diamondback_1">
+        <Name value="ConversationState/Tech/Tech_Diamondback_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-trilithiumpowercell.dds"/>
+        <Movie value="Assets\Textures\terranarmory_diamondback_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Diamondback_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Diamondback_1/Info/Tooltip"/>
+        <Cost value="75000"/>
+        <UpgradeArray value="TriLithiumPowerCells"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Diamondback_2">
+        <Name value="ConversationState/Tech/Tech_Diamondback_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-shapedhull.dds"/>
+        <Movie value="Assets\Textures\terranarmory_diamondback_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Diamondback_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Diamondback_2/Info/Tooltip"/>
+        <Cost value="90000"/>
+        <UpgradeArray value="ShapedHull"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Vulture_1">
+        <Name value="ConversationState/Tech/Tech_Vulture_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-cerberusmines.dds"/>
+        <Movie value="Assets\Textures\terranarmory_vulture_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Vulture_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Vulture_1/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="CerberusMines"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Vulture_2">
+        <Name value="ConversationState/Tech/Tech_Vulture_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-replenishablemagazine.dds"/>
+        <Movie value="Assets\Textures\terranarmory_vulture_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Vulture_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Vulture_2/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="NanoConstructor"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_SiegeTank_1">
+        <Name value="ConversationState/Tech/Tech_SiegeTank_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-maelstromrounds.dds"/>
+        <Movie value="Assets\Textures\terranarmory_siegetank_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_SiegeTank_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_SiegeTank_1/Info/Tooltip"/>
+        <Cost value="105000"/>
+        <UpgradeArray value="MaelstromRounds"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_SiegeTank_2">
+        <Name value="ConversationState/Tech/Tech_SiegeTank_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-improvedsiegemode.dds"/>
+        <Description value="ConversationState/Tech/Tech_SiegeTank_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_SiegeTank_2/Info/Tooltip"/>
+        <Cost value="140000"/>
+        <UpgradeArray value="Kit@ImprovedSiegeMode"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Medivac_1">
+        <Name value="ConversationState/Tech/Tech_Medivac_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-caduceusreactor.dds"/>
+        <Description value="ConversationState/Tech/Tech_Medivac_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Medivac_2/Info/Tooltip"/>
+        <Cost value="50000"/>
+        <UpgradeArray value="Kit@MedivacCaduceusReactor"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Medivac_2">
+        <Name value="ConversationState/Tech/Tech_Medivac_2"/>
+        <Icon value="Assets\Textures\btn-ability-mengsk-medivac-doublehealbeam.dds"/>
+        <Movie value="Assets\Textures\terranarmory_medivac_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Medivac_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Medivac_1/Info/Tooltip"/>
+        <Cost value="115000"/>
+        <UpgradeArray value="AdvancedHealingAI"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Wraith_1">
+        <Name value="ConversationState/Tech/Tech_Wraith_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-improvedburstlaser.dds"/>
+        <Description value="ConversationState/Tech/Tech_Wraith_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Wraith_1/Info/Tooltip"/>
+        <Cost value="125000"/>
+        <UpgradeArray value="Kit@WraithPulseAmplifier"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Wraith_2">
+        <Name value="ConversationState/Tech/Tech_Wraith_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-displacementfield.dds"/>
+        <Movie value="Assets\Textures\terranarmory_wraith_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Wraith_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Wraith_2/Info/Tooltip"/>
+        <Cost value="80000"/>
+        <UpgradeArray value="CloakDistortionField"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Viking_1">
+        <Name value="ConversationState/Tech/Tech_Viking_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-phobosclassweaponssystem.dds"/>
+        <Movie value="Assets\Textures\terranarmory_viking_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Viking_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Viking_1/Info/Tooltip"/>
+        <Cost value="90000"/>
+        <UpgradeArray value="AresClassWeaponsSystemViking"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Viking_2">
+        <Name value="ConversationState/Tech/Tech_Viking_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-ripwavemissiles.dds"/>
+        <Movie value="Assets\Textures\terranarmory_viking_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Viking_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Viking_2/Info/Tooltip"/>
+        <Cost value="75000"/>
+        <UpgradeArray value="HALORockets"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Banshee_1">
+        <Name value="ConversationState/Tech/Tech_Banshee_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
+        <Description value="ConversationState/Tech/Tech_Banshee_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Banshee_2/Info/Tooltip"/>
+        <Cost value="80000"/>
+        <UpgradeArray value="Kit@BansheeSpeed"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Banshee_2">
+        <Name value="ConversationState/Tech/Tech_Banshee_2"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-shockwavemissilebattery.dds"/>
+        <Movie value="Assets\Textures\terranarmory_banshee_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Banshee_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Banshee_1/Info/Tooltip"/>
+        <Cost value="110000"/>
+        <UpgradeArray value="ClusterWarheads"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Battlecruiser_1">
+        <Name value="ConversationState/Tech/Tech_Battlecruiser_1"/>
+        <Icon value="Assets\Textures\btn-ability-terran-yamatogun-color.dds"/>
+        <Description value="ConversationState/Tech/Tech_Battlecruiser_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Battlecruiser_1/Info/Tooltip"/>
+        <Cost value="140000"/>
+        <UpgradeArray value="Kit@BattlecruiserWeaponRefit"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Battlecruiser_2">
+        <Name value="ConversationState/Tech/Tech_Battlecruiser_2"/>
+        <Icon value="Assets\Textures\btn-ability-terran-warpjump.dds"/>
+        <Description value="ConversationState/Tech/Tech_Battlecruiser_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Battlecruiser_2/Info/Tooltip"/>
+        <Cost value="150000"/>
+        <UpgradeArray value="Kit@BattlecruiserTacticalJump"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Ghost_1">
+        <Name value="ConversationState/Tech/Tech_Ghost_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-ocularimplants.dds"/>
+        <Movie value="Assets\Textures\terranarmory_ghost_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Ghost_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Ghost_1/Info/Tooltip"/>
+        <Cost value="85000"/>
+        <UpgradeArray value="OcularImplants"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Ghost_2">
+        <Name value="ConversationState/Tech/Tech_Ghost_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-criussuit.dds"/>
+        <Movie value="Assets\Textures\terranarmory_ghost_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Ghost_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Ghost_2/Info/Tooltip"/>
+        <Cost value="125000"/>
+        <UpgradeArray value="PermanentCloakGhost"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Spectre_1">
+        <Name value="ConversationState/Tech/Tech_Spectre_1"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-psioniclash.dds"/>
+        <Movie value="Assets\Textures\terranarmory_spectre_upgrade1.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Spectre_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Spectre_1/Info/Tooltip"/>
+        <Cost value="100000"/>
+        <UpgradeArray value="UltrasonicPulse"/>
+        <AbilCommandArray value="Obliterate,Execute"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Spectre_2">
+        <Name value="ConversationState/Tech/Tech_Spectre_2"/>
+        <Icon value="Assets\Textures\btn-techupgrade-terran-nyxcloakingclassmodule.dds"/>
+        <Movie value="Assets\Textures\terranarmory_spectre_upgrade2.ogv"/>
+        <Description value="ConversationState/Tech/Tech_Spectre_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Spectre_2/Info/Tooltip"/>
+        <Cost value="125000"/>
+        <UpgradeArray value="PermanentCloakSpectre"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Thor_1">
+        <Name value="ConversationState/Tech/Tech_Thor_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <Description value="ConversationState/Tech/Tech_Thor_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Thor_1/Info/Tooltip"/>
+        <Cost value="130000"/>
+        <UpgradeArray value="Kit@ThorHeavyServos"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_Thor_2">
+        <Name value="ConversationState/Tech/Tech_Thor_2"/>
+        <Icon value="Assets\Textures\talent-swann-level12-immortalityprotocol.dds"/>
+        <Description value="ConversationState/Tech/Tech_Thor_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_Thor_2/Info/Tooltip"/>
+        <Cost value="140000"/>
+        <UpgradeArray value="Kit@ThorEmergencyRepair"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_PerditionTurret_1">
+        <Name value="ConversationState/Tech/Tech_PerditionTurret_1"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-targetingoptics.dds"/>
+        <Description value="ConversationState/Tech/Tech_PerditionTurret_1/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_PerditionTurret_1/Info/Tooltip"/>
+        <Cost value="60000"/>
+        <UpgradeArray value="Kit@PerditionAutoTracking"/>
+    </CArmyUpgrade>
+    <CArmyUpgrade id="Tech_PerditionTurret_2">
+        <Name value="ConversationState/Tech/Tech_PerditionTurret_2"/>
+        <Icon value="Assets\Textures\btn-unit-terran-spidermine.dds"/>
+        <Description value="ConversationState/Tech/Tech_PerditionTurret_2/Info/Description"/>
+        <Tooltip value="ConversationState/Tech/Tech_PerditionTurret_2/Info/Tooltip"/>
+        <Cost value="95000"/>
+        <UpgradeArray value="Kit@PerditionMineField"/>
+    </CArmyUpgrade>
+</Catalog>

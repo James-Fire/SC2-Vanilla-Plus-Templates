@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CScoreValueCombine id="DamageDealt">
+        <ValueTable value="LifeDamageDealtTotal"/>
+        <ValueTable value="ShieldsDamageDealtTotal"/>
+    </CScoreValueCombine>
+    <CScoreValueCombine id="DamageTaken">
+        <ValueTable value="LifeDamageTakenTotal"/>
+        <ValueTable value="ShieldsDamageTakenTotal"/>
+    </CScoreValueCombine>
+</Catalog>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="DarkTemplarBlink">
+        <Icon value="Assets\Textures\btn-ability-protoss-stealth-blink.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-stealth-blink.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Irradiate">
+        <Icon value="Assets\Textures\btn-upgrade-swann-irradiate.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Kit@AdvancedConstructionAuto">
+        <Icon value="Assets\Textures\Talent-Swann-Level08-ImprovedSCVs.dds"/>
+        <AlertIcon value="Assets\Textures\Talent-Swann-Level08-ImprovedSCVs.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="AdvancedHealingAI">
+        <Icon value="Assets\Textures\btn-ability-mengsk-medivac-doublehealbeam.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="AresClassWeaponsSystem">
+        <Icon value="Assets\Textures\btn-upgrade-swann-aresclasstargetingsystem.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="AresClassWeaponsSystemviking">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-phobosclassweaponssystem.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Kit@BansheeSpeed">
+        <Icon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="CerberusMines">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-cerberusmines.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="D8Charge">
+        <Icon value="Assets\Textures\btn-upgrade-terran-kd8chargeex3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-kd8chargeex3.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="DisplacementField">
+        <Icon value="Assets\Textures\btn-upgrade-swann-displacementfield.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="IncineratorNozzles">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-incineratorgauntlets.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="JuggernautPlating">
+        <Icon value="Assets\Textures\btn-upgrade-swann-hellarmor.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Kit@Kit@PerditionTurretHoldFire">
+        <Icon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="Kit@PerditionTurretRemoveHoldFire">
+        <Icon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="Kit@PerditionTurretMineField">
+        <Icon value="Assets\Textures\btn-unit-terran-spidermine.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-terran-spidermine.dds"/>
+    </CButton>
+    <CButton id="Kit@PerditionTurretAutoTracking">
+        <Icon value="Assets\Textures\btn-upgrade-swann-targetingoptics.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-swann-targetingoptics.dds"/>
+    </CButton>
+    <CButton id="Kit@ThorHeavyServos">
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+    </CButton>
+    <CButton id="Kit@MedivacCaduceusReactor">
+        <Icon value="Assets\Textures\btn-upgrade-terran-caduceusreactor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-caduceusreactor.dds"/>
+    </CButton>
+    <CButton id="Kit@WraithPulseAmplifier">
+        <Icon value="Assets\Textures\btn-upgrade-swann-improvedburstlaser.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-swann-improvedburstlaser.dds"/>
+    </CButton>
+    <CButton id="Kit@SiegeTankImprovedSiegeMode">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-improvedsiegemode.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-raynor-improvedsiegemode.dds"/>
+    </CButton>
+    <!-- Hellion -->
+    <CButton id="Kit@HellionInfernalPreIgniter">
+        <Icon value="Assets\Textures\btn-upgrade-terran-infernalpreigniter.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-infernalpreigniter.dds"/>
+    </CButton>
+    <CButton id="Kit@HellionSmartServos">
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+    </CButton>
+    <!-- Observer Siege Mode -->
+    <CButton id="Kit@MorphtoObserverSiege">
+        <Icon value="Assets\Textures\btn-unit-protoss-observer-Surveillance.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-observer-Surveillance.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeySet value="ObserverModes"/>
+    </CButton>
+    <CButton id="Kit@MorphtoObserver">
+        <Icon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeySet value="ObserverModes"/>
+    </CButton>
+    <CButton id="Kit@LaserDrillRemoveHoldFire">
+        <Icon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-weaponsfree.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="Kit@LaserDrillHoldFire">
+        <Icon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="MaelstromRounds">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-maelstromrounds.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="MindControl">
+        <Icon value="Assets\Textures\btn-research-zerg-hivemindemulator.dds"/>
+    </CButton>
+    <CButton id="MultiLockTargetingSystem">
+        <Icon value="Assets\Textures\btn-upgrade-swann-multilockweaponsystem.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="NanoRepair">
+        <Icon value="Assets\Textures\btn-upgrade-swann-nanorepair.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-swann-nanorepair.dds"/>
+    </CButton>
+    <CButton id="RetributionField">
+        <TooltipAppender Validator="Kit@UsePredatorElectromagneticField" Text="Button/RetributionField/Appender"/>
+    </CButton>
+    <CButton id="RipwaveMissiles">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-ripwavemissiles.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="SelfRepair">
+        <Icon value="Assets\Textures\talent-swann-level12-immortalityprotocol.dds"/>
+        <AlertIcon value="Assets\Textures\talent-swann-level12-immortalityprotocol.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="ShockwaveMissilePattern">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-shockwavemissilebattery.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="SpiderMineReplenish">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-replenishablemagazine.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-raynor-replenishablemagazine.dds"/>
+    </CButton>
+    <CButton id="StabilizerMedPacks">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-stabilizermedpacks.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Kit@SupplyDepotDisabled">
+        <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <!-- TValerian02 -->
+    <CButton id="TValerian02aHeroCommonAbil1">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+        <TooltipAppender Validator="HaveMasteryTychusGrenadeCooldown" Text="Button/Tooltip/MasteryTychusGrenadeCooldownAppend"/>
+    </CButton>
+    <CButton id="TValerian02aHeroCommonAbil2">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="TValerian02aHeroCommonAbil3">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+    </CButton>
+    <CButton id="TValerian02aHeroCommonAbil4">
+        <Icon value="Assets\Textures\btn-ability-hornerhan-wraith-permanentcloak.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <Universal value="1"/>
+    </CButton>
+    <!-- TValerian03, we need this to reset the Hotkey -->
+    <CButton id="Kit@EnergyNova">
+        <Icon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <Name value="Button/Name/EnergyNova"/>
+        <Tooltip value="Button/Tooltip/EnergyNova"/>
+        <AlertName value="Button/Name/EnergyNova"/>
+        <AlertTooltip value="Button/Tooltip/EnergyNova"/>
+    </CButton>
+    <CButton id="TossGrenadeTychus">
+        <Icon value="Assets\Textures\btn-ability-tychus-tychus-shreddergrenade.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-tychus-tychus-shreddergrenade.dds"/>
+        <TintRacially value="0"/>
+    </CButton>
+</Catalog>

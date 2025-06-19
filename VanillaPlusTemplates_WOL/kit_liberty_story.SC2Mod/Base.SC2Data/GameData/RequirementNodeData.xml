@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirementAnd id="AndCountUnitAlias_BarracksCompleteOnly789532539TechTreeCheatEq3804783965CountUnitMercCompoundQueuedOrBetter0">
+        <OperandArray value="CountUnitAlias_BarracksCompleteOnly789532539TechTreeCheat"/>
+        <OperandArray value="Eq3804783965CountUnitMercCompoundQueuedOrBetter0"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndOr2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnitCountUnitGhostAcademyCompleteOnly">
+        <OperandArray value="Or2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitGhostAcademyCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndOr2589852481CountUnitFactoryTechLabCompleteOnlyAtUnitCountUnitFactoryTechReactorCompleteOnlyAtUnitCountUnitArmoryCompleteOnly">
+        <OperandArray value="Or2589852481CountUnitFactoryTechLabCompleteOnlyAtUnitCountUnitFactoryTechReactorCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitArmoryCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndOr2589852481CountUnitStarportTechLabCompleteOnlyAtUnitCountUnitStarportTechReactorCompleteOnlyAtUnitCountUnitFusionCoreCompleteOnly">
+        <OperandArray value="Or2589852481CountUnitStarportTechLabCompleteOnlyAtUnitCountUnitStarportTechReactorCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitFusionCoreCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementCountBehavior id="CountBehaviorKit@Kit@PerditionTurretHoldFireBCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="Kit@PerditionTurretHoldFireB" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorKit@LaserDrillHoldFireBCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@LaserDrillHoldFireB" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountUnit id="CountUnitAlias_StarportCompleteOnly4195804750TechTreeCheat">
+        <Tooltip value="RequirementNode/Tooltip/CountUnitAlias_StarportCompleteOnly4195804750TechTreeCheat"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitBarracksTechLabCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BarracksTechLab" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitBarracksTechReactorCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="BarracksTechReactor" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitFactoryTechLabCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="FactoryTechLab" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitFactoryTechReactorCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="FactoryTechReactor" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitGhostAcademyCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="GhostAcademy" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitMercCompoundQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="MercCompound" State="QueuedOrBetter"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitStarportTechLabCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StarportTechLab" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitStarportTechReactorCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StarportTechReactor" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeAdvancedConstructionCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AdvancedConstruction" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeHighCapacityBarrelsCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HighCapacityBarrels" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@BansheeSpeedCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@BansheeSpeed" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@BattlecruiserTacticalJumpCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@BattlecruiserTacticalJump" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@DisableBuildSupplyDepotCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@DisableBuildSupplyDepot" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@HellionSmartServosCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@HellionSmartServos" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@ImprovedSiegeModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@ImprovedSiegeMode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@MedivacCaduceusReactorCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@MedivacCaduceusReactor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@PerditionAutoTrackingCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@PerditionAutoTracking" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@PerditionMineFieldCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@PerditionMineField" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@PredatorElectromagneticFieldCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@PredatorElectromagneticField" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@RegenerativeBioSteelCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@RegenerativeBioSteel" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@ThorEmergencyRepairCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@ThorEmergencyRepair" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@ThorHeavyServosCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@ThorHeavyServos" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeKit@WraithPulseAmplifierCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Kit@WraithPulseAmplifier" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradePunisherGrenadesCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="PunisherGrenades" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementEq id="Eq3804783965CountUnitMercCompoundQueuedOrBetter0">
+        <OperandArray index="0" value="CountUnitMercCompoundQueuedOrBetter"/>
+        <OperandArray index="1" value="0"/>
+    </CRequirementEq>
+    <CRequirementNot id="NotCountBehaviorKit@Kit@PerditionTurretHoldFireBCompleteOnlyAtUnit">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountBehaviorKit@Kit@PerditionTurretHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountBehaviorKit@LaserDrillHoldFireBCompleteOnlyAtUnit">
+        <OperandArray index="0" value="CountBehaviorKit@LaserDrillHoldFireBCompleteOnlyAtUnit"/>
+    </CRequirementNot>
+    <CRequirementOr id="Or2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnit">
+        <OperandArray value="CountUnitBarracksTechLabCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitBarracksTechReactorCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+    <CRequirementOr id="Or2589852481CountUnitBarracksTechLabCompleteOnlyAtUnitCountUnitBarracksTechReactorCompleteOnlyAtUnitCountUpgradeAdvancedMedicTrainingCompleteOnly">
+        <OperandArray value="CountUnitBarracksTechLabCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitBarracksTechReactorCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUpgradeAdvancedMedicTrainingCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementOr id="Or2589852481CountUnitFactoryTechLabCompleteOnlyAtUnitCountUnitFactoryTechReactorCompleteOnlyAtUnit">
+        <OperandArray value="CountUnitFactoryTechLabCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitFactoryTechReactorCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+    <CRequirementOr id="Or2589852481CountUnitStarportTechLabCompleteOnlyAtUnitCountUnitStarportTechReactorCompleteOnlyAtUnit">
+        <OperandArray value="CountUnitStarportTechLabCompleteOnlyAtUnit"/>
+        <OperandArray value="CountUnitStarportTechReactorCompleteOnlyAtUnit"/>
+    </CRequirementOr>
+</Catalog>

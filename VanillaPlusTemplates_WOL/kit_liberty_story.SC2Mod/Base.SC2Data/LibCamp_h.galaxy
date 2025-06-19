@@ -1,0 +1,127 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Campaign (Legacy)
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libCamp_ge_ObjectiveMessageType_ObjectiveDiscovered = 0;
+const int libCamp_ge_ObjectiveMessageType_ObjectiveUpdate = 1;
+const int libCamp_ge_ObjectiveMessageType_ObjectiveCompleted = 2;
+const int libCamp_ge_ObjectiveMessageType_ObjectiveFailed = 3;
+const int libCamp_ge_CampaignMessageType_MissionFailed = 0;
+const int libCamp_ge_CampaignMessageType_Hint = 1;
+const int libCamp_ge_CampaignMessageType_SimpleHint = 2;
+const int libCamp_ge_CampaignMessageType_Secret = 3;
+const int libCamp_ge_CampaignMessageType_Warning = 4;
+const int libCamp_ge_CampaignMessageType_NewUnitAcquired = 5;
+const int libCamp_ge_CampaignMessageType_NewUnitAvailable = 6;
+const int libCamp_ge_CampaignMessageType_NewTechAvailable = 7;
+const int libCamp_ge_CampaignMessageFormatNotFormat_FormatMessage = 0;
+const int libCamp_ge_CampaignMessageFormatNotFormat_NotFormatMessage = 1;
+const int libCamp_ge_DropPodRace_Terran = 0;
+const int libCamp_ge_DropPodRace_Zerg = 1;
+const int libCamp_ge_RoomPanelButtonState_Locked = 0;
+const int libCamp_ge_RoomPanelButtonState_Disable = 1;
+const int libCamp_ge_RoomPanelButtonState_Enable = 2;
+const int libCamp_ge_GRIDDLG_HV_Horizontal = 0;
+const int libCamp_ge_GRIDDLG_HV_Vertical = 1;
+const int libCamp_ge_GRIDDLG_HV2_ClientPosition = 0;
+const int libCamp_ge_GRIDDLG_HV2_ClientSize = 1;
+const int libCamp_ge_GRIDDLG_HV2_NoneClient = 2;
+
+// Constants
+const fixed libCamp_gv_gRIDDLG_GRID = 60.0;
+const fixed libCamp_gv_gRIDDLG_GRIDGAP_X = 10.0;
+const fixed libCamp_gv_gRIDDLG_GRIDGAP_Y = 10.0;
+const fixed libCamp_gv_gRIDDLG_MARGINE_X = 50.0;
+const fixed libCamp_gv_gRIDDLG_MARGINE_Y = 40.0;
+
+// Variable Declarations
+int libCamp_gv_tS_MissionAutoSaveIndex;
+string libCamp_gv_tS_CurrentAmbienceLink;
+string libCamp_gv_tSX_RoomStates;
+trigger libCamp_gv_tS_RoomStatesDefaultCallback;
+bool[21] libCamp_gv_tS_StoryUIVisibility_Menu;
+bool[21] libCamp_gv_tS_StoryUIVisibility_Cash;
+bool[21] libCamp_gv_tS_StoryUIVisibility_RoomChange;
+bool[21] libCamp_gv_tS_StoryUIVisibility_Tip;
+int libCamp_gv_tS_StoryUIVisibilityCounter;
+int libCamp_gv_tS_RoomChangeDialog;
+int libCamp_gv_tS_RoomChangeDialogBorder;
+int libCamp_gv_tS_RoomChangeDialogSubtitle;
+int[11] libCamp_gv_tS_RoomChangeButtonCustomData;
+int[11] libCamp_gv_tS_RoomChangeButtons;
+int[11] libCamp_gv_tS_RoomChangeButtonText;
+text[11] libCamp_gv_tS_RoomChangeButtonNames;
+int[11] libCamp_gv_tS_RoomChangeButtonBG;
+bool[11] libCamp_gv_tS_RoomChangeButtonFlashing;
+trigger[11] libCamp_gv_tS_RoomChangeButtonCallbackClick;
+trigger[11] libCamp_gv_tS_RoomChangeButtonCallbackUpdate;
+int libCamp_gv_tS_RoomChangeButtonCount;
+int libCamp_gv_tS_RoomChangeButtonCurrent;
+int libCamp_gv__MsgDlg;
+int libCamp_gv__MsgDlgButton;
+bool libCamp_gv__MsgDlgOpened;
+
+// Function Declarations
+void libCamp_gf_DisplayCampaignMessage (playergroup lp_toPlayerGroup, int lp_messageType, text lp_message, int lp_formatOrNot);
+void libCamp_gf_CreateDropPod (int lp_race, point lp_location, unitgroup lp_units, bool lp_waitDontWait);
+void libCamp_gf_CreateStorymodeTips ();
+void libCamp_gf_CreateNewStructureTips ();
+void libCamp_gf_TS_CreateNewUpgradeTips ();
+void libCamp_gf_CreateTipFromConversationState (string lp_convoState, int lp_tipType, playergroup lp_players);
+void libCamp_gf_CreateMissionAutosavePoint (text lp_description);
+void libCamp_gf_SendTransmissionCampaign (unit lp_unit, soundlink lp_sound, int lp_durationType, fixed lp_duration, bool lp_waitUntilDone);
+void libCamp_gf_SetAllSoundChannelVolumesCampaign (int lp_mode);
+void libCamp_gf_DestroyCacheAndGivePlayerResources (unit lp_cacheUnit, int lp_resourceType, int lp_resourceAmount, int lp_player);
+void libCamp_gf_AddUnitTypeToUnitHelpPanel (string lp_unitType, bool lp_saveInHistory, int lp_player);
+void libCamp_gf_ChangeAmbience (string lp_ambience);
+void libCamp_gf_SetStoryModeRoomStates (string lp_roomStates);
+string libCamp_gf_StoryModeRoomStates ();
+void libCamp_gf_RegisterStoryModeRoomStatesDefaultCallback (trigger lp_defaultCallback);
+trigger libCamp_gf_StoryModeRoomStates2 ();
+void libCamp_gf_HideStoryUI (bool lp_showHide, bool lp_includeTip);
+void libCamp_gf_TS_RoomChangePanelCreate ();
+void libCamp_gf_AddRoomChangePanelButton (text lp_roomName, trigger lp_clickCallback, trigger lp_updateCallback, int lp_custonData, text lp_tip);
+int libCamp_gf_LastAddRoomChangePanelButton ();
+int libCamp_gf_RoomChangePanelButtonCount ();
+int libCamp_gf_RoomChangePanelCurrentButton ();
+int libCamp_gf_RoomChangePanelButtonCustomData (int lp_buttonId);
+bool libCamp_gf_RoomChangePanelIsVisible ();
+void libCamp_gf_HideRoomChangePanel (bool lp_showHide);
+void libCamp_gf_UpdateRoomChangePanel ();
+void libCamp_gf_DisableRoomChangePanelButton (bool lp_enableDisable, int lp_buttonId);
+void libCamp_gf_SetRoomChangePanelButtonState (int lp_buttonId, int lp_state);
+void libCamp_gf_FlashRoomChangePanelButton (int lp_buttonId);
+void libCamp_gf_StopFlashingRoomChangePanelButton (int lp_buttonId);
+fixed libCamp_gf_GD_Gap (int lp_hV);
+fixed libCamp_gf_GD_GridToReal (fixed lp_grid, int lp_hV, int lp_sizeOrPos);
+int libCamp_gf_GD_GridToInteger (fixed lp_grid, int lp_hV, int lp_sizeOrPos);
+fixed libCamp_gf_GD_RealToGrid (fixed lp_value, int lp_hV, int lp_sizeOrPos);
+fixed libCamp_gf_GD_IntegerToGrid (int lp_value, int lp_hV, int lp_sizeOrPos);
+fixed libCamp_gf_DialogWidthInGrid (int lp_dialog);
+fixed libCamp_gf_DialogHeightInGrid (int lp_dialog);
+fixed libCamp_gf_DialogOffsetXInGrid (int lp_dialog);
+fixed libCamp_gf_DialogOffsetYInGrid (int lp_dialog);
+fixed libCamp_gf_DialogItemWidthInGrid (int lp_dialogItem, int lp_player);
+fixed libCamp_gf_DialogItemHeightInGrid (int lp_dialogItem, int lp_player);
+fixed libCamp_gf_DialogItemOffsetXInGrid (int lp_dialogItem, int lp_player);
+fixed libCamp_gf_DialogItemOffsetYInGrid (int lp_dialogItem, int lp_player);
+void libCamp_gf_CreateDialogInGrid (fixed lp_width, fixed lp_height, int lp_anchor, fixed lp_offsetX, fixed lp_offsetY, bool lp_modal);
+void libCamp_gf_MoveDialogInGrid (int lp_dialog, int lp_anchor, fixed lp_offsetX, fixed lp_offsetY);
+void libCamp_gf_MoveDialogInGridRelative (int lp_dialog, int lp_anchor, int lp_relativeDialog, int lp_relativeAnchor, fixed lp_offsetX, fixed lp_offsetY);
+void libCamp_gf_SetDialogSizeInGrid (int lp_dialog, fixed lp_width, fixed lp_height);
+void libCamp_gf_CreateDialogItemInGrid (int lp_dialog, int lp_type, int lp_anchor, fixed lp_offsetX, fixed lp_offsetY, fixed lp_width, fixed lp_height, text lp_label);
+void libCamp_gf_MoveDialogItemInGrid (int lp_dialogItem, playergroup lp_players, int lp_anchor, fixed lp_offsetX, fixed lp_offsetY);
+void libCamp_gf_MoveDialogItemInGridRelative (int lp_item, playergroup lp_players, int lp_anchor, int lp_relativeItem, int lp_relativeAnchor, fixed lp_offsetX, fixed lp_offsetY);
+void libCamp_gf_SetDialogItemSizeInGrid (int lp_dialogItem, playergroup lp_players, fixed lp_width, fixed lp_height);
+void libCamp_gf_DisplayMessageDialog (text lp_title, string lp_titleStyle, text lp_body1, string lp_bodyStyle1, text lp_body2, string lp_bodyStyle2, int lp_width, int lp_height, text lp_buttonText);
+
+// Trigger Declarations
+trigger libCamp_gt_TS_RoomChangeButtonResponse;
+trigger libCamp_gt_TS_RoomChangeHotkeyResponse;
+trigger libCamp_gt__MsgDlgButtonClicked;
+
+// Library Initialization
+void libCamp_InitVariables ();
+

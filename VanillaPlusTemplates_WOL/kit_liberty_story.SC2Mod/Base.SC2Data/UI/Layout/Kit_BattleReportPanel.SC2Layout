@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="BattleReportListBoxItemNormalBackgroundZeratulMission" val="008af5"/>
+
+    <Constant name="BattleReportListBoxItemNormalBackgroundMission" val="7fd5ec"/>
+    <Constant name="BattleReportListBoxItemNormalBackgroundCinematic" val="d49736"/>
+
+    <Constant name="BattleReportListBoxItemHoverBackgroundMission" val="92def0"/>
+    <Constant name="BattleReportListBoxItemHoverBackgroundCinematic" val="d49736"/>
+
+    <Constant name="BattleReportListBoxItemNormalTextMission" val="92def0"/>
+    <Constant name="BattleReportListBoxItemNormalTextCinematic" val="ffa54d"/>
+
+    <Constant name="BattleReportListBoxItemSelectedTextMission" val="ffffff"/>
+    <Constant name="BattleReportListBoxItemSelectedTextCinematic" val="ffffff"/>
+
+    <Frame type="BattleReportListBoxItem" name="BattleReportListBoxItem" file="BattleReportPanel">
+        <Frame type="Image" name="NormalBackgroundImage">
+            <Anchor relative="$parent" offset="3"/>
+            <Texture val="Assets/Textures/ui_wol_missionarchive_button_normalpressed.dds"/>
+            <TextureType val="Border"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverBackgroundImage">
+            <Anchor relative="$parent" offset="3"/>
+            <Texture val="Assets/Textures/ui_wol_missionarchive_button_normaloverpressedover.dds"/>
+            <TextureType val="Border"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+        </Frame>
+        
+        <Frame type="Image" name="SelectedBackgroundImage">
+            <Alpha val="0"/>
+        </Frame>
+
+        <Frame type="Label" name="TextLabel">
+            <Style val="Kit_MissionArchiveListItem"/>
+            <Alpha val="255"/>
+        </Frame>
+
+        <Frame type="Image" name="NormalCinematicImage">
+            <AdjustmentColor val="#BattleReportListBoxItemNormalTextCinematic"/>
+            <ColorAdjustMode val="Colorize"/>
+        </Frame>
+        <Frame type="Image" name="HoverCinematicImage">
+            <AdjustmentColor val="#BattleReportListBoxItemSelectedTextCinematic"/>
+            <ColorAdjustMode val="Colorize"/>
+        </Frame>
+
+        <StateGroup name="Zeratul">
+            <DefaultState val="Default"/>
+        
+            <State name="WhispersOfDoom">
+                <When type="Property" frame="TextLabel" Text="WHISPERS OF DOOM" />
+                <Action type="SetProperty" frame="NormalBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+                <Action type="SetProperty" frame="HoverBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+            </State>
+            <State name="ASinisterTurn">
+                <When type="Property" frame="TextLabel" Text="A SINISTER TURN" />
+                <Action type="SetProperty" frame="NormalBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+                <Action type="SetProperty" frame="HoverBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+            </State>
+            <State name="EchoesOfTheFuture">
+                <When type="Property" frame="TextLabel" Text="ECHOES OF THE FUTURE" />
+                <Action type="SetProperty" frame="NormalBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+                <Action type="SetProperty" frame="HoverBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+            </State>
+            <State name="InUtterDarkness">
+                <When type="Property" frame="TextLabel" Text="IN UTTER DARKNESS" />
+                <Action type="SetProperty" frame="NormalBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+                <Action type="SetProperty" frame="HoverBackgroundImage" Color="#BattleReportListBoxItemNormalBackgroundZeratulMission" />
+            </State>
+        
+            <State name="Default">
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="BattleReportPanel" name="BattleReportPanelTemplate" file="BattleReportPanel">
+        <Frame type="Frame" name="WoLBackgroundFrame" template="CampaignTemplates/CampaignMenuPanelTemplate">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-15"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="1140"/>
+            <Width val="1660"/>
+            <RenderPriority val="401"/>
+
+            <Frame type="Image" name="BlackMaskImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="160"/>
+                <Visible val="True"/>
+            </Frame>
+            <Frame type="Image" name="GradientImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="160"/>
+                <Visible val="True"/>
+            </Frame>
+
+            <Frame type="Image" name="TopLeftCornerImage">
+                <Texture val="Assets/Textures/ui_frame_big_corner_topleft_terran.tga"/>
+            </Frame>
+            <Frame type="Image" name="TopRightCornerImage">
+                <Texture val="Assets/Textures/ui_frame_big_corner_topright_terran.tga"/>
+            </Frame>
+
+            <Frame type="Label" name="TitleLabel">
+                <Style val="Kit_MissionArchiveScreenTitle"/>
+                <Text val="@UI/StoryMissionArchivesTitle"/>
+            </Frame>
+
+            <Animation name="FadeIn">
+                <Event event="Birth" action="Play" frame="$parent"/>
+                <Event event="Birth" action="Reset" frame="$parent"/>
+                <Controller type="Fade" end="Pause">
+                    <Key type="Curve" time="0" value="0" out="Linear"/>
+                    <Key type="Curve" time="1.35" value="0" out="Linear"/>
+                    <Key type="Curve" time="1.4" value="140" in="Linear"/>
+                    <Key type="Curve" time="1.45" value="50" in="Linear"/>
+                    <Key type="Curve" time="1.5" value="160" in="Linear"/>
+                    <Key type="Curve" time="1.55" value="70" in="Linear"/>
+                    <Key type="Curve" time="1.6" value="190" in="Linear"/>
+                    <Key type="Curve" time="1.65" value="90" in="Linear"/>
+                    <Key type="Curve" time="2.25" value="255" in="Linear"/>
+                </Controller>
+            </Animation>
+        </Frame>
+
+        <Frame type="Frame" name="WoLScreenBottomFrame">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/> 
+            <Height val="588"/>
+
+            <Frame type="Image" name="BackgroundGradientImage">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="@@UI/HotS_Shared_BottomFrame_Gradient"/>
+                <Height val="588"/>
+                <Alpha val="220"/>
+            </Frame>
+
+            <Frame type="Image" name="RightTopLine">
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/$parent/QuitButton" pos="Min" offset="44"/>
+                <Anchor side="Bottom" relative="$parent/$parent/QuitButton" pos="Min" offset="12"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomright_middle.dds"/>
+            </Frame>
+            <Frame type="Image" name="RightTopCorner">
+                <Anchor side="Right" relative="$parent/RightTopLine" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/RightTopLine" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomright_left.dds"/>
+            </Frame>
+            <Frame type="Image" name="RightBottomCorner">
+                <Anchor side="Right" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_wol_planetpanel_outerframe_right_bottom_corner.tga"/>
+            </Frame>
+            <Frame type="Image" name="RightVertical">
+                <Anchor side="Right" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/RightBottomCorner" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomside_right.dds"/>
+            </Frame>
+            <Frame type="Image" name="Mid">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent/RightBottomCorner" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomleft_middle.dds"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="BackgroundImage">
+            <Texture val="Assets/Textures/ui_wol_missionarchives_innercontainerbg.tga"/>
+            <TextureType val="NineSlice"/>
+            <Tiled val="False"/>
+        </Frame>
+        <Frame type="Image" name="InnerBackgroundImage">
+            <Texture val="Assets/Textures/ui_wol_missionarchives_innercontainerborder.tga"/>
+        </Frame>
+        <Frame type="Image" name="ListBackgroundImage">
+            <Texture val="Assets/Textures/ui_wol_missionarchives_innercontainerbg.tga"/>
+            <TextureType val="NineSlice"/>
+            <Tiled val="False"/>
+        </Frame>
+        <Frame type="Image" name="ListInnerBackgroundImage">
+            <Texture val="Assets/Textures/ui_wol_missionarchives_innercontainerborder.tga"/>
+        </Frame>
+
+        <Frame type="Label" name="MissionsCompletedHeadingLabel">
+            <Style val="Kit_MissionArchiveCompletedTitle"/>
+        </Frame>
+
+        <Frame type="Label" name="MissionsCompletedLabel">
+            <Style val="Kit_MissionArchiveCompletedValue"/>
+        </Frame>
+
+        <Frame type="Frame" name="MissionSummaryContainer">
+            <Frame type="Label" name="MissionTitleLabel">
+                <Style val="Kit_MissionArchiveTitle"/>
+            </Frame>
+            <Frame type="Label" name="MissionBonusObjectivesLabel">
+                <Style val="Kit_MissionArchiveBonusObjective"/>
+            </Frame>
+
+            <Frame type="Frame" name="AchievementSummaryContainer">
+                <Alpha val="0"/>
+                <Frame type="AchievementFrame" name="AchievementFrame0">
+                    <UseTooltip val="False"/>
+                    <AcceptsMouse val="False"/>
+                </Frame>
+
+                <Frame type="AchievementFrame" name="AchievementFrame1">
+                    <UseTooltip val="False"/>
+                    <AcceptsMouse val="False"/>
+                </Frame>
+
+                <Frame type="AchievementFrame" name="AchievementFrame2">
+                    <UseTooltip val="False"/>
+                    <AcceptsMouse val="False"/>
+                </Frame>
+            </Frame>
+            <Frame type="Frame" name="DifficultySummaryContainer">
+                <Frame type="Image" name="DifficultySummarySectionBg">
+                    <Visible val="False"/>
+                </Frame>
+                <Frame type="Label" name="DifficultySummaryHeadingLabel">
+                    <Visible val="False"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyCasualLabel">
+                    <Style val="Kit_MissionArchivesDifficultyLabel"/>
+                </Frame>
+
+                <Frame type="Label" name="DifficultyCasualTimeLabel">
+                    <Style val="Kit_MissionArchivesDiffcultyTimeLabel"/>
+                    <Alpha val="255"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyNormalLabel">
+                    <Style val="Kit_MissionArchivesDifficultyLabel"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyNormalTimeLabel">
+                    <Style val="Kit_MissionArchivesDiffcultyTimeLabel"/>
+                    <Alpha val="255"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyHardLabel">
+                    <Style val="Kit_MissionArchivesDifficultyLabel"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyHardTimeLabel">
+                    <Style val="Kit_MissionArchivesDiffcultyTimeLabel"/>
+                    <Alpha val="255"/>
+                </Frame>
+				
+				<Frame type="Label" name="DifficultyBrutalLabel">
+                    <Style val="Kit_MissionArchivesDifficultyLabel"/>
+                </Frame>
+                
+                <Frame type="Label" name="DifficultyBrutalTimeLabel">
+                    <Style val="Kit_MissionArchivesDiffcultyTimeLabel"/>
+                    <Alpha val="255"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Button" name="ReplayMissionButton" template="Kit_Templates/ActionButtonTemplate">
+                <Handle val="WoL_BattleReportPanel_ReplayMissionButton"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-45"/>
+                <Width val="370"/>
+                <Height val="75"/>
+                <Shortcut val="@UI/ArchivePlayMissionHotkey"/>
+                <Text val="@UI/ArchivePlayMission"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="CinematicSummaryContainer">
+            <Frame type="Label" name="CinematicTitleLabel">
+                <Style val="Kit_MissionArchiveTitle"/>
+            </Frame>
+            <Frame type="Image" name="CinematicImage">
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            </Frame>
+            <Frame type="Button" name="PlayCinematicButton" template="Kit_Templates/ActionButtonTemplate">
+                <Handle val="WoL_BattleReportPanel_PlayCinematicButton"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-45"/>
+                <Width val="370"/>
+                <Height val="75"/>
+                <Shortcut val="@UI/ArchivePlayCinematicHotkey"/>
+                <Text val="@UI/ArchivePlayCinematic"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CloseButton" template="Kit_Templates/NavButtonTemplate">
+            <Handle val="WoL_BattleReportPanel_CloseButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-14"/>
+            <Shortcut val="@UI/Back_Hotkey"/>
+            <Shortcut val="Escape"/>
+            <Text val="@UI/Back_Control"/>
+            <UseTooltip val="False"/>
+        </Frame>
+        
+        <Frame type="Button" name="QuitButton" template="Kit_Templates/NavButtonTemplate">
+            <Handle val="WoL_BattleReportPanel_QuitButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-14"/>
+            <RenderPriority val="530"/>
+            <Shortcut val="@UI/Quit_Hotkey"/>
+            <Shortcut val="Escape"/>
+            <Text val="@UI/SwarmNavButtonQuit_Control"/>
+            <UseTooltip val="False"/>
+			<Visible val="False"/>
+        </Frame>
+
+        <Frame type="Frame" name="ScreenTitleFrame">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="BackgroundFrame">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Frame" name="BottomBorder">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="TitleScanLines">
+            <Visible val="False"/>
+        </Frame>	
+        <Frame type="Image" name="CornerFrameHexGlow_Left">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameHexGlow_LeftBottom">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameHexGlow_Right">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameHexGlow_RightBottom">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Frame" name="TopLinePowerUp">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="TopLineEndCap">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Frame" name="BottomLinePowerUp">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="BottomLineEndCap">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Frame" name="LeftLinePowerUp">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="LeftLineEndCap">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Frame" name="RightLinePowerUp">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="RightLineEndCap">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="TopShimmer">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="BottomShimmer">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="LeftShimmer">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="RightShimmer">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrame_Left">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_Left">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_LeftSide">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrame_Right">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_Right">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_RightSide">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrame_BottomLeft">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_BottomLeft">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_BottomLeftSide">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrame_BottomRight">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_BottomRight">
+            <Visible val="False"/>
+        </Frame>
+        <Frame type="Image" name="CornerFrameGlow_BottomRightSide">
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+</Desc>

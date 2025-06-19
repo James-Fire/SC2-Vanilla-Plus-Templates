@@ -1,0 +1,3023 @@
+include "TriggerLibs/NativeLib"
+include "TriggerLibs/VoidLib"
+include "LibCamp_h"
+include "LibWoLC_h"
+include "LibWCMI_h"
+
+include "LibWCUI_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: UI (WoL)
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libWCUI_InitLibraries () {
+    libNtve_InitVariables();
+    libCamp_InitVariables();
+    libWoLC_InitVariables();
+    libWCMI_InitVariables();
+}
+
+// Variable Initialization
+bool libWCUI_InitVariables_completed = false;
+
+void libWCUI_InitVariables () {
+    int init_i;
+
+    if (libWCUI_InitVariables_completed) {
+        return;
+    }
+
+    libWCUI_InitVariables_completed = true;
+
+    libWCUI_gv_wU_ArchivesPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesTitle = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesBackButton = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesQuitButton = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesMissionPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesMissionTitle = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesMissionBonusLabel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesMissionImage = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesAchievementPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        libWCUI_gv_wU_ArchivesAchievements[init_i] = c_invalidDialogControlId;
+    }
+    libWCUI_gv_wU_ArchivesDifficultyPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 4; init_i += 1) {
+        libWCUI_gv_wU_ArchivesDifficultyLabels[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 4; init_i += 1) {
+        libWCUI_gv_wU_ArchivesDifficultyTimes[init_i] = c_invalidDialogControlId;
+    }
+    libWCUI_gv_wU_ArchivesMissionPlayButton = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesScenePanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesSceneTitle = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesSceneImage = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesScenePlayButton = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArchivesLoadingDialog = c_invalidDialogId;
+    libWCUI_gv_wU_ArchivesLoadingLabel = c_invalidDialogControlId;
+    libWCUI_gv_pUC_ArchivesMissionLoadingWidth = 2048;
+    libWCUI_gv_pUC_ArchivesMissionLoadingHeight = 1160;
+    libWCUI_gv_pUC_ArchivesMissionTargetWidth = 960;
+    libWCUI_gv_pUC_ArchivesMissionTargetHeight = 851;
+    libWCUI_gv_wU_ArmyButton = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArmyButtonTipPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ArmyButtonTimer = TimerCreate();
+    libWCUI_gv_wU_DirectiveDialog = c_invalidDialogId;
+    libWCUI_gv_wU_DirectivePanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_DirectiveLabel = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_Style = libWCUI_ge_SingularBossBarStyle_Objective;
+    libWCUI_gv_wU_BB_Panel = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_ClickableAreaHealthBar = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_ClickableAreaNameLabel = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_TitleLabel = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_HpLabel = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_HpFullImage = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_HpCurrentImage = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_BossBG = c_invalidDialogControlId;
+    libWCUI_gv_wU_BB_ObjectiveBG = c_invalidDialogControlId;
+    libWCUI_gv_wU_HealthWatchDialog = c_invalidDialogId;
+    libWCUI_gv_wU_HealthWatchImage = c_invalidDialogControlId;
+    libWCUI_gv_wU_ProgressBarPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_ProgressBarLabelTitle = c_invalidDialogControlId;
+    libWCUI_gv_wU_ProgressBarLabelBarLeft = c_invalidDialogControlId;
+    libWCUI_gv_wU_ProgressBarImageBar = c_invalidDialogControlId;
+    libWCUI_gv_wU_ProgressBarMax = 100;
+    libWCUI_gv_pUC_ProgressBarWidth = 280;
+    libWCUI_gv_pUC_ProgressBarHeight = 20;
+    libWCUI_gv_wU_UnitProgressBarPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_TimerWindowHighlightFrame = c_invalidDialogControlId;
+    libWCUI_gv_wU_TimerWindowDangerThreshold = 180.0;
+    libWCUI_gv_wU_TimerWindowTimer = TimerCreate();
+    libWCUI_gv_wU_CounterWindowPanel = c_invalidDialogControlId;
+    libWCUI_gv_wU_CounterWindowTitle = c_invalidDialogControlId;
+    libWCUI_gv_wU_CounterWindowValue = c_invalidDialogControlId;
+}
+
+// Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Utils Galaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/utils"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: WU_TechConsoleGalaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/tech_purchase_panel.galaxy"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: WU_MercenaryGalaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/mercenary_panel.galaxy"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: WU_ResearchGalaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/research_panel.galaxy"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: WU_TravelGalaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/travel_panel.galaxy"
+include "Scripts/UI/travel_panel_zeratul.galaxy"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Hero Panel Galaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/hero_panel.galaxy"
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: WU_ScoreScreenGalaxy
+//--------------------------------------------------------------------------------------------------
+include "Scripts/UI/score_screen.galaxy"
+
+void libWCUI_InitCustomScript () {
+}
+
+// Presets
+// Functions
+void libWCUI_gf_DisplayTechConsole (trigger lp_exitTrigger) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_TechConsoleExitTrigger = lp_exitTrigger;
+    libCamp_gf_HideStoryUI(false, false);
+    Kit_UITechPurchase_Show(libWCUI_gt_WU_TechConsoleOnExit);
+}
+
+void libWCUI_gf_DisplayMercenaryConsole (trigger lp_exitTrigger) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_MercenaryConsoleExitTrigger = lp_exitTrigger;
+    libCamp_gf_HideStoryUI(false, false);
+    Kit_UIMercenary_Show(libWCUI_gt_WU_MercenaryOnExit);
+}
+
+void libWCUI_gf_DisplayResearchConsole (trigger lp_exitTrigger) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_ResearchConsoleExitTrigger = lp_exitTrigger;
+    libCamp_gf_HideStoryUI(false, false);
+    Kit_UIResearch_Show(libWCUI_gt_WU_ResearchOnExit);
+}
+
+void libWCUI_gf_TravelPanelMissionStart (trigger t) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventGeneric(t, libWCUI_gv_wUC_TravelPanelEventMissionStarted);
+}
+
+void libWCUI_gf_TravelPanelClosed (trigger t) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventGeneric(t, libWCUI_gv_wUC_TravelPanelEventClosed);
+}
+
+void libWCUI_gf_ShowHideTravelPanel (bool lp_showHide) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_showHide == true)) {
+        Kit_UITravel_Show();
+    }
+    else {
+        Kit_UITravel_Hide();
+    }
+}
+
+void libWCUI_gf_ShowHideTravelPanel2 (bool lp_showHide, string lp_mission) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_showHide == true)) {
+        Kit_UITravelZeratul_Show(lp_mission);
+    }
+    else {
+        Kit_UITravelZeratul_Hide();
+    }
+}
+
+string libWCUI_gf_WU_ArchivesDataString (int lp_missionarchive) {
+    // Automatic Variable Declarations
+    // Implementation
+    return ("ZSS_Archive_" + IntToString((lp_missionarchive)));
+}
+
+string libWCUI_gf_WU_ArchivesDataTypeString (int lp_missionarchive) {
+    // Automatic Variable Declarations
+    // Implementation
+    return ("ZSS_ArchiveType_" + IntToString((lp_missionarchive)));
+}
+
+void libWCUI_gf_WU_ArchivesOverlayCreate () {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_MissionArchiveOverlayCreated = true;
+    libWCUI_gv_wU_ArchivesPanel = BattleReportGetDialogControl();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesPanel, c_triggerControlTypeLabel, "WoLBackgroundFrame/TitleLabel");
+    libWCUI_gv_wU_ArchivesTitle = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesPanel, c_triggerControlTypeButton, "CloseButton");
+    libWCUI_gv_wU_ArchivesBackButton = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesPanel, c_triggerControlTypeButton, "QuitButton");
+    libWCUI_gv_wU_ArchivesQuitButton = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesPanel, c_triggerControlTypePanel, "MissionSummaryContainer");
+    libWCUI_gv_wU_ArchivesMissionPanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypeLabel, "MissionTitleLabel");
+    libWCUI_gv_wU_ArchivesMissionTitle = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypeLabel, "MissionBonusObjectivesLabel");
+    libWCUI_gv_wU_ArchivesMissionBonusLabel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypeImage, "MissionImage");
+    libWCUI_gv_wU_ArchivesMissionImage = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypePanel, "AchievementSummaryContainer");
+    libWCUI_gv_wU_ArchivesAchievementPanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesAchievementPanel, c_triggerControlTypeAchievement, "AchievementFrame0");
+    libWCUI_gv_wU_ArchivesAchievements[1] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesAchievementPanel, c_triggerControlTypeAchievement, "AchievementFrame1");
+    libWCUI_gv_wU_ArchivesAchievements[2] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesAchievementPanel, c_triggerControlTypeAchievement, "AchievementFrame2");
+    libWCUI_gv_wU_ArchivesAchievements[3] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypePanel, "DifficultySummaryContainer");
+    libWCUI_gv_wU_ArchivesDifficultyPanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyCasualLabel");
+    libWCUI_gv_wU_ArchivesDifficultyLabels[1] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyCasualTimeLabel");
+    libWCUI_gv_wU_ArchivesDifficultyTimes[1] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyNormalLabel");
+    libWCUI_gv_wU_ArchivesDifficultyLabels[2] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyNormalTimeLabel");
+    libWCUI_gv_wU_ArchivesDifficultyTimes[2] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyHardLabel");
+    libWCUI_gv_wU_ArchivesDifficultyLabels[3] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyHardTimeLabel");
+    libWCUI_gv_wU_ArchivesDifficultyTimes[3] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyBrutalLabel");
+    libWCUI_gv_wU_ArchivesDifficultyLabels[4] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesDifficultyPanel, c_triggerControlTypeLabel, "DifficultyBrutalTimeLabel");
+    libWCUI_gv_wU_ArchivesDifficultyTimes[4] = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesMissionPanel, c_triggerControlTypeButton, "ReplayMissionButton");
+    libWCUI_gv_wU_ArchivesMissionPlayButton = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesPanel, c_triggerControlTypePanel, "CinematicSummaryContainer");
+    libWCUI_gv_wU_ArchivesScenePanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesScenePanel, c_triggerControlTypeLabel, "CinematicTitleLabel");
+    libWCUI_gv_wU_ArchivesSceneTitle = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesScenePanel, c_triggerControlTypeImage, "CinematicImage");
+    libWCUI_gv_wU_ArchivesSceneImage = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_ArchivesScenePanel, c_triggerControlTypeButton, "PlayCinematicButton");
+    libWCUI_gv_wU_ArchivesScenePlayButton = DialogControlLastCreated();
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    libWCUI_gv_wU_ArchivesLoadingDialog = DialogLastCreated();
+    DialogSetFullscreen(libWCUI_gv_wU_ArchivesLoadingDialog, true);
+    DialogSetImageVisible(libWCUI_gv_wU_ArchivesLoadingDialog, false);
+    libNtve_gf_CreateDialogItemLabel(libWCUI_gv_wU_ArchivesLoadingDialog, 200, 50, c_anchorBottomLeft, 0, 0, StringExternal("Param/Value/lib_WCUI_8DFE4298"), Color(254*100/255,138*100/255,14*100/255), false, 2.0);
+    libWCUI_gv_wU_ArchivesLoadingLabel = DialogControlLastCreated();
+    DialogControlSetPositionRelative(libWCUI_gv_wU_ArchivesLoadingLabel, PlayerGroupAll(), c_anchorTopRight, libWCUI_gv_wU_ArchivesMissionPanel, c_anchorBottomRight, 0, 0);
+}
+
+void libWCUI_gf_WU_ArchivesClosed () {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(libWCUI_gt_WU_ArchivesSelectionChanged, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesScenePlayClicked, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesMissionPlayClicked, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesCloseClicked, false);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeBattleReportPanel, false);
+}
+
+void libWCUI_gf_WU_ArchivesDisplay () {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerExecute(libWCUI_gt_WU_ArchivesCreate, true, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesSelectionChanged, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesScenePlayClicked, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesMissionPlayClicked, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesCloseClicked, true);
+    if ((PlayerRace(1) != "Terr")) {
+        PlayerSetRace(1, "Terr");
+    }
+
+    if ((libWoLC_gf_WC_CampaignIsComplete() == false)) {
+        libWCUI_gv_wU_ArchivesSynced = true;
+    }
+
+    libWCUI_gf_WU_ArchivesUpdate();
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeBattleReportPanel, true);
+    libWoLC_gf_CinematicFade(true, 0.5, Color(0.00, 0.00, 0.00), false);
+}
+
+string libWCUI_gf_WU_ArchivesLastMissionSelected () {
+    // Automatic Variable Declarations
+    // Implementation
+    return (DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+}
+
+void libWCUI_gf_WU_ArchivesUpdate () {
+    // Variable Declarations
+    int lv_index;
+    int lv_difficultyIndex;
+    string lv_selectedMission;
+    string lv_selectedScene;
+    text lv_bonusText;
+
+    // Automatic Variable Declarations
+    const int auto6A391340_ae = 4;
+    const int auto6A391340_ai = 1;
+    const int auto9C012B84_ae = 3;
+    const int auto9C012B84_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libWCUI_gv_wU_ArchivesSynced == true)) {
+        DialogSetVisible(libWCUI_gv_wU_ArchivesLoadingDialog, PlayerGroupAll(), false);
+    }
+    else {
+        DialogSetVisible(libWCUI_gv_wU_ArchivesLoadingDialog, PlayerGroupAll(), true);
+    }
+    if ((libWoLC_gf_WC_CampaignIsComplete() == true)) {
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesQuitButton, PlayerGroupAll(), true);
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesBackButton, PlayerGroupAll(), false);
+    }
+    else {
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesQuitButton, PlayerGroupAll(), false);
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesBackButton, PlayerGroupAll(), true);
+    }
+    if ((BattleReportPanelGetSelectedBattleReport(1) == c_invalidBattleReportId)) {
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesScenePanel, PlayerGroupAll(), false);
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionPanel, PlayerGroupAll(), false);
+    }
+    else if ((DataTableGetInt(true, libWCUI_gf_WU_ArchivesDataTypeString(BattleReportPanelGetSelectedBattleReport(1))) == libWCUI_ge_WU_ArchivesType_Mission)) {
+        lv_selectedMission = (DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesScenePanel, PlayerGroupAll(), false);
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionPanel, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesMissionTitle, libWoLC_gf_WC_CampaignMapName(lv_selectedMission), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(libWCUI_gv_wU_ArchivesMissionImage, libWoLC_gf_WC_CampaignMapLoadingScreenImage(lv_selectedMission), PlayerGroupAll());
+        libWCUI_gf_WU_ArchivesSetUVs(0.5, 0.5, 1.0);
+        if ((libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "Credits") > 0)) {
+            TextExpressionSetToken("Param/Expression/lib_WCUI_0387545A", "Earned", FormatNumber(libWoLC_gf_WC_MissionRewardsBonusEarned(lv_selectedMission, "Credits")));
+            TextExpressionSetToken("Param/Expression/lib_WCUI_0387545A", "Possible", FormatNumber(libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "Credits")));
+            lv_bonusText = TextExpressionAssemble("Param/Expression/lib_WCUI_0387545A");
+        }
+
+        if ((libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "ProtossResearch") > 0)) {
+            TextExpressionSetToken("Param/Expression/lib_WCUI_FF938FAC", "A", lv_bonusText);
+            TextExpressionSetToken("Param/Expression/lib_WCUI_FF938FAC", "Earned", IntToText(libWoLC_gf_WC_MissionRewardsBonusEarned(lv_selectedMission, "ProtossResearch")));
+            TextExpressionSetToken("Param/Expression/lib_WCUI_FF938FAC", "Possible", IntToText(libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "ProtossResearch")));
+            lv_bonusText = TextExpressionAssemble("Param/Expression/lib_WCUI_FF938FAC");
+        }
+
+        if ((libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "ZergResearch") > 0)) {
+            TextExpressionSetToken("Param/Expression/lib_WCUI_AC4265EC", "A", lv_bonusText);
+            TextExpressionSetToken("Param/Expression/lib_WCUI_AC4265EC", "Earned", IntToText(libWoLC_gf_WC_MissionRewardsBonusEarned(lv_selectedMission, "ZergResearch")));
+            TextExpressionSetToken("Param/Expression/lib_WCUI_AC4265EC", "Possible", IntToText(libWoLC_gf_WC_MissionRewardsBonusPossible(lv_selectedMission, "ZergResearch")));
+            lv_bonusText = TextExpressionAssemble("Param/Expression/lib_WCUI_AC4265EC");
+        }
+
+        if ((libWCUI_gv_wU_ArchivesSynced == true) && (lv_bonusText != null)) {
+            DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionBonusLabel, PlayerGroupAll(), true);
+            libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesMissionBonusLabel, lv_bonusText, PlayerGroupAll());
+        }
+        else {
+            DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionBonusLabel, PlayerGroupAll(), false);
+        }
+        if ((libWoLC_gf_WC_CampaignMapTypeCheck(lv_selectedMission, c_mapKindMission) == true)) {
+            if ((libWCUI_gv_wU_ArchivesSynced == true)) {
+                DialogControlSetVisible(libWCUI_gv_wU_ArchivesDifficultyPanel, PlayerGroupAll(), true);
+                lv_difficultyIndex = 1;
+                for ( ; ( (auto6A391340_ai >= 0 && lv_difficultyIndex <= auto6A391340_ae) || (auto6A391340_ai < 0 && lv_difficultyIndex >= auto6A391340_ae) ) ; lv_difficultyIndex += auto6A391340_ai ) {
+                    if ((libWoLC_gf_MissionCompleteBestTime(lv_selectedMission, libWoLC_gf_WC_DifficultyFromIndex(lv_difficultyIndex)) == 0)) {
+                        libNtve_gf_SetDialogItemStyle(libWCUI_gv_wU_ArchivesDifficultyLabels[lv_difficultyIndex], "Kit_MissionArchivesDifficultyLabel", PlayerGroupAll());
+                        libNtve_gf_SetDialogItemStyle(libWCUI_gv_wU_ArchivesDifficultyTimes[lv_difficultyIndex], "Kit_MissionArchivesDifficultyTimeLabel", PlayerGroupAll());
+                    }
+                    else {
+                        libNtve_gf_SetDialogItemStyle(libWCUI_gv_wU_ArchivesDifficultyLabels[lv_difficultyIndex], "Kit_MissionArchivesDifficultyCompletedLabel", PlayerGroupAll());
+                        libNtve_gf_SetDialogItemStyle(libWCUI_gv_wU_ArchivesDifficultyTimes[lv_difficultyIndex], "Kit_MissionArchivesDifficultyTimeCompletedLabel", PlayerGroupAll());
+                    }
+                }
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyLabels[1], DifficultyNameCampaign(1), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyTimes[1], libWoLC_gf_FormatTimeCampaign(libWoLC_gf_MissionCompleteBestTime(lv_selectedMission, 1)), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyLabels[2], DifficultyNameCampaign(2), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyTimes[2], libWoLC_gf_FormatTimeCampaign(libWoLC_gf_MissionCompleteBestTime(lv_selectedMission, 2)), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyLabels[3], DifficultyNameCampaign(3), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyTimes[3], libWoLC_gf_FormatTimeCampaign(libWoLC_gf_MissionCompleteBestTime(lv_selectedMission, 3)), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyLabels[4], DifficultyNameCampaign(4), PlayerGroupAll());
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesDifficultyTimes[4], libWoLC_gf_FormatTimeCampaign(libWoLC_gf_MissionCompleteBestTime(lv_selectedMission, 4)), PlayerGroupAll());
+            }
+            else {
+                DialogControlSetVisible(libWCUI_gv_wU_ArchivesDifficultyPanel, PlayerGroupAll(), false);
+            }
+            DialogControlSetVisible(libWCUI_gv_wU_ArchivesAchievementPanel, PlayerGroupAll(), true);
+            lv_index = 1;
+            for ( ; ( (auto9C012B84_ai >= 0 && lv_index <= auto9C012B84_ae) || (auto9C012B84_ai < 0 && lv_index >= auto9C012B84_ae) ) ; lv_index += auto9C012B84_ai ) {
+                libNtve_gf_SetDialogItemAchievement(libWCUI_gv_wU_ArchivesAchievements[lv_index], UserDataGetGameLink("Maps", libWoLC_gf_WC_MapUserDataInstance(lv_selectedMission), "Achievements", lv_index), PlayerGroupAll());
+            }
+        }
+        else {
+            if ((libWoLC_gf_MissionStatusCheck("TValerian03", libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_MissionStatusCheck(lv_selectedMission, libWoLC_ge_MissionStatus_Completed) == false) && (libWCUI_gv_wU_ArchivesSynced == true)) {
+                DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionBonusLabel, PlayerGroupAll(), true);
+                libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesMissionBonusLabel, StringExternal("Param/Value/lib_WCUI_D3588EDE"), PlayerGroupAll());
+            }
+            else {
+                DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionBonusLabel, PlayerGroupAll(), false);
+            }
+            DialogControlSetVisible(libWCUI_gv_wU_ArchivesDifficultyPanel, PlayerGroupAll(), false);
+            DialogControlSetVisible(libWCUI_gv_wU_ArchivesAchievementPanel, PlayerGroupAll(), false);
+        }
+    }
+    else if ((DataTableGetInt(true, libWCUI_gf_WU_ArchivesDataTypeString(BattleReportPanelGetSelectedBattleReport(1))) == libWCUI_ge_WU_ArchivesType_Scene)) {
+        lv_selectedScene = UserDataInstanceFromReference(DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesScenePanel, PlayerGroupAll(), true);
+        DialogControlSetVisible(libWCUI_gv_wU_ArchivesMissionPanel, PlayerGroupAll(), false);
+        libNtve_gf_SetDialogItemImage(libWCUI_gv_wU_ArchivesSceneImage, UserDataGetImagePath("Scenes", lv_selectedScene, "Image", 1), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ArchivesSceneTitle, libWoLC_gf_StorySceneName(lv_selectedScene), PlayerGroupAll());
+    }
+}
+
+int libWCUI_gf_WU_ArchivesScenePriority (string lp_scene) {
+    // Automatic Variable Declarations
+    string autoAF2BCFA5_val;
+
+    // Implementation
+    autoAF2BCFA5_val = lp_scene;
+    if (autoAF2BCFA5_val == "ScenePreRenderedBetterMarine") {
+        return 950;
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran01RaynorIntro") {
+        return 949;
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran04TychusIntro") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TRaynor01")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran05HornerBridgeIntro") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TRaynor03")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran15KerriganIntro") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus01")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran03ZeratulsWarning") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus02")-1);
+    }
+    else if (autoAF2BCFA5_val == "ScenePreRenderedTheDream") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus03")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran10RaynorsDream") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus03")-2);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran06ValerianIntro") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus04")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran07BarFight") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTychus05")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran11CharBatltefield") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TValerian01")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran17CharBattlefieldEnd") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TValerian02B")-1);
+    }
+    else if (autoAF2BCFA5_val == "ScenePreRenderedEnd") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TValerian03")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran08HansonEndA") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("THanson03A")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran13HansonEndB") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("THanson03B")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran09ToshEndA") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTosh03A")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran14ToshEndB") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("TTosh03B")-1);
+    }
+    else if (autoAF2BCFA5_val == "SceneTerran12HornerVictory") {
+        return (libWCUI_gf_WU_ArchivesMissionPriority("THorner04")-1);
+    }
+    else {
+    }
+    return 1000;
+}
+
+int libWCUI_gf_WU_ArchivesSplitMissionPriority (string lp_mission, string lp_choiceA, string lp_choiceB) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_mission == lp_choiceA) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == false)) {
+        return (500+((libWoLC_gf_MissionStatusAge(lp_choiceA, libWoLC_ge_MissionStatus_Completed)+1)*5));
+    }
+
+    if ((lp_mission == lp_choiceA) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == false) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == true)) {
+        return (500+((libWoLC_gf_MissionStatusAge(lp_choiceB, libWoLC_ge_MissionStatus_Completed)+1)*5));
+    }
+
+    if ((lp_mission == lp_choiceA) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == true)) {
+        return (500+((MinI(libWoLC_gf_MissionStatusAge(lp_choiceA, libWoLC_ge_MissionStatus_Completed), libWoLC_gf_MissionStatusAge(lp_choiceB, libWoLC_ge_MissionStatus_Completed))+1)*5));
+    }
+
+    if ((lp_mission == lp_choiceB) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == false)) {
+        return (500+((libWoLC_gf_MissionStatusAge(lp_choiceA, libWoLC_ge_MissionStatus_Completed)+1)*5) - 2);
+    }
+
+    if ((lp_mission == lp_choiceB) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == false) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == true)) {
+        return (500+((libWoLC_gf_MissionStatusAge(lp_choiceB, libWoLC_ge_MissionStatus_Completed)+1)*5) - 2);
+    }
+
+    if ((lp_mission == lp_choiceB) && (libWoLC_gf_MissionStatusCheck(lp_choiceA, libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_MissionStatusCheck(lp_choiceB, libWoLC_ge_MissionStatus_Completed) == true)) {
+        return (500+((MinI(libWoLC_gf_MissionStatusAge(lp_choiceA, libWoLC_ge_MissionStatus_Completed), libWoLC_gf_MissionStatusAge(lp_choiceB, libWoLC_ge_MissionStatus_Completed))+1)*5) - 2);
+    }
+
+    if ((libWoLC_gf_MissionStatusCheck(lp_mission, libWoLC_ge_MissionStatus_Completed) == false) && (libWoLC_gf_MissionStatusCheck("TValerian03", libWoLC_ge_MissionStatus_Completed) == false)) {
+        return 1500;
+    }
+    else {
+        return 0;
+    }
+}
+
+int libWCUI_gf_WU_ArchivesMissionPriority (string lp_mission) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_MasterArchivesEnabled == true)) {
+        return (500-((libWCUI_gf_WU_ArchivesMissionIndex(lp_mission)+1)*5));
+    }
+
+    if (((lp_mission == "THanson03A") || (lp_mission == "THanson03B"))) {
+        return libWCUI_gf_WU_ArchivesSplitMissionPriority(lp_mission, "THanson03A", "THanson03B");
+    }
+    else if (((lp_mission == "TTosh03A") || (lp_mission == "TTosh03B"))) {
+        return libWCUI_gf_WU_ArchivesSplitMissionPriority(lp_mission, "TTosh03A", "TTosh03B");
+    }
+    else if (((lp_mission == "TValerian02A") || (lp_mission == "TValerian02B"))) {
+        return libWCUI_gf_WU_ArchivesSplitMissionPriority(lp_mission, "TValerian02A", "TValerian02B");
+    }
+    if ((libWoLC_gf_MissionStatusCheck(lp_mission, libWoLC_ge_MissionStatus_Completed) == true) && (libWoLC_gf_WC_CampaignMapTypeCheck(lp_mission, c_mapKindMission) == true)) {
+        return (500+((libWoLC_gf_MissionStatusAge(lp_mission, libWoLC_ge_MissionStatus_Completed)+1)*5));
+    }
+
+    return 1500;
+}
+
+int libWCUI_gf_WU_ArchivesMissionIndex (string lp_map) {
+    // Variable Declarations
+    int lv_i;
+    int lv_count;
+
+    // Automatic Variable Declarations
+    int auto12D7AD47_ae;
+    const int auto12D7AD47_ai = 1;
+
+    // Variable Initialization
+    lv_count = CatalogEntryCount(c_gameCatalogMap);
+
+    // Implementation
+    auto12D7AD47_ae = lv_count;
+    lv_i = 1;
+    for ( ; ( (auto12D7AD47_ai >= 0 && lv_i <= auto12D7AD47_ae) || (auto12D7AD47_ai < 0 && lv_i >= auto12D7AD47_ae) ) ; lv_i += auto12D7AD47_ai ) {
+        if ((lp_map == ((CatalogEntryGet(c_gameCatalogMap, lv_i))))) {
+            break;
+        }
+
+    }
+    return lv_i;
+}
+
+string libWCUI_gf_WU_ArchivesSelectedScene () {
+    // Automatic Variable Declarations
+    // Implementation
+    return UserDataInstanceFromReference(DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+}
+
+void libWCUI_gf_WU_ArchivesSetUV (string lp_side, fixed lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlSendAnimationEvent(libWCUI_gv_wU_ArchivesMissionImage, PlayerGroupAll(), ("Scroll" + lp_side + "Play"));
+    DialogControlSetAnimationTime(libWCUI_gv_wU_ArchivesMissionImage, PlayerGroupAll(), ("Scroll" + lp_side), lp_value);
+    DialogControlSendAnimationEvent(libWCUI_gv_wU_ArchivesMissionImage, PlayerGroupAll(), ("Scroll" + lp_side + "Pause"));
+}
+
+void libWCUI_gf_WU_ArchivesSetUVs (fixed lp_centerX, fixed lp_centerY, fixed lp_scale) {
+    // Variable Declarations
+    fixed lv_ratioX;
+    fixed lv_ratioY;
+    fixed lv_top;
+    fixed lv_bottom;
+    fixed lv_left;
+    fixed lv_right;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_ratioX = (IntToFixed(libWCUI_gv_pUC_ArchivesMissionTargetWidth) / IntToFixed(libWCUI_gv_pUC_ArchivesMissionLoadingWidth));
+    lv_ratioY = (IntToFixed(libWCUI_gv_pUC_ArchivesMissionTargetHeight) / IntToFixed(libWCUI_gv_pUC_ArchivesMissionLoadingHeight));
+    lv_top = (lp_centerY-(lv_ratioY*lp_scale/2.0));
+    lv_bottom = (lp_centerY+(lv_ratioY*lp_scale/2.0));
+    lv_left = (lp_centerX-(lv_ratioX*lp_scale/2.0));
+    lv_right = (lp_centerX+(lv_ratioX*lp_scale/2.0));
+    if (((lv_left <= 0.0) || (lv_right >= 1.0) || (lv_top <= 0.0) || (lv_bottom >= 1.0))) {
+        return ;
+    }
+
+    libWCUI_gf_WU_ArchivesSetUV("Top", lv_top);
+    libWCUI_gf_WU_ArchivesSetUV("Bottom", lv_bottom);
+    libWCUI_gf_WU_ArchivesSetUV("Left", lv_left);
+    libWCUI_gf_WU_ArchivesSetUV("Right", lv_right);
+}
+
+void libWCUI_gf_DisplayArchives (trigger lp_exitTrigger, trigger lp_sceneFinishCallback) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_ArchivesLogicExitTrigger = lp_exitTrigger;
+    libWCUI_gv_wU_ArchivesLogicSceneFinishTrigger = lp_sceneFinishCallback;
+    libCamp_gf_HideStoryUI(false, false);
+    if ((libWCUI_gv_wU_ArchivesLogicInitialized == false)) {
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_UIArchivesPlayMission, libWCUI_gt_WU_ArchivesLogicPlayMission);
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_UIArchivesPlayScene, libWCUI_gt_WU_ArchivesLogicPlayCinematic);
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_UIArchivesQuit, libWCUI_gt_WU_ArchivesLogicQuit);
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_UIMissionLaunch, libWCUI_gt_WU_ArchivesLogicMissionLaunch);
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_UIMissionQuit, libWCUI_gt_WU_ArchivesLogicMissionQuit);
+        libWoLC_gf_RegisterCampaignEvent(libWoLC_ge_WC_Event_CampaignArchivesSynced, libWCUI_gt_WU_ArchivesSynced);
+        libWCUI_gv_wU_ArchivesLogicInitialized = true;
+    }
+
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayMission, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayCinematic, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicQuit, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionLaunch, true);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionQuit, true);
+    libWCUI_gf_WU_ArchivesDisplay();
+}
+
+trigger auto_libWCUI_gf_DisplayArmyButton_Trigger = null;
+bool auto_libWCUI_gf_DisplayArmyButton_lp_doDoNot;
+
+void libWCUI_gf_DisplayArmyButton (bool lp_doDoNot) {
+    auto_libWCUI_gf_DisplayArmyButton_lp_doDoNot = lp_doDoNot;
+
+    if (auto_libWCUI_gf_DisplayArmyButton_Trigger == null) {
+        auto_libWCUI_gf_DisplayArmyButton_Trigger = TriggerCreate("auto_libWCUI_gf_DisplayArmyButton_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libWCUI_gf_DisplayArmyButton_Trigger, false, false);
+}
+
+bool auto_libWCUI_gf_DisplayArmyButton_TriggerFunc (bool testConds, bool runActions) {
+    bool lp_doDoNot = auto_libWCUI_gf_DisplayArmyButton_lp_doDoNot;
+
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_ArmyButtonHookup();
+    TriggerEnable(libWCUI_gt_WU_ArmyButtonUsed, true);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeArmyButton, true);
+    if ((lp_doDoNot == true)) {
+        libWCUI_gf_ToggleArmyButtonFlashing(true);
+    }
+
+    return true;
+}
+
+void libWCUI_gf_WU_ArmyButtonHookup () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_ArmyButton != c_invalidDialogControlId)) {
+        return ;
+    }
+
+    DialogControlHookupStandard(c_triggerControlTypeFlash, "UIContainer/ConsoleUIContainer/ArmyButtonTipEffects");
+    libWCUI_gv_wU_ArmyButtonTipPanel = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "UIContainer/ConsoleUIContainer/ArmyButton");
+    libWCUI_gv_wU_ArmyButton = DialogControlLastCreated();
+}
+
+void libWCUI_gf_ToggleArmyButtonFlashing (bool lp_onOff) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_onOff == true)) {
+        libWCUI_gf_WU_ArmyButtonHookup();
+        TriggerEnable(libWCUI_gt_WU_ArmyButtonUsed, true);
+        libWCUI_gv_wU_ArmyButtonUsed = false;
+        TriggerQueueEnter();
+        TriggerExecute(libWCUI_gt_WU_FlashArmyButtonHelpTip, true, false);
+        TriggerQueueExit();
+    }
+    else {
+        TriggerExecute(libWCUI_gt_WU_ArmyButtonFlashingOff, true, false);
+    }
+}
+
+void libWCUI_gf_SelectArmyButtonUsed (trigger t) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventGeneric(t, libWCUI_gv_pUC_SelectArmyEventUsed);
+}
+
+void libWCUI_gf_DisplayCampaignDirective (text lp_directiveText) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_DirectiveDialog == c_invalidDialogId)) {
+        libWCUI_gf_WU_DirectiveInit();
+    }
+
+    DialogControlSetVisible(libWCUI_gv_wU_DirectivePanel, PlayerGroupAll(), true);
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_DirectiveLabel, lp_directiveText, PlayerGroupAll());
+}
+
+void libWCUI_gf_HideCampaignDirective () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_DirectiveDialog == c_invalidDialogId)) {
+        return ;
+    }
+
+    DialogControlSetVisible(libWCUI_gv_wU_DirectivePanel, PlayerGroupAll(), false);
+}
+
+void libWCUI_gf_WU_DirectiveInit () {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogCreate(500, 400, c_anchorCenter, 0, 0, true);
+    DialogSetFullscreen(DialogLastCreated(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libWCUI_gv_wU_DirectiveDialog = DialogLastCreated();
+    DialogSetVisible(libWCUI_gv_wU_DirectiveDialog, PlayerGroupAll(), true);
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/CampaignDirectiveDisplay");
+    libWCUI_gv_wU_DirectivePanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_DirectivePanel, c_triggerControlTypeLabel, "DirectiveLabel");
+    libWCUI_gv_wU_DirectiveLabel = DialogControlLastCreated();
+}
+
+int libWCUI_gf_WU_BB_HPBarCurrentWidth () {
+    // Variable Declarations
+    fixed lv_current;
+    fixed lv_max;
+    int lv_width;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((libWCUI_gv_wU_BB_Boss == null)) {
+        lv_current = libWCUI_gv_wU_BB_CurrentValue;
+        lv_max = libWCUI_gv_wU_BB_MaxValue;
+    }
+    else {
+        lv_current = (UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropLife, c_unitPropCurrent) + UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropShields, c_unitPropCurrent));
+        lv_max = (UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropLifeMax, c_unitPropCurrent) + UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropShieldsMax, c_unitPropCurrent));
+    }
+    if ((lv_max <= 0.0)) {
+        lv_max = 1.0;
+    }
+
+    if ((lv_current > lv_max)) {
+        lv_current = lv_max;
+    }
+
+    lv_width = FixedToInt((libWCUI_gv_pUC_BB_HPBarWidth * (lv_current / lv_max)));
+    return lv_width;
+}
+
+text libWCUI_gf_WU_BB_HPBarFormatLabel () {
+    // Variable Declarations
+    fixed lv_current;
+    fixed lv_max;
+    text lv_label;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((libWCUI_gv_wU_BB_Boss == null)) {
+        lv_current = libWCUI_gv_wU_BB_CurrentValue;
+        lv_max = libWCUI_gv_wU_BB_MaxValue;
+    }
+    else {
+        lv_current = (UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropLife, c_unitPropCurrent) + UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropShields, c_unitPropCurrent));
+        lv_max = (UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropLifeMax, c_unitPropCurrent) + UnitGetPropertyFixed(libWCUI_gv_wU_BB_Boss, c_unitPropShieldsMax, c_unitPropCurrent));
+    }
+    lv_label = (IntToText(FixedToInt(lv_current)) + StringExternal("Param/Value/lib_WCUI_A8DB4967") + IntToText(FixedToInt(lv_max)));
+    return lv_label;
+}
+
+trigger auto_libWCUI_gf_WU_BB_HPBarChange_Trigger = null;
+
+void libWCUI_gf_WU_BB_HPBarChange () {
+    if (auto_libWCUI_gf_WU_BB_HPBarChange_Trigger == null) {
+        auto_libWCUI_gf_WU_BB_HPBarChange_Trigger = TriggerCreate("auto_libWCUI_gf_WU_BB_HPBarChange_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libWCUI_gf_WU_BB_HPBarChange_Trigger, false, false);
+}
+
+bool auto_libWCUI_gf_WU_BB_HPBarChange_TriggerFunc (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_newWidth;
+    int lv_width;
+    int lv_damageBar;
+    fixed lv_oldPct;
+    fixed lv_newPct;
+    string lv_iMAGE;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_damageBar = c_invalidDialogControlId;
+
+    // Implementation
+    lv_newWidth = libWCUI_gf_WU_BB_HPBarCurrentWidth();
+    lv_width = (libWCUI_gv_wU_BB_HPOldWidth - lv_newWidth);
+    lv_oldPct = (libWCUI_gv_wU_BB_HPOldWidth / libWCUI_gv_pUC_BB_HPBarWidth);
+    lv_newPct = (lv_newWidth / libWCUI_gv_pUC_BB_HPBarWidth);
+    libWCUI_gv_wU_BB_HPOldWidth = lv_newWidth;
+    if ((((lv_newPct <= 0.75) && (lv_oldPct > 0.75)) || ((lv_newPct <= 0.5) && (lv_oldPct > 0.5)) || ((lv_newPct <= 0.25) && (lv_oldPct > 0.25)))) {
+        DialogControlSendAnimationEvent(libWCUI_gv_wU_BB_Panel, PlayerGroupAll(), "Highlight");
+    }
+    else if ((lv_newPct < 0.25)) {
+        DialogControlSendAnimationEvent(libWCUI_gv_wU_BB_Panel, PlayerGroupAll(), "Danger");
+    }
+    else if (true) {
+        DialogControlSendAnimationEvent(libWCUI_gv_wU_BB_Panel, PlayerGroupAll(), "DangerStop");
+    }
+    if ((lv_width > 0)) {
+        DialogControlCreateInPanelFromTemplate(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeImage, "LotV_GameUnitFrame/BossHealthBarDamageTemplate/DamageBar");
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, libWCUI_gv_wU_BB_HpCurrentImage, c_anchorLeft, 0, 0);
+        lv_damageBar = DialogControlLastCreated();
+        DialogControlSetSize(lv_damageBar, PlayerGroupAll(), (libWCUI_gv_wU_BB_HPOldWidth + lv_width), libWCUI_gv_pUC_BB_HPBarHeight);
+        libNtve_gf_SetDialogItemRenderPriority(lv_damageBar, 507, PlayerGroupAll());
+        DialogControlSetVisible(lv_damageBar, PlayerGroupAll(), true);
+        Wait(1.0, c_timeReal);
+        DialogControlFadeTransparency(lv_damageBar, PlayerGroupAll(), 1.0, 100.0);
+        Wait(1.1, c_timeReal);
+        DialogControlDestroy(lv_damageBar);
+    }
+
+    return true;
+}
+
+void libWCUI_gf_DisplaySingularBossBarVoidCampaign (string lp_portrait, text lp_title, int lp_max) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_BB_Portraits = lp_portrait;
+    libWCUI_gv_wU_BB_Title = lp_title;
+    libWCUI_gv_wU_BB_Boss = null;
+    libWCUI_gf_SetSingularBossBarMaximumValueVoidCampaign(lp_max, true);
+    libWCUI_gf_SetSingularBossBarCurrentValueVoidCampaign(lp_max, true);
+    libWCUI_gv_wU_BB_HPOldWidth = -1;
+    if ((libWCUI_gv_wU_BB_Panel == c_invalidDialogControlId)) {
+        DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/VoidBossUnitFrame");
+        libWCUI_gv_wU_BB_Panel = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeButton, "ClickableAreaHealthBar");
+        libWCUI_gv_wU_BB_ClickableAreaHealthBar = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeButton, "ClickableAreaNameLabel");
+        libWCUI_gv_wU_BB_ClickableAreaNameLabel = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeLabel, "NameLabel");
+        libWCUI_gv_wU_BB_TitleLabel = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeImage, "HealthBarImage");
+        libWCUI_gv_wU_BB_HpCurrentImage = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeLabel, "HealthLabel");
+        libWCUI_gv_wU_BB_HpLabel = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeImage, "ObjectiveBarBorder");
+        libWCUI_gv_wU_BB_ObjectiveBG = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_BB_Panel, c_triggerControlTypeImage, "BossBarBorder");
+        libWCUI_gv_wU_BB_BossBG = DialogControlLastCreated();
+    }
+
+    DialogControlSetVisible(libWCUI_gv_wU_BB_Panel, PlayerGroupAll(), true);
+    libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+}
+
+void libWCUI_gf_SetSingularBossBarMaximumValueVoidCampaign (int lp_max, bool lp_refresh) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_BB_MaxValue = IntToFixed(lp_max);
+    if ((libWCUI_gv_wU_BB_MaxValue <= 0.0)) {
+        libWCUI_gv_wU_BB_MaxValue = 1.0;
+    }
+
+    libWCUI_gv_wU_BB_Boss = null;
+    if ((lp_refresh == true)) {
+        libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+    }
+
+}
+
+void libWCUI_gf_SetSingularBossBarCurrentValueVoidCampaign (int lp_current, bool lp_refresh) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_BB_CurrentValue = IntToFixed(lp_current);
+    if ((libWCUI_gv_wU_BB_CurrentValue < 0.0)) {
+        libWCUI_gv_wU_BB_CurrentValue = 0.0;
+    }
+
+    libWCUI_gv_wU_BB_Boss = null;
+    if ((lp_refresh == true)) {
+        libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+    }
+
+}
+
+void libWCUI_gf_SetSingularBossBarBossVoidCampaign (unit lp_boss, bool lp_refresh) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_boss != null)) {
+        TriggerEnable(libWCUI_gt_WU_BB_BossHPChanged, true);
+        TriggerEnable(libWCUI_gt_WU_BossBarFocusOnTarget, true);
+        TriggerEnable(libWCUI_gt_WU_BB_LoadUpdate, true);
+    }
+
+    libWCUI_gv_wU_BB_Boss = lp_boss;
+    libWCUI_gv_wU_BB_MaxValue = 0.0;
+    libWCUI_gv_wU_BB_CurrentValue = 0.0;
+    if ((lp_refresh == true)) {
+        libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+    }
+
+}
+
+void libWCUI_gf_ShowHideSingularBossBarVoidCampaign (bool lp_showHide) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_BB_Panel == c_invalidDialogControlId)) {
+        return ;
+    }
+
+    DialogControlSetVisible(libWCUI_gv_wU_BB_Panel, PlayerGroupAll(), lp_showHide);
+}
+
+void libWCUI_gf_RefreshSingularBossBarVoidCampaign () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_BB_Panel == c_invalidDialogControlId)) {
+        return ;
+    }
+
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_BB_TitleLabel, libWCUI_gv_wU_BB_Title, PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_BB_HpLabel, libWCUI_gf_WU_BB_HPBarFormatLabel(), PlayerGroupAll());
+    DialogControlSetSize(libWCUI_gv_wU_BB_HpCurrentImage, PlayerGroupSingle(1), libWCUI_gf_WU_BB_HPBarCurrentWidth(), libWCUI_gv_pUC_BB_HPBarHeight);
+    libWCUI_gf_WU_BB_HPBarChange();
+    if ((libWCUI_gv_wU_BB_Style == libWCUI_ge_SingularBossBarStyle_Objective)) {
+        DialogControlSetVisible(libWCUI_gv_wU_BB_BossBG, PlayerGroupAll(), false);
+        DialogControlSetVisible(libWCUI_gv_wU_BB_ObjectiveBG, PlayerGroupAll(), true);
+    }
+    else {
+        DialogControlSetVisible(libWCUI_gv_wU_BB_BossBG, PlayerGroupAll(), true);
+        DialogControlSetVisible(libWCUI_gv_wU_BB_ObjectiveBG, PlayerGroupAll(), false);
+    }
+}
+
+void libWCUI_gf_SetSingularBossBarColor (color lp_color) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemColor(libWCUI_gv_wU_BB_HpCurrentImage, lp_color, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetSingularBossBarTitleColor (color lp_color) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemColor(libWCUI_gv_wU_BB_TitleLabel, lp_color, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetSingularBossBarStyle (int lp_style) {
+    // Automatic Variable Declarations
+}
+
+void libWCUI_gf_EnableLowHealthWarning (int lp_slotIndex, unit lp_watchedUnit) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_HealthWatchUnit[lp_slotIndex] = lp_watchedUnit;
+    libWCUI_gv_wU_HealthWatchLastHP[lp_slotIndex] = (UnitGetPropertyFixed(lp_watchedUnit, c_unitPropLife, c_unitPropCurrent)+UnitGetPropertyFixed(lp_watchedUnit, c_unitPropShields, c_unitPropCurrent));
+    TriggerEnable(libWCUI_gt_WU_HealthWatchLifeCheck, true);
+    TriggerEnable(libWCUI_gt_WU_HealthWatchUnitDies, true);
+}
+
+void libWCUI_gf_WU_HealthWatchCreate () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_HealthWatchDialog != c_invalidDialogId)) {
+        return ;
+    }
+
+    DialogCreate(1600, 1200, c_anchorCenter, 0, 0, false);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetFullscreen(DialogLastCreated(), true);
+    libWCUI_gv_wU_HealthWatchDialog = DialogLastCreated();
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1600, 1200, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_ingame_effects_splash2.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libWCUI_gv_wU_HealthWatchImage = DialogControlLastCreated();
+    DialogControlSetFullDialog(DialogControlLastCreated(), PlayerGroupAll(), true);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+}
+
+bool libWCUI_gf_WU_HealthWatchUnitBelowThreshold (unit lp_watchUnit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_pUC_HealthWatchThreshold > ((UnitGetPropertyFixed(lp_watchUnit, c_unitPropLife, c_unitPropCurrent)+UnitGetPropertyFixed(lp_watchUnit, c_unitPropShields, c_unitPropCurrent))/(UnitGetPropertyFixed(lp_watchUnit, c_unitPropLifeMax, c_unitPropCurrent)+UnitGetPropertyFixed(lp_watchUnit, c_unitPropShieldsMax, c_unitPropCurrent))))) {
+        return true;
+    }
+
+    return false;
+}
+
+void libWCUI_gf_PM_StopHeroLowHPSound () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_HealthWatchSoundStart != null)) {
+        SoundStop(libWCUI_gv_wU_HealthWatchSoundStart, true);
+        libWCUI_gv_wU_HealthWatchSoundStart = null;
+    }
+
+    if ((libWCUI_gv_wU_HealthWatchSoundBreath != null)) {
+        SoundStop(libWCUI_gv_wU_HealthWatchSoundBreath, true);
+        libWCUI_gv_wU_HealthWatchSoundBreath = null;
+    }
+
+    if ((libWCUI_gv_wU_HealthWatchSoundHeartbeat != null)) {
+        SoundStop(libWCUI_gv_wU_HealthWatchSoundHeartbeat, true);
+        libWCUI_gv_wU_HealthWatchSoundHeartbeat = null;
+    }
+
+    TriggerStop(libWCUI_gt_WU_HealthWatchBreathLoop);
+    TriggerStop(libWCUI_gt_WU_HealthWatchHeartLoop);
+    TriggerEnable(libWCUI_gt_WU_HealthWatchStartSound, true);
+    TriggerEnable(libWCUI_gt_WU_HealthWatchBreathLoop, true);
+    TriggerEnable(libWCUI_gt_WU_HealthWatchHeartLoop, true);
+    libWoLC_gf_SetAllSoundChannelVolumesCampaign(libWoLC_ge_VolumeChannelModeCampaign_LowHealthEnd);
+}
+
+trigger auto_libWCUI_gf_DisplayProgressBar_Trigger = null;
+text auto_libWCUI_gf_DisplayProgressBar_lp_title;
+int auto_libWCUI_gf_DisplayProgressBar_lp_min;
+int auto_libWCUI_gf_DisplayProgressBar_lp_max;
+
+void libWCUI_gf_DisplayProgressBar (text lp_title, int lp_min, int lp_max) {
+    auto_libWCUI_gf_DisplayProgressBar_lp_title = lp_title;
+    auto_libWCUI_gf_DisplayProgressBar_lp_min = lp_min;
+    auto_libWCUI_gf_DisplayProgressBar_lp_max = lp_max;
+
+    if (auto_libWCUI_gf_DisplayProgressBar_Trigger == null) {
+        auto_libWCUI_gf_DisplayProgressBar_Trigger = TriggerCreate("auto_libWCUI_gf_DisplayProgressBar_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libWCUI_gf_DisplayProgressBar_Trigger, false, false);
+}
+
+bool auto_libWCUI_gf_DisplayProgressBar_TriggerFunc (bool testConds, bool runActions) {
+    text lp_title = auto_libWCUI_gf_DisplayProgressBar_lp_title;
+    int lp_min = auto_libWCUI_gf_DisplayProgressBar_lp_min;
+    int lp_max = auto_libWCUI_gf_DisplayProgressBar_lp_max;
+
+    // Variable Declarations
+    string lv_image;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_image = "Assets\\Textures\\ui_loadingbar_metalframe_protoss.dds";
+
+    // Implementation
+    if ((libWCUI_gv_wU_ProgressBarPanel == c_invalidDialogControlId)) {
+        DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/ProgressFrameTemplate");
+        libWCUI_gv_wU_ProgressBarPanel = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_ProgressBarPanel, c_triggerControlTypeLabel, "NameLabel");
+        libWCUI_gv_wU_ProgressBarLabelTitle = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_ProgressBarPanel, c_triggerControlTypeImage, "BarImage");
+        libWCUI_gv_wU_ProgressBarImageBar = DialogControlLastCreated();
+        DialogControlHookup(libWCUI_gv_wU_ProgressBarPanel, c_triggerControlTypeLabel, "BarLabel");
+        libWCUI_gv_wU_ProgressBarLabelBarLeft = DialogControlLastCreated();
+    }
+
+    libWCUI_gf_SetProgressBarTitle(lp_title);
+    libWCUI_gf_SetProgressBarValueRange(lp_min, lp_max);
+    DialogControlSetVisible(libWCUI_gv_wU_ProgressBarPanel, PlayerGroupAll(), true);
+    libWCUI_gv_wU_ProgressBarShowing = true;
+    while (true) {
+        if ((libWCUI_gv_wU_ProgressBarPanel == c_invalidDialogControlId)) {
+            return true;
+        }
+
+        if ((DialogControlIsVisible(libWCUI_gv_wU_ProgressBarPanel, 1) == true)) {
+            libWCUI_gf_WU_UpdateProgressBar();
+        }
+
+        Wait(0.25, c_timeGame);
+    }
+    return true;
+}
+
+void libWCUI_gf_SetProgressBarTitle (text lp_title) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ProgressBarLabelTitle, lp_title, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetProgressBarValueRange (int lp_min, int lp_max) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_ProgressBarMin = lp_min;
+    libWCUI_gv_wU_ProgressBarMax = lp_max;
+}
+
+void libWCUI_gf_SetProgressBarLabel (text lp_label) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_ProgressBarLabelBarLeft, lp_label, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetProgressBarProgress (int lp_progress) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_ProgressBarProgress = lp_progress;
+}
+
+void libWCUI_gf_SetProgressBarColor (color lp_color) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemColor(libWCUI_gv_wU_ProgressBarImageBar, lp_color, PlayerGroupAll());
+}
+
+void libWCUI_gf_ShowHideProgressBar (bool lp_showHide) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_ProgressBarPanel == c_invalidDialogControlId)) {
+        return ;
+    }
+
+    if ((lp_showHide == true)) {
+        libWCUI_gf_WU_UpdateProgressBar();
+    }
+
+    DialogControlSetVisible(libWCUI_gv_wU_ProgressBarPanel, PlayerGroupAll(), lp_showHide);
+}
+
+void libWCUI_gf_WU_UpdateProgressBar () {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    DialogControlSetSize(libWCUI_gv_wU_ProgressBarImageBar, PlayerGroupAll(), MaxI(FixedToInt((IntToFixed(libWCUI_gv_pUC_ProgressBarWidth) * (IntToFixed(libWCUI_gv_wU_ProgressBarProgress) / IntToFixed(libWCUI_gv_wU_ProgressBarMax)))), 1), libWCUI_gv_pUC_ProgressBarHeight);
+    DialogControlSetVisible(libWCUI_gv_wU_ProgressBarImageBar, PlayerGroupAll(), true);
+}
+
+color libWCUI_gf_GetProgressBarColorCampaign () {
+    // Automatic Variable Declarations
+    // Implementation
+    return Color(23.53, 86.67, 100.00);
+}
+
+trigger auto_libWCUI_gf_DisplayProgressBarUnitOld_Trigger = null;
+unit auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_unit;
+int auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_minValue;
+int auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_maxValue;
+text auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_labelText;
+int auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetX;
+int auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetY;
+string auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_attachment;
+
+void libWCUI_gf_DisplayProgressBarUnitOld (unit lp_unit, int lp_minValue, int lp_maxValue, text lp_labelText, int lp_offsetX, int lp_offsetY, string lp_attachment) {
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_unit = lp_unit;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_minValue = lp_minValue;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_maxValue = lp_maxValue;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_labelText = lp_labelText;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetX = lp_offsetX;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetY = lp_offsetY;
+    auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_attachment = lp_attachment;
+
+    if (auto_libWCUI_gf_DisplayProgressBarUnitOld_Trigger == null) {
+        auto_libWCUI_gf_DisplayProgressBarUnitOld_Trigger = TriggerCreate("auto_libWCUI_gf_DisplayProgressBarUnitOld_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libWCUI_gf_DisplayProgressBarUnitOld_Trigger, false, false);
+}
+
+bool auto_libWCUI_gf_DisplayProgressBarUnitOld_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_unit = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_unit;
+    int lp_minValue = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_minValue;
+    int lp_maxValue = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_maxValue;
+    text lp_labelText = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_labelText;
+    int lp_offsetX = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetX;
+    int lp_offsetY = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_offsetY;
+    string lp_attachment = auto_libWCUI_gf_DisplayProgressBarUnitOld_lp_attachment;
+
+    // Variable Declarations
+    int lv_progressBarDialog;
+    int lv_progressBarPanel;
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarProgressBar;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarDialog = c_invalidDialogId;
+    lv_progressBarPanel = c_invalidDialogControlId;
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarProgressBar = c_invalidDialogControlId;
+
+    // Implementation
+    if ((DataTableGetDialog(true, ("ProgressBar_" + IntToString((libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog)) + "_" + IntToString(UnitGetTag(lp_unit)))) != c_invalidDialogId)) {
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_WCUI_FB61F536"), true);
+        libWCUI_gf_DestroyProgressBarUnitOld(lp_unit);
+    }
+
+    DialogCreate(210, 75, c_anchorCenter, 0, 0, true);
+    lv_progressBarDialog = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetPositionRelativeToUnit(DialogLastCreated(), lp_unit, lp_attachment, lp_offsetX, lp_offsetY);
+    DialogControlCreateFromTemplate(DialogLastCreated(), c_triggerControlTypePanel, "HotS_GameUnitFrame/SmallProgressUnitFrameTemplate");
+    lv_progressBarPanel = DialogControlLastCreated();
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+    DialogControlSetFullDialog(DialogControlLastCreated(), PlayerGroupAll(), true);
+    DialogControlHookup(lv_progressBarPanel, c_triggerControlTypeLabel, "NameLabel");
+    lv_progressBarLabel = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemText(lv_progressBarLabel, lp_labelText, PlayerGroupAll());
+    DialogControlHookup(lv_progressBarPanel, c_triggerControlTypeLabel, "ValueLabel");
+    lv_progressBarValue = DialogControlLastCreated();
+    DialogControlHookup(lv_progressBarPanel, c_triggerControlTypeImage, "BarImage");
+    lv_progressBarProgressBar = DialogControlLastCreated();
+    DialogSetVisible(lv_progressBarDialog, PlayerGroupAll(), true);
+    DataTableSetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog), lv_progressBarDialog);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Panel), lv_progressBarPanel);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_ProgressBar), lv_progressBarProgressBar);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Label), lv_progressBarLabel);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value), lv_progressBarValue);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue), lp_minValue);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MaxValue), lp_maxValue);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetX), lp_offsetX);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetY), lp_offsetY);
+    DataTableSetString(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_Attachment), (lp_attachment));
+    while ((lp_unit != null) && (lv_progressBarDialog != c_invalidDialogId)) {
+        libWCUI_gf_WU_UpdateProgressBarUnitOld(lp_unit);
+        lv_progressBarDialog = DataTableGetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog));
+        Wait(0.25, c_timeReal);
+    }
+    return true;
+}
+
+void libWCUI_gf_DestroyProgressBarUnitOld (unit lp_unit) {
+    // Variable Declarations
+    int lv_progressBarDialog;
+    int lv_progressBarPanel;
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarProgressBar;
+    int lv_noDialog;
+    int lv_noDialogItem;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarDialog = c_invalidDialogId;
+    lv_progressBarPanel = c_invalidDialogControlId;
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarProgressBar = c_invalidDialogControlId;
+    lv_noDialog = c_invalidDialogId;
+    lv_noDialogItem = c_invalidDialogControlId;
+
+    // Implementation
+    lv_progressBarDialog = DataTableGetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog));
+    lv_progressBarProgressBar = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_ProgressBar));
+    lv_progressBarValue = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value));
+    lv_progressBarLabel = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value));
+    lv_progressBarPanel = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Panel));
+    DialogControlDestroy(lv_progressBarPanel);
+    DialogControlDestroy(lv_progressBarProgressBar);
+    DialogControlDestroy(lv_progressBarValue);
+    DialogControlDestroy(lv_progressBarLabel);
+    DialogDestroy(lv_progressBarDialog);
+    DataTableSetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog), lv_noDialog);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Panel), lv_noDialogItem);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_ProgressBar), lv_noDialogItem);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value), lv_noDialogItem);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Label), lv_noDialogItem);
+}
+
+void libWCUI_gf_SetProgressBarProgressUnitOld (unit lp_unit, int lp_value) {
+    // Variable Declarations
+    int lv_minValue;
+    int lv_maxValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_minValue = DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue));
+    lv_maxValue = DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MaxValue));
+
+    // Implementation
+    if (((lp_value >= lv_minValue) && (lp_value <= lv_maxValue))) {
+        DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_CurValue), lp_value);
+    }
+    else {
+        TriggerDebugOutput(1, StringToText(("Progress Bar (Unit) Value (" + IntToString(lp_value) + ") outside of set Min (" + IntToString(lv_minValue) + ") and Max (" + IntToString(lv_maxValue) + ").")), true);
+    }
+    libWCUI_gf_WU_UpdateProgressBarUnitOld(lp_unit);
+}
+
+void libWCUI_gf_MoveProgressBarUnitOld (unit lp_unit, int lp_offsetX, int lp_offsetY) {
+    // Automatic Variable Declarations
+    // Implementation
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetX), lp_offsetX);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetY), lp_offsetY);
+    libWCUI_gf_WU_UpdateProgressBarUnitOld(lp_unit);
+}
+
+void libWCUI_gf_SetProgresBarTitleUnitOld (unit lp_unit, text lp_titleText) {
+    // Variable Declarations
+    int lv_progressBarLabel;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarLabel = c_invalidDialogControlId;
+
+    // Implementation
+    lv_progressBarLabel = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Label));
+    libNtve_gf_SetDialogItemText(lv_progressBarLabel, lp_titleText, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetProgressBarValueRangeUnitOld (unit lp_unit, int lp_minValue, int lp_maxValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue), lp_minValue);
+    DataTableSetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MaxValue), lp_maxValue);
+    libWCUI_gf_WU_UpdateProgressBarUnitOld(lp_unit);
+}
+
+void libWCUI_gf_ShowHideProgressBarUnitOld (unit lp_unit, bool lp_showHide) {
+    // Variable Declarations
+    int lv_progressBarDialog;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarDialog = c_invalidDialogId;
+
+    // Implementation
+    lv_progressBarDialog = DataTableGetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog));
+    DialogSetVisible(lv_progressBarDialog, PlayerGroupAll(), lp_showHide);
+    libWCUI_gf_WU_UpdateProgressBarUnitOld(lp_unit);
+}
+
+void libWCUI_gf_WU_UpdateProgressBarUnitOld (unit lp_unit) {
+    // Variable Declarations
+    int lv_progressBarDialog;
+    int lv_progressBarPanel;
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarProgressBar;
+    const int lv_c_Width = 180;
+    const int lv_c_Height = 12;
+    string lv_dataTableString;
+    string lv_attachmentPreset;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarDialog = c_invalidDialogId;
+    lv_progressBarPanel = c_invalidDialogControlId;
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarProgressBar = c_invalidDialogControlId;
+    lv_dataTableString = DataTableGetString(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_Attachment));
+    lv_attachmentPreset = lv_dataTableString;
+
+    // Implementation
+    if (((lp_unit == null) || (UnitIsAlive(lp_unit) == false))) {
+        libWCUI_gf_DestroyProgressBarUnitOld(lp_unit);
+        return ;
+    }
+
+    lv_progressBarDialog = DataTableGetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog));
+    if ((lv_progressBarDialog == c_invalidDialogId)) {
+        return ;
+    }
+
+    lv_progressBarDialog = DataTableGetDialog(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog));
+    lv_progressBarProgressBar = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_ProgressBar));
+    lv_progressBarValue = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_ProgressBarUnit_DialogNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value));
+    DialogSetPositionRelativeToUnit(lv_progressBarDialog, lp_unit, lv_attachmentPreset, DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetX)), DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetY)));
+    libNtve_gf_SetDialogItemText(lv_progressBarValue, TextTimeFormat(StringToText("<sectotal/>"), DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_CurValue))), PlayerGroupAll());
+    DialogControlSetSize(lv_progressBarProgressBar, PlayerGroupAll(), FixedToInt((lv_c_Width * ( (IntToFixed(DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_CurValue))) - IntToFixed(DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue)))) / (IntToFixed(DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MaxValue))) - IntToFixed(DataTableGetInt(true, libWCUI_gf_WU_ProgressBarUnit_DataNameOld(lp_unit, libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue)))) ))), lv_c_Height);
+    libNtve_gf_SetDialogItemColor(lv_progressBarProgressBar, libWCUI_gf_GetProgressBarColorCampaign(), PlayerGroupAll());
+}
+
+string libWCUI_gf_WU_ProgressBarUnit_DataNameOld (unit lp_unit, int lp_type) {
+    // Variable Declarations
+    string lv_name;
+
+    // Automatic Variable Declarations
+    int autoFD907BC3_val;
+
+    // Variable Initialization
+    lv_name = "";
+
+    // Implementation
+    lv_name = "ProgressBar_DataName_";
+    autoFD907BC3_val = lp_type;
+    if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_Attachment) {
+        lv_name = (lv_name + "_" + "Attachment");
+    }
+    else if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_CurValue) {
+        lv_name = (lv_name + "_" + "CurValue");
+    }
+    else if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MaxValue) {
+        lv_name = (lv_name + "_" + "MaxValue");
+    }
+    else if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_MinValue) {
+        lv_name = (lv_name + "_" + "MinValue");
+    }
+    else if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetX) {
+        lv_name = (lv_name + "_" + "OffsetX");
+    }
+    else if (autoFD907BC3_val == libWCUI_ge_WU_ProgressBarUnitStoredValuesOld_OffsetY) {
+        lv_name = (lv_name + "_" + "OffsetY");
+    }
+    else {
+    }
+    lv_name = (lv_name + "_" + IntToString(UnitGetTag(lp_unit)));
+    return lv_name;
+}
+
+string libWCUI_gf_WU_ProgressBarUnit_DialogNameOld (unit lp_unit, int lp_type) {
+    // Variable Declarations
+    string lv_name;
+
+    // Automatic Variable Declarations
+    int auto4249BB71_val;
+
+    // Variable Initialization
+    lv_name = "";
+
+    // Implementation
+    lv_name = "ProgressBar_DialogType_";
+    auto4249BB71_val = lp_type;
+    if (auto4249BB71_val == libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Dialog) {
+        lv_name = (lv_name + "_" + "Dialog");
+    }
+    else if (auto4249BB71_val == libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Label) {
+        lv_name = (lv_name + "_" + "Label");
+    }
+    else if (auto4249BB71_val == libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Panel) {
+        lv_name = (lv_name + "_" + "Panel");
+    }
+    else if (auto4249BB71_val == libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_ProgressBar) {
+        lv_name = (lv_name + "_" + "ProgressBar");
+    }
+    else if (auto4249BB71_val == libWCUI_ge_WU_ProgressBarUnit_DialogTypesOld_ProgressBar_Value) {
+        lv_name = (lv_name + "_" + "Value");
+    }
+    else {
+    }
+    lv_name = (lv_name + "_" + IntToString(UnitGetTag(lp_unit)));
+    return lv_name;
+}
+
+trigger auto_libWCUI_gf_DisplayUnitProgressBar_Trigger = null;
+unit auto_libWCUI_gf_DisplayUnitProgressBar_lp_unit;
+text auto_libWCUI_gf_DisplayUnitProgressBar_lp_title;
+int auto_libWCUI_gf_DisplayUnitProgressBar_lp_minValue;
+int auto_libWCUI_gf_DisplayUnitProgressBar_lp_maxValue;
+
+void libWCUI_gf_DisplayUnitProgressBar (unit lp_unit, text lp_title, int lp_minValue, int lp_maxValue) {
+    auto_libWCUI_gf_DisplayUnitProgressBar_lp_unit = lp_unit;
+    auto_libWCUI_gf_DisplayUnitProgressBar_lp_title = lp_title;
+    auto_libWCUI_gf_DisplayUnitProgressBar_lp_minValue = lp_minValue;
+    auto_libWCUI_gf_DisplayUnitProgressBar_lp_maxValue = lp_maxValue;
+
+    if (auto_libWCUI_gf_DisplayUnitProgressBar_Trigger == null) {
+        auto_libWCUI_gf_DisplayUnitProgressBar_Trigger = TriggerCreate("auto_libWCUI_gf_DisplayUnitProgressBar_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libWCUI_gf_DisplayUnitProgressBar_Trigger, false, false);
+}
+
+bool auto_libWCUI_gf_DisplayUnitProgressBar_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_unit = auto_libWCUI_gf_DisplayUnitProgressBar_lp_unit;
+    text lp_title = auto_libWCUI_gf_DisplayUnitProgressBar_lp_title;
+    int lp_minValue = auto_libWCUI_gf_DisplayUnitProgressBar_lp_minValue;
+    int lp_maxValue = auto_libWCUI_gf_DisplayUnitProgressBar_lp_maxValue;
+
+    // Variable Declarations
+    int lv_progressBar;
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarBorder;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBar = c_invalidDialogControlId;
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarBorder = c_invalidDialogControlId;
+
+    // Implementation
+    if (((libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar)) != c_invalidDialogControlId) || (libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Broder)) != c_invalidDialogControlId) || (libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label)) != c_invalidDialogControlId) || (libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value)) != c_invalidDialogControlId))) {
+        DialogControlDestroy(libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar)));
+        DialogControlDestroy(libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Broder)));
+        DialogControlDestroy(libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label)));
+        DialogControlDestroy(libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value)));
+    }
+
+    UnitStatusBarOverride(lp_unit, c_unitStatusGroupAll);
+    DialogControlHookupUnitStatus(c_triggerControlTypeLabel, "NameLabel", lp_unit);
+    lv_progressBarLabel = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemText(lv_progressBarLabel, lp_title, PlayerGroupAll());
+    DialogControlHookupUnitStatus(c_triggerControlTypeLabel, "ValueLabel", lp_unit);
+    lv_progressBarValue = DialogControlLastCreated();
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "BarImage", lp_unit);
+    lv_progressBar = DialogControlLastCreated();
+    DialogControlHookupUnitStatus(c_triggerControlTypeImage, "BorderImage", lp_unit);
+    lv_progressBarBorder = DialogControlLastCreated();
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label), lv_progressBarLabel);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value), lv_progressBarValue);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar), lv_progressBar);
+    libNtve_gf_SaveDataTableValueDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Broder), lv_progressBarBorder);
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MinValue), lp_minValue);
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MaxValue), lp_maxValue);
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_CurValue), lp_minValue);
+    libWCUI_gf_ShowHideUnitProgressBar(lp_unit, true);
+    libWCUI_gf_WU_UpdateUnitProgressBar(lp_unit);
+    return true;
+}
+
+void libWCUI_gf_SetUnitProgressBarProgress (unit lp_unit, int lp_value) {
+    // Variable Declarations
+    int lv_realValue;
+    int lv_realValue2;
+    int lv_minValue;
+    int lv_maxValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_minValue = DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MinValue));
+    lv_maxValue = DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MaxValue));
+
+    // Implementation
+    lv_realValue = lp_value;
+    if ((lv_minValue > lv_maxValue)) {
+        lv_realValue2 = lv_minValue;
+        lv_minValue = lv_maxValue;
+        lv_maxValue = lv_realValue2;
+    }
+
+    if ((lp_value < lv_minValue)) {
+        lv_realValue = lv_minValue;
+    }
+    else {
+        if ((lp_value > lv_maxValue)) {
+            lv_realValue = lv_maxValue;
+        }
+
+    }
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_CurValue), lv_realValue);
+    libWCUI_gf_WU_UpdateUnitProgressBar(lp_unit);
+}
+
+void libWCUI_gf_SetUnitProgresBarTitle (unit lp_unit, text lp_titleText) {
+    // Variable Declarations
+    int lv_progressBarLabel;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarLabel = c_invalidDialogControlId;
+
+    // Implementation
+    lv_progressBarLabel = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label));
+    libNtve_gf_SetDialogItemText(lv_progressBarLabel, lp_titleText, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetUnitProgressBarValueRange (unit lp_unit, int lp_minValue, int lp_maxValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MinValue), lp_minValue);
+    DataTableSetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MaxValue), lp_maxValue);
+    libWCUI_gf_SetUnitProgressBarProgress(lp_unit, DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value)));
+}
+
+void libWCUI_gf_ShowHideUnitProgressBar (unit lp_unit, bool lp_showHide) {
+    // Variable Declarations
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarBar;
+    int lv_progressBarBorder;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarBar = c_invalidDialogControlId;
+    lv_progressBarBorder = c_invalidDialogControlId;
+
+    // Implementation
+    UnitStatusBarOverride(lp_unit, c_unitStatusGroupAll);
+    lv_progressBarLabel = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label));
+    DialogControlSetVisible(lv_progressBarLabel, PlayerGroupAll(), lp_showHide);
+    lv_progressBarValue = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value));
+    DialogControlSetVisible(lv_progressBarValue, PlayerGroupAll(), lp_showHide);
+    lv_progressBarBar = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar));
+    DialogControlSetVisible(lv_progressBarBar, PlayerGroupAll(), lp_showHide);
+    lv_progressBarBorder = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Broder));
+    DialogControlSetVisible(lv_progressBarBorder, PlayerGroupAll(), lp_showHide);
+    libWCUI_gf_WU_UpdateUnitProgressBar(lp_unit);
+}
+
+void libWCUI_gf_WU_UpdateUnitProgressBar (unit lp_unit) {
+    // Variable Declarations
+    int lv_progressBarLabel;
+    int lv_progressBarValue;
+    int lv_progressBarProgressBar;
+    const int lv_c_Width = 252;
+    const int lv_c_Height = 12;
+    string lv_dataTableString;
+    string lv_attachmentPreset;
+    fixed lv_progressBarWidth;
+    int lv_minValue;
+    int lv_curValue;
+    int lv_maxValue;
+    int lv_swapValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_progressBarLabel = c_invalidDialogControlId;
+    lv_progressBarValue = c_invalidDialogControlId;
+    lv_progressBarProgressBar = c_invalidDialogControlId;
+    lv_attachmentPreset = lv_dataTableString;
+
+    // Implementation
+    lv_minValue = DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MinValue));
+    lv_maxValue = DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_MaxValue));
+    lv_curValue = DataTableGetInt(true, libWCUI_gf_WU_UnitProgressBar_Data(lp_unit, libWCUI_ge_WU_UnitProgressBarDataName_CurValue));
+    lv_progressBarProgressBar = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar));
+    lv_progressBarValue = libNtve_gf_ValueFromDataTableDialogItem(true, libWCUI_gf_WU_UnitProgressBar_Dialog(lp_unit, libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value));
+    if (((lv_progressBarProgressBar == c_invalidDialogControlId) || (lv_progressBarValue == c_invalidDialogControlId))) {
+        return ;
+    }
+
+    libNtve_gf_SetDialogItemText(lv_progressBarValue, TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), lv_curValue), PlayerGroupAll());
+    if ((lv_minValue > lv_maxValue)) {
+        lv_swapValue = lv_minValue;
+        lv_minValue = lv_maxValue;
+        lv_maxValue = lv_swapValue;
+        lv_curValue = (lv_maxValue-lv_curValue);
+    }
+
+    lv_progressBarWidth = (lv_c_Width * ( (IntToFixed(lv_curValue) - IntToFixed(lv_minValue)) / (IntToFixed(lv_maxValue) - IntToFixed(lv_minValue)) ));
+    DialogControlSetSize(lv_progressBarProgressBar, PlayerGroupAll(), MaxI(FixedToInt(lv_progressBarWidth), 1), lv_c_Height);
+    libNtve_gf_SetDialogItemColor(lv_progressBarProgressBar, libWCUI_gf_GetProgressBarColorCampaign(), PlayerGroupAll());
+}
+
+string libWCUI_gf_WU_UnitProgressBar_Data (unit lp_unit, int lp_type) {
+    // Variable Declarations
+    string lv_name;
+
+    // Automatic Variable Declarations
+    int autoB85C2953_val;
+
+    // Variable Initialization
+    lv_name = "";
+
+    // Implementation
+    lv_name = "ProgressBar_DataName_";
+    autoB85C2953_val = lp_type;
+    if (autoB85C2953_val == libWCUI_ge_WU_UnitProgressBarDataName_CurValue) {
+        lv_name = (lv_name + "_" + "CurValue");
+    }
+    else if (autoB85C2953_val == libWCUI_ge_WU_UnitProgressBarDataName_MaxValue) {
+        lv_name = (lv_name + "_" + "MaxValue");
+    }
+    else if (autoB85C2953_val == libWCUI_ge_WU_UnitProgressBarDataName_MinValue) {
+        lv_name = (lv_name + "_" + "MinValue");
+    }
+    else {
+    }
+    lv_name = (lv_name + "_" + IntToString(UnitGetTag(lp_unit)));
+    return lv_name;
+}
+
+string libWCUI_gf_WU_UnitProgressBar_Dialog (unit lp_unit, int lp_type) {
+    // Variable Declarations
+    string lv_name;
+
+    // Automatic Variable Declarations
+    int autoEA1D1BB3_val;
+
+    // Variable Initialization
+    lv_name = "";
+
+    // Implementation
+    lv_name = "ProgressBar_DialogType_";
+    autoEA1D1BB3_val = lp_type;
+    if (autoEA1D1BB3_val == libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Label) {
+        lv_name = (lv_name + "_" + "Label");
+    }
+    else if (autoEA1D1BB3_val == libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Value) {
+        lv_name = (lv_name + "_" + "Value");
+    }
+    else if (autoEA1D1BB3_val == libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Bar) {
+        lv_name = (lv_name + "_" + "ProgressBar");
+    }
+    else if (autoEA1D1BB3_val == libWCUI_ge_WU_UnitProgressBar_DialogTypes_ProgressBar_Broder) {
+        lv_name = (lv_name + "_" + "ProgressBarBorder");
+    }
+    else {
+    }
+    lv_name = (lv_name + "_" + IntToString(UnitGetTag(lp_unit)));
+    return lv_name;
+}
+
+void libWCUI_gf_TimerWindowCreate (timer lp_timer, text lp_title, bool lp_visible, bool lp_elapsed) {
+    // Variable Declarations
+    string lv_image;
+
+    // Automatic Variable Declarations
+    string auto2D681054_val;
+
+    // Variable Initialization
+
+    // Implementation
+    TimerWindowCreate(lp_timer, lp_title, lp_visible, lp_elapsed);
+    TimerWindowShowBorder(TimerWindowLastCreated(), true);
+    TimerWindowSetImageType(TimerWindowLastCreated(), c_timerWindowImageBackground, c_triggerImageTypeNineSlice);
+    TimerWindowSetImageType(TimerWindowLastCreated(), c_timerWindowImageProgressFill, c_triggerImageTypeNineSlice);
+    TimerWindowSetImageType(TimerWindowLastCreated(), c_timerWindowImageBorder, c_triggerImageTypeNineSlice);
+    TimerWindowSetImageType(TimerWindowLastCreated(), c_timerWindowImageProgressFrame, c_triggerImageTypeNineSlice);
+    TimerWindowSetStyle(TimerWindowLastCreated(), c_timerWindowStyleVerticalTitleTime, false);
+    TimerWindowSetFixedHeight(TimerWindowLastCreated(), 80);
+    libWCUI_gf_RepositionTimerWindow(TimerWindowLastCreated());
+    if ((libWCUI_gv_wU_TimerWindowHighlightFrame != c_invalidDialogControlId)) {
+        DialogControlDestroy(libWCUI_gv_wU_TimerWindowHighlightFrame);
+    }
+
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer\\ConsoleUIContainer\\TriggerWindowPanel\\TimerWindowTemplate");
+    libWCUI_gv_wU_TimerWindowHighlightFrame = DialogControlLastCreated();
+    libWCUI_gv_wU_TimerWindowTimer = lp_timer;
+    libWCUI_gv_wU_TimerWindowInDanger = false;
+    TriggerEnable(libWCUI_gt_WU_TimerWindowThresholdCrossed, true);
+    TriggerEnable(libWCUI_gt_WU_TimerWindowLoadUpdate, true);
+    libWCUI_gf_FlashTimerWindow(8.0, false);
+    auto2D681054_val = PlayerRace(1);
+    if (auto2D681054_val == "Prot") {
+        TimerWindowSetProgressColor(TimerWindowLastCreated(), Color(100.00, 100.00, 0.00), 1);
+    }
+    else if (auto2D681054_val == "Terr") {
+        TimerWindowSetProgressColor(TimerWindowLastCreated(), Color(42.75, 68.24, 16.86), 1);
+    }
+    else if (auto2D681054_val == "Zerg") {
+        TimerWindowSetProgressColor(TimerWindowLastCreated(), Color(100.00, 50.20, 0.00), 1);
+    }
+    else {
+    }
+    TriggerExecute(libWCUI_gt_WU_TimerWindowLoadUpdate, true, false);
+}
+
+void libWCUI_gf_RepositionTimerWindow (int lp_timerWindow) {
+    // Automatic Variable Declarations
+    // Implementation
+    TimerWindowSetAnchor(lp_timerWindow, c_anchorTopRight, 0, 50);
+}
+
+void libWCUI_gf_FlashTimerWindow (fixed lp_duration, bool lp_waitOption) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_TimerWindowHighlightDuration = lp_duration;
+    TriggerExecute(libWCUI_gt_WU_TimerWindowFlash, true, lp_waitOption);
+}
+
+void libWCUI_gf_SetTimerWindowDangerThreshold (fixed lp_thresholdTime) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gv_wU_TimerWindowDangerThreshold = lp_thresholdTime;
+}
+
+void libWCUI_gf_WU_CounterWindowHookup () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libWCUI_gv_wU_CounterWindowPanel != c_invalidDialogControlId)) {
+        return ;
+    }
+
+    DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/ConsoleUIContainer/CounterFrame");
+    libWCUI_gv_wU_CounterWindowPanel = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_CounterWindowPanel, c_triggerControlTypeLabel, "Title");
+    libWCUI_gv_wU_CounterWindowTitle = DialogControlLastCreated();
+    DialogControlHookup(libWCUI_gv_wU_CounterWindowPanel, c_triggerControlTypeLabel, "Value");
+    libWCUI_gv_wU_CounterWindowValue = DialogControlLastCreated();
+}
+
+void libWCUI_gf_DisplayCounterWindow (text lp_title) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_CounterWindowHookup();
+    libWCUI_gf_SetCounterWindowTitle(lp_title);
+    libWCUI_gf_ShowHideCounterWindow(true);
+}
+
+void libWCUI_gf_ShowHideCounterWindow (bool lp_showHide) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_CounterWindowHookup();
+    DialogControlSetVisible(libWCUI_gv_wU_CounterWindowPanel, PlayerGroupAll(), lp_showHide);
+}
+
+void libWCUI_gf_SetCounterWindowTitle (text lp_title) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_CounterWindowHookup();
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_CounterWindowTitle, lp_title, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetCounterWindowText (text lp_text) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_CounterWindowHookup();
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_CounterWindowValue, lp_text, PlayerGroupAll());
+}
+
+void libWCUI_gf_SetCounterWindowValue (int lp_value) {
+    // Automatic Variable Declarations
+    // Implementation
+    libWCUI_gf_WU_CounterWindowHookup();
+    libNtve_gf_SetDialogItemText(libWCUI_gv_wU_CounterWindowValue, IntToText(lp_value), PlayerGroupAll());
+}
+
+void libWCUI_gf_WU_AddTip (text lp_tipName, int lp_tipType, text lp_tipDescription, text lp_tipAlertText, string lp_tipIcon) {
+    // Automatic Variable Declarations
+    // Implementation
+    HelpPanelAddTip(PlayerGroupAll(), libNtve_gf_FormatTipTitle(lp_tipName, lp_tipType), lp_tipDescription, lp_tipAlertText, lp_tipIcon);
+}
+
+void libWCUI_gf_DisplayCampaignVictoryScoreScreen (string lp_mission) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libNtve_gf_PlayerInCinematicMode(1) == true)) {
+        libNtve_gf_CinematicMode(false, PlayerGroupAll(), c_transitionDurationImmediate);
+    }
+
+    CinematicFade(true, 0.0, c_fadeStyleNormal, Color(0.00, 0.00, 0.00), 0.0, true);
+    UISetWorldVisible(PlayerGroupAll(), false);
+    libNtve_gf_HideGameUI(false, PlayerGroupAll());
+    libWCUI_gf_HideCampaignDirective();
+    UISetCursorVisible(PlayerGroupAll(), true);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeBattleUI, true);
+    UIClearMessages(PlayerGroupAll(), c_messageAreaAll);
+    TransmissionClearAll();
+    ConversationDataStop();
+    Kit_UIScoreScreen_Show(PlayerRace(1));
+}
+
+void libWCUI_gf_WU_VictoryClosed (trigger t) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerAddEventGeneric(t, libWCUI_gv_wUC_VictoryEventClosed);
+}
+
+color libWCUI_gf_ProgressColor (int lp_minValue, int lp_maxValue, int lp_progress, color lp_color1, color lp_color2, color lp_color3, int lp_steps) {
+    // Variable Declarations
+    int lv_middle;
+    fixed lv_r;
+    fixed lv_g;
+    fixed lv_b;
+
+    // Automatic Variable Declarations
+    int auto627A717C_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto627A717C_val = lp_steps;
+    if (auto627A717C_val == 1) {
+        return lp_color1;
+    }
+    else if (auto627A717C_val == 2) {
+        lv_r = (ColorGetComponent(lp_color1, c_colorComponentRed)+(ColorGetComponent(lp_color2, c_colorComponentRed)-ColorGetComponent(lp_color1, c_colorComponentRed))*(lp_progress - lp_minValue)/(lp_maxValue - lp_minValue));
+        lv_g = (ColorGetComponent(lp_color1, c_colorComponentGreen)+(ColorGetComponent(lp_color2, c_colorComponentGreen)-ColorGetComponent(lp_color1, c_colorComponentGreen))*(lp_progress - lp_minValue)/(lp_maxValue - lp_minValue));
+        lv_b = (ColorGetComponent(lp_color1, c_colorComponentBlue)+(ColorGetComponent(lp_color2, c_colorComponentBlue)-ColorGetComponent(lp_color1, c_colorComponentBlue))*(lp_progress - lp_minValue)/(lp_maxValue - lp_minValue));
+        return Color(lv_r, lv_g, lv_b);
+    }
+    else if (auto627A717C_val == 3) {
+        lv_middle = ((lp_minValue+lp_maxValue)/2);
+        if ((lp_progress < lv_middle)) {
+            return libWCUI_gf_ProgressColor(lp_minValue, lv_middle, lp_progress, lp_color1, lp_color2, Color(0,0,0), 2);
+        }
+        else if ((lp_progress == lv_middle)) {
+            return lp_color2;
+        }
+        else if ((lp_progress > lv_middle)) {
+            return libWCUI_gf_ProgressColor(lv_middle, lp_maxValue, lp_progress, lp_color2, lp_color3, Color(0,0,0), 2);
+        }
+    }
+    else {
+    }
+    return lp_color1;
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_TechConsoleOnExit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_TechConsoleOnExit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCamp_gf_HideStoryUI(true, false);
+    if ((libWoLC_gv_wC_InStoryMode == false)) {
+        libWoLC_gf_WC_ApplyArmyTech(1);
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIArmoryQuit, "", "", false);
+    TriggerExecute(libWCUI_gv_wU_TechConsoleExitTrigger, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_TechConsoleOnExit_Init () {
+    libWCUI_gt_WU_TechConsoleOnExit = TriggerCreate("libWCUI_gt_WU_TechConsoleOnExit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_MercenaryOnExit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_MercenaryOnExit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCamp_gf_HideStoryUI(true, false);
+    if ((libWoLC_gv_wC_InStoryMode == false)) {
+        libWoLC_gf_WC_ApplyMercenaryTech();
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIMercenaryQuit, "", "", false);
+    TriggerExecute(libWCUI_gv_wU_MercenaryConsoleExitTrigger, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_MercenaryOnExit_Init () {
+    libWCUI_gt_WU_MercenaryOnExit = TriggerCreate("libWCUI_gt_WU_MercenaryOnExit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ResearchOnExit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ResearchOnExit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libCamp_gf_HideStoryUI(true, false);
+    if ((libWoLC_gv_wC_InStoryMode == false)) {
+        libWoLC_gf_WC_ApplyArmyTech(1);
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UILaboratoryQuit, "", "", false);
+    TriggerExecute(libWCUI_gv_wU_ResearchConsoleExitTrigger, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ResearchOnExit_Init () {
+    libWCUI_gt_WU_ResearchOnExit = TriggerCreate("libWCUI_gt_WU_ResearchOnExit_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Travel Panel Cmapign Event 1
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_TravelPanelCmapignEvent1_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIMissionLaunch, "", "", false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_TravelPanelCmapignEvent1_Init () {
+    libWCUI_gt_TravelPanelCmapignEvent1 = TriggerCreate("libWCUI_gt_TravelPanelCmapignEvent1_Func");
+    libWCUI_gf_TravelPanelMissionStart(libWCUI_gt_TravelPanelCmapignEvent1);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Travel Panel Cmapign Event 2
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_TravelPanelCmapignEvent2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIMissionQuit, "", "", false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_TravelPanelCmapignEvent2_Init () {
+    libWCUI_gt_TravelPanelCmapignEvent2 = TriggerCreate("libWCUI_gt_TravelPanelCmapignEvent2_Func");
+    libWCUI_gf_TravelPanelClosed(libWCUI_gt_TravelPanelCmapignEvent2);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesCreate
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesCreate_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_indexMission;
+    string lv_indexScene;
+    bool lv_defaultSelection;
+    int lv_bestPriority;
+
+    // Automatic Variable Declarations
+    int autoD556D0B3_ae;
+    int autoD556D0B3_ai;
+    int auto50C6B8D0_ai;
+    int auto50C6B8D0_ae;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    if ((libWCUI_gv_wU_MissionArchiveOverlayCreated == false)) {
+        libWCUI_gf_WU_ArchivesOverlayCreate();
+    }
+
+    libWCUI_gv_wU_MasterArchivesEnabled = libWoLC_gf_WC_CampaignIsComplete();
+    if ((BattleReportPanelGetSelectedBattleReport(1) == c_invalidBattleReportId) && (libWoLC_gf_LastMissionConditionCheck(libWoLC_ge_MissionCondition_Simulation) == false)) {
+        if ((libWoLC_gf_WC_CampaignIsComplete() == true)) {
+            lv_bestPriority = 0;
+        }
+        else {
+            lv_bestPriority = 1000;
+        }
+        lv_defaultSelection = true;
+    }
+
+    autoD556D0B3_ae = CatalogEntryCount(c_gameCatalogMap);
+    autoD556D0B3_ai = 1;
+    while (autoD556D0B3_ai <= autoD556D0B3_ae) {
+        lv_indexMission = CatalogEntryGet(c_gameCatalogMap, autoD556D0B3_ai);
+        autoD556D0B3_ai = autoD556D0B3_ai + 1;
+        if (CatalogFieldValueGet(c_gameCatalogMap, lv_indexMission, "Kind", 1) == "Mission") {
+            if (((libWCUI_gv_wU_MasterArchivesEnabled == true) || (libWoLC_gf_MissionStatusCheck(lv_indexMission, libWoLC_ge_MissionStatus_Completed) == true) || ((lv_indexMission == "THanson03A") && (libWoLC_gf_MissionStatusCheck("THanson03B", libWoLC_ge_MissionStatus_Completed) == true)) || ((lv_indexMission == "THanson03B") && (libWoLC_gf_MissionStatusCheck("THanson03A", libWoLC_ge_MissionStatus_Completed) == true)) || ((lv_indexMission == "TTosh03A") && (libWoLC_gf_MissionStatusCheck("TTosh03B", libWoLC_ge_MissionStatus_Completed) == true)) || ((lv_indexMission == "TTosh03B") && (libWoLC_gf_MissionStatusCheck("TTosh03A", libWoLC_ge_MissionStatus_Completed) == true)) || ((lv_indexMission == "TValerian02A") && (libWoLC_gf_MissionStatusCheck("TValerian02B", libWoLC_ge_MissionStatus_Completed) == true)) || ((lv_indexMission == "TValerian02B") && (libWoLC_gf_MissionStatusCheck("TValerian02A", libWoLC_ge_MissionStatus_Completed) == true)))) {
+                BattleReportCreate(PlayerGroupAll(), libWoLC_gf_WC_CampaignMapName(lv_indexMission), c_battleReportTypeMission, c_battleReportStateCompleted);
+                BattleReportSetPriority(BattleReportLastCreated(), libWCUI_gf_WU_ArchivesMissionPriority(lv_indexMission));
+                BattleReportSetDifficultyLevelCompleted(BattleReportLastCreated(), 1, true);
+                BattleReportSetMissionText(BattleReportLastCreated(), libWoLC_gf_WC_CampaignMapName(lv_indexMission));
+            }
+            else {
+                BattleReportCreate(PlayerGroupAll(), libWoLC_gf_WC_CampaignMapName(lv_indexMission), c_battleReportTypeMission, c_battleReportStateHidden);
+            }
+            DataTableSetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportLastCreated()), (lv_indexMission));
+            DataTableSetInt(true, libWCUI_gf_WU_ArchivesDataTypeString(BattleReportLastCreated()), (libWCUI_ge_WU_ArchivesType_Mission));
+            if ((libWCUI_gv_wU_MasterArchivesEnabled == false) && (lv_defaultSelection == true) && (libWCUI_gf_WU_ArchivesMissionPriority(lv_indexMission) <= lv_bestPriority)) {
+                lv_bestPriority = libWCUI_gf_WU_ArchivesMissionPriority(lv_indexMission);
+                BattleReportPanelSetSelectedBattleReport(PlayerGroupAll(), BattleReportLastCreated());
+            }
+            else if ((libWoLC_gf_LastMap() == lv_indexMission) && (libWoLC_gf_LastMapConditionCheck(libWoLC_ge_MissionCondition_Simulation) == true)) {
+                BattleReportPanelSetSelectedBattleReport(PlayerGroupAll(), BattleReportLastCreated());
+            }
+        }    
+    }
+    auto50C6B8D0_ai = 1;
+    auto50C6B8D0_ae = UserDataInstanceCount("Scenes")+1;
+    while (auto50C6B8D0_ai < auto50C6B8D0_ae) {
+        lv_indexScene = UserDataInstance("Scenes", auto50C6B8D0_ai);
+        if ((libWCUI_gf_WU_ArchivesScenePriority(lv_indexScene) < 1000)) {
+            BattleReportCreate(PlayerGroupAll(), libWoLC_gf_StorySceneName(lv_indexScene), c_battleReportTypeScene, c_battleReportStateCompleted);
+            BattleReportSetPriority(BattleReportLastCreated(), libWCUI_gf_WU_ArchivesScenePriority(lv_indexScene));
+            DataTableSetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportLastCreated()), ("Scenes;" + (lv_indexScene)));
+            DataTableSetInt(true, libWCUI_gf_WU_ArchivesDataTypeString(BattleReportLastCreated()), (libWCUI_ge_WU_ArchivesType_Scene));
+            if ((libWCUI_gv_wU_MasterArchivesEnabled == true) && (lv_defaultSelection == true) && (libWCUI_gf_WU_ArchivesScenePriority(lv_indexScene) >= lv_bestPriority)) {
+                lv_bestPriority = libWCUI_gf_WU_ArchivesMissionPriority(lv_indexMission);
+                BattleReportPanelSetSelectedBattleReport(PlayerGroupAll(), BattleReportLastCreated());
+            }
+            else if ((libWCUI_gv_wU_MasterArchivesEnabled == false) && (lv_defaultSelection == true) && (libWCUI_gf_WU_ArchivesScenePriority(lv_indexScene) <= lv_bestPriority)) {
+                BattleReportPanelSetSelectedBattleReport(PlayerGroupAll(), BattleReportLastCreated());
+            }
+        }
+
+        auto50C6B8D0_ai = auto50C6B8D0_ai+1;
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesCreate_Init () {
+    libWCUI_gt_WU_ArchivesCreate = TriggerCreate("libWCUI_gt_WU_ArchivesCreate_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesSelectionChanged
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesSelectionChanged_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gf_WU_ArchivesUpdate();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesSelectionChanged_Init () {
+    libWCUI_gt_WU_ArchivesSelectionChanged = TriggerCreate("libWCUI_gt_WU_ArchivesSelectionChanged_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesSelectionChanged, false);
+    TriggerAddEventBattleReportPanelSelectionChanged(libWCUI_gt_WU_ArchivesSelectionChanged, c_playerAny);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesMissionPlayClicked
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesMissionPlayClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libWCUI_gv_wU_ArchivesMissionPlayButton != c_invalidDialogControlId))) {
+            return false;
+        }
+
+        if (!((EventDialogControl() == libWCUI_gv_wU_ArchivesMissionPlayButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIArchivesPlayMission, "", "", false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesMissionPlayClicked_Init () {
+    libWCUI_gt_WU_ArchivesMissionPlayClicked = TriggerCreate("libWCUI_gt_WU_ArchivesMissionPlayClicked_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesMissionPlayClicked, false);
+    TriggerAddEventDialogControl(libWCUI_gt_WU_ArchivesMissionPlayClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesScenePlayClicked
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesScenePlayClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libWCUI_gv_wU_ArchivesScenePlayButton != c_invalidDialogControlId))) {
+            return false;
+        }
+
+        if (!((EventDialogControl() == libWCUI_gv_wU_ArchivesScenePlayButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIArchivesPlayScene, "", "", true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesScenePlayClicked_Init () {
+    libWCUI_gt_WU_ArchivesScenePlayClicked = TriggerCreate("libWCUI_gt_WU_ArchivesScenePlayClicked_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesScenePlayClicked, false);
+    TriggerAddEventDialogControl(libWCUI_gt_WU_ArchivesScenePlayClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesCloseClicked
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesCloseClicked_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((EventDialogControl() == libWCUI_gv_wU_ArchivesBackButton) || (EventDialogControl() == libWCUI_gv_wU_ArchivesQuitButton)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_DispatchCampaignEvent(libWoLC_ge_WC_Event_UIArchivesQuit, "", "", false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesCloseClicked_Init () {
+    libWCUI_gt_WU_ArchivesCloseClicked = TriggerCreate("libWCUI_gt_WU_ArchivesCloseClicked_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesCloseClicked, false);
+    TriggerAddEventDialogControl(libWCUI_gt_WU_ArchivesCloseClicked, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesSynced
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesSynced_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gv_wU_ArchivesSynced = true;
+    libWCUI_gf_WU_ArchivesUpdate();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesSynced_Init () {
+    libWCUI_gt_WU_ArchivesSynced = TriggerCreate("libWCUI_gt_WU_ArchivesSynced_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesLogicPlayMission
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesLogicPlayMission_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_selectedMission;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedMission = (DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_StorySetSimulationMission(lv_selectedMission);
+    libWCUI_gf_WU_ArchivesClosed();
+    if ((libWoLC_gf_WC_CampaignMapIsZeratul(lv_selectedMission) == true)) {
+        libWCUI_gf_ShowHideTravelPanel2(true, lv_selectedMission);
+    }
+    else {
+        libWCUI_gf_ShowHideTravelPanel(true);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesLogicPlayMission_Init () {
+    libWCUI_gt_WU_ArchivesLogicPlayMission = TriggerCreate("libWCUI_gt_WU_ArchivesLogicPlayMission_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayMission, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesLogicPlayCinematic
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesLogicPlayCinematic_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_selectedScene;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedScene = UserDataInstanceFromReference(DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gf_WU_ArchivesClosed();
+    TriggerExecute(libWoLC_gf_StorySceneCallback(lv_selectedScene), true, true);
+    TriggerExecute(libWCUI_gv_wU_ArchivesLogicSceneFinishTrigger, true, true);
+    libWCUI_gf_WU_ArchivesDisplay();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesLogicPlayCinematic_Init () {
+    libWCUI_gt_WU_ArchivesLogicPlayCinematic = TriggerCreate("libWCUI_gt_WU_ArchivesLogicPlayCinematic_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayCinematic, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesLogicQuit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesLogicQuit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayMission, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicPlayCinematic, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicQuit, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionLaunch, false);
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionQuit, false);
+    libWCUI_gf_WU_ArchivesClosed();
+    libCamp_gf_HideStoryUI(true, false);
+    TriggerExecute(libWCUI_gv_wU_ArchivesLogicExitTrigger, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesLogicQuit_Init () {
+    libWCUI_gt_WU_ArchivesLogicQuit = TriggerCreate("libWCUI_gt_WU_ArchivesLogicQuit_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicQuit, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesLogicMissionLaunch
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesLogicMissionLaunch_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_selectedMission;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedMission = (DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_StorySimulationEnd();
+    if ((libWoLC_gf_WC_CampaignMapIsZeratul(lv_selectedMission) == true)) {
+        libWoLC_gf_LaunchMission(lv_selectedMission, true, Kit_UITravelZeratul_LastSelectedDifficulty());
+    }
+    else {
+        libWoLC_gf_LaunchMission(lv_selectedMission, true, Kit_UITravel_LastSelectedDifficulty());
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesLogicMissionLaunch_Init () {
+    libWCUI_gt_WU_ArchivesLogicMissionLaunch = TriggerCreate("libWCUI_gt_WU_ArchivesLogicMissionLaunch_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionLaunch, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArchivesLogicMissionQuit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArchivesLogicMissionQuit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_selectedMission;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_selectedMission = (DataTableGetString(true, libWCUI_gf_WU_ArchivesDataString(BattleReportPanelGetSelectedBattleReport(1))));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWoLC_gf_StorySimulationEnd();
+    PlayerModifyPropertyInt(1, c_playerPropCredits, c_playerPropOperSetTo, libWoLC_gf_CreditsAvailable());
+    if ((libWoLC_gf_WC_CampaignMapIsZeratul(lv_selectedMission) == true)) {
+        libWCUI_gf_ShowHideTravelPanel2(false, lv_selectedMission);
+    }
+    else {
+        libWCUI_gf_ShowHideTravelPanel(false);
+    }
+    libWCUI_gf_WU_ArchivesDisplay();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArchivesLogicMissionQuit_Init () {
+    libWCUI_gt_WU_ArchivesLogicMissionQuit = TriggerCreate("libWCUI_gt_WU_ArchivesLogicMissionQuit_Func");
+    TriggerEnable(libWCUI_gt_WU_ArchivesLogicMissionQuit, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_FlashArmyButtonHelpTip
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_FlashArmyButtonHelpTip_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string autoCFD98E36_val;
+
+    // Conditions
+    if (testConds) {
+        if (!((libWCUI_gv_wU_ArmyButtonUsed == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    while (true) {
+        autoCFD98E36_val = PlayerRace(1);
+        if (autoCFD98E36_val == "Prot") {
+            DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "PlayArmyTip_Prot", StringExternal("Param/Value/lib_WCUI_034F4713"), null, null, null);
+        }
+        else if (autoCFD98E36_val == "Zerg") {
+            DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "PlayArmyTip_Zerg", StringExternal("Param/Value/lib_WCUI_B4347E4E"), null, null, null);
+        }
+        else if (autoCFD98E36_val == "Terr") {
+            DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "PlayArmyTip_Terr", StringExternal("Param/Value/lib_WCUI_ED15A899"), null, null, null);
+        }
+        else {
+        }
+        TimerStart(libWCUI_gv_wU_ArmyButtonTimer, 5.0, false, c_timeGame);
+        Wait(5.0, c_timeReal);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_FlashArmyButtonHelpTip_Init () {
+    libWCUI_gt_WU_FlashArmyButtonHelpTip = TriggerCreate("libWCUI_gt_WU_FlashArmyButtonHelpTip_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArmyButtonUsed
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArmyButtonUsed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((EventDialogControl() == libWCUI_gv_wU_ArmyButton))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libWCUI_gv_wU_ArmyButtonUsed == false) && (TimerGetRemaining(libWCUI_gv_wU_ArmyButtonTimer) >= 1.0)) {
+        TriggerExecute(libWCUI_gt_WU_ArmyButtonFlashingOff, true, false);
+        libWCUI_gv_wU_ArmyButtonUsed = true;
+    }
+
+    TriggerSendEvent(libWCUI_gv_pUC_SelectArmyEventUsed);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArmyButtonUsed_Init () {
+    libWCUI_gt_WU_ArmyButtonUsed = TriggerCreate("libWCUI_gt_WU_ArmyButtonUsed_Func");
+    TriggerEnable(libWCUI_gt_WU_ArmyButtonUsed, false);
+    TriggerAddEventDialogControl(libWCUI_gt_WU_ArmyButtonUsed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArmyButtonFlashingOff
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_ArmyButtonFlashingOff_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string autoBCDDD362_val;
+
+    // Conditions
+    if (testConds) {
+        if (!((libWCUI_gv_wU_ArmyButtonTipPanel != c_invalidDialogControlId))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerStop(libWCUI_gt_WU_FlashArmyButtonHelpTip);
+    autoBCDDD362_val = PlayerRace(1);
+    if (autoBCDDD362_val == "Prot") {
+        DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "CloseArmyTip_Prot", StringExternal("Param/Value/lib_WCUI_F2711687"), null, null, null);
+    }
+    else if (autoBCDDD362_val == "Zerg") {
+        DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "CloseArmyTip_Zerg", StringExternal("Param/Value/lib_WCUI_5A02F843"), null, null, null);
+    }
+    else if (autoBCDDD362_val == "Terr") {
+        DialogControlInvokeAsText(libWCUI_gv_wU_ArmyButtonTipPanel, PlayerGroupAll(), "CloseArmyTip_Terr", StringExternal("Param/Value/lib_WCUI_1B09ADE8"), null, null, null);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_ArmyButtonFlashingOff_Init () {
+    libWCUI_gt_WU_ArmyButtonFlashingOff = TriggerCreate("libWCUI_gt_WU_ArmyButtonFlashingOff_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_ArmyButtonMissionInit
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_PS_ArmyButtonMissionInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeArmyButton, false);
+    TriggerEnable(libWCUI_gt_WU_ArmyButtonUsed, true);
+    if ((libLotv_gf_DifficultyValueInt2(1, 1, 0, 0) == 1)) {
+        Wait(1.0, c_timeGame);
+        while (!((libNtve_gf_PlayerInCinematicMode(1) == false))) {
+            Wait(0.5, c_timeGame);
+        }
+        Wait(0.5, c_timeGame);
+        libWCUI_gf_DisplayArmyButton(false);
+    }
+    else {
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeArmyButton, true);
+    }
+    Wait(0.5, c_timeGame);
+    libWCUI_gf_WU_ArmyButtonHookup();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_PS_ArmyButtonMissionInit_Init () {
+    libWCUI_gt_PS_ArmyButtonMissionInit = TriggerCreate("libWCUI_gt_PS_ArmyButtonMissionInit_Func");
+    TriggerEnable(libWCUI_gt_PS_ArmyButtonMissionInit, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_BossBarFocusOnTarget
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_BossBarFocusOnTarget_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((EventDialogControl() == libWCUI_gv_wU_BB_ClickableAreaHealthBar) || (EventDialogControl() == libWCUI_gv_wU_BB_ClickableAreaNameLabel)))) {
+            return false;
+        }
+
+        if (!((libWCUI_gv_wU_BB_Boss != null))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_UnitIsVisibleToPlayer(libWCUI_gv_wU_BB_Boss, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CameraPan(1, UnitGetPosition(libWCUI_gv_wU_BB_Boss), 0.0, 0.0, 0.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_BossBarFocusOnTarget_Init () {
+    libWCUI_gt_WU_BossBarFocusOnTarget = TriggerCreate("libWCUI_gt_WU_BossBarFocusOnTarget_Func");
+    TriggerEnable(libWCUI_gt_WU_BossBarFocusOnTarget, false);
+    TriggerAddEventDialogControl(libWCUI_gt_WU_BossBarFocusOnTarget, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeDoubleClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_BB_BossHPChanged
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_BB_BossHPChanged_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+    bool lv_bossSet;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((UnitIsAlive(libWCUI_gv_wU_BB_Boss) == false) || (libWCUI_gv_wU_BB_Boss == null))) {
+        TriggerEnable(TriggerGetCurrent(), false);
+    }
+
+    if ((libWCUI_gv_wU_BB_Boss != null)) {
+        libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_BB_BossHPChanged_Init () {
+    libWCUI_gt_WU_BB_BossHPChanged = TriggerCreate("libWCUI_gt_WU_BB_BossHPChanged_Func");
+    TriggerEnable(libWCUI_gt_WU_BB_BossHPChanged, false);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_BB_BossHPChanged, UnitRefFromVariable("libWCUI_gv_wU_BB_Boss"), c_unitPropLife);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_BB_BossHPChanged, UnitRefFromVariable("libWCUI_gv_wU_BB_Boss"), c_unitPropShields);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_BB_LoadUpdate
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_BB_LoadUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gf_RefreshSingularBossBarVoidCampaign();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_BB_LoadUpdate_Init () {
+    libWCUI_gt_WU_BB_LoadUpdate = TriggerCreate("libWCUI_gt_WU_BB_LoadUpdate_Func");
+    TriggerEnable(libWCUI_gt_WU_BB_LoadUpdate, false);
+    TriggerAddEventLoadGameDone(libWCUI_gt_WU_BB_LoadUpdate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchLifeCheck
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchLifeCheck_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_old;
+    int lv_watchUnitIndex;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libWCMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((EventUnit() != null))) {
+            return false;
+        }
+
+        if (!((UnitIsAlive(EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventUnit() == libWCUI_gv_wU_HealthWatchUnit[1])) {
+        lv_watchUnitIndex = 1;
+    }
+    else {
+        lv_watchUnitIndex = 2;
+    }
+    lv_old = libWCUI_gv_wU_HealthWatchLastHP[lv_watchUnitIndex];
+    libWCUI_gv_wU_HealthWatchLastHP[lv_watchUnitIndex] = (UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent)+UnitGetPropertyFixed(EventUnit(), c_unitPropShields, c_unitPropCurrent));
+    if ((libWCUI_gv_wU_HealthWatchLastHP[lv_watchUnitIndex] < lv_old) && (libWCUI_gf_WU_HealthWatchUnitBelowThreshold(EventUnit()) == true) && (libWCUI_gv_wU_HealthWatchFlashing == false)) {
+        libWCUI_gv_wU_HealthWatchFlashingUnit = EventUnit();
+        TriggerExecute(libWCUI_gt_WU_HealthWatchFlash, true, false);
+    }
+
+    if ((libWCUI_gf_WU_HealthWatchUnitBelowThreshold(EventUnit()) == false)) {
+        libWCUI_gf_PM_StopHeroLowHPSound();
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchLifeCheck_Init () {
+    libWCUI_gt_WU_HealthWatchLifeCheck = TriggerCreate("libWCUI_gt_WU_HealthWatchLifeCheck_Func");
+    TriggerEnable(libWCUI_gt_WU_HealthWatchLifeCheck, false);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_HealthWatchLifeCheck, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[1]"), c_unitPropLife);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_HealthWatchLifeCheck, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[1]"), c_unitPropShields);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_HealthWatchLifeCheck, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[2]"), c_unitPropLife);
+    TriggerAddEventUnitProperty(libWCUI_gt_WU_HealthWatchLifeCheck, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[2]"), c_unitPropShields);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchUnitDies
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchUnitDies_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventUnit() != null))) {
+            return false;
+        }
+
+        if (!((libWCMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gf_PM_StopHeroLowHPSound();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchUnitDies_Init () {
+    libWCUI_gt_WU_HealthWatchUnitDies = TriggerCreate("libWCUI_gt_WU_HealthWatchUnitDies_Func");
+    TriggerEnable(libWCUI_gt_WU_HealthWatchUnitDies, false);
+    TriggerAddEventUnitDied(libWCUI_gt_WU_HealthWatchUnitDies, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[1]"));
+    TriggerAddEventUnitDied(libWCUI_gt_WU_HealthWatchUnitDies, UnitRefFromVariable("libWCUI_gv_wU_HealthWatchUnit[2]"));
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchFlash
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchFlash_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto374950CA_n = 3;
+    int auto374950CA_i;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((libWCMI_gf_GameIsOver() == true) || (UnitIsAlive(libWCUI_gv_wU_HealthWatchFlashingUnit) == false) || (libWCUI_gv_wU_HealthWatchFlashing == true))) {
+        return true;
+    }
+
+    libWCUI_gv_wU_HealthWatchFlashing = true;
+    TriggerExecute(libWCUI_gt_WU_HealthWatchStartSound, true, false);
+    libWCUI_gf_WU_HealthWatchCreate();
+    for (auto374950CA_i = 1; auto374950CA_i <= auto374950CA_n; auto374950CA_i += 1) {
+        if (((libWCMI_gf_GameIsOver() == true) || (libWCUI_gf_WU_HealthWatchUnitBelowThreshold(libWCUI_gv_wU_HealthWatchFlashingUnit) == false) || (UnitIsAlive(libWCUI_gv_wU_HealthWatchFlashingUnit) == false))) {
+            break;
+        }
+
+        DialogControlFadeTransparency(libWCUI_gv_wU_HealthWatchImage, PlayerGroupSingle(1), 0.25, 30.0);
+        Wait(0.3, c_timeGame);
+        DialogControlFadeTransparency(libWCUI_gv_wU_HealthWatchImage, PlayerGroupSingle(1), 0.625, 100.0);
+        Wait(0.8, c_timeGame);
+    }
+    DialogControlFadeTransparency(libWCUI_gv_wU_HealthWatchImage, PlayerGroupSingle(1), 0.0, 100.0);
+    libWCUI_gv_wU_HealthWatchFlashing = false;
+    Wait(2.0, c_timeReal);
+    if ((libWCUI_gv_wU_HealthWatchFlashing == false)) {
+        libWCUI_gf_PM_StopHeroLowHPSound();
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchFlash_Init () {
+    libWCUI_gt_WU_HealthWatchFlash = TriggerCreate("libWCUI_gt_WU_HealthWatchFlash_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchStartSound
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchStartSound_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    libWoLC_gf_SetAllSoundChannelVolumesCampaign(libWoLC_ge_VolumeChannelModeCampaign_LowHealthBegin);
+    if ((libWCUI_gv_wU_HealthWatchSoundStart == null)) {
+        SoundPlay(SoundLink("UI_LowHealthWarning_Start", -1), PlayerGroupAll(), 100.0, 0.0);
+        libWCUI_gv_wU_HealthWatchSoundStart = SoundLastPlayed();
+    }
+
+    TriggerExecute(libWCUI_gt_WU_HealthWatchBreathLoop, true, false);
+    TriggerExecute(libWCUI_gt_WU_HealthWatchHeartLoop, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchStartSound_Init () {
+    libWCUI_gt_WU_HealthWatchStartSound = TriggerCreate("libWCUI_gt_WU_HealthWatchStartSound_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchHeartLoop
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchHeartLoop_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    while (!(((libNtve_gf_PlayerInCinematicMode(1) == false) || (libWCMI_gf_GameIsOver() == true)))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((libWCMI_gf_GameIsOver() == true)) {
+        return true;
+    }
+
+    SoundPlay(SoundLink("UI_LowHealthWarning_HeartBeatLoop", -1), PlayerGroupAll(), 100.0, 0.0);
+    libWCUI_gv_wU_HealthWatchSoundHeartbeat = SoundLastPlayed();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchHeartLoop_Init () {
+    libWCUI_gt_WU_HealthWatchHeartLoop = TriggerCreate("libWCUI_gt_WU_HealthWatchHeartLoop_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_HealthWatchBreathLoop
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_HealthWatchBreathLoop_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    while (!(((libNtve_gf_PlayerInCinematicMode(1) == false) || (libWCMI_gf_GameIsOver() == true)))) {
+        Wait(1.0, c_timeGame);
+    }
+    if ((libWCMI_gf_GameIsOver() == true)) {
+        return true;
+    }
+
+    SoundPlay(SoundLink("UI_LowHealthWarning_BreathLoop", -1), PlayerGroupAll(), 100.0, 0.0);
+    libWCUI_gv_wU_HealthWatchSoundBreath = SoundLastPlayed();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_HealthWatchBreathLoop_Init () {
+    libWCUI_gt_WU_HealthWatchBreathLoop = TriggerCreate("libWCUI_gt_WU_HealthWatchBreathLoop_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_TimerWindowFlash
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_TimerWindowFlash_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlSendAnimationEvent(libWCUI_gv_wU_TimerWindowHighlightFrame, PlayerGroupAll(), "Highlight");
+    Wait(libWCUI_gv_wU_TimerWindowHighlightDuration, c_timeReal);
+    DialogControlSendAnimationEvent(libWCUI_gv_wU_TimerWindowHighlightFrame, PlayerGroupAll(), "HighlightStop");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_TimerWindowFlash_Init () {
+    libWCUI_gt_WU_TimerWindowFlash = TriggerCreate("libWCUI_gt_WU_TimerWindowFlash_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_TimerWindowThresholdCrossed
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_TimerWindowThresholdCrossed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libWCUI_gv_wU_TimerWindowDangerThreshold > 0.0) && (TimerGetRemaining(libWCUI_gv_wU_TimerWindowTimer) <= libWCUI_gv_wU_TimerWindowDangerThreshold) && (libWCUI_gv_wU_TimerWindowInDanger == false)) {
+        libWCUI_gv_wU_TimerWindowInDanger = true;
+        DialogControlSendAnimationEvent(libWCUI_gv_wU_TimerWindowHighlightFrame, PlayerGroupAll(), "Danger");
+    }
+    else if ((TimerGetRemaining(libWCUI_gv_wU_TimerWindowTimer) > libWCUI_gv_wU_TimerWindowDangerThreshold) && (libWCUI_gv_wU_TimerWindowInDanger == true)) {
+        libWCUI_gv_wU_TimerWindowInDanger = false;
+        DialogControlSendAnimationEvent(libWCUI_gv_wU_TimerWindowHighlightFrame, PlayerGroupAll(), "DangerStop");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_TimerWindowThresholdCrossed_Init () {
+    libWCUI_gt_WU_TimerWindowThresholdCrossed = TriggerCreate("libWCUI_gt_WU_TimerWindowThresholdCrossed_Func");
+    TriggerEnable(libWCUI_gt_WU_TimerWindowThresholdCrossed, false);
+    TriggerAddEventTimePeriodic(libWCUI_gt_WU_TimerWindowThresholdCrossed, 1.0, c_timeAI);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: WU_TimerWindowLoadUpdate
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_gt_WU_TimerWindowLoadUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libWCUI_gv_wU_TimerWindowInDanger = false;
+    TriggerExecute(libWCUI_gt_WU_TimerWindowThresholdCrossed, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libWCUI_gt_WU_TimerWindowLoadUpdate_Init () {
+    libWCUI_gt_WU_TimerWindowLoadUpdate = TriggerCreate("libWCUI_gt_WU_TimerWindowLoadUpdate_Func");
+    TriggerEnable(libWCUI_gt_WU_TimerWindowLoadUpdate, false);
+    TriggerAddEventLoadGameDone(libWCUI_gt_WU_TimerWindowLoadUpdate);
+}
+
+void libWCUI_InitTriggers () {
+    libWCUI_gt_WU_TechConsoleOnExit_Init();
+    libWCUI_gt_WU_MercenaryOnExit_Init();
+    libWCUI_gt_WU_ResearchOnExit_Init();
+    libWCUI_gt_TravelPanelCmapignEvent1_Init();
+    libWCUI_gt_TravelPanelCmapignEvent2_Init();
+    libWCUI_gt_WU_ArchivesCreate_Init();
+    libWCUI_gt_WU_ArchivesSelectionChanged_Init();
+    libWCUI_gt_WU_ArchivesMissionPlayClicked_Init();
+    libWCUI_gt_WU_ArchivesScenePlayClicked_Init();
+    libWCUI_gt_WU_ArchivesCloseClicked_Init();
+    libWCUI_gt_WU_ArchivesSynced_Init();
+    libWCUI_gt_WU_ArchivesLogicPlayMission_Init();
+    libWCUI_gt_WU_ArchivesLogicPlayCinematic_Init();
+    libWCUI_gt_WU_ArchivesLogicQuit_Init();
+    libWCUI_gt_WU_ArchivesLogicMissionLaunch_Init();
+    libWCUI_gt_WU_ArchivesLogicMissionQuit_Init();
+    libWCUI_gt_WU_FlashArmyButtonHelpTip_Init();
+    libWCUI_gt_WU_ArmyButtonUsed_Init();
+    libWCUI_gt_WU_ArmyButtonFlashingOff_Init();
+    libWCUI_gt_PS_ArmyButtonMissionInit_Init();
+    libWCUI_gt_WU_BossBarFocusOnTarget_Init();
+    libWCUI_gt_WU_BB_BossHPChanged_Init();
+    libWCUI_gt_WU_BB_LoadUpdate_Init();
+    libWCUI_gt_WU_HealthWatchLifeCheck_Init();
+    libWCUI_gt_WU_HealthWatchUnitDies_Init();
+    libWCUI_gt_WU_HealthWatchFlash_Init();
+    libWCUI_gt_WU_HealthWatchStartSound_Init();
+    libWCUI_gt_WU_HealthWatchHeartLoop_Init();
+    libWCUI_gt_WU_HealthWatchBreathLoop_Init();
+    libWCUI_gt_WU_TimerWindowFlash_Init();
+    libWCUI_gt_WU_TimerWindowThresholdCrossed_Init();
+    libWCUI_gt_WU_TimerWindowLoadUpdate_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libWCUI_InitLib_completed = false;
+
+void libWCUI_InitLib () {
+    if (libWCUI_InitLib_completed) {
+        return;
+    }
+
+    libWCUI_InitLib_completed = true;
+
+    libWCUI_InitLibraries();
+    libWCUI_InitVariables();
+    libWCUI_InitCustomScript();
+    libWCUI_InitTriggers();
+}
+
+include "LibCamp"
+include "LibWoLC"
+include "LibWCMI"
+

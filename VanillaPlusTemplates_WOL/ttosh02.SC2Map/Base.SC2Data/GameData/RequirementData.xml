@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="Kit@NotHarvestingTerrazine">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorHarvestingTerrazineCompleteOnlyAtUnit"/>
+    </CRequirement>
+</Catalog>

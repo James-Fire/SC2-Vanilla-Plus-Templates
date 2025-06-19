@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUser id="TStory01ABChoice">
+        <Fields Id="Callback" Type="String"/>
+        <Fields Id="Result" Type="GameLink" GameLinkType="Map">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="Reward" Type="Text" EditorColumn="2"/>
+        <Fields>
+            <Id value="Icon"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Button"/>
+            <EditorColumn value="3"/>
+        </Fields>
+        <Fields>
+            <Id value="Abilities"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Button"/>
+            <Count value="5"/>
+            <EditorColumn value="4"/>
+        </Fields>
+        <Fields Id="Description" Type="Text"/>
+        <Fields Id="Action" Type="Text" EditorColumn="1"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="THanson03A">
+            <String String="ABChoiceTHanson03">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/THanson03A_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/THanson03A_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/THanson03A_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+        <Instances Id="THanson03B">
+            <String String="ABChoiceTHanson03">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/THanson03B_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/THanson03B_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/THanson03B_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+        <Instances Id="TTosh03A">
+            <GameLink GameLink="TStory01ABChoiceSpectre">
+                <Field Id="Icon"/>
+            </GameLink>
+            <GameLink GameLink="UltrasonicPulse">
+                <Field Id="Abilities"/>
+            </GameLink>
+            <GameLink GameLink="Obliterate">
+                <Field Id="Abilities" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="CloakOnSpectre">
+                <Field Id="Abilities" Index="2"/>
+            </GameLink>
+            <GameLink GameLink="NukeCalldown">
+                <Field Id="Abilities" Index="3"/>
+            </GameLink>
+            <String String="ABChoiceTTosh03">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/TTosh03A_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TTosh03A_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TTosh03A_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+        <Instances Id="TTosh03B">
+            <GameLink GameLink="ChannelSnipe">
+                <Field Id="Abilities"/>
+            </GameLink>
+            <GameLink GameLink="EMP">
+                <Field Id="Abilities" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="CloakOnGhost">
+                <Field Id="Abilities" Index="2"/>
+            </GameLink>
+            <GameLink GameLink="TStory01ABChoiceGhost">
+                <Field Id="Icon"/>
+            </GameLink>
+            <GameLink GameLink="NukeCalldown">
+                <Field Id="Abilities" Index="3"/>
+            </GameLink>
+            <String String="ABChoiceTTosh03">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/TTosh03B_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TTosh03B_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TTosh03B_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+        <Instances Id="TValerian02A">
+            <GameLink GameLink="TStory01ABChoiceNydusWorm">
+                <Field Id="Abilities"/>
+            </GameLink>
+            <String String="ABChoiceTValerian02">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/TValerian02A_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TValerian02A_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TValerian02A_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+        <Instances Id="TValerian02B">
+            <GameLink GameLink="TStory01ABChoiceMutalisk">
+                <Field Id="Abilities"/>
+            </GameLink>
+            <GameLink GameLink="TStory01ABChoiceBroodLords">
+                <Field Id="Abilities" Index="1"/>
+            </GameLink>
+            <String String="ABChoiceTValerian02">
+                <Field Id="Callback"/>
+            </String>
+            <Text Text="UserData/TStory01ABChoice/TValerian02B_Reward">
+                <Field Id="Reward"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TValerian02B_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/TStory01ABChoice/TValerian02B_Action">
+                <Field Id="Action"/>
+            </Text>
+        </Instances>
+    </CUser>
+    <CUser id="TStory01Briefings">
+        <Fields Id="Callback" Type="String" EditorColumn="1"/>
+        <Fields Id="Preload" Type="String" EditorColumn="2"/>
+        <Fields Id="PreloadRough" Type="String" EditorColumn="3"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="TRaynor01">
+            <String String="BriefingTRaynor01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTRaynor01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTRaynor01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TRaynor02">
+            <String String="BriefingTRaynor02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTRaynor02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTRaynor02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TRaynor03">
+            <String String="BriefingTRaynor03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTRaynor03Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTRaynor03PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson01">
+            <String String="BriefingTHanson01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHanson01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHanson01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson02">
+            <String String="BriefingTHanson02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHanson02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHanson02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson03A">
+            <String String="BriefingTHanson03A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHanson03APreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHanson03APreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson03B">
+            <String String="BriefingTHanson03B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHanson03BPreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHanson03BPreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner01">
+            <String String="BriefingTHorner01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHorner01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHorner01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner02">
+            <String String="BriefingTHorner02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHorner02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHorner02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner03">
+            <String String="BriefingTHorner03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHorner03Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHorner03PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner04">
+            <String String="BriefingTHorner04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHorner04Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHorner04PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner05S">
+            <String String="BriefingTHorner05s">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTHorner05sPreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTHorner05sPreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh01">
+            <String String="BriefingTTosh01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTosh01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTosh01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh02">
+            <String String="BriefingTTosh02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTosh02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTosh02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh03A">
+            <String String="BriefingTTosh03A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTosh03APreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTosh03APreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh03B">
+            <String String="BriefingTTosh03B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTosh03BPreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTosh03BPreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus01">
+            <String String="BriefingTTychus01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTychus01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTychus01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus02">
+            <String String="BriefingTTychus02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTychus02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTychus02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus03">
+            <String String="BriefingTTychus03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTychus03Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTychus03PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus04">
+            <String String="BriefingTTychus04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTychus04Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTychus04PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus05">
+            <String String="BriefingTTychus05">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTTychus05Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTTychus05PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul01">
+            <String String="BriefingTZeratul01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTZeratul01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTZeratul01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul02">
+            <String String="BriefingTZeratul02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTZeratul02Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTZeratul02PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul03">
+            <String String="BriefingTZeratul03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTZeratul03Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTZeratul03PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul04">
+            <String String="BriefingTZeratul04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTZeratul04Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTZeratul04PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian01">
+            <String String="BriefingTValerian01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTValerian01Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTValerian01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian02A">
+            <String String="BriefingTValerian02A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTValerian02APreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTValerian01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian02B">
+            <String String="BriefingTValerian02B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTValerian02BPreload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTValerian01PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian03">
+            <String String="BriefingTValerian03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="BriefingTValerian03Preload">
+                <Field Id="Preload"/>
+            </String>
+            <String String="BriefingTValerian03PreloadRough">
+                <Field Id="PreloadRough"/>
+            </String>
+        </Instances>
+    </CUser>
+    <CUser id="TStory01TVNews">
+        <Fields Id="IsWatched" Type="Int">
+            <Flags index="Modifiable" value="1"/>
+            <Flags index="ConvState" value="1"/>
+        </Fields>
+        <Fields Id="Preload" Type="String" EditorColumn="2"/>
+        <Fields Id="Callback" Type="String" EditorColumn="1"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="TRaynor01">
+            <String String="TVNewsRaynor01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsRaynor01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TRaynor02">
+            <String String="TVNewsRaynor02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsRaynor02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson01">
+            <String String="TVNewsHanson01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHanson01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson02">
+            <String String="TVNewsHanson02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHanson02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson03A">
+            <String String="TVNewsHanson03A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHanson03APreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THanson03B">
+            <String String="TVNewsHanson03B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHanson03BPreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh01">
+            <String String="TVNewsTosh01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTosh01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh02">
+            <String String="TVNewsTosh02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTosh02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh03A">
+            <String String="TVNewsTosh03A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTosh03APreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTosh03B">
+            <String String="TVNewsTosh03B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTosh03BPreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner01">
+            <String String="TVNewsHorner01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHorner01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner02">
+            <String String="TVNewsHorner02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHorner02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner03">
+            <String String="TVNewsHorner03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHorner03Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner04">
+            <String String="TVNewsHorner04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHorner04Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="THorner05S">
+            <String String="TVNewsHorner05S">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsHorner05SPreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus01">
+            <String String="TVNewsTychus01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTychus01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus02">
+            <String String="TVNewsTychus02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTychus02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus03">
+            <String String="TVNewsTychus03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTychus03Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus04">
+            <String String="TVNewsTychus04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTychus04Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TTychus05">
+            <String String="TVNewsTychus05">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsTychus05Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul01">
+            <String String="TVNewsZeratul01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsZeratul01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul02">
+            <String String="TVNewsZeratul02">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsZeratul02Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul03">
+            <String String="TVNewsZeratul03">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsZeratul03Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TZeratul04">
+            <String String="TVNewsZeratul04">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsZeratul04Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian01">
+            <String String="TVNewsValerian01">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsValerian01Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian02A">
+            <String String="TVNewsValerian02A">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsValerian02APreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TValerian02B">
+            <String String="TVNewsValerian02B">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsValerian02BPreload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+        <Instances Id="TStory01">
+            <String String="TVNewsRaynor00">
+                <Field Id="Callback"/>
+            </String>
+            <String String="TVNewsRaynor00Preload">
+                <Field Id="Preload"/>
+            </String>
+        </Instances>
+    </CUser>
+    <CUser id="TStory01TransitionData">
+        <Fields Id="Integer" Type="Int">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields Id="String" Type="String">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="CurrentRoom"/>
+        <Instances Id="CantinaBroken"/>
+        <Instances Id="ArmoryOpenedNew"/>
+        <Instances Id="CantinaOpenedNew"/>
+        <Instances Id="LabOpenedNew"/>
+        <Instances Id="LabArtifactsClickable"/>
+        <Instances Id="AbChoiceCurrent"/>
+        <Instances Id="AbChoiceDifficulty"/>
+        <Instances Id="ResearchUnlockedProt"/>
+        <Instances Id="ResearchUnlockedZerg"/>
+        <Instances Id="MercUnlocked"/>
+    </CUser>
+</Catalog>

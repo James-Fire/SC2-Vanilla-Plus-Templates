@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitCompareBehaviorCount id="Kit@CasterNotMarineStimmed">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Stimpack"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Kit@CasterNotMarauderStimmed">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="StimpackMarauder"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitOrderQueue id="Kit@LaserDrillNotAttacking">
+        <AbilLink value="AttackAllowsInvulnerable"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
+    <!-- Diamondback -->
+    <CValidatorUnitCompareBehaviorCount id="AttackTrackedByDiamondback">
+        <Compare value="GT"/>
+        <Behavior value="DiamondbackAttackTracker"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="DiamondbackChasing">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="DiamondbackChasing"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="NotSiegedTankMerc">
+        <Value value="SiegeBreakerSieged"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="TransientTrackedByDiamondback">
+        <Compare value="GT"/>
+        <Behavior value="DiamondbackTransientTracker"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="DiamondbackTrackingTarget">
+        <Type value="And"/>
+        <CombineArray value="CasterAndTargetNotDead"/>
+        <CombineArray value="WithinDiamondbackAttackRangeorChasing"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareAttackPriority id="ThreatensDiamondback" parent="ThreatensUnit" unitLink="Diamondback"/>
+    <CValidatorCombine id="WithinDiamondbackAttackRangeorChasing">
+        <CombineArray value="DiamondbackTargetWithinWeaponRange"/>
+        <CombineArray value="DiamondbackChasing"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="DiamondbackTargetWithinWeaponRange">
+        <Compare value="LE"/>
+        <Range value="7.5"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CValidatorLocationCompareRange>
+    <!-- Merc Battlecruiser -->
+    <CValidatorLocationArc id="Kit@TargetIn90Arc">
+        <WhichLocation Value="CasterUnit"/>
+        <Arc value="270"/>
+        <Value Value="TargetUnit"/>
+    </CValidatorLocationArc>
+    <CValidatorLocationCompareRange id="Kit@TargetGTE2Range">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="2"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="Kit@MercBattlecruiserUseCannonGround">
+        <CombineArray value="CasterIsStationary"/>
+        <CombineArray value="Kit@TargetGTE2Range"/>
+        <CombineArray value="Kit@TargetIn90Arc"/>
+        <CombineArray value="GroundUnitFilter"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="Kit@MercBattlecruiserUseCannonAir">
+        <CombineArray value="CasterIsStationary"/>
+        <CombineArray value="Kit@TargetGTE2Range"/>
+        <CombineArray value="Kit@TargetIn90Arc"/>
+        <CombineArray value="AirUnitFilter"/>
+        <Type value="And"/>
+    </CValidatorCombine>
+    <!-- Battlecruiser -->
+    <CValidatorUnitCompareBehaviorCount id="AttackTrackedByBattlecruiser">
+        <Compare value="GT"/>
+        <Behavior value="BattlecruiserAttackTracker"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="BattlecruiserChasing">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="BattlecruiserChasing"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="TransientTrackedByBattlecruiser">
+        <Compare value="GT"/>
+        <Behavior value="BattlecruiserTransientTracker"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="BattlecruiserTrackingTarget">
+        <Type value="And"/>
+        <CombineArray value="CasterAndTargetNotDead"/>
+        <CombineArray value="WithinBattlecruiserAttackRangeorChasing"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareAttackPriority id="ThreatensBattlecruiser" parent="ThreatensUnit" unitLink="Battlecruiser"/>
+    <CValidatorCombine id="WithinBattlecruiserAttackRangeorChasing">
+        <CombineArray value="BattlecruiserTargetWithinWeaponRange"/>
+        <CombineArray value="BattlecruiserChasing"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="BattlecruiserTargetWithinWeaponRange">
+        <Compare value="LE"/>
+        <Range value="6.5"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CValidatorLocationCompareRange>
+    <!-- Nexus Mass Recall -->
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingNexus">
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNotRecallingMothership">
+        <Behavior value="Recalling"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterIsNotRecallingNexus">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="CasterHasNexusMassRecallCasting">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="NexusMassRecallCasting"/>
+        <Value value="1"/>
+        <Compare value="GE"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNexusMassRecallWarpingOut">
+        <Compare value="GT"/>
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="IsNexusMassRecallRecalled">
+        <Compare value="GT"/>
+        <Behavior value="NexusRecalled"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsNexusMassRecallWarpingOutOrRecalled">
+        <CombineArray value="IsNexusMassRecallWarpingOut"/>
+        <CombineArray value="IsNexusMassRecallRecalled"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="IsNotNexusMassRecallWarpingOut">
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="Kit@RegenerativeBioSteelOnUnit">
+        <Type value="And"/>
+        <CombineArray value="Kit@RegenerativeBioSteel"/>
+        <CombineArray value="IsMechanical"/>
+        <CombineArray value="NotStructure"/>
+    </CValidatorCombine>
+    <CValidatorPlayerRequirement id="Kit@UsePredatorElectromagneticField">
+        <Find value="1"/>
+        <Value value="Kit@UsePredatorElectromagneticField"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="Kit@RegenerativeBioSteel">
+        <Find value="1"/>
+        <Value value="Kit@RegenerativeBioSteel"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorLocationCompareRange id="NexusRecallSucceeded">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Value Effect="NexusMassRecallSet" Value="TargetPoint"/>
+    </CValidatorLocationCompareRange>
+    <!-- -->
+    <CValidatorUnitCompareBehaviorCount id="Kit@IsNotTerranAddon">
+        <Behavior value="Kit@AddonMarker"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="Kit@NotHaveWarpGateAutoCastDisabler">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Kit@WarpGateAutoCastDisabler"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareOrderCount id="Kit@GatewayTrainingZealot">
+        <Compare value="NE"/>
+        <AbilLink value="GatewayTrain"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="Kit@GatewayTrainingStalker">
+        <Compare value="NE"/>
+        <AbilLink value="GatewayTrain"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="Kit@GatewayTrainingHighTemplar">
+        <Compare value="NE"/>
+        <AbilLink value="GatewayTrain"/>
+        <AbilCmdIndex value="3"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="Kit@GatewayTrainingDarkTemplar">
+        <Compare value="NE"/>
+        <AbilLink value="GatewayTrain"/>
+        <AbilCmdIndex value="4"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorUnitCompareOrderCount id="Kit@GatewayTrainingSentry">
+        <Compare value="NE"/>
+        <AbilLink value="GatewayTrain"/>
+        <AbilCmdIndex value="5"/>
+    </CValidatorUnitCompareOrderCount>
+    <CValidatorCombine id="Kit@GatewayNotTraining">
+        <Type value="And"/>
+        <CombineArray value="Kit@GatewayTrainingZealot"/>
+        <CombineArray value="Kit@GatewayTrainingSentry"/>
+        <CombineArray value="Kit@GatewayTrainingStalker"/>
+        <CombineArray value="Kit@GatewayTrainingHighTemplar"/>
+        <CombineArray value="Kit@GatewayTrainingDarkTemplar"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitInWeaponRange id="Kit@WeaponInRangeSource">
+        <OtherUnit Value="Source"/>
+    </CValidatorUnitInWeaponRange>
+    <CValidatorUnitCompareSpeed id="Kit@WraithIsMoving">
+        <Compare value="GT"/>
+        <Value value="0.0468"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorPlayerRequirement id="Kit@WraithUsePulseAmplifier">
+        <Find value="1"/>
+        <Value value="Kit@UseWraithPulseAmplifier"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitOrderQueue id="Kit@BattlecruiserIsYamatoing">
+        <AbilLink value="Yamato"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorCombine id="Kit@BattlecruiserIsNotYamatoing">
+        <CombineArray value="Kit@BattlecruiserIsYamatoing"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="Kit@AdvancedConstructionAutoTarget">
+        <ResultFailed value="BuildingIsUnderConstruction,Error/CannotAdvancedConstruction"/>
+        <Type value="And"/>
+        <CombineArray value="TargetIsPlayer"/>
+        <CombineArray value="Kit@TargetIsUnderConstruction"/>
+        <CombineArray value="Kit@TargetHasBuildable"/>
+        <CombineArray value="IsTerran"/>
+        <CombineArray value="Kit@IsNotTerranAddon"/>
+    </CValidatorCombine>
+    <CValidatorUnitAbil id="Kit@NotHaveque5Addon">
+        <AbilLink value="que5Addon"/>
+    </CValidatorUnitAbil>
+    <CValidatorUnitOrder id="Kit@TargetHasBuildable">
+        <WhichUnit Value="Target"/>
+        <AbilLink value="BuildInProgress"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitFilters id="Kit@TargetIsUnderConstruction">
+        <Filters value="UnderConstruction;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="Kit@HasFortifiedCarapaceNoConstruction">
+        <Type value="And"/>
+        <CombineArray value="HasFortifiedCarapace"/>
+        <CombineArray value="IsNotConstructing"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="NotSiegedTank"/>
+    <!-- Steady Targeting Validators -->
+    <CValidatorCombine id="ChannelSnipeValidators">
+        <Type value="And"/>
+        <CombineArray value="ChannelSnipeBehaviorValidator"/>
+        <CombineArray value="ChannelSnipeCasterFilters"/>
+        <CombineArray value="ChannelSnipeTargetFilters"/>
+        <CombineArray value="ChannelSnipeRange"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="ChannelSnipeRefundValidator">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="ChannelSnipeRefund"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ChannelSnipeBehaviorValidator">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="ChannelSnipeCombat"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitFilters id="ChannelSnipeCasterFilters">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Stasis,Dead,Hidden,Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="ChannelSnipeTargetFilters">
+        <Filters value="Biological,Visible;Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationCompareRange id="ChannelSnipeRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="14"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="NoSuppressCollision">
+        <Behavior value="SuppressCollision"/>
+    </CValidatorUnitCompareBehaviorCount>
+</Catalog>

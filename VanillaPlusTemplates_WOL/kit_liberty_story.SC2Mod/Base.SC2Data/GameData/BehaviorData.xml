@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="Char03KerriganHighGroundVision">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-envision.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <!-- Diamondback -->
+    <CBehaviorBuff id="DiamondbackAttackTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DiamondbackChasing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DiamondbackTransientTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="DiamondbackTargetWithinWeaponRange"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="2.5"/>
+    </CBehaviorBuff>
+    <!-- Battlecruiser -->
+    <CBehaviorBuff id="BattlecruiserAttackTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BattlecruiserChasing">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BattlecruiserTransientTracker">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="BattlecruiserTargetWithinWeaponRange"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="0.3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ForceShield">
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-hardenedshields.dds"/>
+    </CBehaviorBuff>
+    <!-- -->
+    <CBehaviorBuff id="Kit@LaserDrillHoldFire">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="0.07"/>
+        <ExpireEffect value="Kit@LaserDrillHoldFireB"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@Kit@PerditionTurretHoldFire">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="0.07"/>
+        <InitialEffect value="PerditionTurretBurrowOrder"/>
+        <ExpireEffect value="Kit@PerditionTurretHoldFireB"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@LaserDrillHoldFireB">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="Kit@LaserDrillNotAttacking"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Irradiate">
+        <DisableValidatorArray value="NotHidden"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@Kit@PerditionTurretHoldFireB">
+        <InfoIcon value="Assets\Textures\btn-ability-terran-holdfire.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="CasterNotAttacking"/>
+        <Modification>
+            <StateFlags index="Passive" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@PredatorArmor">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="MoveSpeedGT2"/>
+        <Modification ShieldArmorBonus="3">
+            <LifeArmorBonus value="3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MindControl">
+        <InfoIcon value="Assets\Textures\btn-building-terran-hivemindemulator.dds"/>
+        <BehaviorCategories index="User8" value="1"/>
+    </CBehaviorBuff>
+    <!-- Nexus Mass Recall -->
+    <CBehaviorBuff id="NexusMassRecallWarpOut">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <ExpireEffect value="NexusMassRecallSet"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressPassenger" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+            <AbilLinkEnableArray value="VolatileBurstBuilding"/>
+            <AbilLinkEnableArray value="GhostCloak"/>
+            <AbilLinkEnableArray value="RogueGhostCloak"/>
+            <AbilLinkEnableArray value="BansheeCloak"/>
+            <AbilLinkEnableArray value="WraithCloak"/>
+        </Modification>
+        <RemoveValidatorArray value="CasterHasNexusMassRecallCasting"/>
+        <FinalEffect value="NexusMassRecallCastingRB"/>
+        <Period value="4.6"/>
+        <PeriodicEffect value="NexusMassRecallPreTeleportDummy"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusMassRecallCasting">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <MaxStackCount value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusMassRecallTargetPhased">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsNexusMassRecallWarpingOutOrRecalled"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="NexusRecalled">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="1"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilMove" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <!-- -->
+    <CBehaviorBuff id="Kit@AddonMarker">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@PersonalCloakingFreeAuto">
+        <InfoFlags index="Hidden" value="1"/>
+        <Requirements value="UseGhostCriusSuit"/>
+        <Duration value="0.25"/>
+        <ExpireEffect value="Kit@GhostCloakIssueOrder"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@SpectreCloakingFreeAuto">
+        <InfoFlags index="Hidden" value="1"/>
+        <Requirements value="UseSpectreNyxSuit"/>
+        <Duration value="0.25"/>
+        <ExpireEffect value="Kit@SpectreCloakIssueOrder"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@RefineryPipesMorph">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="0.1"/>
+        <ExpireEffect value="Kit@RefineryPipesMorph"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@WarpGateAutoCastDisabler">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Duration value="2"/>
+        <PeriodicEffect value="Kit@WarpGateAutoCastOff"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@Detector16.5" parent="Detector">
+        <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
+        <Modification Detect="16.5"/>
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SalvagePerditionTurret"/>
+    <CBehaviorBuff id="SalvageShared"/>
+    <!-- Remove Larva when Hatchery dies -->
+    <CBehaviorSpawn id="SpawnLarva">
+        <Flags index="KillSpawnedOnDeath" value="1"/>
+    </CBehaviorSpawn>
+    <!-- Perdition Turrets -->
+    <CBehaviorSpawn id="Kit@PerditionTurretMineField">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoArray>
+            <Unit value="SpiderMine"/>
+            <MaxCount value="3"/>
+            <StartCount value="0"/>
+            <Delay value="30"/>
+        </InfoArray>
+        <Slop value="5"/>
+        <Range value="5"/>
+        <Flags index="HideCount" value="1"/>
+        <Flags index="IgnoreMorph" value="1"/>
+        <Limit value="3"/>
+        <Offset value="0,0"/>
+        <Offset value="0,0"/>
+        <Offset value="0,0"/>
+        <Requirements value="Kit@UsePerditionMineField"/>
+        <Effect value="Kit@PerditionTurretMineFieldSet"/>
+    </CBehaviorSpawn>
+    <CBehaviorBuff id="Kit@PerditionTurretKnockbackBehavior">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="Kit@PerditionTurretKnockbackSE"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TurretBurrow">
+        <DisableValidatorArray value="CasterNotInCombat"/>
+        <DisableValidatorArray value="CasterNotAttacking"/>
+        <DisableValidatorArray value="CasterHasNoOrders"/>
+    </CBehaviorBuff>
+    <!-- Smarter Spider Drop in Combat -->
+    <CBehaviorBuff id="VultureSpiderMineBurrowFirst">
+        <Duration value="3"/>
+        <InitialEffect value=""/>
+        <FinalEffect value="VultureSpiderMineBurrowOrder"/>
+    </CBehaviorBuff>
+    <!-- Wraith Cloak Move Speed Buff -->
+    <CBehaviorBuff id="CloakDistortionField">
+        <Modification MoveSpeedMultiplier="1.2"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@WraithAAMovementBuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="Kit@WraithIsMoving"/>
+        <DisableValidatorArray value="Kit@WraithUsePulseAmplifier"/>
+        <DamageResponse Location="Attacker" ModifyFraction="2">
+            <RequireEffectArray value="WraithAU"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Kit@WraithAGMovementBuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="Kit@WraithIsMoving"/>
+        <DisableValidatorArray value="Kit@WraithUsePulseAmplifier"/>
+        <DamageResponse Location="Attacker" ModifyFraction="3">
+            <RequireEffectArray value="WraithGU"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <!-- Steady Targeting -->
+    <CBehaviorBuff id="ChannelSnipeCombat">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DamageResponse Handled="ChannelSnipeCombatRB">
+            <Chance value="1"/>
+        </DamageResponse>
+        <FinalEffect value="ChannelSnipeRefundSet"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChannelSnipeRefund">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+</Catalog>

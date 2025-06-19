@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Include path="UI/Layout/Kit_UnitStatus_Terran.SC2Layout"/>
+    <Include path="UI/Layout/Kit_UnitStatus_Protoss.SC2Layout"/>
+    <Include path="UI/Layout/Kit_Templates.SC2Layout"/>
+    <Include path="UI/Layout/Kit_TextCrawl.SC2Layout"/>
+    <Include path="UI/Layout/Kit_ProductionPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_HeroPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_ProgressFrame.SC2Layout"/>
+    <Include path="UI/Layout/Kit_CounterFrame.SC2Layout"/>
+    <Include path="UI/Layout/Kit_VictoryPanelTerran.SC2Layout"/>
+    <Include path="UI/Layout/Kit_PurchasePanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_MercenaryPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_ResearchPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_TravelPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_TravelPanelProtoss.SC2Layout"/>
+    <Include path="UI/Layout/Kit_BattleReportPanel.SC2Layout"/>
+    <Include path="UI/Layout/Kit_ScoreScreen.SC2Layout"/>
+    <Include path="UI/Layout/Kit_ScoreScreenProtoss.SC2Layout"/>
+    <Include path="UI/Layout/Kit_DamageStat.SC2Layout"/>
+    <Include path="UI/Layout/Kit_TechTreePanel.SC2Layout"/>
+</Desc>

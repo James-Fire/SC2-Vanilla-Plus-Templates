@@ -1,0 +1,443 @@
+Conversation/LabFidgetsArtifact/Group00001=1st Artifact conversation without Hanson /// 1st Artifact conversation without Hanson
+DocInfo/Author=Blizzard Entertainment /// Blizzard Entertainment
+DocInfo/DescLong=
+DocInfo/DescShort=劇情模式地圖 /// Storymode map
+DocInfo/Name=自由之翼 /// Wings of Liberty
+LoadingScreen/TextBody=<s val="LoadingScreenTitleMarSara">瑪而‧薩拉</s><n/><n/><s val="LoadingScreenBody">邊緣行星，自治聯盟領地<n/>克普魯星區<n/><n/>於2502年再次進行殖民活動</s> /// <s val="LoadingScreenTitleMarSara">Mar Sara</s><n/><n/><s val="LoadingScreenBody">Fringe World, Dominion Space <n/>Koprulu Sector<n/><n/>Recolonized 2502</s>
+LoadingScreen/Tip= 
+MapInfo/Player00/Name=中立 /// Neutral
+MapInfo/Player01/Name=玩家1 /// Player 1
+Param/Value/00F561A7=再見。 /// Goodbye.
+Param/Value/014C5176= ///  
+Param/Value/02875348=
+Param/Value/03979B30=實驗室 /// Laboratory
+Param/Value/03C1D4E5=再見。 /// Goodbye.
+Param/Value/0474820C=雷諾簡介 /// Raynor Intro
+Param/Value/04C917A6=再見。 /// Goodbye.
+Param/Value/05AF9F6B=顯示房間變更控制台 /// Display Room Change Panel
+Param/Value/05E70AAE=鮪魚大佬 /// Big Tuna
+Param/Value/06407F30=自由鳥 /// Free Bird
+Param/Value/0653CCF1=關閉 /// CLOSE
+Param/Value/067BD733=開始遊戲 /// Play
+Param/Value/08064A75=
+Param/Value/086E4333=托許 A /// Tosh A
+Param/Value/0882F13E=羅密歐‧戴爾塔 /// Romeo Delta
+Param/Value/0913E0DC=隨機開始 = /// StartRandom = 
+Param/Value/0A7FFDFF=<s val="StoryModeQuitToLobby">退出劇情戰役？</s> /// <s val="StoryModeQuitToLobby">Quit Campaign?</s>
+Param/Value/0AC87428=關閉 /// Close
+Param/Value/0B3A684D=可點擊音效關閉 /// Turn Clickables Off
+Param/Value/0BDD7A96=初始狀態開始 /// Init States Starts
+Param/Value/0C4BEE1D=白人男孩詹姆士 /// White Boy James
+Param/Value/0C4F1FD9=選擇難度 /// Select your difficulty
+Param/Value/0CA20F37=已開始的音軌 = /// TrackStarted = 
+Param/Value/0CADB231=預載泰科斯在查爾的動畫 /// Preload Tychus char animation
+Param/Value/0DB89306=觀察站 /// Observatory
+Param/Value/0DDC5E74=實驗室的研發項目 /// Lab Research
+Param/Value/0E18A347=澤拉圖 /// Zeratul
+Param/Value/0E2CA873=靜音的點唱機計數 = /// Mute Jukebox count = 
+Param/Value/0E63A335=白人男孩詹姆士和藍調快遞 /// White Boy James & The Blues Express
+Param/Value/0EBA2984=白人男孩詹姆士和藍調快遞 /// White Boy James & The Blues Express
+Param/Value/0F0D57BE=<n/> /// <n/>
+Param/Value/0F550CE9=鮪魚大佬 /// Big Tuna
+Param/Value/0F91CDC0=可能計數 = ///    Possible Count = 
+Param/Value/0FD9E264=已關閉 ///  DISABLED
+Param/Value/0FF9902C=
+Param/Value/1014435D=韓森 B /// Hanson B
+Param/Value/103FB845=凱莉根簡介 /// Kerrigan Intro
+Param/Value/1146573D=人類09 /// Terran09
+Param/Value/11D685B7=</s><n/><n/><s val="ZPlanetPanelHeading">研發機會：</s><n/> /// </s><n/><n/><s val="ZPlanetPanelHeading">RESEARCH OPPORTUNITIES:</s><n/>
+Param/Value/12D17B65=再見。 /// Goodbye.
+Param/Value/13226E5C=人類08 /// Terran08
+Param/Value/13B728CD=點擊： /// Clicked: 
+Param/Value/13B9614C=研發計畫完成<n/> /// Research Project Completed<n/>
+Param/Value/13D80EF9=解開的任務： /// Objective Unlocked: 
+Param/Value/147DBE51=新物品資訊暫停解除 /// Unpause new item info
+Param/Value/15084905=沃菲爾 /// Warfield
+Param/Value/15DEAB6C=波旁牛仔 /// Bourbon Cowboys
+Param/Value/172C4082=查爾的戰場結束 /// Char Battlefield End
+Param/Value/172DD67E=人類15 /// Terran15
+Param/Value/181D331C=蓋布瑞‧托許 /// Gabriel Tosh
+Param/Value/1833D529=再見。 /// Goodbye.
+Param/Value/186C5AB1=再見。 /// Goodbye.
+Param/Value/189A91F6=白人男孩詹姆士 /// White Boy James
+Param/Value/18FFC861=結束預載地點 /// End preloading locations
+Param/Value/1BFC8973=再見。 /// Goodbye.
+Param/Value/1C1C2145=卸載入人物： /// Unload Character: 
+Param/Value/1C6CFB97=維勒安簡介 /// Valerian Intro
+Param/Value/1CDEE6E3=再見 /// Goodbye
+Param/Value/1D4E33C9=</s><n/><n/><s val="ZPlanetPanelHeading">任務目標：</s><n/><s val="ZPlanetPanelObjective"> /// </s><n/><n/><s val="ZPlanetPanelHeading">MISSION OBJECTIVE:</s><n/><s val="ZPlanetPanelObjective">
+Param/Value/1EE944F3=模擬 /// Simulate
+Param/Value/20202EDF=未載入 ///  NOT LOADED
+Param/Value/20403D73=再見。 /// Goodbye.
+Param/Value/2042EB05=人類17 /// Terran17
+Param/Value/20728E6C=鏡頭： ///   Camera: 
+Param/Value/20EE3073=人類14 /// Terran14
+Param/Value/21F4A1A0=昏暗的燈光，濃濃的煙霧，吵鬧的音樂 /// Dim Lights, Thick Smoke, and Loud Loud Music
+Param/Value/22129F48=<n/> /// <n/>
+Param/Value/223BCB62=厄爾 /// Earl
+Param/Value/23265363=
+Param/Value/246AD0CA=已載入 ///  LOADED
+Param/Value/24D583D1=再見。 /// Goodbye.
+Param/Value/2519AF5D=<s val="ArcadeTrackAuthor">%Author%<n/></s> /// <s val="ArcadeTrackAuthor">%Author%<n/></s>
+Param/Value/263B33AF=甜蜜家園阿拉巴馬 /// Sweet Home Alabama
+Param/Value/26456811=副官 /// Adjutant
+Param/Value/2689EAD5=
+Param/Value/27ADA1D5=霍納 /// Horner
+Param/Value/2912D767=再見。 /// Goodbye.
+Param/Value/2B3DF9F6=爆破樂團 /// The Blasters
+Param/Value/2B903D19=
+Param/Value/2C09E45A=動亂 /// Rumble
+Param/Value/2D24B41D=獎勵初始化結束 /// Init Rewards ends
+Param/Value/2D6BB27A=任務箱左側 /// Briefing Case Left
+Param/Value/2D76F827=甜蜜家園阿拉巴馬 /// Sweet Home Alabama
+Param/Value/2EA40484=
+Param/Value/2F41D290=點選區 - 縮放 /// Hotspot Zoom
+Param/Value/30941464=人類04 /// Terran04
+Param/Value/30BAE4B0=人類01 /// Terran01
+Param/Value/30BF56DA=返回 /// Back
+Param/Value/31070019=原始能量 /// Raw Power
+Param/Value/325A177D=<n/>夢境 /// The<n/>Dream
+Param/Value/335FC362=BG人物暫停： /// BG Actor Pause: 
+Param/Value/344F6720=<s val="ArcadeTrackTitle">%Title%</s> /// <s val="ArcadeTrackTitle">%Title%</s>
+Param/Value/348454AF=旗艦 /// Flagship
+Param/Value/35369D3D=<s val="StoryModeNewItemNameProtoss"> /// <s val="StoryModeNewItemNameProtoss">
+Param/Value/35DA6131=查爾 /// Char
+Param/Value/36D31603=羅密歐‧戴爾塔 /// Romeo Delta
+Param/Value/3745925A=返回海伯利昂號 /// Back To Hyperion
+Param/Value/389A3D3E=載入中... /// Loading...
+Param/Value/3A3327C5=BG人物停止： /// BG Actor Stop: 
+Param/Value/3A42BE26=80級精英牛頭人酋長 /// L80ETC
+Param/Value/3A4D0DFB=再見。 /// Goodbye.
+Param/Value/3A7F4C53=<n/>一旦開始進行查爾星的入侵行動，你便無法離開查爾星並完成其他星球上的任務。<n/><n/>你確定現在要去查爾星？ /// <n/>Once the Char invasion begins you will be unable to leave Char and complete missions on other planets.<n/><n/>Are you sure you want to go to Char right now?
+Param/Value/3B20B73C=按下任意鍵繼續 /// Press Any Key to Continue
+Param/Value/3B9B15C3=猜疑的心 /// Suspicious Minds
+Param/Value/3CBAFF16=實驗室 /// Lab
+Param/Value/3D46DB77=兵工廠簡介 /// Armory Intro
+Param/Value/3D59D2B8=鮪魚大佬 /// Big Tuna
+Param/Value/3DC24A03=兵工廠 /// Armory
+Param/Value/3E02CDE4= =====<n/> ///  =====<n/>
+Param/Value/3F38A323= ///  
+Param/Value/3F912638=感謝您測試劇情模式回顧下的額外兩個任務。以上就是您的回顧段落。再次感謝您！<n/><n/><n/>按下 ESC 鍵或滑鼠鍵繼續... /// Thank you for playtesting 2 additional mission choices for the Story Mode review.  This concludes you review period.  Thanks again!<n/><n/><n/>Press ESC or mouse button to continue...
+Param/Value/40029CEE=初始狀態開始 /// Init States Starts
+Param/Value/4062419E=隨機且偏移的歌曲 = /// Random Song with offset = 
+Param/Value/40C21185=新聞 /// News
+Param/Value/40E87BD9=布萊恩‧伯德 /// Brian Bode
+Param/Value/413C537D=再見。 /// Goodbye.
+Param/Value/41AB759F=再見。 /// Goodbye.
+Param/Value/41B71CBB=再見。 /// Goodbye.
+Param/Value/41DFCA30=甜蜜家園阿拉巴馬 /// Sweet Home Alabama
+Param/Value/426CDD17=兵工廠 /// Armory
+Param/Value/4359C814=多年下來對抗強大的人類自治聯盟，疲憊又憤怒的自由鬥士吉姆‧雷諾回到了自己的家鄉世界瑪而‧薩拉。<n/><n/>但即使在這個被蹂躪的偏僻行星也逐漸遭到專制的大帝蒙斯克的掌控... /// Tired and embittered by years of struggle against the all-powerful Terran Dominion, freedom fighter Jim Raynor has returned to his home world of Mar Sara. <n/><n/>But even on this ravaged backwater world the forces of the tyrannical Emperor Mengsk are moving to take control...
+Param/Value/43E80353=再見。 /// Goodbye.
+Param/Value/457FF79A=購買科技 /// Tech Purchase
+Param/Value/463C00B5=雷諾的夢境 /// Raynor's Dream
+Param/Value/46FE2B3C=鮪魚大佬 /// Big Tuna
+Param/Value/474CF0AF=銀河 /// Galaxy
+Param/Value/48AD46C5=，重複= /// ,  Repeat=
+Param/Value/48F0105E=<n/>已變異的蟲族 = /// <n/>ConvertedZerg = 
+Param/Value/491BD4D7=ZRewardSummary_Protoss /// ZRewardSummary_Protoss
+Param/Value/49AE55CE=原諒我亂塗鴉 /// Excuse Me for Scribblin'
+Param/Value/4BAB04B3=y = ///      y = 
+Param/Value/4BB01066=始終計數 = ///    Always Count = 
+Param/Value/4C2FA3D2=獎勵初始化開始 /// Init Rewards Starts
+Param/Value/4C64498A=轉換的神族 = /// ConvertedProt = 
+Param/Value/4D1D8F92=爆破樂團 /// The Blasters
+Param/Value/4DA318DC=
+Param/Value/4E483B30=人類10 /// Terran10
+Param/Value/4E542BC9=老<n/>對手 /// Old<n/>Rivals
+Param/Value/4F29A049=泰科斯簡介 /// Tychus Intro
+Param/Value/4F33F3FF=傑姆之歌 /// Jem's Song
+Param/Value/4F479ABE=羅密歐‧戴爾塔 /// Romeo Delta
+Param/Value/4FCB4DBD=雷諾 /// Raynor
+Param/Value/514E6E01=顯示所有數量 = /// Show Up Total Count = 
+Param/Value/5197FC87=暫停新物品資料 /// Pause new item info
+Param/Value/51A98F25=再見。 /// Goodbye.
+Param/Value/5288E7CD=瑪而‧薩拉 /// Mar Sara
+Param/Value/52964854=原始能量 /// Raw Power
+Param/Value/5305D4FB=查爾的戰場 /// Char Battlefield
+Param/Value/536AC473=點選區 - 離開 /// Hotspot Leave
+Param/Value/53971E4F=布萊恩‧伯德 /// Brian Bode
+Param/Value/53EC5C77=卡臣斯基 /// Kachinsky
+Param/Value/554296D0=熱點離開 （與鏡頭一起） /// Hotspot Leave (With Camera)
+Param/Value/57ABBCC4=酒吧鬥毆 /// Bar Fight
+Param/Value/591D85FD=
+Param/Value/5B337E2E=人類06 /// Terran06
+Param/Value/5BA7AED9=實驗室 /// Lab
+Param/Value/5C108F18=： /// :
+Param/Value/5D607CC0=自由鳥 /// Free Bird
+Param/Value/5D9C6F28=<s val="WarningCharInvasion">警告！</s> /// <s val="WarningCharInvasion">WARNING!</s>
+Param/Value/5DADB659=去除酒吧音效 /// destory cantina sound
+Param/Value/5FCB1CD5=啟動 /// LAUNCH
+Param/Value/602B1650=] = /// ] = 
+Param/Value/606D8E23=關閉 /// CLOSE
+Param/Value/60BBF6DA=神族研發點數 = /// Protoss Research Points = 
+Param/Value/60D59D56=再見。 /// Goodbye.
+Param/Value/60DB1198=房間：小酒吧 /// Room: Cantina
+Param/Value/610141F4=
+Param/Value/6121C13F=<n/>任務： /// <n/>Mission: 
+Param/Value/61281884=房間： /// Room: 
+Param/Value/615132C4=觀看功能已關閉。 /// Look at function is disabled.
+Param/Value/6190BB53=取消 /// Cancel
+Param/Value/6334C712=白人男孩詹姆士和藍調快遞 /// White Boy James & The Blues Express
+Param/Value/634A3D65=再見。 /// Goodbye.
+Param/Value/64702D3A=再見。 /// Goodbye.
+Param/Value/64B78EC7=音樂停止 /// Stop Music
+Param/Value/64B8C4A1=原始能量 /// Raw Power
+Param/Value/65051152=查爾 /// Char
+Param/Value/650C56A4=
+Param/Value/657949B2=
+Param/Value/657DE8C0=房間：艦橋 /// Room: Bridge
+Param/Value/668D2572=過場資料庫存在 = /// Transitional bank exists = 
+Param/Value/67CDC2F3=
+Param/Value/68E83AA6=
+Param/Value/6A71E528=托許結局 A /// Tosh End A
+Param/Value/6ABEA0B8=完成更多任務以開啟這個房間。 /// Complete additional missions to unlock this room.
+Param/Value/6B2389E9=所花時間用於轉換至 /// Time taken to switch to 
+Param/Value/6C123CDF= ///    
+Param/Value/6C94872E=更強大的<n/>陸戰隊 /// Better<n/>Marine
+Param/Value/6D01A762=再見。 /// Goodbye.
+Param/Value/6D8E5AAC=再見。 /// Goodbye.
+Param/Value/6DD62B66=關閉 /// CLOSE
+Param/Value/6F8915D8=
+Param/Value/6FDE3498=鮪魚大佬 /// Big Tuna
+Param/Value/706237AC=無空間 /// No Room
+Param/Value/71A56E01=蟲族、獵槍與你 /// A Zerg, A Shotgun, and You
+Param/Value/729A14E3=再見。 /// Goodbye.
+Param/Value/72B22E0C=全域 = ///    Global = 
+Param/Value/72EA0384=查爾簡介 /// Char Intro
+Param/Value/732747F8=自由鳥 /// Free Bird
+Param/Value/747F7CC1=韓森 A /// Hanson A
+Param/Value/74D228A1= #<n/>#=1、2、3、4分別代表Zeratul01、Zeratul02、Zeratul03和Zeratul04 ///  #<n/>#=1, 2, 3, 4 for Zeratul01, Zeratul02, Zeratul03 and Zeratul04
+Param/Value/75254944=人類16 /// Terran16
+Param/Value/75B5548B=再見。 /// Goodbye.
+Param/Value/75FB0D17=為 ///  for 
+Param/Value/760FB0C0=預先載入房間 = /// Preloading Room = 
+Param/Value/77BDD6A4=觀看功能已開啟。 /// Look at function is enabled.
+Param/Value/785C8705=<n/> /// <n/>
+Param/Value/7964537B=影片 /// Video
+Param/Value/79E95F2B=人類07 /// Terran07
+Param/Value/7BA8DB12=蟲族、獵槍與你 /// A Zerg, A Shotgun, and You
+Param/Value/7C9331BF=： /// :  
+Param/Value/7D38540E=模擬 /// Simulate
+Param/Value/7D701EE2=再見。 /// Goodbye.
+Param/Value/7E4838FF=動亂 /// Rumble
+Param/Value/7E5C57BE=）目前的房間 = /// )  Current room = 
+Param/Value/7F3BD7D3=
+Param/Value/7F550214=重播 /// REPLAY
+Param/Value/8066977A=澤拉圖 /// Zeratul
+Param/Value/810626A2=
+Param/Value/82FE4BD6=數據初始化結束 /// Init Data Ends
+Param/Value/8301407C=人類12 /// Terran12
+Param/Value/831DBE26=<n/><n/> /// <n/><n/>
+Param/Value/83AE9A81=再見。 /// Goodbye.
+Param/Value/85FC77B8=再見。 /// Goodbye.
+Param/Value/861C0605=查爾之擇 /// The Char Decision
+Param/Value/86EA9124=唐‧柯恩 /// Don Cowin
+Param/Value/883DC614=房間：查爾 /// Room: Char
+Param/Value/88998315=酒吧 /// Cantina
+Param/Value/88CDB372=猜疑的心 /// Suspicious Minds
+Param/Value/88E8DF27=再見。 /// Goodbye.
+Param/Value/899C0450=目前的音軌 = /// TrackCurrent = 
+Param/Value/8A0488DF=返回 /// BACK
+Param/Value/8A0D742E=離開房間 /// Leave room 
+Param/Value/8A217FF5=為 ///  for 
+Param/Value/8A241112=人類13 /// Terran13
+Param/Value/8BCDDABD=注視 = ///    Stared Before = 
+Param/Value/8BD1EF7F=已開啟 ///  ENABLED
+Param/Value/8BE4B326=研發 /// Research
+Param/Value/8C70679F=初始狀態結束 /// Init States Ends
+Param/Value/8D9467BC=80級精英牛頭人酋長 /// L80ETC
+Param/Value/8F9CC8BC=傑姆之歌 /// Jem's Song
+Param/Value/913F4311=</s> /// </s>
+Param/Value/92595DF6=美國三部曲 /// American Trilogy
+Param/Value/93917204=再見。 /// Goodbye.
+Param/Value/946213E0=<s val="StoryModeNewItemTooltip">新傭兵</s><n/><s val="StoryModeNewItemName"> /// <s val="StoryModeNewItemTooltip">New Mercenaries</s><n/><s val="StoryModeNewItemName">
+Param/Value/95869D9B=任務簡報 /// Mission Briefing
+Param/Value/964C91F6=維勒安‧蒙斯克 /// Valerian Mengsk
+Param/Value/969F3850=始終計數 = /// Alwasy Count = 
+Param/Value/96B95CE8=我們聽到了爆炸聲、戰鬥聲和陸戰隊叫囂的聲音 - 混亂之感 /// We hear explosions, combat and marines yelling - the sense of charos.
+Param/Value/97430B0B=蟲族、獵槍與你 /// A Zerg, A Shotgun, and You
+Param/Value/976D1D73=霍納勝利 /// Horner Victory
+Param/Value/99190C9E=PH - /// PH - 
+Param/Value/9A468746=葛拉文‧希爾 /// Graven Hill
+Param/Value/9A7AFA91=觀察站 /// Observatory
+Param/Value/9A82A01B=：<c val="ffff00"> /// : <c val="ffff00">
+Param/Value/9A928DA7=TBD /// TBD
+Param/Value/9B4CA473=布拉理克 /// Bralik
+Param/Value/9BDD7388=PH [TBD] /// PH [TBD]
+Param/Value/9C00717D=潔西卡‧郝兒 /// Jessica Hall
+Param/Value/9DCB034C=取消反白 /// unhighlight 
+Param/Value/9E15E70A=轉換 = ///   Converted = 
+Param/Value/9F2D41DF=播放中的點唱機 /// Unmute Jukebox
+Param/Value/A04810F7=再見。 /// Goodbye.
+Param/Value/A05FF17F=</c>秒 /// </c> seconds
+Param/Value/A0670695=可能計數 = ///    Possible Count = 
+Param/Value/A0C35000=
+Param/Value/A1191FC4=閒置閃動時間：開始= /// Idle Fidget Times:  Start=
+Param/Value/A1635AEC=兵工廠BG1 /// ArmoryBG1
+Param/Value/A1DB48E9=前往房間 （ /// Go to Room (
+Param/Value/A20FDCA5=
+Param/Value/A25FD3D7=結束 /// End
+Param/Value/A281DAD4=%Title% /// %Title%
+Param/Value/A2B66FFA=再見。 /// Goodbye.
+Param/Value/A2E47B91=艦橋背景2 /// BridgeBG2
+Param/Value/A2EEDCD5=甜蜜家園阿拉巴馬 /// Sweet Home Alabama
+Param/Value/A32AB3EB=選擇陣營 /// Choose a Side
+Param/Value/A426A857=原諒我亂塗鴉 /// Excuse Me for Scribblin'
+Param/Value/A5130B82=爆破樂團 /// The Blasters
+Param/Value/A5FFD540=
+Param/Value/A612CD29=傭兵 /// Mercenary
+Param/Value/A67AD1DF=查爾 /// Char
+Param/Value/A67D1B1C=注視 = ///    Stared Before = 
+Param/Value/A770B1AA=艦橋 /// Bridge
+Param/Value/A92D623A=再見。 /// Goodbye.
+Param/Value/A97F1CC2=瑪而‧薩拉 /// Mar Sara
+Param/Value/A9B0471B=人類11 /// Terran11
+Param/Value/A9E7CA0C=取消 /// Cancel
+Param/Value/AA4A30A8=托許結局 B /// Tosh End B
+Param/Value/AB1AB48C=自動停止音樂 /// Auto Stop Music
+Param/Value/AB683C7D=海文星的命運 /// The Fate of Haven
+Param/Value/ABC761A1=靜音的點唱機 /// Mute Jukebox
+Param/Value/AC01C1E2=波旁牛仔 /// Bourbon Cowboys
+Param/Value/AC8084DB=再見。 /// Goodbye.
+Param/Value/ACD29889=原始能量 /// Raw Power
+Param/Value/AD9E5F3F=兵工廠 /// Armory
+Param/Value/ADF09654=x = /// x = 
+Param/Value/AECDD177=蟲爪 /// Claw
+Param/Value/AF6FF0E1=兵工廠 /// Armory
+Param/Value/AF8B31DB=人類02 /// Terran02
+Param/Value/B0EC18CF=傭兵 /// Mercenaries
+Param/Value/B227C2EF=
+Param/Value/B2701B8D=AAAAA /// AAAAA
+Param/Value/B325A6D9=人類03 /// Terran03
+Param/Value/B390B217=副官 /// Adjutant
+Param/Value/B40520A5=再見。 /// Goodbye.
+Param/Value/B442BB75=安娜貝兒 /// Annabelle
+Param/Value/B463AF26=角色： ///   Character: 
+Param/Value/B4779ADE=新房間： /// New Room: 
+Param/Value/B48BC2F4====== /// =====  
+Param/Value/B4982BD6=再見。 /// Goodbye.
+Param/Value/B4A02CFA=再見。 /// Goodbye.
+Param/Value/B52D277B=初始狀態結束 /// Init States Ends
+Param/Value/B588363E=古柏 /// Cooper
+Param/Value/B5946436=任務獎勵： /// Mission Rewards:
+Param/Value/B60C206F=資金 = /// Credits = 
+Param/Value/B640B0E5=
+Param/Value/B6B471BA=再見。 /// Goodbye.
+Param/Value/B6BC152E=
+Param/Value/B875D0C4=
+Param/Value/B94305C5=反白 /// highlight 
+Param/Value/BA1734B0=電視新聞 /// TV News
+Param/Value/BAB05647=再見。 /// Goodbye.
+Param/Value/BAC339D7=史汪的交談： /// Swann has conversation: 
+Param/Value/BB73B4E1=可點擊音效開啟 /// Turn Clickables On
+Param/Value/BBFEC2A0=開始預先載入角色 /// Start preloading characters
+Param/Value/BD0335E0=阿新答羅‧翼巴拉 /// Ajendarro Ybarra
+Param/Value/BD3C8013=
+Param/Value/BD75B6D9=再見。 /// Goodbye.
+Param/Value/BE1CE0ED=TBD /// TBD
+Param/Value/BF0C5D8D=韓森結局 A /// Hanson End A
+Param/Value/BF15A5E2=房間：兵工廠 /// Room: Armory
+Param/Value/BF17A6A7=預先載入人物： /// Preload Character: 
+Param/Value/C02C9A66=再見。 /// Goodbye.
+Param/Value/C0EC7241=轉換 = ///   Converted = 
+Param/Value/C2DA54AC=預先載入位置 /// Preloading location 
+Param/Value/C36090F4=沃菲爾 /// Warfield
+Param/Value/C3DD00E1=
+Param/Value/C3F71D9F=長？ = /// Long ? = 
+Param/Value/C3FCC4E0=護送準備室： /// Convo Setting Room: 
+Param/Value/C48E6CAC=艦橋背景1 /// BridgeBG1
+Param/Value/C4957911=當你完成「解放日」後即可開啟此作弊。 /// This cheat will be enabled after you have completed mission "Liberation Day".
+Param/Value/C4DAEF83=目前的音軌 = /// TrackCurrent = 
+Param/Value/C4E7BC87=<n/> /// <n/>
+Param/Value/C52B9B2D=房間：瑪而‧薩拉酒吧 /// Room: Mar Sara Bar
+Param/Value/C605B289=麥克‧坎貝爾和骯髒旋鈕 /// Mike Campbell and the Dirty Knobs
+Param/Value/C6660181=瑪而‧薩拉 /// Mar Sara
+Param/Value/C6BCB7DC=澤拉圖的警告 /// Zeratul's Warning
+Param/Value/C710CD1E=回到房間 = /// Return Room = 
+Param/Value/C76FEA3B= ///  
+Param/Value/C7D4B12D=
+Param/Value/C84488FD=<s val="StoryModeNewItemNameZerg"> /// <s val="StoryModeNewItemNameZerg">
+Param/Value/C8EA6AA4=再見。 /// Goodbye.
+Param/Value/C9522892=再見。 /// Goodbye.
+Param/Value/C954C6A0=ZRewardSummary_Zerg /// ZRewardSummary_Zerg
+Param/Value/CD73EFEC=艾瑞兒‧韓森博士 /// Dr. Ariel Hanson
+Param/Value/CE6709E3=酒吧 /// Cantina
+Param/Value/CE7F7DC9=
+Param/Value/CEF2927D=<c val="ff0000">無法加入閃光文字標籤：超過限制</c> /// <c val="ff0000">Failed to add Glow Text Tag: Exceeds the limit</c>
+Param/Value/CF263727=再見。 /// Goodbye.
+Param/Value/CF302ED4=數據初始化開始 /// Init Data Starts
+Param/Value/D1EB5F97=雷諾 /// Raynor
+Param/Value/D2FEFB63=<s val="StoryModeNewItemNameProtoss"> /// <s val="StoryModeNewItemNameProtoss">
+Param/Value/D38A49C2=艦橋 /// Bridge
+Param/Value/D3B1D2B5=[下一首] 隨機開始 = /// [in Next Track] StartRandom = 
+Param/Value/D3C1FD51=蟲族、獵槍與你 /// A Zerg, A Shotgun, and You
+Param/Value/D41066FE=兵工廠開啟 = /// ArmoryOpened = 
+Param/Value/D47C6B4D=麥克‧坎貝爾和骯髒旋鈕 /// Mike Campbell and the Dirty Knobs
+Param/Value/D4A752FC=卸載動畫 /// Unload animation 
+Param/Value/D5109003= - ///  - 
+Param/Value/D59DF7FD=建立酒吧音效 /// create cantina sound
+Param/Value/D65F6EFE=爆破樂團 /// The Blasters
+Param/Value/D67E2367=%Author% /// %Author%
+Param/Value/D6E91F0D=再見。 /// Goodbye.
+Param/Value/D7841535=羅利˙史汪 /// Rory Swann
+Param/Value/D7DC7C30=等待結束期間 ID 本地 = /// Waiting Finishes Session ID Local = 
+Param/Value/D822401B=新兵工廠科技 /// New Armory Technology
+Param/Value/DADFB189=面對 = /// facing = 
+Param/Value/DAFC6ABC=預先載入房間： /// Preload Room: 
+Param/Value/DC642613=美國三部曲 /// American Trilogy
+Param/Value/DC6A50B2=走廊 /// Corridor
+Param/Value/DCAFD624=霍納艦橋簡介 /// Horner Bridge Intro
+Param/Value/DE8C56DB=回到房間 = /// Return Room = 
+Param/Value/DF2FFC7C=任務檔案 /// Mission Archieves
+Param/Value/E07F138B=開始預先載入位置 /// Start preloading locations
+Param/Value/E08A5DE1=虛空 /// Void
+Param/Value/E156CE66=
+Param/Value/E16789E0=離開點擊區 /// Hotspot Leave
+Param/Value/E3037797=人類夜未眠 /// Terran Up The Night
+Param/Value/E36577BB=鮪魚大佬 /// Big Tuna
+Param/Value/E43201DD=再見 /// Goodbye
+Param/Value/E4C128DC=啟動動作者 /// Enable actor 
+Param/Value/E50D24A3=再見。 /// Goodbye.
+Param/Value/E532DC8C=
+Param/Value/E6AEF428=開始預先載入位置 /// Start preloading locations
+Param/Value/E832C981=羅密歐‧戴爾塔 /// Romeo Delta
+Param/Value/E914DA24=
+Param/Value/E9C352CD=BG人物繼續： /// BG Actor Resume: 
+Param/Value/EBBF872C=
+Param/Value/EC4C2D72=人類05 /// Terran05
+Param/Value/EC6381F4=播放 /// PLAY
+Param/Value/ED1527A6=<s val="StoryModeQuitToLobby">退出劇情戰役？</s> /// <s val="StoryModeQuitToLobby">Quit Campaign?</s>
+Param/Value/ED6BAD2C=昏暗的燈光，濃濃的煙霧，吵鬧的音樂 /// Dim Lights, Thick Smoke, and Loud Loud Music
+Param/Value/EE22F388=麥特‧霍納 /// Matt Horner
+Param/Value/EE48D823=準備房間內動作者的能見度 /// Prepare actor visibility for room 
+Param/Value/EE7D99B0=</s> /// </s>
+Param/Value/EF33F1A0=
+Param/Value/EFF88CAE=過場資料庫存在。 /// Transitional bank exists.
+Param/Value/EFFA4A63=BG人物開始： /// BG Actor Start: 
+Param/Value/F024A537=泰科斯‧芬利 /// Tychus Findlay
+Param/Value/F0A894E7=白人男孩詹姆士和藍調快遞 /// White Boy James & The Blues Express
+Param/Value/F15BC524=<s val="StoryModeNewItemTooltip">新研發計畫</s><n/> /// <s val="StoryModeNewItemTooltip">New Research Project</s><n/>
+Param/Value/F1847F13=韓森結局 B /// Hanson End B
+Param/Value/F1F90DCB=韓森 B /// Hanson B
+Param/Value/F2D8EFC3=房間：實驗室 /// Room: Lab
+Param/Value/F311546A=檔案 /// Archives
+Param/Value/F4DB8A5C=關閉 /// Close
+Param/Value/F6863E74=PH [TBD] /// PH [TBD]
+Param/Value/F7062F37=動畫載入中 /// Loading animation 
+Param/Value/F7D2EB63=
+Param/Value/F822AA75=鮪魚大佬 /// Big Tuna
+Param/Value/F89FE48B=自由鳥 /// Free Bird
+Param/Value/F8D4A69F=開始遊戲 /// Play
+Param/Value/F93B35C3=坐下 ///  sits
+Param/Value/F9F016D2=無效的房間名稱 /// Invalid room name.
+Param/Value/FA4AC043=再見。 /// Goodbye.
+Param/Value/FB0492C5=<s val="ZPlanetPanelHeading">任務：</s><n/><s val="ZPlanetPanelMission"> /// <s val="ZPlanetPanelHeading">MISSION:</s><n/><s val="ZPlanetPanelMission">
+Param/Value/FBF6B365=兵工廠開啟 = /// ArmoryOpened = 
+Param/Value/FCD75C25=人類夜未眠 /// Terran Up The Night
+Param/Value/FD6397AB=馬克士‧凱得 /// Marcus Cade
+Param/Value/FDDC74F7=拾取物品在[ /// Picked at loc[
+Param/Value/FDEB51AC=酒吧 /// Cantina
+Param/Value/FEDA652A=鮪魚大佬 /// Big Tuna
+Param/Value/FEDED7E3=神族研發點數 = /// Protoss Research Points = 
+Param/Value/FFFD0315=艦橋 /// Bridge

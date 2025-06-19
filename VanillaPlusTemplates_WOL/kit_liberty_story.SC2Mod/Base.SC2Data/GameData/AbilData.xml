@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!--  -->
+    <CAbilAttack id="DiamondbackAttack">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TargetMessage value="Abil/TargetMessage/attack"/>
+        <MinAttackSpeedMultiplier value="0.25"/>
+        <MaxAttackSpeedMultiplier value="128"/>
+    </CAbilAttack>
+    <CAbilMove id="DiamondbackMove">
+        <AbilSetId value="Move"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CAbilMove>
+    <CAbilStop id="DiamondbackStop">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CAbilStop>
+    <!--  -->
+    <CAbilEffectInstant id="Kit@PerditionTurretRemoveHoldFire">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@PerditionTurretRemoveHoldFire" Requirements="Kit@PerditionTurretHoldingFire2">
+            <Flags index="ShowInGlossary" value="0"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="Kit@PerditionTurretHoldFire">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@Kit@PerditionTurretHoldFire" Requirements="Kit@PerditionTurretNotHoldingFire">
+            <Flags index="ShowInGlossary" value="0"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="Kit@LaserDrillRemoveHoldFire">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@LaserDrillRemoveHoldFire" Requirements="Kit@LaserDrillHoldingFire">
+            <Flags index="ShowInGlossary" value="0"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="Kit@LaserDrillHoldFire">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="Transient" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@LaserDrillHoldFire" Requirements="Kit@LaserDrillNotHoldingFire">
+            <Flags index="ShowInGlossary" value="0"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!--  -->
+    <CAbilEffectTarget id="NexusMassRecall">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Effect index="0" value="NexusMassRecallSearch"/>
+        <Cost>
+            <Cooldown Location="Player" TimeUse="182"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CursorEffect value="NexusMassRecallSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MassRecall"/>
+    </CAbilEffectTarget>
+    <!--  -->
+    <CAbilEffectTarget id="DarkTemplarBlink">
+        <AbilSetId value="Blnk"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="8"/>
+        </Cost>
+        <Range value="500"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DarkTemplarBlink">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Stimpack">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray value="Kit@CasterNotMarineStimmed"/>
+        <AutoCastValidatorArray value="CasterIsFiringWeapon"/>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="StimpackMarauder">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray value="Kit@CasterNotMarauderStimmed"/>
+        <AutoCastValidatorArray value="CasterIsFiringWeapon"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="ZeratulBlink">
+        <PrepEffect value="MakeCasterFacingTargetPoint"/>
+    </CAbilEffectTarget>
+    <!-- Observer Siege Mode -->
+    <CAbilMorph id="Kit@ObserverMorphtoObserverSiege">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@MorphtoObserverSiege">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray Unit="Kit@ObserverSiegeMode">
+            <SectionArray index="Abils">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="Kit@ObserverSiegeMorphtoObserver">
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@MorphtoObserver">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="BestUnit" value="1"/>
+        <Flags index="DisableAbils" value="1"/>
+        <Flags index="FastBuild" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <RefundFraction>
+            <Resource index="Minerals" value="0"/>
+            <Resource index="Vespene" value="0"/>
+            <Resource index="Terrazine" value="0"/>
+            <Resource index="Custom" value="0"/>
+        </RefundFraction>
+        <InfoArray Unit="Observer">
+            <SectionArray index="Abils">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.75"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilTransport id="MedivacTransport">
+        <LoadValidatorArray value="NotSiegedTank"/>
+        <LoadValidatorArray value="NotSiegedTankMerc"/>
+    </CAbilTransport>
+    <CAbilMorph id="PerditionTurretBurrow">
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="0.6"/>
+            </SectionArray>
+        </InfoArray>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilMorph>
+    <CAbilMorph id="PerditionTurretUnburrow">
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.4"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.4"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.4"/>
+            </SectionArray>
+        </InfoArray>
+        <Flags index="IgnorePlacement" value="1"/>
+    </CAbilMorph>
+    <!-- Warp Gates Auto Morph -->
+    <CAbilMorph id="UpgradeToWarpGate">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray value="Kit@NotHaveWarpGateAutoCastDisabler"/>
+        <AutoCastValidatorArray value="Kit@GatewayNotTraining"/>
+        <AutoCastRange value="5"/>
+        <AutoCastCountMax value="500"/>
+    </CAbilMorph>
+    <CAbilMorph id="MorphBackToGateway">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <EffectArray index="Finish" value="Kit@WarpGateAutoCastDisabler"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <!-- Refinery Geyser Model Fix -->
+    <CAbilMorph id="Kit@RefineryPipesMorph">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Raise"/>
+        <InfoArray Unit="Refinery" CollideRange="0"/>
+    </CAbilMorph>
+    <!-- Terran Train Abilities Fix -->
+    <CAbilTrain id="BarracksTrain">
+        <InfoArray index="Train3">
+            <Button Requirements="Kit@HaveAttachedTechLabBarracksAndGhostAcademy"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="Kit@HaveAttachedTechLabBarracks"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="Kit@HaveAttachedTechLabBarracksOrMedicTraining"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="Kit@HaveAttachedTechLabBarracks"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button Requirements="Kit@HaveAttachedTechLabBarracksAndGhostAcademy"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="FactoryTrain">
+        <InfoArray index="Train2">
+            <Button Requirements="Kit@HaveAttachedTechLabFactory"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="Kit@HaveAttachedTechLabFactory"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="Kit@HaveAttachedTechLabFactory"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button Requirements="Kit@HaveAttachedTechLabFactoryAndArmory"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button Requirements="Kit@HaveAttachedTechLabFactory"/>
+        </InfoArray>
+        <InfoArray index="Train11">
+            <Button Requirements=""/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="StarportTrain">
+        <InfoArray index="Train2">
+            <Button Requirements="Kit@HaveAttachedTechLabStarport"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button Requirements="Kit@HaveAttachedTechLabStarport"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button Requirements="Kit@HaveAttachedTechLabStarportAndFusionCore"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button Requirements="Kit@HaveAttachedTechLabStarport"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button Requirements=""/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Button Requirements="Kit@HaveAttachedTechLabStarport"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilResearch id="StarportTechLabResearch">
+        <InfoArray index="Research11">
+            <Button State="Restricted"/>
+        </InfoArray>
+    </CAbilResearch>
+    <CAbilTrain id="SummonMercenaries">
+        <InfoArray index="Train1">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Button State="Restricted"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Button State="Restricted"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilBuild id="TerranBuild">
+        <InfoArray index="Build4">
+            <!-- Barracks requires Command Center instead of Supply Depot for story reasons -->
+            <Button Requirements="HaveCommandCenter"/>
+        </InfoArray>
+        <InfoArray index="Build10">
+            <!-- Ghost Academy limit to 1 -->
+            <Button Requirements="Kit@CanBuildGhostAcademy"/>
+        </InfoArray>
+        <InfoArray index="Build13">
+            <!-- Merc Compound limit to 1 -->
+            <Button Requirements="Kit@CanBuildMercCompound"/>
+        </InfoArray>
+        <InfoArray index="Build15" Unit="PerditionTurret" Time="25">
+            <Button DefaultButtonFace="PerditionTurret" Requirements="HaveEngineeringBay"/>
+        </InfoArray>
+        <InfoArray index="Build16">
+            <!-- Fusion Core limit to 1 -->
+            <Button Requirements="Kit@CanBuildFusionCore"/>
+        </InfoArray>
+        <InfoArray index="Build17" Unit="PsiDisruptor" Time="50">
+            <Button DefaultButtonFace="PsiDisruptor" State="Restricted" Requirements="HaveEngineeringBay"/>
+        </InfoArray>
+        <InfoArray index="Build18" Unit="HiveMindEmulator" Time="50">
+            <Button DefaultButtonFace="HiveMindEmulator" State="Restricted" Requirements="HaveEngineeringBay"/>
+        </InfoArray>
+    </CAbilBuild>
+    <CAbilBuild id="ZergBuild">
+        <InfoArray index="Build18" Time="180"/>
+    </CAbilBuild>
+    <!-- Selendis Buff -->
+    <CAbilArmMagazine id="SelendisHangar">
+        <InfoArray index="Ammo1" Time="10">
+            <Resource index="Minerals" value="0"/>
+            <Cooldown Link="Abil/##id##" TimeUse="0.01"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="LeashRetarget" value="1"/>
+        </InfoArray>
+    </CAbilArmMagazine>
+    <!-- Artanis Mothership Fix -->
+    <CAbilEffectTarget id="Vortex">
+        <Effect index="0" value="VortexCreatePersistentInitial"/>
+        <TargetFilters index="0" removed="1"/>
+        <CursorEffect value="VortexSearchArea"/>
+    </CAbilEffectTarget>
+    <!-- Battlecruiser No Energy -->
+    <CAbilEffectTarget id="Yamato">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+                <TimeUse value="71"/>
+            </Charge>
+            <Cooldown TimeUse="0"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Hyperjump">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="71"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="Kit@UseBattlecruiserTacticalJump">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilAttack id="BattlecruiserAttack">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <TargetMessage value="Abil/TargetMessage/attack"/>
+        <MinAttackSpeedMultiplier value="0.25"/>
+        <MaxAttackSpeedMultiplier value="128"/>
+    </CAbilAttack>
+    <CAbilMove id="BattlecruiserMove">
+        <AbilSetId value="Move"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CAbilMove>
+    <CAbilStop id="BattlecruiserStop">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CAbilStop>
+    <!-- TValerian02a Shared Command Card -->
+    <CAbilEffectTarget id="RaynorSnipe">
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BonesHeal">
+        <Marker Link="Abil/BonesHeal"/>
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <TargetSorts>
+            <SortArray index="0" value="TSAlliancePassive"/>
+            <SortArray index="1" value="TSHeroic"/>
+        </TargetSorts>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BonesTossGrenade">
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DutchPlaceTurret">
+        <CmdButtonArray index="Execute">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TValerian02aHeroCommonAbil1">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TValerian02aHeroCommonAbil1">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TValerian02aHeroCommonAbil2">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TValerian02aHeroCommonAbil2">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TValerian02aHeroCommonAbil3">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TValerian02aHeroCommonAbil3">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="TValerian02aHeroCommonAbil4">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="TValerian02aHeroCommonAbil4">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
+    <!-- Reaper AutoCast Bombs-->
+    <CAbilEffectTarget id="D8Charge">
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Cost index="0">
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetSorts>
+            <SortArray value="TSStanding"/>
+        </TargetSorts>
+        <Range index="0" value="6"/>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Worker,Missile,Stasis,Dead,Hidden"/>
+        <AutoCastRange value="6"/>
+    </CAbilEffectTarget>
+    <!-- Vulture Spider Mine Rebuild: Fix Alert and Reduce Build Time -->
+    <CAbilSpecialize id="MakeVultureSpiderMines">
+        <InfoArray index="Specialize1" Time="6" Alert="Kit@SpiderMineComplete"/>
+    </CAbilSpecialize>
+    <!-- Medivac Heal correct validators -->
+    <CAbilEffectTarget id="MedivacDoubleBeamHeal">
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <SmartValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="Unrepairable"/>
+        <Flags index="TransportAcquirePassengers" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="MedivacHeal">
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <SmartValidatorArray value="NotMaxHP"/>
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="Unrepairable"/>
+    </CAbilEffectTarget>
+    <!-- Viking Morph Fix -->
+    <CAbilMorph id="AssaultMode">
+        <Flags index="WaitUntilStopped" value="0"/>
+    </CAbilMorph>
+    <!-- Viking Merc Morph same speed as normal Viking -->
+    <CAbilMorph id="WreckingCrewAssaultMode">
+        <InfoArray index="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2.34"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.533"/>
+                <DurationArray index="Duration" value="1.2"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="2.34"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="WreckingCrewFighterMode">
+        <InfoArray index="0">
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="0.6"/>
+                <DurationArray index="Duration" value="0.85"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <!-- SCV Advanced Construction Helper -->
+    <CAbilEffectTarget id="Kit@AdvancedConstructionAuto">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOffOwnerLeave" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <TargetFilters value="UnderConstruction;Ally,Neutral,Enemy"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;-"/>
+        <AutoCastRange value="8"/>
+        <CastIntroTime value="0.125"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Kit@AdvancedConstructionAuto" Requirements="Kit@UseSCVAdvancedConstruction">
+            <Flags index="IgnoreUser" value="1"/>
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectTarget>
+    <!-- Thor Faster Morph Speed -->
+    <CAbilMorph id="ThorAPMode">
+        <InfoArray index="0" RandomDelayMax="0.25">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="2.5"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="2.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="ThorNormalMode">
+        <InfoArray index="0" RandomDelayMax="0.25">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="2.5"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="2.5"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="2.5"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <!-- Thor Self Repair -->
+    <CAbilEffectInstant id="SelfRepair">
+        <Cost index="0">
+            <Cooldown TimeUse="180"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements="Kit@UseThorEmergencyRepair"/>
+    </CAbilEffectInstant>
+    <!-- Nuke Auto Build -->
+    <CAbilArmMagazine id="ArmSiloWithNuke">
+        <InfoArray index="Ammo1">
+            <Flags index="AutoBuild" value="1"/>
+        </InfoArray>
+        <Activity value="UI/Building"/>
+    </CAbilArmMagazine>
+    <!-- Steady Targeting -->
+    <CAbilEffectTarget id="ChannelSnipe">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="ChannelSnipeInitialSet"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+        </Cost>
+        <TargetFilters value="Biological,Visible;Self,Player,Ally,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <RangeSlop value="20"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ChannelSnipe"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+    </CAbilEffectTarget>
+    <!-- Spectre Psionic Lash -->
+    <CAbilEffectTarget id="Obliterate">
+        <TargetFilters index="0" value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="UltrasonicPulse">
+        <FinishTime index="0" value="0.8"/>
+    </CAbilEffectTarget>
+    <!-- Buff Hercules to Coop Level -->
+    <CAbilTransport id="HerculesTransport">
+        <MaxCargoCount value="32"/>
+        <TotalCargoSpace value="32"/>
+        <Range value="3"/>
+        <MaxUnloadRange value="5"/>
+    </CAbilTransport>
+    <!-- Maar no longer have energy -->
+    <CAbilEffectTarget id="HybridCPlasmaBlast">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <!-- Medic Heal -->
+    <CAbilEffectTarget id="heal">
+        <!-- Allow mind controlled zerg -->
+        <TargetFilters index="0" value="Biological,Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <!-- Prioritize damaged units -->
+        <TargetSorts>
+            <SortArray index="1" value="TSLifeFraction"/>
+            <SortArray index="2" value="TSDistance"/>
+        </TargetSorts>
+        <!-- Range Buff -->
+        <Range index="0" value="4"/>
+        <SmartValidatorArray value="NotMaxHP"/>
+        <!-- And correct validators -->
+        <AutoCastValidatorArray value="UnitOrAttackingStructure"/>
+        <AutoCastValidatorArray value="NotStasis"/>
+        <AutoCastValidatorArray value="NotTimedLifeUnitAndNotLarva"/>
+        <AutoCastValidatorArray value="Unrepairable"/>
+    </CAbilEffectTarget>
+</Catalog>

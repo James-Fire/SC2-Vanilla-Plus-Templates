@@ -1,0 +1,281 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+static int dialog = -1;
+static int root;
+
+struct ResearchItem {
+    int frame;
+    int button;
+    int icon;
+    int flash;
+};
+struct ResearchTier {
+    int frame;
+    int required_level;
+    int flash;
+    ResearchItem[2] items;
+};
+struct ResearchCategory {
+    int frame;
+    int current_level;
+    ResearchTier[5] tiers;
+    int[25] progress;
+};
+
+static ResearchCategory[2] categories;
+
+static int research_movie;
+static int research_name;
+static int research_description;
+
+static int close_button;
+
+
+static trigger CloseButtonClicked = TriggerCreate("Kit_UIResearch_CloseButtonClicked");
+static trigger ResearchItemMouseEnter = TriggerCreate("Kit_UIResearch_ResearchItemMouseEnter");
+static trigger ResearchItemMouseExit = TriggerCreate("Kit_UIResearch_ResearchItemMouseExit");
+static trigger ResearchItemMouseClicked = TriggerCreate("Kit_UIResearch_ResearchItemMouseClicked");
+static trigger UserTrigger;
+
+
+static void Create() {
+    structref<ResearchItem> item;
+    structref<ResearchTier> tier;
+    int i;
+    int j;
+    int k;
+
+    if (dialog != -1) {
+        return;
+    }
+
+    dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+    DialogSetImageVisible(dialog, false);
+    DialogSetFullscreen(dialog, true);
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    
+    root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_ResearchPanel/ResearchPanelTemplate");
+
+    research_movie = DialogControlHookup(root, c_triggerControlTypeMovie, "MoviePortrait");
+    research_name = DialogControlHookup(root, c_triggerControlTypeLabel, "NameLabel");
+    research_description = DialogControlHookup(root, c_triggerControlTypeLabel, "DescriptionLabel");
+
+    close_button = DialogControlHookup(root, c_triggerControlTypeButton, "CloseButton");
+    TriggerAddEventDialogControl(CloseButtonClicked, 1, close_button, c_triggerControlEventTypeClick);
+
+    for (i = 0; i < 2; i += 1) {
+        categories[i].frame = DialogControlHookup(root, c_triggerControlTypePanel, "ResearchCategoryFrame" + IntToString(i));
+        categories[i].current_level = DialogControlHookup(categories[i].frame, c_triggerControlTypeLabel, "CurrentLevelLabel");
+
+        for (j = 0; j < 25; j += 1) {
+            categories[i].progress[j] = DialogControlHookup(categories[i].frame, c_triggerControlTypeImage, "CurrentLevelActiveImage" + IntToString(j));
+        }
+
+        for (j = 0; j < 5; j += 1) {
+            tier = categories[i].tiers[j];
+
+            tier.frame = DialogControlHookup(categories[i].frame, c_triggerControlTypePanel, "ResearchTierFrame" + IntToString(j));
+            tier.required_level = DialogControlHookup(tier.frame, c_triggerControlTypeLabel, "RequiredLevelLabel");
+            tier.flash = DialogControlHookup(tier.frame, c_triggerControlTypeFlash, "FlashFrame");
+            // DialogControlInvokeAsString(tier.flash, PlayerGroupAll(), "Birth", null, null, null, null);
+
+            for (k = 0; k < 2; k += 1) {
+                item = tier.items[k];
+
+                item.frame = DialogControlHookup(tier.frame, c_triggerControlTypePanel, "ResearchItemFrame" + IntToString(k));
+                item.button = DialogControlHookup(item.frame, c_triggerControlTypeButton, "Button");
+                item.icon = DialogControlHookup(item.frame, c_triggerControlTypeImage, "IconImage");
+                item.flash = DialogControlHookup(item.frame, c_triggerControlTypeFlash, "FlashFrame");
+                // DialogControlInvokeAsString(item.flash, PlayerGroupAll(), "Birth", null, null, null, null);
+
+                TriggerAddEventDialogControl(ResearchItemMouseEnter, 1, item.button, c_triggerControlEventTypeMouseEnter);
+                TriggerAddEventDialogControl(ResearchItemMouseExit, 1, item.button, c_triggerControlEventTypeMouseExit);
+                TriggerAddEventDialogControl(ResearchItemMouseClicked, 1, item.button, c_triggerControlEventTypeClick);
+            }
+        }
+    }
+}
+
+static void UpdatePerkGroups() {
+    int count = UserDataInstanceCount("CampaignPerkGroup");
+    int i;
+    string perk_group;
+    int perk_cost;
+    int perk_state;
+    int category_index;
+    int tier_index;
+    structref<ResearchTier> tier;
+
+    for (i = 1; i <= count; i += 1) {
+        perk_group = UserDataInstance("CampaignPerkGroup", i);
+        category_index = libWoLC_gf_WC_PerkGroupUIOrderX(perk_group);
+        tier_index = libWoLC_gf_WC_PerkGroupUIOrderY(perk_group);
+
+        tier = categories[category_index].tiers[tier_index];
+
+        perk_cost = libWoLC_gf_WC_PerkGroupCost(perk_group);
+        libNtve_gf_SetDialogItemText(tier.required_level, IntToText(perk_cost), PlayerGroupAll());
+
+        perk_state = libWoLC_gf_WC_PerkGroupState(perk_group);
+        DialogControlSetAnimationState(tier.frame, PlayerGroupAll(), "StatusState", libWoLC_gf_WC_ConvertPerkStateToString(perk_state));
+    }
+}
+
+static void UpdatePerks() {
+    int count = UserDataInstanceCount("CampaignPerk");
+    int i;
+    string perk;
+    string perk_group;
+    int perk_state;
+    string perk_icon;
+    text perk_tooltip;
+    int category_index;
+    int tier_index;
+    int item_index;
+    structref<ResearchItem> item;
+
+    for (i = 1; i <= count; i += 1) {
+        perk = UserDataInstance("CampaignPerk", i);
+        perk_group = libWoLC_gf_WC_PerkGroupOfPerk(perk);
+
+        category_index = libWoLC_gf_WC_PerkGroupUIOrderX(perk_group);
+        tier_index = libWoLC_gf_WC_PerkGroupUIOrderY(perk_group);
+        item_index = libWoLC_gf_WC_PerkUISlot(perk);
+
+        item = categories[category_index].tiers[tier_index].items[item_index];
+
+        perk_icon = libWoLC_gf_WC_PerkIcon(perk);
+        libNtve_gf_SetDialogItemImage(item.icon, perk_icon, PlayerGroupAll());
+        
+        perk_tooltip = libWoLC_gf_WC_PerkTooltip(perk);
+        libNtve_gf_SetDialogItemTooltip(item.button, perk_tooltip, PlayerGroupAll());
+
+        perk_state = libWoLC_gf_WC_PerkState(perk);
+        DialogControlSetAnimationState(item.frame, PlayerGroupAll(), "StatusState", libWoLC_gf_WC_ConvertPerkStateToString(perk_state));
+
+        Kit_SetDialogItemCustomValue(item.button, 0, perk);
+        Kit_SetDialogItemCustomValue(item.button, 1, perk_group);
+    }
+}
+
+static void ActivatePerk(string perk) {
+    string perk_group = libWoLC_gf_WC_PerkGroupOfPerk(perk);
+    int category_index = libWoLC_gf_WC_PerkGroupUIOrderX(perk_group);
+    int tier_index = libWoLC_gf_WC_PerkGroupUIOrderY(perk_group);
+    int item_index = libWoLC_gf_WC_PerkUISlot(perk);
+    structref<ResearchTier> tier;
+    structref<ResearchItem> item;
+    int perk_count = UserDataInstanceCount("CampaignPerk");
+    string perk_index;
+    int i;
+    
+    libWoLC_gf_WC_PerkStateSet(perk, libWoLC_ge_WC_PerkState_Active);
+
+    tier = categories[category_index].tiers[tier_index];
+    DialogControlSetAnimationState(tier.frame, PlayerGroupAll(), "StatusState", "Active");
+
+    item = tier.items[item_index];
+    DialogControlSetAnimationState(item.frame, PlayerGroupAll(), "StatusState", "Active");
+
+    for (i = 1; i <= perk_count; i += 1) {
+        perk_index = UserDataInstance("CampaignPerk", i);
+        if (perk_index == perk) {
+            continue;
+        }
+
+        if (libWoLC_gf_WC_PerkGroupOfPerk(perk_index) != perk_group) {
+            continue;
+        }
+
+        if (!libWoLC_gf_WC_PerkStateCheck(perk, libWoLC_ge_WC_PerkState_Active)) {
+            continue;
+        }
+
+        libWoLC_gf_WC_PerkStateSet(perk_index, libWoLC_ge_WC_PerkState_Unlocked);
+
+        item = tier.items[libWoLC_gf_WC_PerkUISlot(perk_index)];
+        DialogControlSetAnimationState(item.frame, PlayerGroupAll(), "StatusState", "Unlocked");
+    }
+}
+
+static void UpdateCategory(structref<ResearchCategory> category, string type) {
+    int level = libWoLC_gf_RewardTotalEarned(type);
+    text level_text = StringExternal("UI/ResearchPanelCurrentResearchLevel");
+    int i;
+
+    level = libNtve_gf_ArithmeticIntClamp(level, 0, libWoLC_gf_WC_TechConstant("ResearchCap"));
+    level_text = TextReplaceWord(level_text, StringToText("%level%"), IntToText(level), 1, true);
+    libNtve_gf_SetDialogItemText(category.current_level, level_text, PlayerGroupAll());
+
+    for (i = 0; i < 25; i += 1) {
+        DialogControlSetVisible(category.progress[i], PlayerGroupAll(), i < level);
+    }
+}
+
+void Kit_UIResearch_Show(trigger exit_trigger) {
+    UserTrigger = exit_trigger;
+
+    Create();
+    UpdateCategory(categories[0], "ProtossResearch");
+    UpdateCategory(categories[1], "ZergResearch");
+    UpdatePerkGroups();
+    UpdatePerks();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+}
+
+void Kit_UIResearch_Hide() {
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    TriggerExecute(UserTrigger, true, true);
+}
+
+bool Kit_UIResearch_ResearchItemMouseEnter(bool check, bool run) {
+    int button = EventDialogControl();
+    string perk = Kit_GetDialogItemCustomValue(button, 0);
+
+    if (!run) { return true; }
+
+    TriggerStop(ResearchItemMouseExit);
+
+    DialogControlSetAnimationState(root, PlayerGroupAll(), "SelectionState", "On");
+    libNtve_gf_SetDialogItemText(research_name, libWoLC_gf_WC_PerkName(perk), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(research_description, libWoLC_gf_WC_PerkDescription(perk), PlayerGroupAll());
+    libNtve_gf_SetDialogItemMovie(research_movie, libWoLC_gf_WC_PerkMovie(perk), PlayerGroupAll());
+
+    return true;
+}
+
+bool Kit_UIResearch_ResearchItemMouseExit(bool check, bool run) {
+    if (!run) { return true; }
+
+    Wait(1, c_timeReal);
+
+    DialogControlSetAnimationState(root, PlayerGroupAll(), "SelectionState", "Off");
+
+    return true;
+}
+
+bool Kit_UIResearch_ResearchItemMouseClicked(bool check, bool run) {
+    int button = EventDialogControl();
+    string perk = Kit_GetDialogItemCustomValue(button, 0);
+
+    if (check && !libWoLC_gf_WC_PerkStateCheck(perk, libWoLC_ge_WC_PerkState_Unlocked)) {
+        return false;
+    }
+
+    if (!run) { return true; }
+
+    ActivatePerk(perk);
+
+    return true;
+}
+
+bool Kit_UIResearch_CloseButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    Kit_UIResearch_Hide();
+
+    return true;
+}

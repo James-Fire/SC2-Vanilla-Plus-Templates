@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="DifficultyPulldown" name="DifficultyPulldownTemplate">
+        <Height val="66"/>
+        <Width val="292"/>
+        <Style val="Kit_DifficultyPulldown"/>
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+        <ArrowImage val="PulldownArrow"/>
+        <ArrowHoverImage val="PulldownArrowHover"/>
+        <ItemContainer val="ItemContainer"/>
+        <Menu val="MenuListBox"/>
+        <HighlightOnHover val="true"/>
+        <MenuShownSound val="@UI_DropdownSelect"/>
+        <MenuHiddenSound val="@UI_DropdownClose"/>
+        <MenuGap val="20"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Texture val="Assets\Textures\ui_glue_dropdownbutton_normalpressed_terran.dds"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DesaturateOnDisable val="false"/>
+            <DisabledAlpha val="170"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Texture val="Assets\Textures\ui_glue_dropdownbutton_normaloverpressedover_terran.dds"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DesaturateOnDisable val="false"/>
+            <DisabledAlpha val="170"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Image" name="PulldownArrow">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+            <Texture val="Assets\Textures\ui_glue_dropdownarrow_normalpressed_terran.dds"/>
+            <TextureType val="Normal"/>
+            <Tiled val="false"/>
+            <StateCount val="2"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Image" name="PulldownArrowHover">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+            <Texture val="Assets\Textures\ui_glue_dropdownarrow_normaloverpressedover_terran.dds"/>
+            <TextureType val="Normal"/>
+            <Tiled val="false"/>
+            <StateCount val="2"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="ListBox" name="MenuListBox">
+            <ItemHeight val="34"/>
+            <Insets top="15" left="12" bottom="13" right="12"/>
+            <HighlightInsets top="0" left="0" bottom="2" right="0"/>
+            <BackgroundImage val="BackgroundImage"/>
+            <SelectedImage val="SelectedImage"/>
+            <HoverImage val="HoverImage"/>
+            <HighlightOnHover val="true"/>
+            <ItemClickSound val="@UI_DropdownListSelect"/>
+            <DescFlags val="Internal"/>
+            <Style val="Void_StoryPulldownLabel"/>
+
+            <Frame type="Image" name="BackgroundImage">
+                <Texture val="Assets\Textures\ui_glue_dropdownmenuframe_terran.dds"/>
+                <TextureType val="NineSlice"/>
+                <Tiled val="true"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="SelectedImage">
+                <Texture val="Assets\Textures\ui_glue_dropdownmenubutton_selected_terran.dds"/>
+                <TextureType val="NineSlice"/>
+                <Tiled val="true"/>
+                <Alpha val="200"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="HoverImage">
+                <Texture val="Assets\Textures\ui_glue_dropdownmenubutton_selected_terran.dds"/>
+                <TextureType val="NineSlice"/>
+                <Tiled val="true"/>
+                <Alpha val="100"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="ItemContainer">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="12"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="35"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-30"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="RewardContainerTemplate">
+        <CollapseLayout val="True"/>
+        <Visible val="{$this/Heading/@Visible}"/>
+    
+        <Frame type="Label" name="Heading">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardHeading"/>
+            <CollapseLayout val="true"/>
+        </Frame>
+        
+        <Frame type="Image" name="Bullet0">
+            <Anchor side="Top" relative="$parent/Heading" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Heading" pos="Min" offset="-4"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label0/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label0">
+            <Anchor side="Top" relative="$parent/Bullet0" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet0" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet1">
+            <Anchor side="Top" relative="$parent/Bullet0" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet0" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label1/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label1">
+            <Anchor side="Top" relative="$parent/Bullet1" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet1" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet2">
+            <Anchor side="Top" relative="$parent/Bullet1" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet1" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label2/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label2">
+            <Anchor side="Top" relative="$parent/Bullet2" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet2" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet3">
+            <Anchor side="Top" relative="$parent/Bullet2" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet2" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label3/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label3">
+            <Anchor side="Top" relative="$parent/Bullet3" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet3" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Image" name="Bullet4">
+            <Anchor side="Top" relative="$parent/Bullet3" pos="Max" offset="5"/>
+            <Anchor side="Left" relative="$parent/Bullet3" pos="Min" offset="0"/>
+            <Width val="20"/>
+            <Height val="20"/>
+            <Texture val="@UI/LotV_ListBullet"/>
+            <Visible val="{$parent/Label4/@Visible}"/>
+            <CollapseLayout val="True"/>
+        </Frame>
+    
+        <Frame type="Label" name="Label4">
+            <Anchor side="Top" relative="$parent/Bullet4" pos="Min" offset="-1"/>
+            <Anchor side="Left" relative="$parent/Bullet4" pos="Max" offset="2"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_MissionRewardCurrency"/>
+            <CollapseLayout val="true"/>
+            <Visible val="False"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="RewardUnitTemplate">
+        <Height val="222"/>
+        <Width val="212"/>
+        <AcceptsMouse val="True"/>
+        <Visible val="True"/>
+        <TooltipAnchorPosition val="BottomCenter"/>
+
+        <Frame type="UnitModelFrame" name="RewardUnitFrame">
+            <Height val="212"/>
+            <Width val="212"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-5"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+
+            <TeamColorIndex val="2"/>
+            <TurningEnabled val="False"/>
+            <HasActorUnit val="True"/>
+    
+            <Frame type="Model" name="Model">
+                <Anchor relative="$parent"/>
+                <UseAlternateTime val="True"/>
+                <Unclipped val="True"/>
+            </Frame>
+    
+            <Animation name="Show">
+                <Event event="Birth" action="Reset"/>
+                <Event event="Birth" action="Play"/>
+                <Controller type="Fade" end="Pause">
+                    <Key type="Curve" time="0" value="0" out="Slow"/>
+                    <Key type="Curve" time="1.3" value="255" in="Slow"/>
+                </Controller>
+            </Animation>
+
+            <StateGroup name="RotationGroup">
+                <DefaultState val="Default"/>
+            
+                <State name="45">
+                    <When type="AnimationState" Rotation="45" />
+                    <Action type="SetProperty" Rotation="45"/>
+                </State>
+            
+                <State name="Default">
+                    <When type="AnimationState" Rotation="Default" />
+                    <Action type="SetProperty" Rotation="0"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Frame" name="RewardUnitNameLabelContainer">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+            
+            <Frame type="Label" name="RewardUnitNameLabel">
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/$parent" pos="Min" offset="10"/>
+                <Anchor side="Right" relative="$parent/$parent" pos="Max" offset="-10"/>
+                <Style val="Kit_TravelRewardUnitTitle"/>
+                <Text val="Unit Name"/>
+                <CollapseLayout val="true"/>
+                <Height val="70"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="PlanetFrameTemplate">
+        <Height val="280"/>
+        <Width val="280"/>
+
+        <Frame type="Button" name="Button">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="235"/>
+            <Width val="235"/>
+            <NormalImage val="NormalImage"/>
+            <HoverImage val="HoverImage"/>
+            <HighlightOnHover val="true"/>
+            <HighlightOnFocus val="true"/>
+            <ClickSound val="@UI_MissionScreen_SelectPlanet"/>
+            <HitTestFrame val="HitTestFrame"/>
+
+            <Frame type="Image" name="NormalImage">
+                <!-- <Height val="220"/>
+                <Width val="220"/>
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Texture val="Assets\Textures\ui_wol_planetpanel_planetselection_normal.tga" layer="0"/>
+                <StateCount val="2" layer="0"/> 
+                <BlendMode val="Add"/> -->
+                <Alpha val="0"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="HoverImage">
+                <Height val="220"/>
+                <Width val="220"/>
+                <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+                <Texture val="Assets\Textures\ui_wol_planetpanel_planetselection_hover.tga" layer="0"/>
+                <StateCount val="2" layer="0"/>
+                <BlendMode val="Add"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Frame" name="HitTestFrame">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="20"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-50"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="50"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-50"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Portrait" name="Portrait">
+            <Height val="190"/>
+            <Width val="190"/>
+            <Anchor side="Top" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Mid" offset="0"/>
+            
+            <BorderImage val="PortraitBorderImage"/>
+            <BackgroundImage val="PortraitBackgroundImage"/>
+            <AcceptsMouse val="false"/>
+            <UseTransition val="false"/>
+
+            <ModelLink val="PlanetIconAgria"/>
+
+            <Frame type="Image" name="PortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="PortraitBackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="SelectedBorderImage">
+            <Anchor side="Top" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Texture val="Assets\Textures\ui_planetpanel_planetselection_selected.dds" layer="0"/>
+            <!-- <AcceptsMouse val="True"/> -->
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Portrait" name="SelectedPortrait">
+            <Height val="190"/>
+            <Width val="190"/>
+            <Anchor side="Top" relative="$parent/SelectedBorderImage" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent/SelectedBorderImage" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/SelectedBorderImage" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/SelectedBorderImage" pos="Mid" offset="0"/>
+            <!-- <Anchor side="Top" relative="$parent/SelectedBorderImage" pos="Min" offset="-50"/>
+            <Anchor side="Left" relative="$parent/SelectedBorderImage" pos="Min" offset="42"/>
+            <Anchor side="Bottom" relative="$parent/SelectedBorderImage" pos="Max" offset="45"/>
+            <Anchor side="Right" relative="$parent/SelectedBorderImage" pos="Max" offset="-47"/> -->
+            <BorderImage val="PortraitBorderImage"/>
+            <BackgroundImage val="PortraitBackgroundImage"/>
+            <AcceptsMouse val="false"/>
+            <UseTransition val="false"/>
+
+            <ModelLink val="PlanetIconAgria"/>
+
+            <Frame type="Image" name="PortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="PortraitBackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Label" name="SelectedNameLabel">
+            <Style val="Kit_TravelPlanetSelectedTitle"/>
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="-20"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Text val="{$parent/NameLabel/@Text}"/>
+        </Frame>
+
+        <Frame type="Label" name="NameLabel">
+            <Style val="Kit_TravelPlanetTitle"/>
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="-20"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Mid" offset="0"/>
+            <Text val="Planet Name"/>
+        </Frame>
+
+        <Frame type="Label" name="SecretLabel">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/Button" pos="Max" offset="-0"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-0"/>
+            <Style val="PlanetFrameSelectedPlanetText"/>
+            <BlendMode val="Add"/>
+            <Text val="SECRET MISSION"/>
+        </Frame>
+
+        <StateGroup name="SecretState">
+            <DefaultState val="Off"/>
+        
+            <State name="On">
+                <When type="AnimationState" frame="$this" SecretState="On" />
+                <Action type="SetProperty" frame="$this/SecretLabel" Visible="True" />
+            </State>
+        
+            <State name="Off">
+                <When type="AnimationState" frame="$this" SecretState="Off" />
+                <Action type="SetProperty" frame="$this/SecretLabel" Visible="False" />
+            </State>
+        
+        </StateGroup>
+
+        <StateGroup name="SelectionState">
+            <DefaultState val="Off"/>
+        
+            <State name="On">
+                <When type="AnimationState" frame="$this" SelectionState="On" />
+                <Action type="SetProperty" frame="$this/Button" Visible="False"/>
+                <Action type="SetProperty" frame="$this/Portrait" Visible="True"/>
+                <Action type="SetProperty" frame="$this/NameLabel" Visible="False"/>
+                <Action type="SetProperty" frame="$this/SelectedBorderImage" Visible="True"/>
+                <Action type="SetProperty" frame="$this/SelectedPortrait" Visible="False"/>
+                <Action type="SetProperty" frame="$this/SelectedNameLabel" Visible="True"/>
+            </State>
+        
+            <State name="Off">
+                <When type="AnimationState" frame="$this" SelectionState="Off" />
+                <Action type="SetProperty" frame="$this/Button" Visible="True"/>
+                <Action type="SetProperty" frame="$this/Portrait" Visible="True"/>
+                <Action type="SetProperty" frame="$this/NameLabel" Visible="True"/>
+                <Action type="SetProperty" frame="$this/SelectedBorderImage" Visible="False"/>
+                <Action type="SetProperty" frame="$this/SelectedPortrait" Visible="False"/>
+                <Action type="SetProperty" frame="$this/SelectedNameLabel" Visible="False"/>
+            </State>
+        </StateGroup>
+    </Frame>
+
+    <Frame type="Frame" name="TravelPanelTemplate">
+        <Handle val="Kit_TravelPanel"/>
+        
+        <Frame type="Image" name="BackgroundMaskImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Texture val="@@UI/PauseScreenDimImage"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Portrait" name="BackgroundPortrait">
+            <Anchor relative="$parent"/>
+            <!-- <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Height val="1200"/>
+            <Width val="2134"/> -->
+            <BorderImage val="BackgroundPortraitBorderImage"/>
+            <AcceptsMouse val="false"/>
+            <UseTransition val="false"/>
+
+            <Frame type="Image" name="BackgroundPortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="BackgroundPortraitGradientImage">
+            <Anchor side="Top" relative="$parent/BackgroundPortrait" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/BackgroundPortrait" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent/BackgroundPortrait" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/BackgroundPortrait" pos="Max" offset="0"/>
+            <Texture val="@@UI/HotS_Shared_ScreenGradient" layer="0"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Frame" name="ScreenBottomFrame">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/> 
+            <Height val="588"/>
+
+            <Frame type="Image" name="BackgroundGradientImage">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="@@UI/HotS_Shared_BottomFrame_Gradient"/>
+                <Height val="588"/>
+                <Alpha val="220"/>
+            </Frame>
+
+            <Frame type="Image" name="LeftTopLine">
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomleft_middle.dds"/>
+                <StateGroup name="WithAllInPulldown">
+                    <DefaultState val="Default"/>
+                    <State name="WithAllInPulldown">
+                        <When type="Property" frame="$parent/$parent/AllInPulldown" Visible="True" />
+                        <Action type="SetAnchor" frame="$this" side="Right" relative="$parent/$parent/AllInPulldown" pos="Max" offset="-44"/>
+                        <Action type="SetAnchor" frame="$this" side="Bottom" relative="$parent/$parent/AllInPulldown" pos="Min" offset="12"/>
+                    </State>
+                    <State name="Default">
+                        <Action type="SetAnchor" frame="$this" side="Right" relative="$parent/$parent/DifficultyPulldown" pos="Max" offset="-44"/>
+                        <Action type="SetAnchor" frame="$this" side="Bottom" relative="$parent/$parent/DifficultyPulldown" pos="Min" offset="12"/>
+                    </State>
+                </StateGroup>
+            </Frame>
+            <Frame type="Image" name="LeftTopCorner">
+                <Anchor side="Left" relative="$parent/LeftTopLine" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/LeftTopLine" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomleft_right.dds"/>
+            </Frame>
+            <Frame type="Image" name="LeftBottomCorner">
+                <Anchor side="Left" relative="$parent/LeftTopCorner" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_wol_planetpanel_outerframe_left_bottom_corner.tga"/>
+            </Frame>
+            <Frame type="Image" name="LeftVertical">
+                <Anchor side="Left" relative="$parent/LeftTopCorner" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/LeftTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/LeftBottomCorner" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomside_left.dds"/>
+            </Frame>
+            <Frame type="Image" name="RightTopLine">
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/$parent/CloseButton" pos="Min" offset="44"/>
+                <Anchor side="Bottom" relative="$parent/LeftTopLine" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomright_middle.dds"/>
+            </Frame>
+            <Frame type="Image" name="RightTopCorner">
+                <Anchor side="Right" relative="$parent/RightTopLine" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/RightTopLine" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomright_left.dds"/>
+            </Frame>
+            <Frame type="Image" name="RightBottomCorner">
+                <Anchor side="Right" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_wol_planetpanel_outerframe_right_bottom_corner.tga"/>
+            </Frame>
+            <Frame type="Image" name="RightVertical">
+                <Anchor side="Right" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent/RightTopCorner" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/RightBottomCorner" pos="Min" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomside_right.dds"/>
+            </Frame>
+            <Frame type="Image" name="Mid">
+                <Anchor side="Left" relative="$parent/LeftBottomCorner" pos="Max" offset="0"/>
+                <Anchor side="Right" relative="$parent/RightBottomCorner" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+                <Texture val="Assets\Textures\ui_planetpanel_outerframe_bottomleft_middle.dds"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Portrait" name="ContactPortrait">
+            <Anchor side="Top" relative="$parent/ContactPortraitBG" pos="Min" offset="11"/>
+            <Anchor side="Left" relative="$parent/ContactPortraitBG" pos="Min" offset="9"/>
+            <Anchor side="Right" relative="$parent/ContactPortraitBG" pos="Max" offset="-9"/>
+            <Anchor side="Bottom" relative="$parent/ContactPortraitBG" pos="Max" offset="-9"/>
+            <BackgroundImage val="BackgroundImage"/>
+            <BorderImage val="ContactPortraitBorderImage"/>
+            <UseTransition val="false"/>
+            <RenderType val="HDR"/>
+            <ModelLink val="AdjutantPortrait_L3D"/>
+
+            <Frame type="Image" name="ContactPortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+                
+            <Frame type="Image" name="BackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Label" name="ContactFluff">
+            <Anchor side="Bottom" relative="$parent/ContactPortrait" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="-10"/>
+            <Height val="100"/>
+            <Text val="Fluff"/>
+            <Style val="Kit_MissionContactFluff"/>
+        </Frame>
+        
+        <Frame type="Image" name="ContactPortraitBG">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="120"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="80"/>
+            <Width val="300"/>
+            <Height val="448"/>
+            <Texture val="Assets/Textures/ui_wol_planetpanel_contactportraitframe.dds"/>
+            <TextureType val="Border"/>
+            <Alpha val="255"/>
+        </Frame>
+        
+        <Frame type="Frame" name="PitchFrame">
+            <Anchor side="Top" relative="$parent/ContactPortrait" pos="Min" offset="3"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="-3"/>
+            <Height val="52"/>
+            <Width val="52"/>
+            
+            <Frame type="Button" name="PlayButton" template="VoidShared_GenericTemplates/PlayButtonTemplate">
+                <Anchor relative="$parent"/>
+                <Frame type="Image" name="NormalImage">
+                    <Texture val="Assets/Textures/ui_wol_storyplaybutton_normal.tga"/>
+                </Frame>
+                <Frame type="Image" name="HoverImage">
+                    <Texture val="Assets/Textures/ui_wol_storyplaybutton_hover.tga"/>
+                </Frame>
+                <Shortcut val="W"/>
+            </Frame>
+            
+            <Frame type="Button" name="StopButton" template="VoidShared_GenericTemplates/StopButtonTemplate">
+                <Anchor relative="$parent"/>
+                <Frame type="Image" name="NormalImage">
+                    <Texture val="Assets/Textures/ui_wol_storypausebutton_normal.tga"/>
+                </Frame>
+                <Frame type="Image" name="HoverImage">
+                    <Texture val="Assets/Textures/ui_wol_storypausebutton_hover.tga"/>
+                </Frame>
+                <Shortcut val="W"/>
+                <Visible val="false"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Label" name="MissionTextLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="50"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> 
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Style val="Kit_MissionTitle"/>
+            <Text val="Mission Text Label"/>
+        </Frame>
+
+        <Frame type="Label" name="ObjectiveTextLabel">
+            <Anchor side="Top" relative="$parent/MissionTextLabel" pos="Min" offset="45"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/> 
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Style val="Kit_MissionObjective"/>
+            <Text val="Objective Text Label"/>
+        </Frame>
+
+        <!-- <Frame type="Image" name="OrbitImage">
+            <Width val="858"/>
+            <Height val="1006"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-110"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="290"/>
+            <Texture val="Assets/Textures/ui_wol_planetpanel_orbit.tga"/>
+            <RenderType val="HDR"/>
+        </Frame> -->
+
+        <!-- <Frame type="Frame" name="PlanetFrame0" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame0"/>
+            <Anchor side="Bottom" relative="$parent/OrbitImage" pos="Mid" offset="180"/>
+            <Anchor side="Left" relative="$parent/OrbitImage" pos="Min" offset="100"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame1" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame1"/>
+            <Anchor side="Bottom" relative="$parent/PlanetFrame0" pos="Max" offset="230"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame0" pos="Max" offset="-120"/>
+        </Frame> -->
+
+        <Frame type="Frame" name="PlanetFrame0" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-200"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame1" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame1"/>
+            <Anchor side="Top" relative="$parent/PlanetFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame0" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame2" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame2"/>
+            <Anchor side="Top" relative="$parent/PlanetFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame1" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame3" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame3"/>
+            <Anchor side="Top" relative="$parent/PlanetFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame2" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame4" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame4"/>
+            <Anchor side="Top" relative="$parent/PlanetFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame3" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="PlanetFrame5" template="Kit_TravelPanel/PlanetFrameTemplate">
+            <Handle val="Kit_TravelPanel_PlanetFrame5"/>
+            <Anchor side="Top" relative="$parent/PlanetFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/PlanetFrame4" pos="Max" offset="0"/>
+        </Frame>
+
+        <Frame type="Frame" name="RewardsFrame">
+            <Anchor side="Top" relative="$parent/ContactPortrait" pos="Max" offset="50"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <!-- <Height val="500"/> -->
+            <CollapseLayout val="true"/>
+
+            <Frame type="Frame" name="PrimaryRewardContainer" template="Kit_TravelPanel/RewardContainerTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$this/Label4" pos="Max" offset="0"/>
+
+                <Frame type="Label" name="Heading">
+                    <Text val="@UI/StoryMissionLaunch/MissionRewards"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="Frame" name="BonusRewardContainer" template="Kit_TravelPanel/RewardContainerTemplate">
+                <Anchor side="Top" relative="$parent/PrimaryRewardContainer" pos="Max" offset="20"/>
+                <Anchor side="Left" relative="$parent/PrimaryRewardContainer" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$this/Label4" pos="Max" offset="0"/>
+
+                <Frame type="Label" name="Heading">
+                    <Text val="@UI/StoryMissionLaunch/BonusRewards"/>
+                </Frame>
+            </Frame>
+
+            <Frame type="AspectRatioFrame" name="UnitsRewardContainer" >
+                <Anchor side="Top" relative="$parent/BonusRewardContainer" pos="Max" offset="20"/>
+                <Anchor side="Left" relative="$parent/BonusRewardContainer" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Bottom" relative="$this/RewardUnitFrame0" pos="Max" offset="0"/>
+
+                <MinVisibleAspectRatio val="1.6"/>
+
+                <Frame type="Label" name="Heading">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                    <Style val="Kit_MissionRewardHeading"/>
+                    <CollapseLayout val="true"/>
+                    <Text val="@UI/MissionPanelNewUnit"/>
+                </Frame>
+
+                <Frame type="Frame" name="RewardUnitFrame0" template="Kit_TravelPanel/RewardUnitTemplate">
+                    <Anchor side="Top" relative="$parent/Heading" pos="Max" offset="5"/>
+                    <Anchor side="Left" relative="$parent/Heading" pos="Min" offset="-4"/>
+                </Frame>
+    
+                <Frame type="Frame" name="RewardUnitFrame1" template="Kit_TravelPanel/RewardUnitTemplate">
+                    <Anchor side="Top" relative="$parent/RewardUnitFrame0" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent/RewardUnitFrame0" pos="Max" offset="0"/>
+                </Frame>
+
+                <Frame type="Frame" name="RewardUnitFrame2" template="Kit_TravelPanel/RewardUnitTemplate">
+                    <Anchor side="Top" relative="$parent/RewardUnitFrame0" pos="Min" offset="0"/>
+                    <Anchor side="Left" relative="$parent/RewardUnitFrame1" pos="Max" offset="0"/>
+                </Frame>
+            </Frame>
+        </Frame>
+
+
+        <Frame type="DifficultyPulldown" name="DifficultyPulldown" template="Kit_TravelPanel/DifficultyPulldownTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="14"/>
+        </Frame>
+
+        <Frame type="Pulldown" name="AllInPulldown" template="Kit_TravelPanel/DifficultyPulldownTemplate">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Left" relative="$parent/DifficultyPulldown" pos="Max" offset="4"/>
+            <CollapseLayout val="True"/>
+            <Visible val="False"/>
+        </Frame>
+
+        <Frame type="Button" name="LaunchButton" template="HotS_SwarmTemplates/ActionButtonTemplate">
+            <Handle val="Kit_TravelPanel_LaunchButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-60"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Shortcut val="@Button/Hotkey/MissionPanelStartMission"/>
+            <Text val="@UI/MissionPanelStartMission"/>
+
+            <Frame type="Image" name="NormalImage">
+                <Texture val="Assets/Textures/ui_wol_button_action_normal.tga"/>
+            </Frame>
+            <Frame type="Image" name="HoverImage">
+                <Texture val="Assets/Textures/ui_wol_button_action_hover.tga"/>
+            </Frame>
+            <Frame type="Label" name="Label">
+                <Style val="Kit_CampaignActionButton"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="CloseButton" template="Kit_Templates/NavButtonTemplate">
+            <Handle val="Kit_TravelPanel_CloseButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-5"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-14"/>
+            <Width val="206"/>
+            <Height val="66"/>
+            <Shortcut val="Escape"/>
+            <Shortcut val="@UI/Back_Hotkey"/>
+            <Text val="@UI/Back_Control"/>
+        </Frame>
+
+        <Frame type="Frame" name="SubtitleFrame">
+            <Anchor side="Bottom" relative="$parent/ContactPortrait" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/ContactPortrait" pos="Max" offset="30"/>
+            <Anchor side="Right" relative="$parent/ContactPortrait" pos="Max" offset="820"/>
+            <Height val="200"/>
+        </Frame>
+
+        <Frame type="Button" name="ArchivesArmoryButton" template="Kit_Templates/NavButtonTemplate">
+            <Anchor side="Top" relative="$parent/CloseButton" pos="Min" offset="-250"/>
+            <Anchor side="Right" relative="$parent/CloseButton" pos="Max" offset="0"/>
+            <Width val="280"/>
+            <CollapseLayout val="True"/>
+            <Text val="@UI/WoLTravelPanel/Armory"/>
+            <Shortcut val="@UI/WoLTravelPanel/ArmoryHotkey"/>
+        </Frame>
+        
+        <Frame type="Button" name="ArchivesLaboratoryButton" template="Kit_Templates/NavButtonTemplate">
+            <Anchor side="Top" relative="$parent/ArchivesArmoryButton" pos="Max" offset="5"/>
+            <Anchor side="Right" relative="$parent/ArchivesArmoryButton" pos="Max" offset="0"/>
+            <Width val="280"/>
+            <CollapseLayout val="True"/>
+            <Text val="@UI/WoLTravelPanel/Laboratory"/>
+            <Shortcut val="@UI/WoLTravelPanel/LaboratoryHotkey"/>
+        </Frame>
+
+        <Frame type="Button" name="ArchivesMercenaryButton" template="Kit_Templates/NavButtonTemplate">
+            <Anchor side="Top" relative="$parent/ArchivesLaboratoryButton" pos="Max" offset="5"/>
+            <Anchor side="Right" relative="$parent/ArchivesLaboratoryButton" pos="Max" offset="0"/>
+            <Width val="280"/>
+            <CollapseLayout val="True"/>
+            <Text val="@UI/WoLTravelPanel/Mercenary"/>
+            <Shortcut val="@UI/WoLTravelPanel/MercenaryHotkey"/>
+        </Frame>
+
+        <StateGroup name="Planets">
+            <DefaultState val="1"/>
+        
+            <State name="1">
+                <When type="AnimationState" Planets="1" />
+                <Action type="SetProperty" frame="$this/PlanetFrame0" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame1" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame2" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame3" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame4" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame5" Visible="False" />
+            </State>
+        
+            <State name="2">
+                <When type="AnimationState" Planets="2" />
+                <Action type="SetAnchor" frame="$this/PlanetFrame0" side="Left" relative="$parent" pos="Mid" offset="-280"/>
+                <Action type="SetProperty" frame="$this/PlanetFrame2" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame3" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame4" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame5" Visible="False" />
+            </State>
+        
+            <State name="3">
+                <When type="AnimationState" Planets="3" />
+                <Action type="SetAnchor" frame="$this/PlanetFrame0" side="Left" relative="$parent" pos="Mid" offset="-420"/>
+                <Action type="SetProperty" frame="$this/PlanetFrame3" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame4" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame5" Visible="False" />
+            </State>
+        
+            <State name="4">
+                <When type="AnimationState" Planets="4" />
+                <Action type="SetAnchor" frame="$this/PlanetFrame0" side="Left" relative="$parent" pos="Mid" offset="-515"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame1" side="Left" relative="$parent/PlanetFrame0" pos="Max" offset="-30"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame2" side="Left" relative="$parent/PlanetFrame1" pos="Max" offset="-30"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame3" side="Left" relative="$parent/PlanetFrame2" pos="Max" offset="-30"/>
+                <Action type="SetProperty" frame="$this/PlanetFrame4" Visible="False" />
+                <Action type="SetProperty" frame="$this/PlanetFrame5" Visible="False" />
+            </State>
+        
+            <State name="5">
+                <When type="AnimationState" Planets="5" />
+                <Action type="SetAnchor" frame="$this/PlanetFrame0" side="Left" relative="$parent" pos="Mid" offset="-580"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame1" side="Left" relative="$parent/PlanetFrame0" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame2" side="Left" relative="$parent/PlanetFrame1" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame3" side="Left" relative="$parent/PlanetFrame2" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame4" side="Left" relative="$parent/PlanetFrame3" pos="Max" offset="-60"/>
+                <Action type="SetProperty" frame="$this/PlanetFrame5" Visible="False" />
+            </State>
+        
+            <State name="6">
+                <When type="AnimationState" Planets="6" />
+                <Action type="SetAnchor" frame="$this/PlanetFrame0" side="Left" relative="$parent" pos="Mid" offset="-690"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame1" side="Left" relative="$parent/PlanetFrame0" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame2" side="Left" relative="$parent/PlanetFrame1" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame3" side="Left" relative="$parent/PlanetFrame2" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame4" side="Left" relative="$parent/PlanetFrame3" pos="Max" offset="-60"/>
+                <Action type="SetAnchor" frame="$this/PlanetFrame5" side="Left" relative="$parent/PlanetFrame4" pos="Max" offset="-60"/>
+            </State>
+        </StateGroup>
+    </Frame>
+</Desc>

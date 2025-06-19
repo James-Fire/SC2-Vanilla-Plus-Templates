@@ -1,0 +1,240 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+static int dialog = -1;
+static int root;
+
+// Main
+static int main_panel;
+static int background_image;
+static int mission_name_label;
+static int victory_text_label;
+static int time_text_label;
+
+static int credits_reward_container;
+static int credits_reward_label;
+static int protoss_reward_container;
+static int protoss_reward_label;
+static int zerg_reward_container;
+static int zerg_reward_label;
+
+static int play_again_button;
+static int continue_button;
+
+// Restart
+static int restart_panel;
+static int restart_difficulty_pulldown;
+static int restart_button;
+static int restart_cancel_button;
+
+
+static trigger OnContinueClicked = TriggerCreate("Kit_UIScoreScreen_ContinueClicked");
+static trigger OnPressAgainClicked = TriggerCreate("Kit_UIScoreScreen_PlayAgainClicked");
+static trigger OnRestartCancelClicked = TriggerCreate("Kit_UIScoreScreen_RestartCancelClicked");
+static trigger OnRestartClicked = TriggerCreate("Kit_UIScoreScreen_RestartClicked");
+
+
+static int RewardEarned(string map, string type) {
+    int reward = 0;
+    string objective;
+    int objective_count;
+    int i;
+
+    if (type == "Credits") {
+        reward = libWoLC_gf_WC_MissionRewardsCredits(map);
+    }
+    else if (type == "ProtossResearch") {
+        reward = libWoLC_gf_WC_MissionRewardsProtoss(map);
+    }
+    else if (type == "ZergResearch") {
+        reward = libWoLC_gf_WC_MissionRewardsZerg(map);
+    }
+
+    objective_count = CatalogFieldValueCount(c_gameCatalogMap, map, "ObjectiveArray", 1);
+    for (i = 0; i < objective_count; i += 1) {
+        objective = CatalogFieldValueGet(c_gameCatalogMap, map, "ObjectiveArray["+IntToString(i)+"]", 1);
+        reward += libWoLC_gf_MissionObjectiveRewardsEarned(objective, type);
+    }
+
+    return reward;
+}
+
+static void Create(string race) {
+    int i = 0;
+    int portrait_dialog;
+
+    if (dialog == -1) {
+        dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+        DialogSetImageVisible(dialog, false);
+        DialogSetFullscreen(dialog, true);
+        DialogSetVisible(dialog, PlayerGroupAll(), false);
+    } else {
+        DialogControlDestroyAll(dialog);
+    }
+
+    if (race == "Prot") {
+        root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_ScoreScreenProtoss/ScoreScreenTemplate");
+    } else {
+        root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_ScoreScreen/ScoreScreenTemplate");
+    }
+    DialogControlSetFullDialog(root, PlayerGroupAll(), true);
+
+    // Main
+    main_panel = DialogControlHookup(root, c_triggerControlTypePanel, "MainPanel");
+
+    background_image = DialogControlHookup(main_panel, c_triggerControlTypeImage, "BackgroundPortrait");
+    mission_name_label = DialogControlHookup(main_panel, c_triggerControlTypeLabel, "ScreenTitleFrame/ScreenTitleLabel");
+    victory_text_label = DialogControlHookup(main_panel, c_triggerControlTypeLabel, "VictoryTextLabel");
+    time_text_label = DialogControlHookup(main_panel, c_triggerControlTypeLabel, "TimeTextLabel");
+
+    credits_reward_container = DialogControlHookup(main_panel, c_triggerControlTypePanel, "CreditsReward");
+    credits_reward_label = DialogControlHookup(credits_reward_container, c_triggerControlTypeLabel, "RewardTextLabel");
+    protoss_reward_container = DialogControlHookup(main_panel, c_triggerControlTypePanel, "ProtossResearchReward");
+    protoss_reward_label = DialogControlHookup(protoss_reward_container, c_triggerControlTypeLabel, "RewardTextLabel");
+    zerg_reward_container = DialogControlHookup(main_panel, c_triggerControlTypePanel, "ZergResearchReward");
+    zerg_reward_label = DialogControlHookup(zerg_reward_container, c_triggerControlTypeLabel, "RewardTextLabel");
+
+    play_again_button = DialogControlHookup(main_panel, c_triggerControlTypeButton, "PlayAgainButton");
+    TriggerAddEventDialogControl(OnPressAgainClicked, c_playerAny, play_again_button, c_triggerControlEventTypeClick);
+
+    continue_button = DialogControlHookup(main_panel, c_triggerControlTypeButton, "CloseButton");
+    TriggerAddEventDialogControl(OnContinueClicked, c_playerAny, continue_button, c_triggerControlEventTypeClick);
+
+    // Restart
+    restart_panel = DialogControlHookup(root, c_triggerControlTypePanel, "RestartPanel");
+
+    restart_difficulty_pulldown = DialogControlHookup(restart_panel, c_triggerControlTypePulldown, "DifficultyPulldownContainer/DifficultyPulldown");
+
+    restart_cancel_button = DialogControlHookup(restart_panel, c_triggerControlTypeButton, "CancelButton/Button");
+    TriggerAddEventDialogControl(OnRestartCancelClicked, c_playerAny, restart_cancel_button, c_triggerControlEventTypeClick);
+
+    restart_button = DialogControlHookup(restart_panel, c_triggerControlTypeButton, "RestartButton/Button");
+    TriggerAddEventDialogControl(OnRestartClicked, c_playerAny, restart_button, c_triggerControlEventTypeClick);
+}
+
+static void Update(string race) {
+    string current_map = libWoLC_gf_CurrentMap();
+    string current_planet = libWoLC_gf_StoryMapPlanet(current_map);
+    text map_name = libWoLC_gf_WC_CampaignMapName(current_map);
+    text difficulty_name = DifficultyNameCampaign(PlayerDifficulty(1));
+    text mission_text = map_name + StringToText(" - ") + difficulty_name;
+    text time_text = libWoLC_gf_FormatTimeCampaign(libWCMI_gv_wM_MissionCompleteTime);
+
+    int credits_earned = RewardEarned(current_map, "Credits");
+    int credits_total = libWoLC_gf_MissionRewardTotal(current_map, "Credits");
+    int protoss_earned = RewardEarned(current_map, "ProtossResearch");
+    int protoss_total = libWoLC_gf_MissionRewardTotal(current_map, "ProtossResearch");
+    int zerg_earned = RewardEarned(current_map, "ZergResearch");
+    int zerg_total = libWoLC_gf_MissionRewardTotal(current_map, "ZergResearch");
+
+    if (race == "Prot") {
+        libNtve_gf_SetDialogItemImage(background_image, "Assets/Textures/ui_temp_victorybackground.dds", PlayerGroupAll());
+    } else {
+        libNtve_gf_SetDialogItemImage(background_image, libWoLC_gf_WC_CampaignMapLoadingScreenImage(current_map), PlayerGroupAll());
+    }
+
+    if (current_map == "TZeratul04") {
+        libNtve_gf_SetDialogItemText(victory_text_label, StringToText("GLORIOUS END!"), PlayerGroupAll());
+    } else {
+        libNtve_gf_SetDialogItemText(victory_text_label, StringToText("VICTORY!"), PlayerGroupAll());
+    }
+
+    libNtve_gf_SetDialogItemText(mission_name_label, mission_text, PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(time_text_label, time_text, PlayerGroupAll());
+
+    if (credits_total > 0) {
+        DialogControlSetVisible(credits_reward_container, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(credits_reward_label, FormatNumber(credits_earned), PlayerGroupAll());
+    } else {
+        DialogControlSetVisible(credits_reward_container, PlayerGroupAll(), false);
+    }
+
+    if (protoss_total > 0) {
+        DialogControlSetVisible(protoss_reward_container, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(protoss_reward_label, IntToText(protoss_earned), PlayerGroupAll());
+    } else {
+        DialogControlSetVisible(protoss_reward_container, PlayerGroupAll(), false);
+    }
+
+    if (zerg_total > 0) {
+        DialogControlSetVisible(zerg_reward_container, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(zerg_reward_label, IntToText(zerg_earned), PlayerGroupAll());
+    } else {
+        DialogControlSetVisible(zerg_reward_container, PlayerGroupAll(), false);
+    }
+
+    if (libWoLC_gv_wCX_IsSimulation) {
+        libNtve_gf_SetDialogItemTooltip(continue_button, StringToText("<h/>Continue to the Archives."), PlayerGroupAll());
+    } else if ((current_planet != "MarSara") && (current_planet != "Char")) {
+        libNtve_gf_SetDialogItemTooltip(continue_button, StringToText("<h/>Continue to the Hyperion."), PlayerGroupAll());
+    }
+
+    Kit_PopulateDifficultyPulldown(restart_difficulty_pulldown);
+}
+
+void Kit_UIScoreScreen_Show(string race) {
+    Create(race);
+    Update(race);
+
+    TriggerEnable(OnPressAgainClicked, true);
+    TriggerEnable(OnContinueClicked, true);
+    TriggerEnable(OnRestartCancelClicked, true);
+    TriggerEnable(OnRestartClicked, true);
+
+    libWoLC_gf_SetAllSoundChannelVolumesCampaign(libWoLC_ge_VolumeChannelModeCampaign_Victory);
+    SoundtrackStop(PlayerGroupAll(), c_soundtrackCategoryMusic, true);
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "Music_Silence", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+    DialogControlSendAnimationEvent(main_panel, PlayerGroupAll(), "Birth");
+}
+
+void Kit_UIScoreScreen_Hide() {
+    TriggerEnable(OnPressAgainClicked, false);
+    TriggerEnable(OnContinueClicked, false);
+    TriggerEnable(OnRestartCancelClicked, false);
+    TriggerEnable(OnRestartClicked, false);
+
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+}
+
+bool Kit_UIScoreScreen_ContinueClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    Kit_UIScoreScreen_Hide();
+    TriggerSendEvent(libWCUI_gv_wUC_VictoryEventClosed);
+
+    return true;
+}
+
+bool Kit_UIScoreScreen_PlayAgainClicked(bool check, bool run) {
+    int i;
+
+    if (!run) { return true; }
+
+    DialogControlSetVisible(main_panel, PlayerGroupAll(), false);
+    DialogControlSetVisible(restart_panel, PlayerGroupAll(), true);
+
+    return true;
+}
+
+bool Kit_UIScoreScreen_RestartCancelClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    DialogControlSetVisible(restart_panel, PlayerGroupAll(), false);
+    DialogControlSetVisible(main_panel, PlayerGroupAll(), true);
+
+    return true;
+}
+
+bool Kit_UIScoreScreen_RestartClicked(bool check, bool run) {
+    int difficulty = DialogControlGetSelectedItem(restart_difficulty_pulldown, 1);
+
+    if (!run) { return true; }
+
+    libWoLC_gf_PrepareForMission(libWoLC_gf_CurrentMap(), libWoLC_gv_wCX_IsSimulation, true, difficulty);
+    GameOver(1, c_gameOverVictory, false, false);
+
+    return true;
+}

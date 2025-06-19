@@ -1,0 +1,9 @@
+﻿Button/EditorSuffix/TStory01ABChoiceBroodLords=(ABChoice Reward)
+Button/EditorSuffix/TStory01ABChoiceGhost=(ABChoice Reward)
+Button/EditorSuffix/TStory01ABChoiceMutalisk=(ABChoice Reward)
+Button/EditorSuffix/TStory01ABChoiceNydusWorm=(ABChoice Reward)
+Button/EditorSuffix/TStory01ABChoiceSpectre=(ABChoice Reward)
+User/Name/TStory01ABChoice=ABChoice
+User/Name/TStory01Briefings=Briefings
+User/Name/TStory01TVNews=TVNews
+User/Name/TStory01TransitionData=Transition Data

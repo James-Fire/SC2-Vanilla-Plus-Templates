@@ -1,0 +1,485 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+static int dialog = -1;
+static int root;
+
+static int reset_button;
+static int close_button;
+
+static int selection_info;
+static int credits;
+static int tech_name;
+static int tech_description;
+static int tech_cost;
+static int tech_movie;
+static int tech_image;
+
+struct TechCategory {
+    int container;
+    int button;
+    int flash;
+};
+static const int categories_count = 6;
+static TechCategory[categories_count] categories;
+
+struct TechItem {
+    int container;
+    int mask;
+    int button;
+    int icon;
+    int flash;
+};
+static const int items_count = 2;
+
+struct TechGroup {
+    int container;
+    int name;
+    int icon;
+    int model;
+    int flash;
+    TechItem[items_count] items;
+};
+static const int groups_count = 5;
+static TechGroup[groups_count] groups;
+
+
+static trigger CategoryClicked = TriggerCreate("Kit_UITechPurchase_CategoryClicked");
+static trigger UpgradeItemMouseEnter = TriggerCreate("Kit_UITechPurchase_UpgradeItemMouseEnter");
+static trigger UpgradeItemMouseExit = TriggerCreate("Kit_UITechPurchase_UpgradeItemMouseExit");
+static trigger UpgradeItemClicked = TriggerCreate("Kit_UITechPurchase_UpgradeItemClicked");
+
+static trigger ResetButtonClicked = TriggerCreate("Kit_UITechPurchase_ResetButtonClicked");
+static trigger CloseButtonClicked = TriggerCreate("Kit_UITechPurchase_CloseButtonClicked");
+
+static trigger UserTrigger;
+
+static string selected_tech_group;
+static string selected_upgrade;
+
+
+
+static void Create() {
+    int i = 0;
+    int j = 0;
+
+    if (dialog != -1) {
+        return;
+    }
+
+    dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+    DialogSetImageVisible(dialog, false);
+    DialogSetFullscreen(dialog, true);
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    
+    root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_PurchasePanel/PurchasePanelTemplate");
+
+    selection_info = DialogControlHookup(root, c_triggerControlTypePanel, "SelectionInfoFrame");
+    credits = DialogControlHookup(selection_info, c_triggerControlTypePanel, "Credits");
+    tech_name = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "NameLabel");
+    tech_description = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "DescriptionLabel");
+    tech_cost = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "CostLabel");
+    tech_movie = DialogControlHookup(selection_info, c_triggerControlTypeMovie, "MovieFrame");
+    tech_image = DialogControlHookup(selection_info, c_triggerControlTypeImage, "MovieFrameAlternative");
+    
+    DialogControlSetVisible(credits, PlayerGroupAll(), true);
+
+    reset_button = DialogControlHookup(root, c_triggerControlTypeButton,  "ResetButton");
+    TriggerAddEventDialogControl(ResetButtonClicked, 1, reset_button, c_triggerControlEventTypeClick);
+
+    close_button = DialogControlHookup(root, c_triggerControlTypeButton,  "CloseButton");
+    TriggerAddEventDialogControl(CloseButtonClicked, 1, close_button, c_triggerControlEventTypeClick);
+
+    for (i = 0; i < categories_count; i += 1) {
+        categories[i].container = DialogControlHookup(root, c_triggerControlTypePanel, "PurchaseCategoryFrame" + IntToString(i));
+        categories[i].button = DialogControlHookup(categories[i].container, c_triggerControlTypeButton, "Button");
+        categories[i].flash = DialogControlHookup(categories[i].container, c_triggerControlTypeFlash, "FlashFrame");
+
+        TriggerAddEventDialogControl(CategoryClicked, 1, categories[i].button, c_triggerControlEventTypeClick);
+
+        // DialogControlSetVisible(Categories[i].flash, PlayerGroupAll(), true);
+        // DialogControlInvokeAsString(Categories[i].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+    }
+
+    for (i = 0; i < groups_count; i += 1) {
+        groups[i].container = DialogControlHookup(root, c_triggerControlTypePanel, "PurchaseGroupFrame" + IntToString(i));
+        groups[i].name = DialogControlHookup(groups[i].container, c_triggerControlTypeLabel, "NameLabel");
+        groups[i].icon = DialogControlHookup(groups[i].container, c_triggerControlTypeImage, "IconImage");
+        groups[i].model = DialogControlHookup(groups[i].container, c_triggerControlTypeUnitModel, "UnitModelFrame");
+        groups[i].flash = DialogControlHookup(groups[i].container, c_triggerControlTypeFlash, "FlashFrame");
+
+        // DialogControlSetVisible(groups[i].flash, PlayerGroupAll(), true);
+        // DialogControlInvokeAsString(groups[i].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+
+        for (j = 0; j < 2; j += 1) {
+            groups[i].items[j].container = DialogControlHookup(groups[i].container, c_triggerControlTypePanel, "PurchaseItemFrame" + IntToString(j));
+            groups[i].items[j].button = DialogControlHookup(groups[i].items[j].container, c_triggerControlTypeButton, "Button");
+            groups[i].items[j].mask = DialogControlHookup(groups[i].items[j].container, c_triggerControlTypeImage, "MaskImage");
+            groups[i].items[j].icon = DialogControlHookup(groups[i].items[j].container, c_triggerControlTypeImage, "IconImage");
+            groups[i].items[j].flash = DialogControlHookup(groups[i].items[j].container, c_triggerControlTypeFlash, "FlashFrame");
+
+            TriggerAddEventDialogControl(UpgradeItemMouseEnter, 1, groups[i].items[j].button, c_triggerControlEventTypeMouseEnter);
+            TriggerAddEventDialogControl(UpgradeItemMouseExit, 1, groups[i].items[j].button, c_triggerControlEventTypeMouseExit);
+            TriggerAddEventDialogControl(UpgradeItemClicked, 1, groups[i].items[j].button, c_triggerControlEventTypeClick);
+
+            // DialogControlSetVisible(Groups[i].items[j].flash, PlayerGroupAll(), true);
+            // DialogControlInvokeAsString(Groups[i].items[j].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+        }
+    }
+}
+
+static void InitializeTechGroup() {
+    int i;
+    int j = 0;
+    string tech_group;
+    text tech_group_name;
+    int tech_group_count = UserDataInstanceCount("TechGroup");
+
+
+    for (i = 0; i < tech_group_count; i += 1) {
+        tech_group = UserDataInstance("TechGroup", i + 1);
+
+        if (tech_group == null) {
+            continue;
+        }
+
+        if (libWoLC_gf_WC_ArmyCategoryGroupUpgradeState(tech_group) == "Locked") {
+            continue;
+        }
+
+        if (selected_tech_group == null) {
+            selected_tech_group = tech_group;
+        }
+
+        tech_group_name = libWoLC_gf_WC_ArmyCategoryGroupName(tech_group);
+
+        DialogControlSetVisible(categories[j].container, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(categories[j].button, tech_group_name, PlayerGroupAll());
+        libNtve_gf_SetDialogItemToggled(categories[j].button, tech_group == selected_tech_group, PlayerGroupAll());
+
+        Kit_SetDialogItemCustomValue(categories[j].button, 0, tech_group);
+
+        j += 1;
+    }
+
+    for (i = j; i < categories_count; i += 1) {
+        DialogControlSetVisible(categories[i].container, PlayerGroupAll(), false);
+    }
+}
+
+static void SelectTechGroup(string group) {
+    int i;
+    string tech_group;
+
+    selected_tech_group = group;
+
+    for(i = 0; i < categories_count; i += 1) {
+        tech_group = Kit_GetDialogItemCustomValue(categories[i].button, 0);
+        libNtve_gf_SetDialogItemToggled(categories[i].button, tech_group == selected_tech_group, PlayerGroupAll());
+    }
+}
+
+static void InitializeArmyCategory() {
+    int i = 0;
+    string unit_type;
+    string unit_actor;
+    string unit_model;
+    string unit_model_camera;
+    string unit_wireframe;
+    string army_upgrade;
+    string army_upgrade_state;
+    string army_category;
+    string army_category_state;
+    string tech_unit;
+    int tech_units_count = UserDataInstanceCount("TechUnit");
+    int group_index = 0;
+    int item_index = 0;
+    structref<TechItem> item;
+
+    for (i = 1; i <= tech_units_count; i += 1) {
+        tech_unit = UserDataInstance("TechUnit", i);
+        army_category = libWoLC_gf_WC_ArmyCategoryOfTechUnit(tech_unit);
+
+        if (army_category == null) {
+            continue;
+        }
+        if (libWoLC_gf_WC_ArmyCategoryGroup(army_category) != selected_tech_group) {
+            continue;
+        }
+        if (!libWoLC_gf_WC_ArmyCategoryUsedInUI(army_category)) {
+            continue;
+        }
+        if (libWoLC_gf_WC_ArmyCategoryState(army_category) == c_armyCategoryStateLocked) {
+            continue;
+        }
+
+        army_category_state = libWoLC_gf_WC_ArmyCategoryUpgradeState(army_category);
+        if (army_category_state == "Locked") {
+            continue;
+        }
+
+        DialogControlSetAnimationState(groups[group_index].container, PlayerGroupAll(), "StatusState", army_category_state);
+
+        // Name
+        libNtve_gf_SetDialogItemText(groups[group_index].name, libWoLC_gf_WC_ArmyCategoryName(army_category), PlayerGroupAll());
+
+        // Model
+        unit_type = libWoLC_gf_WC_ArmyCategoryUnitType(army_category);
+        unit_actor = Kit_GetUnitActorType(unit_type);
+        unit_model = CatalogFieldValueGet(c_gameCatalogActor, unit_actor, "Model", 1);
+        unit_wireframe = CatalogFieldValueGet(c_gameCatalogActor, unit_actor, "Wireframe.Image[0]", 1);
+        unit_model_camera = CatalogFieldValueGet(c_gameCatalogModel, unit_model, "TechPurchaseCamera", 1);
+
+        if (army_category == "Thor") { // Special case for Thor
+            unit_model_camera = "TechPurchaseGoliath";
+        }
+
+        libNtve_gf_SetDialogItemUnitLink(groups[group_index].model, unit_type, PlayerGroupAll());
+        libNtve_gf_SetDialogItemCamera(groups[group_index].model, unit_model_camera, PlayerGroupAll());
+
+        // Flash
+        // if (libWoLC_gf_WC_ArmyCategoryToastShown(army_category) && (libNtve_gf_DifficultyValueInt(1, 1, 1, 0) == 1)) {
+        //     DialogControlSetVisible(groups[group_index].flash, PlayerGroupAll(), true);
+        //     DialogControlInvokeAsString(groups[group_index].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+        // } else {
+        //     DialogControlSetVisible(groups[group_index].flash, PlayerGroupAll(), false);
+        // }
+
+        // Wireframes
+        libNtve_gf_SetDialogItemImage(groups[group_index].icon, unit_wireframe, PlayerGroupAll());
+        DialogControlSetVisible(groups[group_index].icon, PlayerGroupAll(), false);
+
+        for (item_index = 0; item_index < 2; item_index += 1) {
+            item = groups[group_index].items[item_index];
+
+            army_upgrade = libWoLC_gf_WC_ArmyCategoryUpgrade(army_category, item_index);
+
+            army_upgrade_state = libWoLC_gf_WC_ArmyUpgradeState(army_upgrade);
+            DialogControlSetAnimationState(item.container, PlayerGroupAll(), "StatusState", army_upgrade_state);
+            
+            libNtve_gf_SetDialogItemImage(item.icon, libWoLC_gf_WC_ArmyUpgradeIcon(army_upgrade), PlayerGroupAll());
+            libNtve_gf_SetDialogItemTooltip(item.button, libWoLC_gf_WC_ArmyUpgradeTooltip(army_upgrade), PlayerGroupAll());
+
+            Kit_SetDialogItemCustomValue(item.button, 0, army_upgrade);
+            Kit_SetDialogItemCustomValue(item.button, 1, army_category);
+        }
+
+        DialogControlSetVisible(groups[group_index].container, PlayerGroupAll(), true);
+        Kit_SetDialogItemCustomValue(groups[group_index].container, 0, army_category);
+
+        group_index += 1;
+    }
+
+    for (i = group_index; i < groups_count; i += 1) {
+        DialogControlSetVisible(groups[i].container, PlayerGroupAll(), false);
+    }
+}
+
+static void UpdateArmyCategory() {
+    int i = 0;
+    int j = 0;
+    string army_upgrade;
+    string army_upgrade_state;
+    string army_category;
+    string army_category_state;
+    structref<TechItem> item;
+
+    for (i = 0; i < groups_count; i += 1) {
+        army_category = Kit_GetDialogItemCustomValue(groups[i].container, 0);
+
+        if (!CatalogEntryIsValid(c_gameCatalogArmyCategory, army_category)) {
+            continue;
+        }
+
+        army_category_state = libWoLC_gf_WC_ArmyCategoryUpgradeState(army_category);
+        DialogControlSetAnimationState(groups[i].container, PlayerGroupAll(), "StatusState", army_category_state);
+
+        // Flash
+        // if (libWoLC_gf_WC_ArmyCategoryToastShown(army_category) && (libNtve_gf_DifficultyValueInt(1, 1, 1, 0) == 1)) {
+        //     DialogControlSetVisible(groups[i].flash, PlayerGroupAll(), true);
+        //     DialogControlInvokeAsString(groups[i].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+        // } else {
+        //     DialogControlSetVisible(groups[i].flash, PlayerGroupAll(), false);
+        // }
+
+        for (j = 0; j < items_count; j += 1) {
+            item = groups[i].items[j];
+
+            army_upgrade = Kit_GetDialogItemCustomValue(item.button, 0);
+
+            army_upgrade_state = libWoLC_gf_WC_ArmyUpgradeState(army_upgrade);
+            DialogControlSetAnimationState(item.container, PlayerGroupAll(), "StatusState", army_upgrade_state);
+        }
+    }
+}
+
+static void HideArmyCategoryToast(string highlighted_category) {
+    int i;
+    string category;
+
+    if (!libWoLC_gf_WC_ArmyCategoryToastShown(highlighted_category)) {
+        return;
+    }
+
+    libWoLC_gf_WC_SetArmyCategoryToastShown(highlighted_category, false);
+
+    for(i = 0; i < categories_count; i += 1) {
+        category = Kit_GetDialogItemCustomValue(groups[i].container, 0);
+        if (category == highlighted_category) {
+            DialogControlSetVisible(groups[i].flash, PlayerGroupAll(), false);
+        }
+    }
+}
+
+
+static void UpdateCredits(bool animation) {
+    int value = libWoLC_gf_CreditsAvailable();
+    PlayerModifyPropertyInt(1, c_playerPropCredits, c_playerPropOperSetTo, value);
+
+    DialogControlSetVisible(credits, PlayerGroupAll(), true);
+}
+
+static void UpdateSelectedUpgrade() {
+    string army_upgrade_state;
+
+    if (selected_upgrade == null) {
+        return;
+    }
+
+    army_upgrade_state = libWoLC_gf_WC_ArmyUpgradeState(selected_upgrade);
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "StatusState", army_upgrade_state);
+}
+
+static void SelectUpgrade(string army_upgrade) {
+    string army_upgrade_state = libWoLC_gf_WC_ArmyUpgradeState(army_upgrade);
+    string movie = libWoLC_gf_WC_ArmyUpgradeMovie(army_upgrade);
+    string image = libWoLC_gf_WC_ArmyUpgradeImage(army_upgrade);
+
+    selected_upgrade = army_upgrade;
+
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "SelectionState", "On");
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "StatusState", army_upgrade_state);
+
+    libNtve_gf_SetDialogItemText(tech_name, libWoLC_gf_WC_ArmyUpgradeName(army_upgrade), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(tech_description, libWoLC_gf_WC_ArmyUpgradeDescription(army_upgrade), PlayerGroupAll());
+
+    libNtve_gf_SetDialogItemText(tech_cost, FormatNumber(libWoLC_gf_WC_ArmyUpgradeCost(army_upgrade)), PlayerGroupAll());
+
+
+    if ((image != null) && (image != "")) {
+        libNtve_gf_SetDialogItemImage(tech_image, image, PlayerGroupAll());
+
+        DialogControlSetVisible(tech_image, PlayerGroupAll(), true);
+        DialogControlSetVisible(tech_movie, PlayerGroupAll(), false);
+    } else {
+        libNtve_gf_SetDialogItemMovie(tech_movie, movie, PlayerGroupAll());
+
+        DialogControlSetVisible(tech_image, PlayerGroupAll(), false);
+        DialogControlSetVisible(tech_movie, PlayerGroupAll(), true);
+    }
+}
+
+static void DeselectUpgrade() {
+    selected_upgrade = null;
+
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "SelectionState", "Off");
+}
+
+
+void Kit_UITechPurchase_Show(trigger exit_trigger) {
+    UserTrigger = exit_trigger;
+
+    Create();
+    InitializeTechGroup();
+    InitializeArmyCategory();
+    UpdateCredits(false);
+    DeselectUpgrade();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+}
+
+void Kit_UITechPurchase_Hide() {
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    TriggerExecute(UserTrigger, true, true);
+}
+
+bool Kit_UITechPurchase_CategoryClicked(bool check, bool run) {
+    string tech_group = Kit_GetDialogItemCustomValue(EventDialogControl(), 0);
+
+    if (!run) { return true; }
+
+    TriggerStop(UpgradeItemMouseExit);
+    DeselectUpgrade();
+
+    SelectTechGroup(tech_group);
+    InitializeArmyCategory();
+
+    return true;
+}
+
+bool Kit_UITechPurchase_UpgradeItemMouseEnter(bool check, bool run) {
+    int button = EventDialogControl();
+    string army_upgrade = Kit_GetDialogItemCustomValue(button, 0);
+    string army_category = Kit_GetDialogItemCustomValue(button, 1);
+
+    if (!run) { return true; }
+
+    TriggerStop(UpgradeItemMouseExit);
+
+    SelectUpgrade(army_upgrade);
+    HideArmyCategoryToast(army_category);
+
+    return true;
+}
+
+bool Kit_UITechPurchase_UpgradeItemMouseExit(bool check, bool run) {
+    if (!run) { return true; }
+
+    Wait(1, c_timeReal);
+    DeselectUpgrade();
+
+    return true;
+}
+
+bool Kit_UITechPurchase_UpgradeItemClicked(bool check, bool run) {
+    int button = EventDialogControl();
+    string army_upgrade = Kit_GetDialogItemCustomValue(button, 0);
+    string army_upgrade_state = libWoLC_gf_WC_ArmyUpgradeState(army_upgrade);
+
+    if (!run) { return true; }
+
+    if (army_upgrade_state == "Available") {
+        libWoLC_gf_WC_ArmyUpgradeSetPurchased(army_upgrade, true);
+    } else if (army_upgrade_state == "Purchased") {
+        libWoLC_gf_WC_ArmyUpgradeSetPurchased(army_upgrade, false);
+    } else {
+        return false;
+    }
+
+    UpdateCredits(true);
+    UpdateSelectedUpgrade();
+    UpdateArmyCategory();
+
+    return true;
+}
+
+bool Kit_UITechPurchase_CloseButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    Kit_UITechPurchase_Hide();
+
+    return true;
+}
+
+bool Kit_UITechPurchase_ResetButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    libWoLC_gf_WC_ArmyUpgradeResetAll();
+
+    UpdateCredits(true);
+    UpdateSelectedUpgrade();
+    UpdateArmyCategory();
+
+    return true;
+}

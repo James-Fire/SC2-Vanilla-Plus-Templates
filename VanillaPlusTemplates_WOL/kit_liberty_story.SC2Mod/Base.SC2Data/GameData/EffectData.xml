@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <!-- Diamondback -->
+    <CEffectApplyBehavior id="DiamondbackAttackTrackerAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="DiamondbackAttackTrackerUnitSet"/>
+        <Behavior value="DiamondbackAttackTracker"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="DiamondbackAttackTrackerRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="DiamondbackAttackTrackerUnitSet"/>
+        <BehaviorLink value="DiamondbackAttackTracker"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="DiamondbackAttackTrackerCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="CasterUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <FinalEffect value="DiamondbackAttackTrackerRB"/>
+        <ValidatorArray value="TargetIsEnemyOrNeutral"/>
+        <InitialEffect value="DiamondbackAttackTrackerAB"/>
+        <PeriodicValidator value="DiamondbackTrackingTarget"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="DiamondbackAttackTrackerDP">
+        <EditorCategories value="Race:Terran"/>
+        <Effect value="DiamondbackAttackTrackerCP"/>
+    </CEffectDestroyPersistent>
+    <CEffectSet id="DiamondbackAttackTrackerUnitSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="DiamondbackChasingAB"/>
+        <EffectArray value="DiamondbackAttackTrackerDP"/>
+        <EffectArray value="DiamondbackAttackTrackerCP"/>
+        <Marker Link="Effect/DiamondbackAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectApplyBehavior id="DiamondbackChasingAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="DiamondbackChasing"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="DiamondbackChasingRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="DiamondbackChasing"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="DiamondbackDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="DiamondbackTransientTrackerAB"/>
+        <EffectArray value="Diamondback"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="DiamondbackTransientTrackerAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="DiamondbackTransientTracker"/>
+    </CEffectApplyBehavior>
+    <!-- Battlecruiser -->
+    <CEffectApplyBehavior id="BattlecruiserAttackTrackerAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="BattlecruiserAttackTrackerUnitSet"/>
+        <Behavior value="BattlecruiserAttackTracker"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="BatttlecruiserAttackTrackerRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="BattlecruiserAttackTrackerUnitSet"/>
+        <BehaviorLink value="BattlecruiserAttackTracker"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="BattlecruiserAttackTrackerCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="CasterUnit"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <FinalEffect value="BatttlecruiserAttackTrackerRB"/>
+        <ValidatorArray value="TargetIsEnemyOrNeutral"/>
+        <InitialEffect value="BattlecruiserAttackTrackerAB"/>
+        <PeriodicValidator value="BattlecruiserTrackingTarget"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="BattlecruiserAttackTrackerDP">
+        <EditorCategories value="Race:Terran"/>
+        <Effect value="BattlecruiserAttackTrackerCP"/>
+    </CEffectDestroyPersistent>
+    <CEffectSet id="BattlecruiserAttackTrackerUnitSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BattlecruiserChasingAB"/>
+        <EffectArray value="BattlecruiserAttackTrackerDP"/>
+        <EffectArray value="BattlecruiserAttackTrackerCP"/>
+        <Marker Link="Effect/BattlecruiserAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSet>
+    <CEffectApplyBehavior id="BattlecruiserChasingAB">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BattlecruiserChasing"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="BattlecruiserChasingRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="BattlecruiserChasing"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="BattlecruiserDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BattlecruiserTransientTrackerAB"/>
+        <EffectArray value="BattlecruiserDamageSwitch"/>
+    </CEffectSet>
+    <CEffectSwitch id="BattlecruiserDamageSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="GroundUnitFilter" Effect="ATSLaserBatteryLM"/>
+        <CaseDefault value="ATALaserBatteryLM"/>
+        <Marker Count="0" Link="Effect/BattlecruiserAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSwitch>
+    <CEffectApplyBehavior id="BattlecruiserTransientTrackerAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="BattlecruiserTransientTracker"/>
+    </CEffectApplyBehavior>
+    <!-- Merc Battlecruiser -->
+    <CEffectSet id="DRBattlecruiserDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="BattlecruiserTransientTrackerAB"/>
+        <EffectArray value="DRBattlecruiserDamageSwitch"/>
+    </CEffectSet>
+    <CEffectSwitch id="DRBattlecruiserDamageSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="Kit@MercBattlecruiserUseCannonGround" Effect="DRCannonsG"/>
+        <CaseArray Validator="Kit@MercBattlecruiserUseCannonAir" Effect="DRCannonsA"/>
+        <CaseArray Validator="GroundUnitFilter" Effect="DRBattlecruiserGLM"/>
+        <CaseDefault value="DRBattlecruiserALM"/>
+        <Marker Count="0" Link="Effect/BattlecruiserAttackTrackerCP">
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+    </CEffectSwitch>
+    <CEffectEnumArea id="KarassPsiStormSearch">
+        <AINotifyFlags index="HurtFriend" value="0"/>
+        <SearchFilters value="-;Player,Ally,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <!-- Hold Fire -->
+    <CEffectApplyBehavior id="Kit@PerditionTurretHoldFire">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Kit@Kit@PerditionTurretHoldFire"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Kit@PerditionTurretHoldFireB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="Kit@Kit@PerditionTurretHoldFireB"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="Kit@PerditionTurretRemoveHoldFire">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="Kit@Kit@PerditionTurretHoldFireB"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="Kit@LaserDrillRemoveHoldFire">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="Kit@LaserDrillHoldFireB"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="Kit@LaserDrillHoldFire">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="Kit@LaserDrillHoldFireB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <!-- DT Blink -->
+    <CEffectTeleport id="DarkTemplarBlink">
+        <EditorCategories value="Race:Protoss"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="8"/>
+        <Range value="8"/>
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <ValidatorArray value="CasterNotFungalGrowthed"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="ZeratulBlink">
+        <ValidatorArray value="CasterNotFungalGrowthed"/>
+    </CEffectTeleport>
+    <!-- Mothership Mass Recall -->
+    <CEffectApplyBehavior id="MassRecallApplyBehavior">
+        <ValidatorArray value="IsNotRecallingNexus"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="NanoRepair">
+        <ValidatorArray value="Unrepairable"/>
+    </CEffectCreateHealer>
+    <!-- Nexus Mass Recall -->
+    <CEffectEnumArea id="NexusMassRecallSearch">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <MinCount value="1"/>
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="NexusMassRecallWarpOutSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="NexusMassRecallWarpOutSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NexusMassRecallCastingAB"/>
+        <EffectArray value="NexusMassRecallWarpOutAB"/>
+        <EffectArray value="NexusMassRecallPhased"/>
+        <ValidatorArray value="IsNotRecallingNexus"/>
+        <ValidatorArray value="IsNotRecallingMothership"/>
+        <ValidatorArray value="NotLarvaEgg"/>
+        <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="NotAbducted"/>
+        <ValidatorArray value="IsNotWarpingIn"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="NexusMassRecallWarpOutAB">
+        <ValidatorArray index="0" removed="1"/>
+        <Behavior value="NexusMassRecallWarpOut"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="NexusMassRecallPhased">
+        <ValidatorArray index="0" removed="1"/>
+        <Behavior value="NexusMassRecallTargetPhased"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="NexusMassRecallCastingAB">
+        <Behavior value="NexusMassRecallCasting"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="NexusMassRecallCastingRB">
+        <BehaviorLink value="NexusMassRecallCasting"/>
+        <WhichUnit Value="Caster"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="NexusMassRecallSet">
+        <EditorCategories value="Race:Protoss"/>
+        <EffectArray value="NexusMassRecallTeleport"/>
+        <EffectArray value="NexusMassRecallPostBehavior"/>
+        <EffectArray value="NexusMassRecallSetPrevent2ndRecall"/>
+    </CEffectSet>
+    <CEffectTeleport id="NexusMassRecallTeleport">
+        <EditorCategories value="Race:Protoss"/>
+        <TargetLocation Effect="NexusMassRecallSearch" Value="SourcePoint"/>
+        <SourceLocation Effect="NexusMassRecallSearch" Value="TargetPoint"/>
+        <PlacementArc value="360"/>
+        <PlacementAround Effect="NexusMassRecallSearch" Value="SourcePoint"/>
+        <PlacementRange value="15"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportFlags index="TestFog" value="0"/>
+    </CEffectTeleport>
+    <CEffectDamage id="NexusMassRecallPreTeleportDummy"/>
+    <CEffectCreatePersistent id="NexusShieldRecharge">
+        <ValidatorArray value="ShieldsNotFull"/>
+        <ValidatorArray value="CasterHasEnergy"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="100"/>
+        <PeriodicValidator value="CasterHasEnergy"/>
+        <PeriodicEffectArray value="NexusShieldRechargeSet"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="NexusMassRecallPostBehavior">
+        <EditorCategories value="Race:Protoss"/>
+        <Behavior value="NexusRecalled"/>
+    </CEffectApplyBehavior>
+    <!-- Refinery THanson02 Fix-->
+    <CEffectIssueOrder id="Kit@RefineryPipesMorph">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <Abil value="Kit@RefineryPipesMorph"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <!-- WarpGate Auto Cast -->
+    <CEffectApplyBehavior id="Kit@WarpGateAutoCastDisabler">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="Kit@WarpGateAutoCastOff">
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="UpgradeToWarpGate"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+        <Player Value="Caster"/>
+    </CEffectIssueOrder>
+    <!-- Valerian02b Allow AoE into Black Fog -->
+    <CEffectEnumArea id="RaynorSnipeSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectEnumArea>
+    <CEffectDamage id="BonesTossGrenadeDamage">
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <RevealerParams Duration="0.5">
+            <RevealFlags index="Unfog" value="1"/>
+        </RevealerParams>
+    </CEffectDamage>
+    <!-- Firebat Range Fix -->
+    <CEffectSet id="FirebatSet">
+        <EffectArray index="0" value="Kit@FirebatCP"/>
+        <EffectArray index="1" value="FlameThrowerDamageSet"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Kit@FirebatCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Kit@FirebatSearch"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Kit@FirebatSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1.2" RectangleHeight="16" Effect="FlameThrowerDamageSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="FlameThrowerDamageSet">
+        <ValidatorArray value="WeaponInRange"/>
+    </CEffectSet>
+    <!-- Devil Dog Range Fix -->
+    <CEffectSet id="DevilDogSet">
+        <EffectArray index="0" value="Kit@DevilDogCP"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Kit@DevilDogCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Kit@DevilDogSearch"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Kit@DevilDogSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1.2" RectangleHeight="16" Effect="DevilDogDamage"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="DevilDogDamage">
+        <ValidatorArray value="WeaponInRange"/>
+    </CEffectDamage>
+    <!-- Predator Buff -->
+    <CEffectSet id="RetributionFieldImpactSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="RetributionFieldEMPSet"/>
+        <EffectArray value="RetributionFieldDamage"/>
+    </CEffectSet>
+    <CEffectSet id="RetributionFieldEMPSet">
+        <ValidatorArray value="Kit@UsePredatorElectromagneticField"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="Kit@RetributionFieldDamageShield"/>
+        <EffectArray value="Kit@RetributionFieldEnergy"/>
+        <EffectArray value="EMPApplyDecloakBehavior"/>
+    </CEffectSet>
+    <CEffectEnumArea id="RetributionFieldSearch">
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray index="0" Effect="RetributionFieldImpactSet"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="Kit@RetributionFieldEnergy">
+        <ValidatorArray value="empUTargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="-20"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="Kit@RetributionFieldDamageShield">
+        <EditorCategories value="Race:Terran"/>
+        <ShieldBonus value="20"/>
+        <Flags index="Notification" value="1"/>
+    </CEffectDamage>
+    <!-- Reaper Charge remove Friendly Fire -->
+    <CEffectDamage id="D8ChargeExplodeDamage">
+        <AINotifyFlags index="HurtFriend" value="0"/>
+        <AINotifyFlags index="MinorDanger" value="1"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectDamage id="D8ClusterBombExplodeDamage">
+        <AINotifyFlags index="HurtFriend" value="0"/>
+        <AINotifyFlags index="MinorDanger" value="1"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <!-- Reaper Restore Anti-Light Damage -->
+    <CEffectDamage id="P38ScytheGuassPistol">
+        <AttributeBonus index="Light" value="5"/>
+    </CEffectDamage>
+    <!-- Hellion flame thrower redone to support range increases -->
+    <CEffectCreatePersistent id="Kit@InfernalFlameThrowerCP">
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Kit@InfernalFlameThrowerLM"/>
+        <PeriodicOffsetArray value="0,-20,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectLaunchMissile id="Kit@InfernalFlameThrowerLM">
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Kit@InfernalFlameThrowerLMImpactDummy"/>
+        <AmmoUnit value="Kit@InfernalFlameThrowerWeapon"/>
+        <LaunchOffset value="0,-4.95,0"/>
+        <LaunchEffect value="Kit@InfernalFlameThrowerSearchCP"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="Kit@InfernalFlameThrowerLMImpactDummy">
+        <ImpactUnit Value="Caster"/>
+    </CEffectModifyUnit>
+    <CEffectCreatePersistent id="Kit@InfernalFlameThrowerSearchCP">
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="Kit@InfernalFlameThrowerSearch"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <PeriodicOffsetArray value="0,0.5,0"/>
+        <WhichLocation Value="SourceUnit"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Kit@InfernalFlameThrowerSearch">
+        <ValidatorArray value="Kit@WeaponInRangeSource"/>
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <IncludeArray Effect="Kit@InfernalFlameThrowerCP" Value="Target"/>
+        <AreaArray RectangleWidth="0.3" RectangleHeight="6.65" Effect="InfernalFlameThrower"/>
+        <AreaRelativeOffset value="0,2"/>
+    </CEffectEnumArea>
+    <!-- Hellion Tank weapon range -->
+    <CEffectDamage id="HellionTankDamage">
+        <ValidatorArray value="WeaponInRange"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="HellionTankSearch">
+        <AreaArray index="0" Radius="10"/>
+    </CEffectEnumArea>
+    <!-- Spider Mine remove Friendly Fire and buff damage -->
+    <CEffectDamage id="VultureSpiderMinesDamage">
+        <Amount value="125"/>
+        <AreaArray index="0" Radius="0.9687"/>
+        <AreaArray index="1" Radius="1.2812"/>
+        <AreaArray index="2" Radius="1.75"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <!-- Siege Tank dummy damage for turret rotation -->
+    <CEffectDamage id="Kit@90mmCannonsDummy" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <ResponseFlags index="Flee" value="0"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Notification" value="0"/>
+    </CEffectDamage>
+    <CEffectDamage id="Kit@SiegeBreakerDummy" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <ResponseFlags index="Flee" value="0"/>
+        <Visibility value="Hidden"/>
+        <Flags index="Notification" value="0"/>
+    </CEffectDamage>
+    <!-- Siege Breaker remove Friendly Fire (Siege Tank handled in the void dependency) -->
+    <CEffectDamage id="ArcliteShockCannonBlast">
+        <SearchFilters value="Ground;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ValidatorArray index="1" removed="1"/>
+    </CEffectDamage>
+    <CEffectSet id="ArcliteShockCannonBlastSet">
+        <EffectArray index="1" removed="1"/>
+        <EffectArray index="2" removed="1"/>
+    </CEffectSet>
+    <!-- Medivac validators -->
+    <CEffectCreateHealer id="MedivacHeal">
+        <ValidatorArray index="4" value=""/>
+        <ValidatorArray index="5" value=""/>
+        <ValidatorArray index="7" value=""/>
+        <ValidatorArray index="8" value=""/>
+        <ValidatorArray index="9" value=""/>
+        <ValidatorArray value="NotStasis"/>
+    </CEffectCreateHealer>
+    <!-- Battlecruiser Prevent Attack while Yamato-->
+    <CEffectLaunchMissile id="ATALaserBatteryLM">
+        <ValidatorArray index="0" value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="ATSLaserBatteryLM">
+        <ValidatorArray index="0" value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DRBattlecruiserALM">
+        <ValidatorArray index="0" value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="DRBattlecruiserGLM">
+        <ValidatorArray index="0" value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="DRCannonsA">
+        <ValidatorArray value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectDamage>
+    <CEffectDamage id="DRCannonsG">
+        <ValidatorArray value="Kit@BattlecruiserIsNotYamatoing"/>
+    </CEffectDamage>
+    <!-- SCV Advanced Construction Helper -->
+    <CEffectSet id="Kit@AdvancedConstructionAuto">
+        <ValidatorArray value="Kit@AdvancedConstructionAutoTarget"/>
+        <EditorCategories value="Race:Terran"/>
+    </CEffectSet>
+    <!-- Thor Anti Massive Buff -->
+    <CEffectDamage id="LanceMissileLaunchersDamage">
+        <AttributeBonus index="Massive" value="10"/>
+        <Amount value="25"/>
+    </CEffectDamage>
+    <!-- Ghost Auto Cloak -->
+    <CEffectIssueOrder id="Kit@GhostCloakIssueOrder">
+        <EditorCategories value=""/>
+        <Abil value="GhostCloak"/>
+        <Target Value="CasterUnit"/>
+        <WhichUnit Value="Caster"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <!-- Steady Targeting -->
+    <CEffectSet id="ChannelSnipeInitialSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeCreatePersistent"/>
+        <EffectArray value="ChannelSnipeCombat"/>
+        <EffectArray value="ChannelSnipeRefund"/>
+        <EffectArray value="ChannelSnipeCombatBeamDummy"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ChannelSnipeCreatePersistent">
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="Channeled" value="1"/>
+        <ExpireEffect value="ChannelSnipeDamageSet"/>
+        <PeriodCount value="32"/>
+        <PeriodicValidator value="ChannelSnipeValidators"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <WhichLocation Value="TargetUnit"/>
+        <FinalEffect value="ChannelSnipeCombatRB"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="ChannelSnipeDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="130"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <AttributeBonus index="Psionic" value="40"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="ChannelSnipeCombat">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ChannelSnipeRefund">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ChannelSnipeDamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeDamage"/>
+        <EffectArray value="ChannelSnipeRefundRB"/>
+        <EffectArray value="ChannelSnipeCombatRB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ChannelSnipeCombatBeamDummy">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="ChannelSnipeCombatRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ChannelSnipeCombat"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="ChannelSnipeRefundSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ChannelSnipeEnergyRefund"/>
+        <EffectArray value="ChannelSnipeRefundRB"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="ChannelSnipeEnergyRefund">
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="50"/>
+        </VitalArray>
+        <ImpactUnit Value="Caster"/>
+        <ValidatorArray value="ChannelSnipeRefundValidator"/>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="ChannelSnipeRefundRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="ChannelSnipeRefund"/>
+    </CEffectRemoveBehavior>
+    <!-- EMP remove Friendly Fire -->
+    <CEffectEnumArea id="EMPSearch">
+        <SearchFilters value="-;Player,Ally,Heroic,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <!-- Nuke remove Friendly Fire and Faster Calldown for Player -->
+    <CEffectDamage id="HeroNukeDamage">
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectDamage id="NukeDamage">
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="Kit@NukeFastPersistent">
+        <EditorCategories value="Race:Terran"/>
+        <Alert value="CalldownLaunchObserver"/>
+        <Flags index="Channeled" value="1"/>
+        <InitialDelay value="8.75"/>
+        <ExpireEffect value="NukeDetonate"/>
+        <FinalEffect value="NukeSuicide"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="NukePersistent">
+        <AINotifyEffect value=""/>
+    </CEffectCreatePersistent>
+    <!-- Spectre Auto Cloak -->
+    <CEffectIssueOrder id="Kit@SpectreCloakIssueOrder">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="RogueGhostCloak"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <!-- Perdition Turret Weapon Range Fix -->
+    <CEffectSet id="PerditionTurretFlameThrowerSet">
+        <EffectArray index="0" value="Kit@PerditionTurretFlameThrowerCP"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Kit@PerditionTurretFlameThrowerCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="SourcePoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="Kit@PerditionTurretFlameThrower"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="Kit@PerditionTurretFlameThrower">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray RectangleWidth="1.8" RectangleHeight="16" Effect="PerditionTurretFlameThrowerDamage"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="PerditionTurretFlameThrowerDamage">
+        <ValidatorArray value="WeaponInRange"/>
+    </CEffectDamage>
+    <!-- Perdition Turret Smart Unburrow -->
+    <CEffectIssueOrder id="Kit@PerditionTurretUnburrowOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="PerditionTurretUnburrow"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="Kit@PerditionTurretKnockBack2Set">
+        <ValidatorArray value="TargetIsGround"/>
+        <ValidatorArray value="NoSuppressCollision"/>
+        <EffectArray value="UnitKnockbackBy2"/>
+    </CEffectSet>
+    <CEffectEnumArea id="Kit@PerditionTurretKnockbackSE">
+        <SearchFilters value="Ground;Self,Neutral,Structure,Missile,Dead,Hidden"/>
+        <AreaArray Radius="0.375" Effect="Kit@PerditionTurretKnockBack2Set"/>
+    </CEffectEnumArea>
+    <!-- Perdition Turret Spider Mines -->
+    <CEffectSet id="Kit@PerditionTurretMineFieldSet">
+        <EffectArray value="Kit@PerditionTurretMineFieldRandomPoint"/>
+    </CEffectSet>
+    <CEffectRandomPointInCircle id="Kit@PerditionTurretMineFieldRandomPoint">
+        <Effect value="Kit@PerditionTurretMineFieldTeleport"/>
+        <Radius value="1"/>
+        <RestrictToCircumference value="1"/>
+        <DebugTrace value="1"/>
+        <WhichLocation Value="TargetUnit"/>
+    </CEffectRandomPointInCircle>
+    <CEffectTeleport id="Kit@PerditionTurretMineFieldTeleport">
+        <WhichUnit Effect="Kit@PerditionTurretMineFieldSet"/>
+        <TargetLocation Value="TargetPoint"/>
+        <DebugTrace value="1"/>
+    </CEffectTeleport>
+    <!-- Science Vessel remove Friendly Fire -->
+    <CEffectEnumArea id="IrradiateInitialDamage">
+        <SearchFilters value="Biological;Player,Ally,Structure,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="IrradiateInitialDamageApply">
+        <SearchFilters value="Biological;Player,Ally,Neutral,Structure,RawResource,HarvestableResource,Item,Dead,Hidden"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="IrradiateSearchArea">
+        <SearchFilters value="Biological;Player,Ally,Structure,Dead,Hidden,Invulnerable"/>
+    </CEffectEnumArea>
+    <!-- Raven remove Friendly Fire -->
+    <CEffectDamage id="SeekerMissileDamage">
+        <SearchFilters value="-;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <!-- Medic Coop Fix -->
+    <CEffectCreateHealer id="heal">
+        <ValidatorArray value="NotStasis"/>
+    </CEffectCreateHealer>
+</Catalog>

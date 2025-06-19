@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CCampaign id="WingsOfLiberty">
+        <CampaignData>
+            <ImagePath value="Assets\Textures\ui_battlenet_glue_campaign_mapicon_wings_start.dds"/>
+            <CinematicsImagePath value="Assets\Textures\UI_Battlenet_Glue_Campaign_MapIcon_Wings_Cinematic.dds"/>
+            <StorySoFarImagePath value="Assets\Textures\UI_Battlenet_Glue_Campaign_MapIcon_Wings_StorySoFar.dds"/>
+            <FeaturedImagePath value="Assets\Textures\SC2_UI_Collection_Featured_Bundle_WingsOfLiberty.dds"/>
+            <CampaignBanks value="WArmy"/>
+            <CampaignBanks value="WCampaign"/>
+            <CampaignBanks value="WStory"/>
+            <CampaignBanks value="WArchive"/>
+            <CampaignBanks value="TStoryTransition01"/>
+            <TransitionBanks value="TStoryTransition01"/>
+        </CampaignData>
+    </CCampaign>
+</Catalog>

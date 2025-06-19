@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectEnumArea id="PurifierPlanetCrackerSearch">
+        <AreaArray index="0" RadiusBonus="0.2"/>
+    </CEffectEnumArea>
+</Catalog>

@@ -1,0 +1,276 @@
+include "LibWolC_h"
+include "Scripts/UI/utils_h"
+include "Scripts/UI/ui_h"
+
+static int dialog = -1;
+static int root;
+
+static int reset_button;
+static int close_button;
+
+static int selection_info;
+static int credits;
+static int merc_name;
+static int merc_unit;
+static int merc_availability;
+static int merc_special;
+static int merc_description;
+static int merc_cost;
+static int merc_movie;
+
+
+struct MercItem {
+    int container;
+    int button;
+    int title_normal;
+    int title_hover;
+    int portrait_image;
+    int portrait_frame;
+    int portrait;
+    int flash_purchase;
+    int flash_new;
+};
+static const int items_count = 8;
+
+static MercItem[items_count] items;
+
+
+static trigger MercenaryItemMouseEnter = TriggerCreate("Kit_UIMercenary_MercenaryItemMouseEnter");
+static trigger MercenaryItemMouseExit = TriggerCreate("Kit_UIMercenary_MercenaryItemMouseExit");
+static trigger MercendaryItemClicked = TriggerCreate("Kit_UIMercenary_MercendaryItemClicked");
+
+static trigger ResetButtonClicked = TriggerCreate("Kit_UIMercenary_ResetButtonClicked");
+static trigger CloseButtonClicked = TriggerCreate("Kit_UIMercenary_CloseButtonClicked");
+
+static trigger UserTrigger;
+
+static string selected_mercenary;
+
+
+static void Create() {
+    int i = 0;
+
+    if (dialog != -1) {
+        return;
+    }
+
+    dialog = DialogCreate(1920, 1080, c_anchorCenter, 0, 0, true);
+    DialogSetImageVisible(dialog, false);
+    DialogSetFullscreen(dialog, true);
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    
+    root = DialogControlCreateFromTemplate(dialog, c_triggerControlTypePanel, "Kit_MercenaryPanel/MercenaryPanelTemplate");
+
+    selection_info = DialogControlHookup(root, c_triggerControlTypePanel, "SelectionInfoFrame");
+    credits = DialogControlHookup(selection_info, c_triggerControlTypePanel, "Credits");
+    merc_name = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "NameLabel");
+    merc_unit = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "UnitLabel");
+    merc_availability = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "AvailabilityLabel");
+    merc_special = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "SpecialLabel");
+    merc_description = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "DescriptionLabel");
+    merc_movie = DialogControlHookup(selection_info, c_triggerControlTypeMovie, "MovieFrame");
+    merc_cost = DialogControlHookup(selection_info, c_triggerControlTypeLabel, "CostLabel");
+    
+    DialogControlSetVisible(credits, PlayerGroupAll(), true);
+
+    reset_button = DialogControlHookup(root, c_triggerControlTypeButton,  "ResetButton");
+    TriggerAddEventDialogControl(ResetButtonClicked, 1, reset_button, c_triggerControlEventTypeClick);
+
+    close_button = DialogControlHookup(root, c_triggerControlTypeButton,  "CloseButton");
+    TriggerAddEventDialogControl(CloseButtonClicked, 1, close_button, c_triggerControlEventTypeClick);
+
+    for (i = 0; i < items_count; i += 1) {
+        items[i].container = DialogControlHookup(root, c_triggerControlTypePanel, "MercenaryFrame" + IntToString(i));
+        items[i].button = DialogControlHookup(items[i].container, c_triggerControlTypeButton, "Button");
+        items[i].title_normal = DialogControlHookup(items[i].container, c_triggerControlTypeLabel, "TitleNormalLabel");
+        items[i].title_hover = DialogControlHookup(items[i].container, c_triggerControlTypeLabel, "TitleHoverLabel");
+        items[i].portrait_frame = DialogControlHookup(items[i].container, c_triggerControlTypePortrait, "Portrait");
+        items[i].portrait = PortraitGetTriggerControl(items[i].portrait_frame);
+        items[i].portrait_image = DialogControlHookup(items[i].container, c_triggerControlTypeImage, "PortraitImage");
+        items[i].flash_new = DialogControlHookup(items[i].container, c_triggerControlTypeFlash, "NewAnimationFlashFrame");
+        items[i].flash_purchase = DialogControlHookup(items[i].container, c_triggerControlTypeFlash, "PurchaseAnimationFlashFrame");
+
+        TriggerAddEventDialogControl(MercenaryItemMouseEnter, 1, items[i].button, c_triggerControlEventTypeMouseEnter);
+        TriggerAddEventDialogControl(MercenaryItemMouseExit, 1, items[i].button, c_triggerControlEventTypeMouseExit);
+        TriggerAddEventDialogControl(MercendaryItemClicked, 1, items[i].button, c_triggerControlEventTypeClick);
+
+        // DialogControlSetVisible(Groups[i].items[j].flash, PlayerGroupAll(), true);
+        // DialogControlInvokeAsString(Groups[i].items[j].flash, PlayerGroupAll(), "Birth", null, null, null, null);
+    }
+}
+
+static void InitializeItems() {
+    int count = UserDataInstanceCount("Mercenaries");
+    int i;
+    string mercenary;
+    int portrait;
+
+    count = libNtve_gf_ArithmeticIntClamp(count, 0, items_count);
+    for (i = 0; i < count; i += 1) {
+        mercenary = UserDataInstance("Mercenaries", i + 1);
+
+        DialogControlSetVisible(items[i].container, PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemText(items[i].title_normal, libWoLC_gf_WC_MercenaryName(mercenary), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(items[i].title_hover, libWoLC_gf_WC_MercenaryName(mercenary), PlayerGroupAll());
+        
+        PortraitSetModel(items[i].portrait, libWoLC_gf_WC_MercenaryPortrait(mercenary), false);
+        PortraitSetPaused(items[i].portrait, true);
+
+        libNtve_gf_SetDialogItemImage(items[i].portrait_image, libWoLC_gf_WC_MercenaryPortraitStatic(mercenary), PlayerGroupAll());
+
+        DialogControlSetAnimationState(items[i].container, PlayerGroupAll(), "StatusState", libWoLC_gf_WC_MercenaryState(mercenary));
+
+        Kit_SetDialogItemCustomValue(items[i].button, 0, mercenary);
+    }
+
+    for (; i < items_count; i += 1) {
+        DialogControlSetVisible(items[i].container, PlayerGroupAll(), false);
+    }
+}
+
+static void UpdateItems() {
+    int count = UserDataInstanceCount("Mercenaries");
+    int i;
+    string mercenary;
+    string state;
+
+    count = libNtve_gf_ArithmeticIntClamp(count, 0, items_count);
+    for (i = 0; i < count; i += 1) {
+        mercenary = UserDataInstance("Mercenaries", i + 1);
+        state = libWoLC_gf_WC_MercenaryState(mercenary);
+
+        DialogControlSetAnimationState(items[i].container, PlayerGroupAll(), "StatusState", state);
+
+        if (mercenary == selected_mercenary) {
+            DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "StatusState", state);
+        }
+    }
+}
+
+static void UpdateCredits(bool animation) {
+    int value = libWoLC_gf_CreditsAvailable();
+    PlayerModifyPropertyInt(1, c_playerPropCredits, c_playerPropOperSetTo, value);
+
+    DialogControlSetVisible(credits, PlayerGroupAll(), true);
+}
+
+static void SelectMercenary(string mercenary) {
+    string mercenary_state = libWoLC_gf_WC_MercenaryState(mercenary);
+    int i;
+
+    selected_mercenary = mercenary;
+
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "SelectionState", "On");
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "StatusState", mercenary_state);
+
+    for (i = 0; i < items_count; i += 1) {
+        PortraitSetPaused(items[i].portrait, Kit_GetDialogItemCustomValue(items[i].button, 0) != mercenary);
+    }
+
+    libNtve_gf_SetDialogItemText(merc_name, libWoLC_gf_WC_MercenaryName(mercenary), PlayerGroupAll());
+
+    libNtve_gf_SetDialogItemText(merc_unit, libWoLC_gf_WC_MercenarySquad(mercenary), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(merc_availability, libWoLC_gf_WC_MercenaryAvailability(mercenary), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(merc_special, libWoLC_gf_WC_MercenarySpecial(mercenary), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(merc_description, libWoLC_gf_WC_MercenaryDescription(mercenary), PlayerGroupAll());
+
+    DialogControlSetVisible(merc_unit, PlayerGroupAll(), libWoLC_gf_WC_MercenarySquad(mercenary) != null);
+    DialogControlSetVisible(merc_availability, PlayerGroupAll(), libWoLC_gf_WC_MercenaryAvailability(mercenary) != null);
+    DialogControlSetVisible(merc_special, PlayerGroupAll(), libWoLC_gf_WC_MercenarySpecial(mercenary) != null);
+
+    libNtve_gf_SetDialogItemText(merc_cost, FormatNumber(libWoLC_gf_WC_MercenaryCost(mercenary)), PlayerGroupAll());
+
+    libNtve_gf_SetDialogItemMovie(merc_movie, libWoLC_gf_WC_MercenaryMovie(mercenary), PlayerGroupAll());
+}
+
+static void DeselectMercenary() {
+    int i;
+
+    for (i = 0; i < items_count; i += 1) {
+        PortraitSetPaused(items[i].portrait, true);
+    }
+
+    selected_mercenary = null;
+
+    DialogControlSetAnimationState(selection_info, PlayerGroupAll(), "SelectionState", "Off");
+}
+
+
+void Kit_UIMercenary_Show(trigger exit_trigger) {
+    UserTrigger = exit_trigger;
+
+    Create();
+    InitializeItems();
+    UpdateCredits(false);
+    DeselectMercenary();
+
+    DialogSetVisible(dialog, PlayerGroupAll(), true);
+}
+
+void Kit_UIMercenary_Hide() {
+    DialogSetVisible(dialog, PlayerGroupAll(), false);
+    TriggerExecute(UserTrigger, true, true);
+}
+
+
+bool Kit_UIMercenary_MercenaryItemMouseEnter(bool check, bool run) {
+    int button = EventDialogControl();
+    string mercenary = Kit_GetDialogItemCustomValue(button, 0);
+
+    if (!run) { return true; }
+
+    TriggerStop(MercenaryItemMouseExit);
+
+    SelectMercenary(mercenary);
+
+    return true;
+}
+
+bool Kit_UIMercenary_MercenaryItemMouseExit(bool check, bool run) {
+    if (!run) { return true; }
+
+    Wait(1, c_timeReal);
+    DeselectMercenary();
+
+    return true;
+}
+
+bool Kit_UIMercenary_MercendaryItemClicked(bool check, bool run) {
+    int button = EventDialogControl();
+    string mercenary = Kit_GetDialogItemCustomValue(button, 0);
+    string state = libWoLC_gf_WC_MercenaryState(mercenary);
+
+    if (!run) { return true; }
+
+    if (state == "Available") {
+        libWoLC_gf_WC_MercenarySetPurchased(mercenary, true);
+    } else if (state == "Purchased") {
+        libWoLC_gf_WC_MercenarySetPurchased(mercenary, false);
+    } else {
+        return false;
+    }
+
+    UpdateItems();
+    UpdateCredits(true);
+
+    return true;
+}
+
+bool Kit_UIMercenary_CloseButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    Kit_UIMercenary_Hide();
+
+    return true;
+}
+
+bool Kit_UIMercenary_ResetButtonClicked(bool check, bool run) {
+    if (!run) { return true; }
+
+    libWoLC_gf_WC_MercenaryResetAll();
+
+    UpdateItems();
+    UpdateCredits(true);
+
+    return true;
+}

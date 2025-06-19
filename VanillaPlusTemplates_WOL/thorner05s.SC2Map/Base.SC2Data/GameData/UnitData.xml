@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="HoldingPen">
+        <Footprint value="HoldingPenDestructible"/>
+        <DeadFootprint value="HoldingPenDestructible"/>
+        <PlacementFootprint value="HoldingPenDestructible"/>
+    </CUnit>
+    <CUnit id="HybridF"/>
+</Catalog>

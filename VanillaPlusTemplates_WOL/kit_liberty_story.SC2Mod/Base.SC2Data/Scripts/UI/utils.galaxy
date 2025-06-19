@@ -1,0 +1,88 @@
+include "Scripts/UI/utils_h"
+include "LibWolC_h"
+
+
+void Kit_SetDialogItemCustomValue(int item, int index,string value) {
+    string key = "Kit_DialogItem|" + IntToString(item) + "_CustomValue_" + IntToString(index);
+    DataTableSetString(true, key, value);
+}
+
+string Kit_GetDialogItemCustomValue(int item, int index) {
+    string key = "Kit_DialogItem|" + IntToString(item) + "_CustomValue_" + IntToString(index);
+    return DataTableGetString(true, key);
+}
+
+string Kit_GetUnitActorType(string unit_type) {
+    int i;
+    int count;
+    string cache_key;
+    string entry;
+    string first_event;
+    string birth_event;
+
+    if (CatalogEntryIsValid(c_gameCatalogActor, unit_type)) {
+        return unit_type;
+    }
+
+    cache_key = "Kit_ActorFromUnit|" + unit_type;
+    if (DataTableValueExists(true, cache_key)) {
+        return DataTableGetString(true, cache_key);
+    }
+
+    birth_event = "UnitBirth." + unit_type;
+
+    count = CatalogEntryCount(c_gameCatalogActor);
+    for (i = 1; i <= count; i += 1) {
+        entry = CatalogEntryGet(c_gameCatalogActor, i);
+
+        if (CatalogEntryClass(c_gameCatalogActor, entry) != c_classIdCActorUnit) {
+            continue;
+        }
+
+        if (CatalogFieldValueCount(c_gameCatalogActor, entry, "On", 1) == 0) {
+            continue;
+        }
+
+        first_event = CatalogFieldValueGet(c_gameCatalogActor, entry, "On[0].Terms", 1);
+        if (first_event == birth_event) {
+            DataTableSetString(true, cache_key, entry);
+            return entry;
+        }
+    }
+
+    return null;
+}
+
+void Kit_PopulateDifficultyPulldown(int pulldown) {
+    int i;
+
+    DialogControlRemoveAllItems(pulldown, PlayerGroupAll());
+
+    for (i = 0; i < 32; i += 1) {
+        if (!DifficultyEnabled(i)) {
+            continue;
+        }
+
+        DialogControlAddItem(pulldown, PlayerGroupAll(), DifficultyNameCampaign(i));
+    }
+
+    DialogControlSelectItem(pulldown, PlayerGroupAll(), PlayerDifficulty(1));
+}
+
+void Kit_PopulateAllInPulldown(int pulldown) {
+    int selected_item = 1;
+
+    DialogControlAddItem(pulldown, PlayerGroupAll(), StringToText("VS Air"));
+    DialogControlAddItem(pulldown, PlayerGroupAll(), StringToText("VS Ground"));
+    DialogControlAddItem(pulldown, PlayerGroupAll(), StringToText("VS Air and Ground"));
+
+    if (libWoLC_gf_StoryInSimulation()) {
+        selected_item = 3; // Archive - Air and Ground
+    } else if (libWoLC_gf_MissionStatusCheck("TValerian02A", libWoLC_ge_MissionStatus_Completed)) {
+        selected_item = 1; // Air
+    } else {
+        selected_item = 2; // Ground
+    }
+
+    DialogControlSelectItem(pulldown, PlayerGroupAll(), selected_item);
+}

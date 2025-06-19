@@ -1,0 +1,164 @@
+//--------------------------------------------------------------------------------------------------
+//  *** Tactical Protoss AI ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  *** MOTHERSHIP ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+order MothershipVortex (int player, unit aiUnit, unitgroup scanGroup) {
+    point loc;
+    unitgroup vortexGroup;
+
+    order ord = AITacticalOrder(player, aiUnit, c_AB_Vortex);
+    if (ord == null) {
+        return null;
+    }
+
+    vortexGroup = AIEffectGroup(player, c_EF_VortexArea, scanGroup);
+
+    loc = AIBestTargetPoint(
+        vortexGroup,
+        5, // min hits
+        250, // damage base
+        4.5, // score
+        AIEffectFixed(player, c_EF_VortexArea, c_fieldAreaRadius0) + 1.0,
+        UnitGetPosition(aiUnit),
+        AIAbilityFixed(player, c_AB_Vortex, c_fieldRange0),
+        c_unitAttributeMassive
+    );
+
+    if (loc == null) {
+        return null;
+    }
+    
+    OrderSetTargetPoint(ord, loc);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return null;
+    }
+    return ord;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Maw of the Void Mothership
+void AIThinkMothership (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    
+    ord = MothershipVortex(player, aiUnit, scanGroup);
+    if (ord != null) {
+        AICast(aiUnit, ord, c_noMarker, c_castRetreat);
+    }
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** HIGH TEMPLAR ***
+//--------------------------------------------------------------------------------------------------
+
+const int c_psiStormCooldown = c_tactTimerFirst;
+
+void AIThinkHighTemplar (int player, unit aiUnit, unitgroup scanGroup) {
+    if (AITactCooldownAllow(aiUnit, c_psiStormCooldown)) {
+        // psi storm
+        if (AIEvalTacticalData(aiUnit, null)) {        
+            if (AIPlayerDifficulty(player) < c_campExpert) {
+                AISetCooldown(aiUnit, c_psiStormCooldown, 5.0);
+            }
+            return;
+        }
+    }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+void AIThinkGateway (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord;
+    
+    // rally
+    if (AIEvalTacticalData(aiUnit, null)) {
+        return;
+    }
+
+    if (AIIsCampaign(player)) {
+        if (AIPlayerDifficulty(player) < c_campExpert) {
+            return;
+        }
+    }
+
+    if (AITechCount(player, c_PR_WarpGateResearch, c_techCountCompleteOnly) == 0) {
+        return;
+    }
+
+    AISetWantsToUpgrade(aiUnit);
+
+    ord = AICreateOrder(player, c_AB_UpgradeToWarpGate, 0);
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+   
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  *** WarpPrism ***
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//  *** WarpPrism (transport mode) ***
+//--------------------------------------------------------------------------------------------------
+const fixed c_warpPrismPhaseRange = 1.0;
+
+void AIThinkWarpPrism (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord = AICreateOrder(player, c_AB_WPPhasingMode, 0);
+    string type = AIGetBullyType(aiUnit);
+    
+    if (UnitOrderCount(aiUnit) > 0) {
+        return;
+    }
+
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    if (type != c_PU_WarpPrismPhasing) {
+        return;
+    }
+
+    if (AIGetHomePosition(aiUnit) == c_nullPoint) {
+        return;
+    }
+
+    if (!PointsInRange(UnitGetPosition(aiUnit), AIGetHomePosition(aiUnit), c_warpPrismPhaseRange)) {
+        return;
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}
+
+//--------------------------------------------------------------------------------------------------
+//  *** WarpPrism (power mode) ***
+//--------------------------------------------------------------------------------------------------
+void AIThinkWarpPrismPhasing (int player, unit aiUnit, unitgroup scanGroup) {
+    order ord = AICreateOrder(player, c_AB_WPTransportMode, 0);
+    string type = AIGetBullyType(aiUnit);
+    
+    if (UnitOrderCount(aiUnit) > 0) {
+        return;
+    }
+
+    if (!UnitOrderIsValid(aiUnit, ord)) {
+        return;
+    }
+
+    if (type == c_PU_WarpPrismPhasing) {
+        if (AIGetHomePosition(aiUnit) != c_nullPoint) {
+            if (PointsInRange(UnitGetPosition(aiUnit), AIGetHomePosition(aiUnit), c_warpPrismPhaseRange)) {
+                // we're supposed to provide power at this point
+                return;
+            }
+        }
+    }
+
+    AICast(aiUnit, ord, c_noMarker, c_castHold);
+}

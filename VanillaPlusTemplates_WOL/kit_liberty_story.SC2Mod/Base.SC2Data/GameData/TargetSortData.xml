@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTargetSortValidator id="TSHeroic">
+        <Validator value="IsHeroic"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="TSStanding">
+        <Validator value="NotMoving"/>
+    </CTargetSortValidator>
+    <CTargetSortField id="AirTarget">
+        <Field value="PlaneArray[Air]"/>
+        <Value value="1"/>
+    </CTargetSortField>
+    <CTargetSortField id="GroundTarget">
+        <Field value="PlaneArray[Ground]"/>
+        <Value value="1"/>
+    </CTargetSortField>
+    <CTargetSortMarker id="TSMarkerDesc">
+        <Descending value="1"/>
+    </CTargetSortMarker>
+    <CTargetSortPriority id="TSPriorityDesc">
+        <Descending value="1"/>
+    </CTargetSortPriority>
+    <!--  -->
+    <CTargetSortValidator id="TSThreatenBattlecruiser">
+        <Validator value="ThreatensBattlecruiser"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="TSTrackedByBattlecruiser">
+        <Validator value="AttackTrackedByBattlecruiser"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="TSTransientBattlecruiser">
+        <Validator value="TransientTrackedByBattlecruiser"/>
+    </CTargetSortValidator>
+    <!--  -->
+    <CTargetSortValidator id="TSThreatenDiamondback">
+        <Validator value="ThreatensDiamondback"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="TSTrackedByDiamondback">
+        <Validator value="AttackTrackedByDiamondback"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="TSTransientDiamondback">
+        <Validator value="TransientTrackedByDiamondback"/>
+    </CTargetSortValidator>
+</Catalog>

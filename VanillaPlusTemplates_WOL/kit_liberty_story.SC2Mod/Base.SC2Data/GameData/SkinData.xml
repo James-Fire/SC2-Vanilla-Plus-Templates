@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSkin id="TaldarimCampaignSkin">
+        <!-- Probe -->
+        <ReplacementArray Catalog="Model" From="Probe" To="Probe_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ProbeDeath" To="Probe_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ProbeDeathRagdoll" To="Probe_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="ProbePortrait" To="Probe_Taldarim_Collection_Portrait"/>
+        <!-- Mothership -->
+        <ReplacementArray Catalog="Model" From="TalDarimMothership" To="Mothership_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="Mothership" To="Mothership_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="MothershipDeath" To="Mothership_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="MothershipDeathRagdoll" To="Mothership_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="MothershipPortrait" To="Mothership_Taldarim_Collection_Portrait"/>
+        <!-- Gateway Tech -->
+        <!-- Zealot -->
+        <ReplacementArray Catalog="Model" From="Zealot" To="Zealot_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ZealotWarpIn" To="Zealot_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="ZealotDeath" To="Zealot_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ZealotDeathRagdoll" To="Zealot_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="ZealotPlacement" To="Zealot_Taldarim_Collection_Placement"/>
+        <ReplacementArray Catalog="Model" From="ZealotPortrait" To="Zealot_Taldarim_Collection_Portrait"/>
+        <!-- Stalker -->
+        <ReplacementArray Catalog="Model" From="Stalker" To="Stalker_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="BlinkOriginModel" To="Stalker_Taldarim_Collection_BlinkOut"/>
+        <ReplacementArray Catalog="Model" From="StalkerWarpIn" To="Stalker_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="StalkerDeath" To="Stalker_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="StalkerDeathRagdoll" To="Stalker_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="StalkerPlacement" To="Stalker_Taldarim_Collection_Placement"/>
+        <ReplacementArray Catalog="Model" From="StalkerPortrait" To="Stalker_Taldarim_Collection_Portrait"/>
+        <!-- Sentry -->
+        <ReplacementArray Catalog="Model" From="Sentry" To="Sentry_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="SentryWarpIn" To="Sentry_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="SentryDeath" To="Sentry_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="SentryDeathRagdoll" To="Sentry_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="SentryPlacement" To="Sentry_Taldarim_Collection_Placement"/>
+        <ReplacementArray Catalog="Model" From="SentryPortrait" To="Sentry_Taldarim_Collection_Portrait"/>
+        <!-- High Templar -->
+        <ReplacementArray Catalog="Model" From="HighTemplar" To="HighTemplar_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarShadow" To="HighTemplar_Taldarim_Collection_Shadow"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarWarpIn" To="HighTemplar_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarDeath" To="HighTemplar_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarDeathRagdoll" To="HighTemplar_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarPlacement" To="HighTemplar_Taldarim_Collection_Placement"/>
+        <ReplacementArray Catalog="Model" From="HighTemplarPortrait" To="HighTemplar_Taldarim_Collection_Portrait"/>
+        <!-- Archon -->
+        <ReplacementArray Catalog="Model" From="Archon" To="Archon_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ArchonDeath" To="Archon_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ArchonPortrait" To="Archon_Taldarim_Collection_Portrait"/>
+        <!-- Dark Templar -->
+        <ReplacementArray Catalog="Model" From="DarkTemplar" To="DarkTemplar_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarWarpIn" To="DarkTemplar_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarDeath" To="DarkTemplar_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarDeath00" To="DarkTemplar_Taldarim_Collection_Death00"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarDeath01" To="DarkTemplar_Taldarim_Collection_Death01"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarDeathRagdoll" To="DarkTemplar_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarPlacement" To="DarkTemplar_Taldarim_Collection_Placement"/>
+        <ReplacementArray Catalog="Model" From="DarkTemplarPortrait" To="DarkTemplar_Taldarim_Collection_Portrait"/>
+        <!-- Robo Tech -->
+        <!-- Immortal -->
+        <ReplacementArray Catalog="Model" From="Immortal" To="Immortal_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ImmortalDeath" To="Immortal_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ImmortalDeathRagdoll" To="Immortal_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="ImmortalPortrait" To="Immortal_Taldarim_Collection_Portrait"/>
+        <!-- Observer -->
+        <ReplacementArray Catalog="Model" From="Observer" To="Observer_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ObserverWarpIn" To="Observer_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="ObserverDeath" To="Observer_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ObserverDeathRagdoll" To="Observer_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="ObserverPortrait" To="Observer_Taldarim_Collection_Portrait"/>
+        <!-- Warp Prism -->
+        <ReplacementArray Catalog="Model" From="WarpPrism" To="WarpPrism_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismWarpIn" To="WarpPrism_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismDeath" To="WarpPrism_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismOpenDeath" To="WarpPrism_Taldarim_Collection_OpenDeath"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismDeathRagdoll" To="WarpPrism_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismPhasingDeathRagdoll" To="WarpPrism_Taldarim_Collection_Open_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="WarpPrismPortrait" To="WarpPrism_Taldarim_Collection_Portrait"/>
+        <!-- Colossus -->
+        <ReplacementArray Catalog="Model" From="Colossus" To="Colossus_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="ColossusDeath" To="Colossus_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="ColossusDeathRagdoll" To="Colossus_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="ColossusPortrait" To="Colossus_Taldarim_Collection_Portrait"/>
+        <!-- Disruptor -->
+        <ReplacementArray Catalog="Model" From="Disruptor" To="Disruptor_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="DisruptorDeath" To="Disruptor_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="DisruptorDeathRagdoll" To="Disruptor_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="DisruptorPortrait" To="Disruptor_Taldarim_Collection_Portrait"/>
+        <!-- Stargate Tech -->
+        <!-- Oracle -->
+        <ReplacementArray Catalog="Model" From="Oracle" To="Oracle_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="OracleDeath" To="Oracle_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="OracleDeathMorph" To="Oracle_Taldarim_Collection_Death_Morph"/>
+        <ReplacementArray Catalog="Model" From="OracleDeathWalk" To="Oracle_Taldarim_Collection_Death_Walk"/>
+        <ReplacementArray Catalog="Model" From="OracleDeathRagdoll" To="Oracle_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="OracleMorphDeathRagdoll" To="Oracle_Taldarim_Collection_DeathMorphRagdoll"/>
+        <ReplacementArray Catalog="Model" From="OraclePortrait" To="Oracle_Taldarim_Collection_Portrait"/>
+        <ReplacementArray Catalog="Model" From="OracleWarpInStargate" To="Oracle_Taldarim_Collection_WarpIn_Stargate"/>
+        <!-- Scout -->
+        <ReplacementArray Catalog="Model" From="Scout" To="Scout_Forged"/>
+        <ReplacementArray Catalog="Model" From="ScoutDeath" To="Scout_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="ScoutWarpIn" To="Scout_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="ScoutWarpInStargate" To="Scout_Forged_WarpInStargate"/>
+        <ReplacementArray Catalog="Model" From="ScoutPortrait" To="Phoenix_Taldarim_Collection_Portrait"/>
+        <!-- Phoenix -->
+        <ReplacementArray Catalog="Model" From="Phoenix" To="Phoenix_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="PhoenixWarpIn" To="Phoenix_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="PhoenixWarpInStargate" To="Phoenix_Taldarim_Collection_WarpIn_Stargate"/>
+        <ReplacementArray Catalog="Model" From="PhoenixDeath" To="Phoenix_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="PhoenixDeathRagdoll" To="Phoenix_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="PhoenixPortrait" To="Phoenix_Taldarim_Collection_Portrait"/>
+        <!-- VoidRay -->
+        <ReplacementArray Catalog="Model" From="VoidRay" To="VoidRay_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="VoidRayWarpIn" To="VoidRay_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="VoidRayWarpInStargate" To="VoidRay_Taldarim_Collection_WarpIn_Stargate"/>
+        <ReplacementArray Catalog="Model" From="VoidRayDeath" To="VoidRay_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="VoidRayDeathRagdoll" To="VoidRay_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="VoidRayPortrait" To="VoidRay_Taldarim_Collection_Portrait"/>
+        <!-- Tempest -->
+        <ReplacementArray Catalog="Model" From="Tempest" To="Tempest_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="TempestWarpIn" To="Tempest_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="TempestWarpInStargate" To="Tempest_Taldarim_Collection_WarpIn_Stargate"/>
+        <ReplacementArray Catalog="Model" From="TempestDeath" To="Tempest_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="TempestDeathRagdoll" To="Tempest_Taldarim_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="TempestPortrait" To="Tempest_Taldarim_Collection_Portrait"/>
+        <!-- Carrier -->
+        <ReplacementArray Catalog="Model" From="Carrier" To="Carrier_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="CarrierWarpIn" To="Carrier_Taldarim_Collection_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="CarrierWarpInStargate" To="Carrier_Taldarim_Collection_WarpIn_Stargate"/>
+        <ReplacementArray Catalog="Model" From="CarrierDeath" To="Carrier_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="CarrierDeathRagdoll" To="Carrier_Taldarim_Collection_DeathRagdoll"/>
+        <ReplacementArray Catalog="Model" From="CarrierPortrait" To="Carrier_Taldarim_Collection_Portrait"/>
+        <!-- Interceptor -->
+        <ReplacementArray Catalog="Model" From="Interceptor" To="Interceptor_Taldarim_Collection"/>
+        <ReplacementArray Catalog="Model" From="InterceptorDeath" To="Interceptor_Taldarim_Collection_Death"/>
+        <ReplacementArray Catalog="Model" From="InterceptorDeathRagdoll" To="Interceptor_Taldarim_Collection_DeathRagdoll"/>
+        <!-- Structures -->
+        <!-- Gateway -->
+        <ReplacementArray Catalog="Model" From="Gateway" To="Gateway_Forged"/>
+        <ReplacementArray Catalog="Model" From="GatewayBuild" To="Gateway_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="GatewayBirth" To="Gateway_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="GatewayPlacement" To="Gateway_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="GatewayDeath" To="Gateway_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="GatewayDeathUnderConstruction" To="Gateway_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="GatewayPortrait" To="Gateway_Forged_Portrait"/>
+        <!-- Warp Gate -->
+        <ReplacementArray Catalog="Model" From="WarpGateDeath" To="Gateway_Forged_WarpGate_Death"/>
+        <!-- Robotics Facility -->
+        <ReplacementArray Catalog="Model" From="RoboticsFacility" To="RoboticsFacility_Forged"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityBuild" To="RoboticsFacility_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityBirth" To="RoboticsFacility_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityPlacement" To="RoboticsFacility_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityDeath" To="RoboticsFacility_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityDeathUnpowered" To="RoboticsFacility_Forged_Unpowered_Death"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityConstructionDeath" To="RoboticsFacility_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityDeathUnderConstruction" To="RoboticsFacility_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="RoboticsFacilityPortrait" To="RoboticsFacility_Forged_Portrait"/>
+        <!-- Robotics Bay -->
+        <ReplacementArray Catalog="Model" From="RoboticsBay" To="RoboticsBay_Forged"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayBuild" To="RoboticsBay_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayBirth" To="RoboticsBay_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayPlacement" To="RoboticsBay_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayDeath" To="RoboticsBay_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayDeathUnpowered" To="RoboticsBay_Forged_Unpowered_Death"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayDeathUnderConstruction" To="RoboticsBay_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="RoboticsBayPortrait" To="RoboticsBay_Forged_Portrait"/>
+        <!-- Stargate -->
+        <ReplacementArray Catalog="Model" From="Stargate" To="Stargate_Forged"/>
+        <ReplacementArray Catalog="Model" From="StargateBuild" To="Stargate_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="StargateBirth" To="Stargate_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="StargatePlacement" To="Stargate_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="StargateDeath" To="Stargate_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="StargateDeathUnpowered" To="Stargate_Forged_Death_Unpowered"/>
+        <ReplacementArray Catalog="Model" From="StargateDeathUnderConstruction" To="Stargate_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="StargatePortrait" To="Stargate_Forged_Portrait"/>
+        <!-- Fleet Beacon -->
+        <ReplacementArray Catalog="Model" From="FleetBeacon" To="FleetBeacon_Forged"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconBuild" To="FleetBeacon_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconBirth" To="FleetBeacon_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconPlacement" To="FleetBeacon_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconDeath" To="FleetBeacon_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconDeathUnpowered" To="FleetBeacon_Forged_Death_Unpowered"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconDeathUnderConstruction" To="FleetBeacon_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="FleetBeaconPortrait" To="FleetBeacon_Forged_Portrait"/>
+        <!-- Dark Shrine -->
+        <ReplacementArray Catalog="Model" From="DarkShrine" To="DarkShrine_Forged"/>
+        <ReplacementArray Catalog="Model" From="DarkShrineBuild" To="DarkShrine_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="DarkShrineBirth" To="DarkShrine_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="DarkShrinePlacement" To="DarkShrine_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="DarkShrineDeath" To="DarkShrine_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="DarkShrineDeathUnderConstruction" To="DarkShrine_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="DarkShrinePortrait" To="DarkShrine_Forged_Portrait"/>
+        <!-- Templar Archive -->
+        <ReplacementArray Catalog="Model" From="TemplarArchive" To="TemplarArchive_Forged"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchiveBuild" To="TemplarArchive_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchiveBirth" To="TemplarArchive_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchivePlacement" To="TemplarArchive_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchiveDeath" To="TemplarArchive_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchiveDeathUnderConstruction" To="TemplarArchive_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="TemplarArchivePortrait" To="TemplarArchive_Forged_Portrait"/>
+        <!-- Twilight Council -->
+        <ReplacementArray Catalog="Model" From="TwilightCouncil" To="TwilightCouncil_Forged"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilBuild" To="TwilightCouncil_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilBirth" To="TwilightCouncil_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilPlacement" To="TwilightCouncil_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilDeath" To="TwilightCouncil_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilDeathUnderConstruction" To="TwilightCouncil_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="TwilightCouncilPortrait" To="TwilightCouncil_Forged_Portrait"/>
+        <!-- Nexus -->
+        <ReplacementArray Catalog="Model" From="Nexus" To="Nexus_Forged"/>
+        <ReplacementArray Catalog="Model" From="NexusBuild" To="Nexus_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="NexusBirth" To="Nexus_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="NexusPlacement" To="Nexus_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="NexusDeath" To="Nexus_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="NexusDeathUnderConstruction" To="Nexus_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="NexusPortrait" To="Nexus_Forged_Portrait"/>
+        <!-- Pylon -->
+        <ReplacementArray Catalog="Model" From="Pylon" To="Pylon_Forged"/>
+        <ReplacementArray Catalog="Model" From="PylonBuild" To="Pylon_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="PylonBirth" To="Pylon_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="PylonPlacement" To="Pylon_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="PylonDeath" To="Pylon_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="PylonDeathUnderConstruction" To="Pylon_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="PylonPortrait" To="Pylon_Forged_Portrait"/>
+        <!-- Forge -->
+        <ReplacementArray Catalog="Model" From="Forge" To="Forge_Forged"/>
+        <ReplacementArray Catalog="Model" From="ForgeBuild" To="Forge_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="ForgeBirth" To="Forge_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="ForgePlacement" To="Forge_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="ForgeDeath" To="Forge_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="ForgeDeathUnderConstruction" To="Forge_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="ForgePortrait" To="Forge_Forged_Portrait"/>
+        <!-- Cybernetics Core -->
+        <ReplacementArray Catalog="Model" From="CyberneticsCore" To="CyberneticsCore_Forged"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCoreBuild" To="CyberneticsCore_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCoreBirth" To="CyberneticsCore_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCorePlacement" To="CyberneticsCore_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCoreDeath" To="CyberneticsCore_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCoreDeathUnderConstruction" To="CyberneticsCore_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="CyberneticsCorePortrait" To="CyberneticsCore_Forged_Portrait"/>
+        <!-- Photon Cannon -->
+        <ReplacementArray Catalog="Model" From="PhotonCannon" To="PhotonCannon_Forged"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonBuild" To="PhotonCannon_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonBirth" To="PhotonCannon_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonPlacement" To="PhotonCannon_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonDeath" To="PhotonCannon_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonDeathUnpowered" To="PhotonCannon_Forged_Death_Unpowered"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonDeathUnderConstruction" To="PhotonCannon_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="PhotonCannonPortrait" To="PhotonCannon_Forged_Portrait"/>
+        <!-- Shield Battery -->
+        <ReplacementArray Catalog="Model" From="ShieldBattery" To="ShieldBattery_Forged"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryBuild" To="ShieldBattery_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryBirth" To="ShieldBattery_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryPlacement" To="ShieldBattery_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryDeath" To="ShieldBattery_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryDeathUnpowered" To="ShieldBattery_Forged_Death_Unpowered"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryDeathUnderConstruction" To="ShieldBattery_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="ShieldBatteryPortrait" To="ShieldBattery_Forged_Portrait"/>
+        <!-- Assimilator -->
+        <ReplacementArray Catalog="Model" From="Assimilator" To="Assimilator_Forged"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorBuild" To="Assimilator_Forged_Build"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorBirth" To="Assimilator_Forged_WarpIn"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorPlacement" To="Assimilator_Forged_Placement"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorDeath" To="Assimilator_Forged_Death"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorEmptyDeath" To="Assimilator_Forged_Empty_Death"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorDeathUnderConstruction" To="Assimilator_Forged_DeathUnderConstruction"/>
+        <ReplacementArray Catalog="Model" From="AssimilatorPortrait" To="Assimilator_Forged_Portrait"/>
+        <!-- Building Portrait -->
+        <ReplacementArray Catalog="Model" From="ExecutorPortrait" To="ExecutorTaldarimPortrait"/>
+    </CSkin>
+</Catalog>

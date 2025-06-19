@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BankList>
+    <Bank Name="WArmy" Player="1"/>
+    <Bank Name="WCampaign" Player="1"/>
+    <Bank Name="WStory" Player="1"/>
+    <Bank Name="WArchive" Player="1"/>
+    <Bank Name="TStoryTransition01" Player="1"/>
+    <Bank Name="WStorySimulation" Player="1"/>
+    <Bank Name="TCampaign" Player="1"/>
+    <Bank Name="DebugCinematic" Player="1"/>
+    <Bank Name="TStory01" Player="1"/>
+    <Bank Name="PStoryTransition" Player="1"/>
+</BankList>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorUnit id="TZeratul03ReviveBeacon" parent="GenericUnitMorph" unitName="TZeratul03ReviveBeacon">
+        <On Terms="ActorCreation" Send="$Birth"/>
+        <PortraitModel value="ZeratulPortrait"/>
+        <BarOffset value="80"/>
+        <BarWidth value="78"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-protoss-respawnpad_zeratul.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-zeratulbeacon.dds"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-zeratulbeacon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-protoss-respawnpad_zeratul.dds"/>
+        </Wireframe>
+    </CActorUnit>
+</Catalog>

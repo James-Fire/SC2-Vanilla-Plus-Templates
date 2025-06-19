@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CLocation default="1">
+        <Name value="Location/##id##/Name"/>
+        <Description value="Location/##id##/Description"/>
+        <UserReference value="Locations;##id##"/>
+    </CLocation>
+    <CLocation id="Agria">
+        <PlanetModel value="PlanetIconAgria"/>
+        <BackgroundImage value="Assets\\Textures\\loading-agria.dds"/>
+        <BackgroundModel value="PlanetViewAgria"/>
+        <AmbientSound value="Ambience_Agria"/>
+    </CLocation>
+    <CLocation id="Aiur">
+        <PlanetModel value="PlanetIconAiur"/>
+        <BackgroundImage value="Assets\\Textures\\loading-aiur.dds"/>
+        <BackgroundModel value="PlanetViewAiur"/>
+    </CLocation>
+    <CLocation id="Avernus">
+        <PlanetModel value="PlanetIconAvernus"/>
+        <BackgroundImage value="Assets\\Textures\\loading-avernus.dds"/>
+        <BackgroundModel value="PlanetViewAvernus"/>
+        <AmbientSound value="Ambience_Avernus"/>
+    </CLocation>
+    <CLocation id="BelShir">
+        <PlanetModel value="PlanetIconBelShir"/>
+        <BackgroundImage value="Assets\\Textures\\loading-belshir.dds"/>
+        <BackgroundModel value="PlanetViewBelShir"/>
+        <AmbientSound value="Ambience_BelShir"/>
+    </CLocation>
+    <CLocation id="Castanar">
+        <PlanetModel value="PlanetIconCastanar"/>
+        <BackgroundImage value="Assets\\Textures\\loading-castanar.dds"/>
+        <BackgroundModel value="PlanetViewCastanar"/>
+    </CLocation>
+    <CLocation id="Char">
+        <PlanetModel value="PlanetIconChar"/>
+        <BackgroundImage value="Assets\\Textures\\loading-char.dds"/>
+        <BackgroundModel value="PlanetViewChar"/>
+        <AmbientSound value="Ambience_Char"/>
+    </CLocation>
+    <CLocation id="DeadmansPort">
+        <PlanetModel value="PlanetIconPortZion"/>
+        <BackgroundImage value="Assets\\Textures\\loading-portzion.dds"/>
+        <BackgroundModel value="PlanetViewPortZion"/>
+    </CLocation>
+    <CLocation id="Haven">
+        <PlanetModel value="PlanetIconHaven"/>
+        <BackgroundImage value="Assets\\Textures\\loading-haven.dds"/>
+        <BackgroundModel value="PlanetViewHaven"/>
+        <AmbientSound value="Ambience_Haven"/>
+    </CLocation>
+    <CLocation id="Korhal">
+        <PlanetModel value="PlanetIconKorhal"/>
+        <BackgroundImage value="Assets\\Textures\\loading-korhal.dds"/>
+        <BackgroundModel value="PlanetViewKorhal"/>
+        <AmbientSound value="Ambience_Korhal"/>
+    </CLocation>
+    <CLocation id="MarSara">
+        <PlanetModel value="PlanetIconMarSara"/>
+        <BackgroundImage value="Assets\\Textures\\loading-marsara.dds"/>
+        <BackgroundModel value="PlanetViewMarSara"/>
+        <AmbientSound value="Ambience_MarSara"/>
+    </CLocation>
+    <CLocation id="Meinhoff">
+        <PlanetModel value="PlanetIconMeinhoff"/>
+        <BackgroundImage value="Assets\\Textures\\loading-meinhoff.dds"/>
+        <BackgroundModel value="PlanetViewMeinhoff"/>
+        <AmbientSound value="Ambience_Meinhoff"/>
+    </CLocation>
+    <CLocation id="Monlyth">
+        <PlanetModel value="PlanetIconMonlyth"/>
+        <BackgroundImage value="Assets\\Textures\\loading-monlyth.dds"/>
+        <BackgroundModel value="PlanetViewMonlyth"/>
+        <AmbientSound value="Ambience_Monlyth"/>
+    </CLocation>
+    <CLocation id="NewFolsom">
+        <PlanetModel value="PlanetIconNewFolsom"/>
+        <BackgroundImage value="Assets\\Textures\\loading-newfolsom.dds"/>
+        <BackgroundModel value="PlanetViewNewFolsom"/>
+        <AmbientSound value="Ambience_NewFolsom"/>
+    </CLocation>
+    <CLocation id="Redstone">
+        <PlanetModel value="PlanetIconRedstone"/>
+        <BackgroundImage value="Assets\\Textures\\loading-redstone.dds"/>
+        <BackgroundModel value="PlanetViewRedstone"/>
+        <AmbientSound value="Ambience_Redstone"/>
+    </CLocation>
+    <CLocation id="SigmaQuadrant">
+        <PlanetModel value="PlanetIconSigmaQuadrant"/>
+        <BackgroundImage value="Assets\\Textures\\loading-ulnar.dds"/>
+        <BackgroundModel value="PlanetViewSigmaQuadrant"/>
+    </CLocation>
+    <CLocation id="Tarsonis">
+        <PlanetModel value="PlanetIconTarsonis"/>
+        <BackgroundImage value="Assets\\Textures\\loading-tarsonis.dds"/>
+        <BackgroundModel value="PlanetViewTarsonis"/>
+        <AmbientSound value="Ambience_Tarsonis"/>
+    </CLocation>
+    <CLocation id="Typhon">
+        <PlanetModel value="PlanetIconTyphon"/>
+        <BackgroundImage value="Assets\\Textures\\loading-typhon.dds"/>
+        <BackgroundModel value="PlanetViewTyphon"/>
+    </CLocation>
+    <CLocation id="Tyrador">
+        <PlanetModel value="PlanetIconTyrador"/>
+        <BackgroundImage value="Assets\\Textures\\loading-tyrador.dds"/>
+        <BackgroundModel value="PlanetViewTyrador"/>
+    </CLocation>
+    <CLocation id="Ulaan">
+        <PlanetModel value="PlanetIconUlaan"/>
+        <BackgroundImage value="Assets\\Textures\\loading-ulaan.dds"/>
+        <BackgroundModel value="PlanetViewUlaan"/>
+    </CLocation>
+    <CLocation id="Ulnar">
+        <PlanetModel value="PlanetIconUlnar"/>
+        <BackgroundImage value="Assets\\Textures\\loading-ulnar.dds"/>
+        <BackgroundModel value="PlanetViewShakuras"/>
+    </CLocation>
+    <CLocation id="Valhalla">
+        <PlanetModel value="PlanetIconValhalla"/>
+        <BackgroundImage value="Assets\\Textures\\loading-valhalla.dds"/>
+        <BackgroundModel value="PlanetViewValhalla"/>
+    </CLocation>
+    <CLocation id="Xil">
+        <PlanetModel value="PlanetIconXil"/>
+        <BackgroundImage value="Assets\\Textures\\loading-xil.dds"/>
+        <BackgroundModel value="PlanetViewXil"/>
+        <AmbientSound value="Ambience_Xil"/>
+    </CLocation>
+    <CLocation id="Zhakul">
+        <PlanetModel value="PlanetIconZhakulDas"/>
+        <BackgroundImage value="Assets\\Textures\\loading-zhakuldas.dds"/>
+        <BackgroundModel value="PlanetViewZhakulDas"/>
+    </CLocation>
+</Catalog>

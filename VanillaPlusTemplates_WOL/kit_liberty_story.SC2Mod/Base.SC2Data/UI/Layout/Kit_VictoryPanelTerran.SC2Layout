@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="VictoryPanel" name="VictoryPanelTemplate" file="VictoryPanel">
+		<Frame type="Frame" name="MainPanel" template="VictoryPanel/VictoryPanelMainPanelTemplate">
+			<Frame type="Image" name="BackgroundImage">
+				<Anchor side="Top" relative="$parent/BorderImage" pos="Min" offset="20"/>
+				<Anchor side="Left" relative="$parent/BorderImage" pos="Mid" offset="0"/>
+				<Anchor side="Right" relative="$parent/BorderImage" pos="Mid" offset="0"/>
+				<Anchor side="Bottom" relative="$parent/SummaryBackgroundImageContainerFrame" pos="Min" offset="0"/>
+				<TextureType val="Normal" layer="0"/>
+				<Visible val="True"/>
+			</Frame>
+		
+			<Frame type="Frame" name="BackgroundImageVoidFrame">
+				<Visible val="False"/>
+				
+				<Frame type="Image" name="BackgroundImageVoid">
+					<Visible val="False"/>
+				</Frame>
+			</Frame>
+        </Frame>
+	</Frame>
+</Desc>
+

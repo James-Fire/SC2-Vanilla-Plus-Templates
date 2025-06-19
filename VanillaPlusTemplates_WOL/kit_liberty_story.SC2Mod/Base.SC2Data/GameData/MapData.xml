@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CMap default="1">
+        <File value="##id##"/>
+        <UserReference value="Maps;##id##"/>
+        <Name value="ConversationState/Maps/##id##/Info/Name"/>
+        <PrimaryObjectiveText value="ConversationState/Maps/##id##/Info/Objectives"/>
+        <LoadingHelp value="ConversationState/Maps/##id##/Info/Loading Screen Help"/>
+        <LoadingHelpRestart value="ConversationState/Maps/##id##/Info/Loading Screen Restart"/>
+        <LoadingBody value="ConversationState/Maps/##id##/Info/Loading Screen Text"/>
+        <Summary value="ConversationState/Maps/##id##/Info/Epilogue"/>
+        <RewardTitle value="Maps/RewardTitle"/>
+        <RewardTooltip value="Maps/RewardTooltip"/>
+    </CMap>
+    <CMap id="TStory01">
+        <Kind value="Story"/>
+    </CMap>
+    <CMap id="TRaynor01">
+        <ArmyCategory value="Marine"/>
+        <ObjectiveArray value="TRaynor01_1"/>
+        <ObjectiveArray value="TRaynor01_2"/>
+        <ObjectiveArray value="TRaynor01_3"/>
+        <Location value="MarSara"/>
+        <ContactModelLink value="AdjutantPortrait_L"/>
+        <ContactNameText value="Maps/Contact/Adjutant"/>
+        <LoadingImage value="Assets\Textures\loading-marsara.dds"/>
+    </CMap>
+    <CMap id="TRaynor02">
+        <ArmyCategory value="Medic"/>
+        <ObjectiveArray value="TRaynor02_1"/>
+        <ObjectiveArray value="TRaynor02_2"/>
+        <Location value="MarSara"/>
+        <ContactModelLink value="AdjutantPortrait_L"/>
+        <ContactNameText value="Maps/Contact/Adjutant"/>
+        <LoadingImage value="Assets\Textures\loading-marsara.dds"/>
+    </CMap>
+    <CMap id="TRaynor03">
+        <ArmyCategory value="Bunker"/>
+        <ObjectiveArray value="TRaynor03_1"/>
+        <ObjectiveArray value="TRaynor03_2"/>
+        <Location value="MarSara"/>
+        <ContactModelLink value="AdjutantPortrait_L"/>
+        <ContactNameText value="Maps/Contact/Adjutant"/>
+        <LoadingImage value="Assets\Textures\loading-marsara.dds"/>
+    </CMap>
+    <CMap id="THanson01">
+        <ArmyCategory value="Firebat"/>
+        <ObjectiveArray value="THanson01_1"/>
+        <ObjectiveArray value="THanson01_2"/>
+        <ObjectiveArray value="THanson01_3"/>
+        <ObjectiveArray value="THanson01_4"/>
+        <Location value="Agria"/>
+        <ContactNameText value="Maps/Contact/Hanson"/>
+        <ContactModelLink value="HansonDistressPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-agria.dds"/>
+    </CMap>
+    <CMap id="THanson02">
+        <ArmyCategory value="Hellion"/>
+        <ObjectiveArray value="THanson02_1"/>
+        <ObjectiveArray value="THanson02_2"/>
+        <Location value="Meinhoff"/>
+        <ContactNameText value="Maps/Contact/Hanson"/>
+        <ContactModelLink value="HansonPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-meinhoff.dds"/>
+    </CMap>
+    <CMap id="THanson03A">
+        <ArmyCategory value="VikingFighter"/>
+        <ObjectiveArray value="THanson03A_1"/>
+        <ObjectiveArray value="THanson03A_2"/>
+        <ObjectiveArray value="THanson03A_3"/>
+        <ObjectiveArray value="THanson03A_4"/>
+        <ObjectiveArray value="THanson03A_5"/>
+        <Location value="Haven"/>
+        <ContactNameText value="Maps/Contact/Hanson"/>
+        <ContactModelLink value="HansonPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-haven.dds"/>
+    </CMap>
+    <CMap id="THanson03B">
+        <ArmyCategory value="VikingFighter"/>
+        <ObjectiveArray value="THanson03B_1"/>
+        <Location value="Haven"/>
+        <ContactNameText value="Maps/Contact/Hanson"/>
+        <ContactModelLink value="HansonPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-haven.dds"/>
+    </CMap>
+    <CMap id="TTosh01">
+        <ArmyCategory value="Reaper"/>
+        <ObjectiveArray value="TTosh01_1"/>
+        <ObjectiveArray value="TTosh01_2"/>
+        <ObjectiveArray value="TTosh01_3"/>
+        <Location value="Redstone"/>
+        <ContactNameText value="Maps/Contact/Tosh"/>
+        <ContactModelLink value="ToshPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-redstone.dds"/>
+    </CMap>
+    <CMap id="TTosh02">
+        <ArmyCategory value="Goliath"/>
+        <ObjectiveArray value="TTosh02_1"/>
+        <ObjectiveArray value="TTosh02_2"/>
+        <ObjectiveArray value="TTosh02_3"/>
+        <Location value="BelShir"/>
+        <ContactNameText value="Maps/Contact/Tosh"/>
+        <ContactModelLink value="ToshPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-belshir.dds"/>
+    </CMap>
+    <CMap id="TTosh03A">
+        <ArmyCategory value="Spectre"/>
+        <ObjectiveArray value="TTosh03A_1"/>
+        <ObjectiveArray value="TTosh03A_2"/>
+        <ObjectiveArray value="TTosh03A_3"/>
+        <ObjectiveArray value="TTosh03A_4"/>
+        <Location value="NewFolsom"/>
+        <ContactNameText value="Maps/Contact/Tosh"/>
+        <ContactModelLink value="ToshPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-newfolsom.dds"/>
+    </CMap>
+    <CMap id="TTosh03B">
+        <ArmyCategory value="Ghost"/>
+        <ObjectiveArray value="TTosh03B_1"/>
+        <ObjectiveArray value="TTosh03B_2"/>
+        <ObjectiveArray value="TTosh03B_3"/>
+        <ObjectiveArray value="TTosh03B_4"/>
+        <ObjectiveArray value="TTosh03B_5"/>
+        <Location value="Avernus"/>
+        <ContactNameText value="Maps/Contact/Nova"/>
+        <ContactModelLink value="NovaPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-avernus.dds"/>
+    </CMap>
+    <CMap id="TTychus01">
+        <ArmyCategory value="Marauder"/>
+        <ObjectiveArray value="TTychus01_1"/>
+        <ObjectiveArray value="TTychus01_2"/>
+        <ObjectiveArray value="TTychus01_3"/>
+        <Location value="Monlyth"/>
+        <ContactNameText value="Maps/Contact/Tychus"/>
+        <ContactModelLink value="TychusPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-monlyth.dds"/>
+    </CMap>
+    <CMap id="TTychus02">
+        <ArmyCategory value="SiegeTank"/>
+        <ObjectiveArray value="TTychus02_1"/>
+        <ObjectiveArray value="TTychus02_2"/>
+        <ObjectiveArray value="TTychus02_3"/>
+        <ObjectiveArray value="TTychus02_4"/>
+        <Location value="Xil"/>
+        <ContactNameText value="Maps/Contact/Tychus"/>
+        <ContactModelLink value="TychusPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-xil.dds"/>
+    </CMap>
+    <CMap id="TTychus03">
+        <ArmyCategory value="Medivac"/>
+        <ObjectiveArray value="TTychus03_1"/>
+        <ObjectiveArray value="TTychus03_2"/>
+        <ObjectiveArray value="TTychus03_3"/>
+        <Location value="Tyrador"/>
+        <ContactNameText value="Maps/Contact/Tychus"/>
+        <ContactModelLink value="TychusPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-tyrador.dds"/>
+    </CMap>
+    <CMap id="TTychus04">
+        <ArmyCategory value="Banshee"/>
+        <ObjectiveArray value="TTychus04_1"/>
+        <ObjectiveArray value="TTychus04_2"/>
+        <ObjectiveArray value="TTychus04_3"/>
+        <Location value="Typhon"/>
+        <ContactNameText value="Maps/Contact/Tychus"/>
+        <ContactModelLink value="TychusPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-typhon.dds"/>
+    </CMap>
+    <CMap id="TTychus05">
+        <ArmyCategory value="Battlecruiser"/>
+        <ObjectiveArray value="TTychus05_1"/>
+        <ObjectiveArray value="TTychus05_2"/>
+        <ObjectiveArray value="TTychus05_3"/>
+        <Location value="SigmaQuadrant"/>
+        <ContactNameText value="Maps/Contact/Valerian"/>
+        <ContactModelLink value="ValerianPortrait"/>
+        <LoadingImage value="Assets\Textures\ui_hots_loading_arcselection_background.dds"/>
+    </CMap>
+    <CMap id="THorner01">
+        <ArmyCategory value="Diamondback"/>
+        <ObjectiveArray value="THorner01_1"/>
+        <ObjectiveArray value="THorner01_2"/>
+        <ObjectiveArray value="THorner01_3"/>
+        <ObjectiveArray value="THorner01_4"/>
+        <Location value="Tarsonis"/>
+        <ContactNameText value="Maps/Contact/Horner"/>
+        <ContactModelLink value="HornerPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-tarsonis.dds"/>
+    </CMap>
+    <CMap id="THorner02">
+        <ArmyCategory value="Vulture"/>
+        <ObjectiveArray value="THorner02_1"/>
+        <ObjectiveArray value="THorner02_2"/>
+        <ObjectiveArray value="THorner02_3"/>
+        <Location value="DeadmansPort"/>
+        <ContactNameText value="Maps/Contact/Horner"/>
+        <ContactModelLink value="HornerPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-portzion.dds"/>
+    </CMap>
+    <CMap id="THorner03">
+        <ArmyCategory value="Wraith"/>
+        <ObjectiveArray value="THorner03_1"/>
+        <ObjectiveArray value="THorner03_2"/>
+        <ObjectiveArray value="THorner03_3"/>
+        <ObjectiveArray value="THorner03_4"/>
+        <ObjectiveArray value="THorner03_5"/>
+        <ObjectiveArray value="THorner03_6"/>
+        <Location value="Valhalla"/>
+        <ContactNameText value="Maps/Contact/Horner"/>
+        <ContactModelLink value="HornerPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-valhalla.dds"/>
+    </CMap>
+    <CMap id="THorner04">
+        <ArmyCategory value="Thor"/>
+        <ObjectiveArray value="THorner04_1"/>
+        <ObjectiveArray value="THorner04_2"/>
+        <ObjectiveArray value="THorner04_3"/>
+        <ObjectiveArray value="THorner04_4"/>
+        <Location value="Korhal"/>
+        <ContactNameText value="Maps/Contact/Horner"/>
+        <ContactModelLink value="HornerPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-korhalex1.dds"/>
+    </CMap>
+    <CMap id="THorner05S">
+        <ObjectiveArray value="THorner05_1"/>
+        <ObjectiveArray value="THorner05_2"/>
+        <ObjectiveArray value="THorner05_3"/>
+        <ObjectiveArray value="THorner05_4"/>
+        <ObjectiveArray value="THorner05_5"/>
+        <ObjectiveArray value="THorner05_6"/>
+        <Location value="Castanar"/>
+        <ContactNameText value="Maps/Contact/Horner"/>
+        <ContactModelLink value="HornerPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-castanar.dds"/>
+    </CMap>
+    <CMap id="TValerian01">
+        <ObjectiveArray value="TValerian01_1"/>
+        <ObjectiveArray value="TValerian01_2"/>
+        <Location value="Char"/>
+        <ContactNameText value="Maps/Contact/Valerian"/>
+        <ContactModelLink value="ValerianPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-char.dds"/>
+    </CMap>
+    <CMap id="TValerian02A">
+        <ObjectiveArray value="TValerian02A_1"/>
+        <ObjectiveArray value="TValerian02A_2"/>
+        <Location value="Char"/>
+        <ContactNameText value="Maps/Contact/Valerian"/>
+        <ContactModelLink value="ValerianPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-charbattlezone.dds"/>
+    </CMap>
+    <CMap id="TValerian02B">
+        <ObjectiveArray value="TValerian02B_1"/>
+        <ObjectiveArray value="TValerian02B_2"/>
+        <Location value="Char"/>
+        <ContactNameText value="Maps/Contact/Valerian"/>
+        <ContactModelLink value="ValerianPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-charbattlezone.dds"/>
+    </CMap>
+    <CMap id="TValerian03">
+        <ObjectiveArray value="TValerian03_1"/>
+        <Location value="Char"/>
+        <ContactNameText value="Maps/Contact/Valerian"/>
+        <ContactModelLink value="ValerianPortrait"/>
+        <LoadingImage value="Assets\Textures\ui_hots_loading_planetviewcharex1.dds"/>
+        <LoadingHelpRestart value="Maps/Valerian03/LoadingScreenHelpRestart"/>
+        <LoadingHelpAlternate value="ConversationState/Maps/TValerian03/Info/Loading Screen Help 2"/>
+    </CMap>
+    <CMap id="TZeratul01">
+        <ObjectiveArray value="TZeratul01_1"/>
+        <ObjectiveArray value="TZeratul01_2"/>
+        <ObjectiveArray value="TZeratul01_3"/>
+        <ObjectiveArray value="TZeratul01_4"/>
+        <Location value="Ulaan"/>
+        <ContactNameText value="Maps/Contact/Zeratul"/>
+        <ContactModelLink value="ZeratulPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-ulaan.dds"/>
+    </CMap>
+    <CMap id="TZeratul02">
+        <ObjectiveArray value="TZeratul02_1"/>
+        <ObjectiveArray value="TZeratul02_2"/>
+        <ObjectiveArray value="TZeratul02_3"/>
+        <Location value="Zhakul"/>
+        <ContactNameText value="Maps/Contact/Zeratul"/>
+        <ContactModelLink value="ZeratulPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-zhakuldas.dds"/>
+    </CMap>
+    <CMap id="TZeratul03">
+        <ObjectiveArray value="TZeratul03_1"/>
+        <ObjectiveArray value="TZeratul03_2"/>
+        <ObjectiveArray value="TZeratul03_3"/>
+        <ObjectiveArray value="TZeratul03_4"/>
+        <Location value="Aiur"/>
+        <ContactNameText value="Maps/Contact/Zeratul"/>
+        <ContactModelLink value="ZeratulPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-aiur.dds"/>
+    </CMap>
+    <CMap id="TZeratul04">
+        <ObjectiveArray value="TZeratul04_1"/>
+        <ObjectiveArray value="TZeratul04_2"/>
+        <ObjectiveArray value="TZeratul04_3"/>
+        <Location value="Ulnar"/>
+        <ContactNameText value="Maps/Contact/Zeratul"/>
+        <ContactModelLink value="ZeratulPortrait"/>
+        <LoadingImage value="Assets\Textures\loading-ulnar.dds"/>
+    </CMap>
+    <CMap id="TArcade">
+        <Kind value="Upgrade"/>
+        <LoadingImage value="Assets\Textures\loading-lostviking.dds"/>
+    </CMap>
+    <CMap id="TSimulator">
+        <Kind value="Upgrade"/>
+        <LoadingImage value="Assets\Textures\loading_generic.dds"/>
+    </CMap>
+</Catalog>

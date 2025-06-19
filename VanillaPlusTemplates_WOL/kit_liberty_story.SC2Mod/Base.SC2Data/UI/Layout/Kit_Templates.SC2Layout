@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Button" name="NavButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+        <HitTestFrame val="HitTestFrame"/>
+        <Label val="Label"/>
+        <ClickSound val="@UI_ActionButtonSelect"/>
+        <!-- <Height val="61"/>
+        <Width val="280"/> -->
+        <Width val="206"/>
+        <Height val="66"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Texture val="Assets\Textures\ui_glue_dropdownbutton_normalpressed_terran.dds"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DesaturateOnDisable val="false"/>
+            <DisabledAlpha val="64"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Texture val="Assets\Textures\ui_glue_dropdownbutton_normaloverpressedover_terran.dds"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="6"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="@StandardLargePanelButton_Terr"/>
+            <DisabledAlpha val="40"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Frame" name="HitTestFrame">
+            <TooltipAnchorPosition val="TopCenter"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Button" name="ActionButtonTemplate">
+        <NormalImage val="NormalImage"/>
+        <HoverImage val="HoverImage"/>
+        <Label val="Label"/>
+        <HitTestFrame val="HitTestFrame"/>
+        <ClickSound val="@UI_ActionButtonSelect"/>
+        <Height val="90"/>
+        <Width val="410"/>
+
+        <Frame type="Image" name="NormalImage">
+            <Texture val="Assets/Textures/ui_wol_button_action_normal.tga"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DescFlags val="Internal"/>
+            <DesaturateOnDisable val="false"/>
+            <DisabledAlpha val="64"/>
+        </Frame>
+
+        <Frame type="Image" name="HoverImage">
+            <Texture val="Assets/Textures/ui_wol_button_action_hover.tga"/>
+            <TextureType val="EndCap"/>
+            <Tiled val="true"/>
+            <StateCount val="2"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Label" name="Label">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="7"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Style val="Kit_CampaignActionButton"/>
+            <DisabledAlpha val="64"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+
+        <Frame type="Frame" name="HitTestFrame">
+            <TooltipAnchorPosition val="TopCenter"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <DescFlags val="Internal"/>
+        </Frame>
+    </Frame>
+</Desc>

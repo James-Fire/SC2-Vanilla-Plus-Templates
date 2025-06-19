@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilRally id="TZeratul03RallyReviveBeacon">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <InfoArray index="0">
+            <AllowSetValidators value="NotResourcesOrEnemyTargetType"/>
+            <SetValidators value="NotResourcesOrEnemyTargetType"/>
+        </InfoArray>
+    </CAbilRally>
+</Catalog>

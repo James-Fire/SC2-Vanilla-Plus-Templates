@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUpgrade id="DualFusionWelders">
+        <EffectArray Operation="Set" Reference="Button,SCV,Icon" Value="Assets\Textures\btn-unit-terran-scvfusionwelder.dds"/>
+        <EffectArray Operation="Set" Reference="Button,SCV,AlertIcon" Value="Assets\Textures\btn-unit-terran-scvfusionwelder.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SCV,GroupIcon.Image[0]" Value="Assets\Textures\wireframe-terran-scv-fusion.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,SCV,Wireframe.Image[0]" Value="Assets\Textures\wireframe-terran-scv-fusion.dds"/>
+    </CUpgrade>
+    <!-- AI Hard Brutal Upgrades -->
+    <CUpgrade id="Kit@AISmartServos">
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <Alert value="ResearchComplete"/>
+        <Race value="Terr"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.010000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.533000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.200000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AssaultMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.340000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Delay]" Value="0.600000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Mover].DurationArray[Duration]" Value="0.150000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FighterMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.333000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="HellionTank"/>
+        <AffectedUnitArray value="VikingAssault"/>
+        <AffectedUnitArray value="VikingFighter"/>
+        <AffectedUnitArray value="ThorAP"/>
+        <AffectedUnitArray value="Thor"/>
+    </CUpgrade>
+    <!-- Protoss Upgrades -->
+    <CUpgrade id="ProtossGroundWeaponsLevel1">
+        <EffectArray Reference="Weapon,Zeratul,Level" Value="1"/>
+        <EffectArray Reference="Effect,Zeratul,Amount" Value="5"/>
+        <EffectArray Reference="Weapon,PsiDischarge,Level" Value="1"/>
+        <EffectArray Reference="Effect,PsiDischargeDamage,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Zeratul,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,PsiDischarge,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel2">
+        <EffectArray Reference="Weapon,Zeratul,Level" Value="1"/>
+        <EffectArray Reference="Effect,Zeratul,Amount" Value="5"/>
+        <EffectArray Reference="Weapon,PsiDischarge,Level" Value="1"/>
+        <EffectArray Reference="Effect,PsiDischargeDamage,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Zeratul,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,PsiDischarge,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundWeaponsLevel3">
+        <EffectArray Reference="Weapon,Zeratul,Level" Value="1"/>
+        <EffectArray Reference="Effect,Zeratul,Amount" Value="5"/>
+        <EffectArray Reference="Weapon,PsiDischarge,Level" Value="1"/>
+        <EffectArray Reference="Effect,PsiDischargeDamage,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Zeratul,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,PsiDischarge,Icon" Value="Assets\Textures\btn-upgrade-protoss-groundweaponslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsLevel1">
+        <EffectArray Reference="Unit,Zeratul,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Zeratul,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Karass,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Karass,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Zeratul,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Karass,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsLevel2">
+        <EffectArray Reference="Unit,Zeratul,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Zeratul,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Karass,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Karass,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Zeratul,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Karass,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossGroundArmorsLevel3">
+        <EffectArray Reference="Unit,Zeratul,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Zeratul,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Karass,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Karass,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Zeratul,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Karass,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossShieldsLevel1">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <AffectedUnitArray value="Maar"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmor" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,HybridC,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossShieldsLevel2">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <AffectedUnitArray value="Maar"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmor" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,HybridC,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossShieldsLevel3">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <AffectedUnitArray value="Maar"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Maar,ShieldArmor" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,HybridC,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirArmorsLevel1">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmor" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirArmorsLevel2">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmor" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="ProtossAirArmorsLevel3">
+        <AffectedUnitArray value="Kit@ObserverSiegeMode"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Kit@ObserverSiegeMode,LifeArmor" Value="1"/>
+    </CUpgrade>
+    <!-- -->
+    <CUpgrade id="Kit@DisableBuildSupplyDepot">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-building-terran-supplydepot.dds"/>
+    </CUpgrade>
+    <!-- Fix Medic Requirements -->
+    <CUpgrade id="AdvancedMedicTraining">
+        <EffectArray index="0" removed="1"/>
+    </CUpgrade>
+    <CUpgrade id="StabilizerMedPacks">
+        <Icon value="Assets\Textures\btn-upgrade-raynor-stabilizermedpacks.dds"/>
+        <EffectArray index="0" Operation="Subtract" Value="0.08"/>
+        <EffectArray index="1" Value="3.000000"/>
+    </CUpgrade>
+    <!-- Fortified Bunker Placement Models -->
+    <CUpgrade id="FortifiedBunkerCarapace">
+        <EffectArray Operation="Set" Reference="Actor,Bunker,PlacementModel" Value="BunkerUpgradePlacement"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@PredatorShieldModule">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-shieldslevel0.dds"/>
+        <EffectArray Reference="Unit,Predator,ShieldsMax" Value="60"/>
+        <EffectArray Reference="Unit,Predator,ShieldsStart" Value="60"/>
+        <AffectedUnitArray value="Predator"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@PredatorElectromagneticField">
+        <Icon value="Assets\Textures\btn-ability-mengsk-ghost-staticempblast.dds"/>
+        <AffectedUnitArray value="Predator"/>
+    </CUpgrade>
+    <!-- Bunker Weapon Range -->
+    <CUpgrade id="ProjectileAccelerators">
+        <EffectArray Operation="Set" Reference="Unit,Bunker,Description" Value="Button/Tooltip/BunkerUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,Bunker,AlertTooltip" Value="Button/Tooltip/BunkerUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,BunkerFortified,AlertTooltip" Value="Button/Tooltip/BunkerFortifiedUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,Bunker,Tooltip" Value="Button/Tooltip/BunkerUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,BunkerFortified,Tooltip" Value="Button/Tooltip/BunkerFortifiedUpgraded"/>
+        <EffectArray Reference="Weapon,ShrikeTurret,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,ShrikeTurret,Range" Value="1"/>
+    </CUpgrade>
+    <!-- Firebat Weapon -->
+    <CUpgrade id="BearclawNozzles">
+        <EffectArray Reference="Effect,Kit@FirebatSearch,AreaArray[0].RectangleWidth" Value="0.48"/>
+        <EffectArray Reference="Effect,Kit@DevilDogSearch,AreaArray[0].RectangleWidth" Value="0.48"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@DevilDogsRange">
+        <EffectArray Reference="Weapon,DevilDogFlameThrower,Range" Value="2"/>
+        <AffectedUnitArray value="DevilDog"/>
+    </CUpgrade>
+    <!-- Reaper Scan Range -->
+    <CUpgrade id="ReaperU238Rounds">
+        <EffectArray Reference="Weapon,P38ScytheGuassPistol,MinScanRange" Value="1"/>
+    </CUpgrade>
+    <!-- Hellion Morph Speed -->
+    <CUpgrade id="Kit@HellionSmartServos">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-transformationservos.dds"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Collide].DurationArray[Delay]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.330000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="1.670000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellionTank,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,MorphToHellion,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <AffectedUnitArray value="Hellion"/>
+        <AffectedUnitArray value="HellionTank"/>
+    </CUpgrade>
+    <!-- Hellion Damage Agaisnt Light -->
+    <CUpgrade id="HighCapacityBarrels">
+        <EffectArray Reference="Effect,HellionTankDamage,AttributeBonus[Light]" Value="12"/>
+    </CUpgrade>
+    <!-- Goliath Scan Range -->
+    <CUpgrade id="AresClassWeaponsSystem">
+        <EffectArray Reference="Weapon,GoliathA,MinScanRange" Value="3"/>
+        <EffectArray Reference="Weapon,GoliathAUpgraded,MinScanRange" Value="3"/>
+        <EffectArray Reference="Weapon,GoliathG,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,GoliathGUpgraded,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,SpartanCompanyA,MinScanRange" Value="3"/>
+        <EffectArray Reference="Weapon,SpartanCompanyAUpgraded,MinScanRange" Value="3"/>
+        <EffectArray Reference="Weapon,SpartanCompanyG,MinScanRange" Value="1"/>
+        <EffectArray Reference="Weapon,SpartanCompanyGUpgraded,MinScanRange" Value="1"/>
+    </CUpgrade>
+    <!-- CellularReactors and RegenerativeBioSteel are in Triggers -->
+    <CUpgrade id="Kit@CellularReactors">
+        <Flags index="UpgradeCheat" value="0"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@RegenerativeBioSteel">
+        <Flags index="UpgradeCheat" value="0"/>
+        <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
+    </CUpgrade>
+    <!-- Infantry Upgrades -->
+    <CUpgrade id="TerranInfantryWeaponsLevel1">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryWeaponsLevel2">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryWeaponsLevel3">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryArmorsLevel1">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryArmorsLevel2">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <CUpgrade id="TerranInfantryArmorsLevel3">
+        <AffectedUnitArray value="Firebat"/>
+        <AffectedUnitArray value="Spectre"/>
+        <AffectedUnitArray value="WarPig"/>
+        <AffectedUnitArray value="DevilDog"/>
+        <AffectedUnitArray value="HammerSecurity"/>
+    </CUpgrade>
+    <!-- Mech Upgrades -->
+    <CUpgrade id="TerranVehicleAndShipArmorsLevel1">
+        <!-- Predator -->
+        <EffectArray Operation="Set" Reference="Actor,Predator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <EffectArray Reference="Unit,Predator,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Predator,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmorLevel" Value="1"/>
+        <!-- Hercules -->
+        <EffectArray Operation="Set" Reference="Actor,Hercules,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-shipplatinglevel1.dds"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmorLevel" Value="1"/>
+        <!-- Odin -->
+        <EffectArray Reference="Unit,Odin,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Odin,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Odin,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel1.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Hercules"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipArmorsLevel2">
+        <!-- Predator -->
+        <EffectArray Operation="Set" Reference="Actor,Predator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <EffectArray Reference="Unit,Predator,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Predator,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmorLevel" Value="1"/>
+        <!-- Hercules -->
+        <EffectArray Operation="Set" Reference="Actor,Hercules,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-shipplatinglevel2.dds"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmorLevel" Value="1"/>
+        <!-- Odin -->
+        <EffectArray Reference="Unit,Odin,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Odin,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Odin,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel2.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Hercules"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipArmorsLevel3">
+        <!-- Predator -->
+        <EffectArray Operation="Set" Reference="Actor,Predator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <EffectArray Reference="Unit,Predator,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Predator,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Predator,ShieldArmorLevel" Value="1"/>
+        <!-- Hercules -->
+        <EffectArray Operation="Set" Reference="Actor,Hercules,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-shipplatinglevel3.dds"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Hercules,LifeArmorLevel" Value="1"/>
+        <!-- Odin -->
+        <EffectArray Reference="Unit,Odin,LifeArmor" Value="1.000000"/>
+        <EffectArray Reference="Unit,Odin,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Odin,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel3.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Hercules"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel1">
+        <!-- Thor AA Buff -->
+        <EffectArray index="5" Value="4"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="2"/>
+        <!-- Diamondback Weapon Level Fix -->
+        <EffectArray Reference="Weapon,Diamondback,Level" Value="1"/>
+        <!-- Predator -->
+        <EffectArray Reference="Weapon,Predator,Level" Value="1"/>
+        <EffectArray Reference="Effect,Predator,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <!-- Shrike Turret -->
+        <EffectArray Reference="Weapon,ShrikeTurret,Level" Value="1"/>
+        <EffectArray Reference="Effect,ShrikeTurretDamage,Amount" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,ShrikeTurret,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <!-- Odin -->
+        <EffectArray Reference="Weapon,Odin,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinDamage,Amount" Value="4"/>
+        <EffectArray Reference="Effect,OdinDamage,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray Reference="Weapon,OdinAntiAir,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,AttributeBonus[Armored]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Weapon,Odin,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,OdinAntiAir,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Bunker"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel2">
+        <!-- Thor AA Buff -->
+        <EffectArray index="5" Value="4"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="2"/>
+        <!-- Predator -->
+        <EffectArray Reference="Weapon,Predator,Level" Value="1"/>
+        <EffectArray Reference="Effect,Predator,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <!-- Shrike Turret -->
+        <EffectArray Reference="Weapon,ShrikeTurret,Level" Value="1"/>
+        <EffectArray Reference="Effect,ShrikeTurretDamage,Amount" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,ShrikeTurret,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <!-- Odin -->
+        <EffectArray Reference="Weapon,Odin,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinDamage,Amount" Value="4"/>
+        <EffectArray Reference="Effect,OdinDamage,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray Reference="Weapon,OdinAntiAir,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,AttributeBonus[Armored]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Weapon,Odin,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,OdinAntiAir,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Bunker"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <CUpgrade id="TerranVehicleAndShipWeaponsLevel3">
+        <!-- Thor AA Buff -->
+        <EffectArray index="5" Value="4"/>
+        <EffectArray Reference="Effect,LanceMissileLaunchersDamage,AttributeBonus[Massive]" Value="2"/>
+        <!-- Predator -->
+        <EffectArray Reference="Weapon,Predator,Level" Value="1"/>
+        <EffectArray Reference="Effect,Predator,Amount" Value="2"/>
+        <EffectArray Operation="Set" Reference="Weapon,Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <!-- Shrike Turret -->
+        <EffectArray Reference="Weapon,ShrikeTurret,Level" Value="1"/>
+        <EffectArray Reference="Effect,ShrikeTurretDamage,Amount" Value="1"/>
+        <EffectArray Operation="Set" Reference="Weapon,ShrikeTurret,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <!-- Odin -->
+        <EffectArray Reference="Weapon,Odin,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinDamage,Amount" Value="4"/>
+        <EffectArray Reference="Effect,OdinDamage,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray Reference="Weapon,OdinAntiAir,Level" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,OdinAADamage,AttributeBonus[Armored]" Value="1.000000"/>
+        <EffectArray Operation="Set" Reference="Weapon,Odin,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,OdinAntiAir,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <!-- -->
+        <AffectedUnitArray value="Predator"/>
+        <AffectedUnitArray value="Bunker"/>
+        <AffectedUnitArray value="Odin"/>
+    </CUpgrade>
+    <!-- Diamondback Scan Range -->
+    <CUpgrade id="TriLithiumPowerCells">
+        <EffectArray Reference="Weapon,Diamondback,MinScanRange" Value="1"/>
+    </CUpgrade>
+    <!-- Siege Tank Morph Speed -->
+    <CUpgrade id="Kit@ImprovedSiegeMode">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-raynor-improvedsiegemode.dds"/>
+        <EffectArray Reference="Unit,SiegeTankSieged,LifeArmor" Value="3"/>
+        <EffectArray Reference="Unit,SiegeBreakerSieged,LifeArmor" Value="3"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeMode,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Unsiege,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,Unsiege,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeBreakerSiege,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeBreakerSiege,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeBreakerUnsiege,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="2.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,SiegeBreakerUnsiege,InfoArray[0].SectionArray[Stats].DurationArray[Duration]" Value="2.000000"/>
+        <EditorCategories value="Race:Terran,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="SiegeTank"/>
+        <AffectedUnitArray value="SiegeTankSieged"/>
+        <AffectedUnitArray value="SiegeBreaker"/>
+        <AffectedUnitArray value="SiegeBreakerSieged"/>
+    </CUpgrade>
+    <!-- Medivac Energy Regen -->
+    <CUpgrade id="Kit@MedivacCaduceusReactor">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-caduceusreactor.dds"/>
+        <EffectArray Operation="Multiply" Reference="Unit,Medivac,EnergyRegenRate" Value="2.000000"/>
+        <AffectedUnitArray value="Medivac"/>
+    </CUpgrade>
+    <!-- Wraith damage while move buff -->
+    <CUpgrade id="Kit@WraithPulseAmplifier">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-improvedburstlaser.dds"/>
+        <AffectedUnitArray value="Wraith"/>
+    </CUpgrade>
+    <!-- Banshee move speed -->
+    <CUpgrade id="Kit@BansheeSpeed">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-hyperflightrotors.dds"/>
+        <EffectArray Reference="Unit,Banshee,Speed" Value="1.4"/>
+        <EffectArray Reference="Unit,DuskWing,Speed" Value="1.4"/>
+        <AffectedUnitArray value="Banshee"/>
+        <AffectedUnitArray value="DuskWing"/>
+    </CUpgrade>
+    <!-- Battlecruiser new upgrades -->
+    <CUpgrade id="Kit@BattlecruiserTacticalJump">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-terran-warpjump.dds"/>
+        <AffectedUnitArray value="Battlecruiser"/>
+        <AffectedUnitArray value="DukesRevenge"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@BattlecruiserWeaponRefit">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-terran-yamatogun-color.dds"/>
+        <EffectArray Reference="Abil,Yamato,Cost[0].Charge.CountMax" Value="1"/>
+        <EffectArray Operation="Set" Reference="Abil,Yamato,Cost[0].Charge.HideCount" Value="0"/>
+        <AffectedUnitArray value="Battlecruiser"/>
+        <AffectedUnitArray value="DukesRevenge"/>
+    </CUpgrade>
+    <!-- Thor new upgrades -->
+    <CUpgrade id="Kit@ThorHeavyServos">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorAPMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ThorNormalMode,InfoArray[0].RandomDelayMax" Value="0.250000"/>
+        <AffectedUnitArray value="Thor"/>
+        <AffectedUnitArray value="ThorAP"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@ThorEmergencyRepair">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\talent-swann-level12-immortalityprotocol.dds"/>
+        <AffectedUnitArray value="Thor"/>
+        <AffectedUnitArray value="ThorAP"/>
+    </CUpgrade>
+    <!-- Ghost Range Upgrade -->
+    <CUpgrade id="OcularImplants">
+        <EffectArray Reference="Weapon,C10CanisterRifle,MinScanRange" Value="2"/>
+    </CUpgrade>
+    <!-- Ghost Faster Nukes -->
+    <CUpgrade id="Kit@GhostReducedNukeCalldown">
+        <Flags index="UpgradeCheat" value="0"/>
+        <EffectArray Operation="Set" Reference="Effect,Nuke,CalldownEffect" Value="Kit@NukeFastPersistent"/>
+        <EffectArray Operation="Set" Reference="Button,NukeCalldown,AlertTooltip" Value="Button/Tooltip/NukeCalldownFast"/>
+        <EffectArray Operation="Set" Reference="Button,NukeCalldown,Tooltip" Value="Button/Tooltip/NukeCalldownFast"/>
+        <EffectArray Operation="Set" Reference="Button,NukeArm,Tooltip" Value="Button/Tooltip/NukeArmFast"/>
+        <EffectArray Operation="Set" Reference="Button,NukeArm,AlertTooltip" Value="Button/Tooltip/NukeArmFast"/>
+    </CUpgrade>
+    <!-- Colossus Range -->
+    <CUpgrade id="ExtendedThermalLance">
+        <EffectArray Reference="Weapon,ThermalLances,MinScanRange" Value="3"/>
+        <EffectArray Reference="Weapon,ThermalLanceAir,MinScanRange" Value="3"/>
+    </CUpgrade>
+    <!-- Phoenix Range -->
+    <CUpgrade id="PhoenixRangeUpgrade">
+        <EffectArray Reference="Weapon,IonCannons,MinScanRange" Value="2"/>
+    </CUpgrade>
+    <!-- Perdition Turrets Upgrades -->
+    <CUpgrade id="Kit@PerditionAutoTracking">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-swann-targetingoptics.dds"/>
+        <EffectArray Reference="Weapon,PerditionTurretFlamethrower,Range" Value="2"/>
+        <EffectArray Reference="Weapon,PerditionTurretFlamethrower,MinScanRange" Value="2"/>
+        <EffectArray Reference="Weapon,Kit@PerditionTurretBurrowed,Range" Value="2"/>
+        <EffectArray Reference="Weapon,Kit@PerditionTurretBurrowed,MinScanRange" Value="2"/>
+        <EffectArray Reference="Abil,PerditionTurretUnburrow,AutoCastRange" Value="2"/>
+        <AffectedUnitArray value="PerditionTurret"/>
+        <AffectedUnitArray value="PerditionTurretUnderground"/>
+    </CUpgrade>
+    <CUpgrade id="Kit@PerditionMineField">
+        <Flags index="UpgradeCheat" value="0"/>
+        <Icon value="Assets\Textures\btn-unit-terran-spidermine.dds"/>
+        <AffectedUnitArray value="PerditionTurret"/>
+        <AffectedUnitArray value="PerditionTurretUnderground"/>
+    </CUpgrade>
+</Catalog>

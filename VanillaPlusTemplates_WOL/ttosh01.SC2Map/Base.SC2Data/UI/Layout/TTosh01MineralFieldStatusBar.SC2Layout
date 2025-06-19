@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="UnitStatusFrame" name="MineralFieldStatusBar">
+        <Height val="55"/>
+        <Width val="124"/>
+        <OwnerRenderPriority val="812"/>
+        <AllyRenderPriority val="712"/>
+        <EnemyRenderPriority val="612"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="-150"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="58"/>
+            <Height val="0"/>
+            <Width val="0"/>
+        </Frame>
+        
+        <Frame type="Label" name="HarvestersLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <RenderType val="HDR"/>
+            <Style val="HotS_KerriganUnitStatusNameLabel"/>
+        </Frame>
+
+    </Frame>
+</Desc>

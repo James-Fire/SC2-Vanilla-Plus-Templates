@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+        <Frame type="Button" name="Zeratul04EndMission">
+            <Anchor side="Right" relative="$parent/CounterFrame" pos="Max" offset="-2"/>
+            <Anchor side="Left" relative="$parent/CounterFrame" pos="Min" offset="2"/>
+            <Anchor side="Top" relative="$parent/CounterFrame" pos="Max" offset="0"/>
+            <Height val="60"/>
+            <CollapseLayout val="True"/>
+            <Visible val="False"/>
+
+            <ClickSound val="@UI_ActionButtonSelect"/>
+            <Style val="TimerTitleCentered"/>
+            <Text val="End Mission"/>
+            
+            <NormalImage val="NormalImage"/>
+            <HoverImage val="HoverImage"/>
+            <Label val="Label"/>
+
+            <Frame type="Image" name="NormalImage">
+                <Anchor relative="$parent"/>
+                <Texture val="Assets\Textures\ui_void_storybutton_small_normalpressed.dds"/>
+                <TextureType val="EndCap"/>
+                <StateCount val="2"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+            <Frame type="Image" name="HoverImage">
+                <Anchor relative="$parent"/>
+                <Texture val="Assets\Textures\ui_void_storybutton_small_normaloverpressedover.dds"/>
+                <TextureType val="EndCap"/>
+                <StateCount val="2"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+            <Frame type="Label" name="Label">
+                <Anchor relative="$parent"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>

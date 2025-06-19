@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="MercenaryFrameButtonAvailable" val="00ffff"/>
+    <Constant name="MercenaryFrameButtonAvailablePressed" val="00ff00"/>
+    
+    <Constant name="MercenaryFrameTextAvailable" val="00ffff"/>
+    <Constant name="MercenaryFrameTextAvailablePressed" val="ffffff"/>
+
+    <Constant name="MercenaryFrameButtonHired" val="4b7c8d"/>
+    <Constant name="MercenaryFrameButtonHiredPressed" val="00ff00"/>
+
+    <Constant name="MercenaryFrameTextHired" val="4b7c8d"/>
+    <Constant name="MercenaryFrameTextHiredPressed" val="ffffff"/>
+
+    <Constant name="MercenaryFrameButtonInsufficient" val="ab3131"/>
+    <Constant name="MercenaryFrameButtonInsufficientPressed" val="00ff00"/>
+
+    <Constant name="MercenaryFrameTextInsufficient" val="bb2800"/>
+    <Constant name="MercenaryFrameTextInsufficientPressed" val="ffffff"/>
+    
+    <Constant name="MercenaryPanelCostAvailable" val="00fd00"/>
+    <Constant name="MercenaryPanelCostHired" val="4b7c8d"/>
+    <Constant name="MercenaryPanelCostInsufficient" val="ab3131"/>
+
+    <Frame type="Frame" name="MercenaryFrameTemplate">
+        <Width val="300"/>
+        <Height val="440"/>
+        
+        <Frame type="Button" name="Button">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Width val="194"/>
+            <Height val="338"/>
+            <NormalImage val="NormalImage"/>
+            <HoverImage val="HoverImage"/>
+            <ClickSound val="@UI_MercenaryBriefcase_SelectMerc"/>
+            
+            <Frame type="Image" name="NormalImage">
+                <Texture val="@@UI/MercenaryFrameButtonNormal" layer="0"/>
+                <TextureType val="Border" layer="0"/>
+                <Tiled val="true" layer="0"/>
+                <StateCount val="2" layer="0"/>
+                <BlendMode val="Add"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="HoverImage">
+                <Texture val="@@UI/MercenaryFrameButtonHover" layer="0"/>
+                <TextureType val="Border" layer="0"/>
+                <Tiled val="true" layer="0"/>
+                <StateCount val="2" layer="0"/>
+                <BlendMode val="Add"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="TitleBackgroundNormalImage">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="23"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-15"/>
+            <Height val="60"/>
+            <Texture val="@@UI/MercenaryFrameNameBackgroundNormal" layer="0"/>
+            <TextureType val="Border" layer="0"/>
+            <Tiled val="true" layer="0"/>
+            <StateCount val="2" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TitleBackgroundHoverImage">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="23"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-15"/>
+            <Height val="60"/>
+            <Texture val="@@UI/MercenaryFrameNameBackgroundHover" layer="0"/>
+            <TextureType val="Border" layer="0"/>
+            <Tiled val="true" layer="0"/>
+            <StateCount val="2" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Label" name="TitleNormalLabel">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="25"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-20"/>
+            <Height val="50"/>
+            <Style val="MercenaryFrameTitle"/>
+            <DisabledAlpha val="100"/>
+            <Text val="Title Normal"/>
+        </Frame>
+
+        <Frame type="Label" name="TitleHoverLabel">
+            <Anchor side="Top" relative="$parent/Button" pos="Min" offset="25"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="20"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-20"/>
+            <Height val="50"/>
+            <Style val="MercenaryFrameTitle"/>
+            <DisabledAlpha val="100"/>
+            <Text val="Title Hover"/>
+        </Frame>
+        
+        <Frame type="Portrait" name="Portrait">
+            <Anchor side="Top" relative="$parent/TitleBackgroundNormalImage" pos="Max" offset="-6"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="16"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-16"/>
+            <Anchor side="Bottom" relative="$parent/Button" pos="Max" offset="-15"/>
+            <AcceptsMouse val="false"/>
+            <BorderImage val="PortraitBorderImage"/>
+            <BackgroundImage val="PortraitBackgroundImage"/>
+            
+            <Frame type="Image" name="PortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+
+            <Frame type="Image" name="PortraitBackgroundImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Image" name="PortraitImage">
+            <Anchor relative="$parent/Portrait"/>
+            <TextureType val="Normal"/>
+        </Frame>
+        
+        <Frame type="Image" name="LockedImage">
+            <Anchor side="Top" relative="$parent/TitleBackgroundNormalImage" pos="Max" offset="20"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Texture val="@@UI/MercenaryFrameLocked" layer="0"/>
+        </Frame>   
+
+        <Frame type="Label" name="HiredLabel">
+            <Anchor side="Bottom" relative="$parent/Button" pos="Max" offset="-35"/>
+            <Anchor side="Left" relative="$parent/Button" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/Button" pos="Max" offset="-15"/>            
+            <Style val="MercenaryFrameHired"/>
+            <Text val="@UI/MercenaryFrameHired"/>
+        </Frame>
+
+        <Frame type="FlashFrame" name="PurchaseAnimationFlashFrame">
+            <Anchor relative="$parent"/>
+            <File val="UI/Flash/GameUI/Mercenary_Item.swf"/>
+            <FlashInputEnabled val="false"/>
+            <Visible val="false"/>
+            <UseAlternateTime val="false"/> <!-- MSS: Used to be true -->
+        </Frame>
+
+        <Frame type="FlashFrame" name="NewAnimationFlashFrame">
+            <Anchor side="Top" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Width val="220"/>
+            <Height val="350"/>
+            <File val="UI/Flash/GameUI/Mercenary_NewItem.swf"/>
+            <FlashInputEnabled val="false"/>
+            <Visible val="false"/>
+            <UseAlternateTime val="false"/> <!-- MSS: Used to be true -->
+        </Frame>
+
+        <StateGroup name="HoveringState"> 
+            <DefaultState val="Default"/>
+            <State name="Default">
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Visible="True" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Visible="True" />
+                <Action type="SetProperty" frame="$this/TitleHoverLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Visible="False" />
+            </State>
+
+            <State name="Hovering">
+                <When type="Property" frame="$this/Button" Hovering="True" />
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Visible="False" />
+                <Action type="SetProperty" frame="$this/TitleHoverLabel" Visible="True" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Visible="True" />
+                <Action type="SendEvent" frame="$this/Portrait" event="Play" on="Enter"/>
+                <Action type="SendEvent" frame="$this/Portrait" event="Pause" on="Exit"/>
+            </State>
+        </StateGroup>
+
+        <StateGroup name="StatusState">
+            <DefaultState val="Available"/>
+        
+            <State name="Insufficient">
+                <When type="AnimationState" StatusState="Insufficient"/>
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Color="#MercenaryFrameTextInsufficient" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Color="#MercenaryFrameButtonInsufficient" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Color="#MercenaryFrameButtonInsufficient" />
+                <Action type="SetProperty" frame="$this/Button" Color="#MercenaryFrameButtonInsufficient" />
+                <Action type="SetProperty" frame="$this/HiredLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/LockedImage" Visible="False" />
+                <Action type="SetProperty" frame="$this/Portrait" Visible="True" />
+                <Action type="SetProperty" frame="$this/PortraitImage" Visible="False" />
+            </State>
+        
+            <State name="Available">
+                <When type="AnimationState" StatusState="Available"/>
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Color="#MercenaryFrameTextAvailable" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/Button" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/HiredLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/LockedImage" Visible="False" />
+                <Action type="SetProperty" frame="$this/Portrait" Visible="True" />
+                <Action type="SetProperty" frame="$this/PortraitImage" Visible="False" />
+            </State>
+
+            <State name="Purchased">
+                <When type="AnimationState" StatusState="Purchased"/>
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Color="#MercenaryFrameTextHired" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Color="#MercenaryFrameButtonHired" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Color="#MercenaryFrameButtonHired" />
+                <Action type="SetProperty" frame="$this/Button" Color="#MercenaryFrameButtonHired" />
+                <Action type="SetProperty" frame="$this/HiredLabel" Visible="True" />
+                <Action type="SetProperty" frame="$this/LockedImage" Visible="False" />
+                <Action type="SetProperty" frame="$this/Portrait" Visible="False" />
+                <Action type="SetProperty" frame="$this/PortraitImage" Visible="True" />
+                <Action type="SetProperty" frame="$this/PortraitImage" Color="#MercenaryFrameButtonHired" />
+            </State>
+
+            <State name="Locked">
+                <When type="AnimationState" StatusState="Locked"/>
+                <Action type="SetProperty" frame="$this/TitleNormalLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/TitleHoverLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundNormalImage" Enabled="False" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/TitleBackgroundHoverImage" Enabled="False" />
+                <Action type="SetProperty" frame="$this/Button" Color="#MercenaryFrameButtonAvailable" />
+                <Action type="SetProperty" frame="$this/Button" Enabled="False" />
+                <Action type="SetProperty" frame="$this/Button" AcceptsMouse="False" />
+                <Action type="SetProperty" frame="$this/HiredLabel" Visible="False" />
+                <Action type="SetProperty" frame="$this/LockedImage" Visible="True" />
+                <Action type="SetProperty" frame="$this/Portrait" Visible="False" />
+                <Action type="SetProperty" frame="$this/PortraitImage" Visible="False" />
+            </State>
+        </StateGroup>
+    </Frame>    
+
+    <Frame type="Frame" name="MercenaryPanelTemplate">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>        
+        <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+        <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+        <Width val="1600"/>
+        <Height val="1200"/>
+
+        <Frame type="Image" name="BackgroundMaskImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+            <Texture val="@@UI/PauseScreenDimImage"/>
+            <RenderType val="HDR"/>
+        </Frame>
+
+        <Frame type="Portrait" name="BackgroundPortrait">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="80"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-80"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="80"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-80"/>
+            <BorderImage val="BackgroundPortraitBorderImage"/>
+            <AcceptsMouse val="false"/>
+            <UseTransition val="false"/>
+            <UseAlternateTime val="false"/>
+            <ModelLink val="TechBackDrop"/>
+
+            <Frame type="Image" name="BackgroundPortraitBorderImage">
+                <Visible val="false"/>
+                <DescFlags val="Internal"/>
+            </Frame>
+        </Frame>
+        
+        <Frame type="Label" name="TitleLabel">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="120"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="690"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-330"/>
+            <Style val="CampaignPanelTitle"/>
+            <Alpha val="120"/>
+            <Text val="@UI/MercenaryPanelTitle"/>
+        </Frame>
+    
+        <Frame type="Image" name="TopBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="200"/>            
+            <Anchor side="Left" relative="$parent" pos="Min" offset="80"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-80"/>
+            <Height val="450"/>
+            <Texture val="@@UI/MercenaryPanelTopBackground" layer="0"/>
+            <TextureType val="HorizontalBorder" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <Tiled val="true" layer="0"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundImage">
+            <Anchor side="Top" relative="$parent/TopBackgroundImage" pos="Min" offset="40"/>
+            <Anchor side="Left" relative="$parent/TopBackgroundImage" pos="Min" offset="15"/>
+            <Anchor side="Right" relative="$parent/TopBackgroundImage" pos="Max" offset="-15"/>
+            <Height val="70"/>
+            <Texture val="@@UI/MercenaryPanelTopInnerBackground" layer="0"/>
+            <TextureType val="Border" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <Tiled val="true" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Label" name="SelectMercenaryLabel">
+            <Anchor side="Bottom" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="-10"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundImage" pos="Min" offset="20"/>
+            <Style val="MercenaryPanelSelectHeading"/>
+            <Text val="@UI/MercenaryPanelSelectHeading"/>
+            <Alpha val="50"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage0">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundImage" pos="Min" offset="65"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage1">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage0" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage2">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage1" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage3">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage2" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage4">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage3" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage5">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage4" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage6">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage5" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+
+        <Frame type="Image" name="TopInnerBackgroundTabImage7">
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="0"/>
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundTabImage6" pos="Max" offset="137"/>
+            <Texture val="@@UI/MercenaryPanelFrameTab" layer="0"/>
+            <LayerColor val="7ed3ea" layer="0"/>
+            <BlendMode val="Add"/>
+        </Frame>
+        
+        <Frame type="Frame" name="MercenaryFrame0" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame0"/>
+            <Anchor side="Top" relative="$parent/TopInnerBackgroundImage" pos="Max" offset="-62"/>            
+            <Anchor side="Left" relative="$parent/TopInnerBackgroundImage" pos="Min" offset="-65"/>           
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame1" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame1"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame0" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame0" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame2" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame2"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame1" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame1" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame3" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame3"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame2" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame2" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame4" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame4"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame3" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame3" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame5" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame5"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame4" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame4" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame6" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame6"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame5" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame5" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="MercenaryFrame7" template="Kit_MercenaryPanel/MercenaryFrameTemplate">
+            <Handle val="Kit_MercenaryPanel_MercenaryFrame7"/>
+            <Anchor side="Top" relative="$parent/MercenaryFrame6" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/MercenaryFrame6" pos="Max" offset="-124"/>
+        </Frame>
+
+        <Frame type="Frame" name="SelectionInfoFrame">
+            <Anchor side="Top" relative="$parent/TopBackgroundImage" pos="Max" offset="60"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-65"/>
+            <Anchor side="Left" relative="$parent" pos="Min" offset="50"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-50"/>
+
+            <Frame type="Image" name="DescriptionBackgroundImage">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-40"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+                <Anchor side="Right" relative="$parent" pos="Mid" offset="-132"/>
+                <Texture val="@@UI/CampaignPanelDescriptionBackground" layer="0"/>
+                <TextureType val="HorizontalBorder"/>
+                <Tiled val="true"/>
+            </Frame>
+    
+            <Frame type="Image" name="DescriptionBottomImage">
+                <Anchor side="Top" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="65"/>
+                <Texture val="@@UI/CampaignPanelDescriptionBottom" layer="0"/>
+                <TextureCoords top="0.0" left="1.0" bottom="1.0" right="0.0"/>
+                <LayerColor val="7ed2e9"/>
+            </Frame> 
+
+            <Frame type="Label" name="NameLabel">
+                <Anchor side="Top" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="30"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="25"/>
+                <Style val="MercenaryPanelSelectedMercenaryTitle"/>
+                <Alpha val="170"/>
+            </Frame>
+
+            <Frame type="Label" name="UnitLabel">
+                <Anchor side="Top" relative="$parent/NameLabel" pos="Max" offset="5"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="25"/>
+                <Anchor side="Right" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Style val="MercenaryPanelSelectedMercenaryUnit"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+    
+            <Frame type="Label" name="AvailabilityLabel">
+                <Anchor side="Top" relative="$parent/UnitLabel" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="25"/>
+                <Anchor side="Right" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Style val="MercenaryPanelSelectedMercenaryAvailability"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+    
+            <Frame type="Label" name="SpecialLabel">
+                <Anchor side="Top" relative="$parent/AvailabilityLabel" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="25"/>
+                <Anchor side="Right" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Style val="MercenaryPanelSelectedMercenarySpecial"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+    
+            <Frame type="Label" name="DescriptionLabel">
+                <Anchor side="Top" relative="$parent/SpecialLabel" pos="Max" offset="10"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="25"/>
+                <Anchor side="Right" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Style val="MercenaryPanelSelectedMercenaryDescription"/>
+                <CollapseLayout val="true"/>
+            </Frame>
+    
+            <Frame type="Label" name="NoSelectionLabel">
+                <Anchor side="Top" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="20"/>
+                <Anchor side="Right" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Style val="PurchasePanelNoSelection"/>
+                <Text val="@UI/MercenaryPanelNoSelection"/>
+            </Frame>
+            
+            <Frame type="Image" name="MovieBackgroundImage">
+                <Anchor side="Top" relative="$parent/DescriptionBackgroundImage" pos="Min" offset="0"/>
+                <Anchor side="Bottom" relative="$parent" pos="Max" offset="-43"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+                <Anchor side="Left" relative="$parent" pos="Mid" offset="132"/>
+                <Texture val="@@UI/CampaignPanelMovieBackground" layer="0"/>
+                <TextureType val="HorizontalBorder"/>
+                <Tiled val="true"/>
+            </Frame>
+    
+            <Frame type="Image" name="MovieBottomImage">
+                <Anchor side="Top" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-20"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="-65"/>
+                <Texture val="@@UI/CampaignPanelMovieBottom" layer="0"/>
+                <LayerColor val="7ed2e9"/>
+            </Frame>
+
+            <Frame type="MovieFrame" name="MovieFrame" template="CampaignTemplates/CampaignMovieTemplate">
+                <Anchor side="Top" relative="$parent/MovieBackgroundImage" pos="Min" offset="10"/>
+                <Anchor side="Bottom" relative="$parent/MovieBackgroundImage" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/MovieBackgroundImage" pos="Min" offset="15"/>
+                <Anchor side="Right" relative="$parent/MovieBackgroundImage" pos="Max" offset="-10"/>
+                <RenderPriority val="510"/>
+                <UseAlternateTime val="false"/>
+                <LockAspectRatio val="True"/>
+                <Muted val="True"/>
+            </Frame>
+
+            <Frame type="CashPanel" name="Credits">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="55"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-15"/>
+                <Anchor side="Right" relative="$parent/MovieBackgroundImage" pos="Min" offset="15"/>
+                <Height val="90"/>
+
+                <Frame type="Image" name="BackgroundFrame">
+                    <Anchor relative="$parent" />
+                    <Texture val="@@UI/CampaignPanelCreditsBackground" layer="0"/>
+                    <TextureType val="Border" layer="0"/>
+                    <LayerColor val="86d7ec" layer="0"/>
+                    <Tiled val="true" layer="0"/>
+                </Frame>
+
+                <Frame type="Label" name="CashLabel">
+                    <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+                    <Style val="CampaignPanelSelectionInfoCreditsHeading"/>
+                    <Text val="@UI/CampaignPanelCreditsHeading"/>
+                </Frame>
+
+                <Frame type="CountdownLabel" name="CashAmountLabel">
+                    <Anchor side="Top" relative="$parent/CashLabel" pos="Max" offset="0"/>
+                    <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+                    <Anchor side="Right" relative="$parent" pos="Max" offset="-10"/>
+                    <Style val="CampaignPanelSelectionInfoCredits"/>
+                    <Alpha val="170"/>
+                </Frame>
+            </Frame>
+    
+            <Frame type="Image" name="CostBackgroundImage">
+                <Anchor side="Top" relative="$parent/Credits" pos="Max" offset="-15"/>
+                <Anchor side="Left" relative="$parent/DescriptionBackgroundImage" pos="Max" offset="-15"/>
+                <Anchor side="Right" relative="$parent/MovieBackgroundImage" pos="Min" offset="15"/>
+                <Height val="90"/>
+                <Texture val="@@UI/CampaignPanelCostBackground" layer="0"/>
+                <TextureType val="Border" layer="0"/>
+                <Alpha val="170"/>
+                <DisabledAlpha val="100"/>
+                <DesaturateOnDisable val="False"/>
+                <Tiled val="true" layer="0"/>
+            </Frame>
+    
+            <Frame type="Label" name="CostHeadingLabel">
+                <Anchor side="Top" relative="$parent/CostBackgroundImage" pos="Min" offset="15"/>
+                <Anchor side="Left" relative="$parent/CostBackgroundImage" pos="Min" offset="10"/>
+                <Anchor side="Right" relative="$parent/CostBackgroundImage" pos="Max" offset="-10"/>
+                <Style val="CampaignPanelSelectionInfoCostHeading"/>
+                <Text val="@UI/CampaignPanelCostHeading"/>
+                <DisabledAlpha val="100"/>
+            </Frame>
+    
+            <Frame type="Label" name="CostLabel">
+                <Anchor side="Top" relative="$parent/CostHeadingLabel" pos="Max" offset="0"/>
+                <Anchor side="Left" relative="$parent/CostBackgroundImage" pos="Min" offset="10"/>
+                <Anchor side="Right" relative="$parent/CostBackgroundImage" pos="Max" offset="-10"/>
+                <Style val="CampaignPanelSelectionInfoCost"/>
+                <Alpha val="170"/>
+                <DisabledAlpha val="100"/>
+            </Frame>
+
+            <StateGroup name="StatusState">
+                <DefaultState val="Available"/>
+            
+                <State name="Insufficient">
+                    <When type="AnimationState" StatusState="Insufficient" />
+                    <Action type="SetProperty" frame="$this/CostLabel" Color="#PurchasePanelCostInsufficient" />
+                    <!-- <Action type="SetProperty" frame="$this/CostHeadingLabel" Color="#PurchasePanelCostInsufficient" /> -->
+                    <Action type="SetProperty" frame="$this/CostBackgroundImage" Color="#PurchasePanelCostInsufficient" />
+                </State>
+            
+                <State name="Available">
+                    <When type="AnimationState" StatusState="Available" />
+                    <Action type="SetProperty" frame="$this/CostLabel" Color="#PurchasePanelCostAvailable" />
+                    <!-- <Action type="SetProperty" frame="$this/CostHeadingLabel" Color="#PurchasePanelCostAvailable" /> -->
+                    <Action type="SetProperty" frame="$this/CostBackgroundImage" Color="#PurchasePanelCostAvailable" />
+                </State>
+
+                <State name="Purchased">
+                    <When type="AnimationState" StatusState="Purchased" />
+                    <Action type="SetProperty" frame="$this/CostLabel" Color="#PurchasePanelCostPurchased" />
+                    <!-- <Action type="SetProperty" frame="$this/CostHeadingLabel" Color="#PurchasePanelCostPurchased" /> -->
+                    <Action type="SetProperty" frame="$this/CostBackgroundImage" Color="#PurchasePanelCostPurchased" />
+                </State>
+            </StateGroup>
+
+            <StateGroup name="SelectionState">
+                <DefaultState val="Off"/>
+            
+                <State name="On">
+                    <When type="AnimationState" SelectionState="On" />
+
+                    <Action type="SetProperty" frame="$this/CostLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/CostHeadingLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/CostBackgroundImage" Visible="True"/>
+
+                    <Action type="SetProperty" frame="$this/NameLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/UnitLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/SpecialLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/AvailabilityLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/DescriptionLabel" Visible="True"/>
+                    <Action type="SetProperty" frame="$this/MovieFrame" Visible="True"/>
+
+                    <Action type="SetProperty" frame="$this/NoSelectionLabel" Visible="False"/>
+                </State>
+            
+                <State name="Off">
+                    <When type="AnimationState" SelectionState="Off" />
+
+                    <Action type="SetProperty" frame="$this/CostLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/CostHeadingLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/CostBackgroundImage" Visible="False"/>
+
+                    <Action type="SetProperty" frame="$this/NameLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/UnitLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/SpecialLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/AvailabilityLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/DescriptionLabel" Visible="False"/>
+                    <Action type="SetProperty" frame="$this/MovieFrame" Visible="False"/>
+
+                    <Action type="SetProperty" frame="$this/NoSelectionLabel" Visible="True"/>
+                </State>
+            </StateGroup>
+        </Frame>
+
+        <Frame type="Image" name="FullscreenBackgroundImage">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent" pos="Mid" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Mid" offset="0"/>
+            <Texture val="@UI/PurchasePanelBackground" layer="0"/>
+            <Unclipped val="true"/>
+        </Frame>
+
+        <Frame type="Button" name="CloseButton" template="StandardTemplates/StandardLargePanelRightButtonTemplate">
+            <Handle val="Kit_MercenaryPanel_CloseButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent" pos="Max" offset="-20"/>
+            <Shortcut val="Escape"/>
+            <Shortcut val="@UI/Back_Hotkey"/>
+            <Text val="@UI/Back_Control"/>
+
+            <Frame type="Image" name="BackgroundImage">
+                <Visible val="false"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ResetButton" template="StandardTemplates/StandardLargePanelRightButtonTemplate">
+            <Handle val="Kit_MercenaryPanel_ResetButton"/>
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+            <Anchor side="Right" relative="$parent/CloseButton" pos="Min" offset="158"/>
+            <Shortcut val="@UI/Reset_Hotkey"/>
+            <Text val="@UI/Reset_Control"/>
+
+            <Frame type="Image" name="BackgroundImage">
+                <Visible val="false"/>
+            </Frame>
+        </Frame>
+    </Frame>
+</Desc>
+

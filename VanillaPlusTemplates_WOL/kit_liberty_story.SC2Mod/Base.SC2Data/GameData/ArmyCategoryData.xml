@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CArmyCategory default="1">
+        <BankPath File="WArmy" Section="WStory|WArmyCategory"/>
+        <UserReference value="TechUnit;##id##"/>
+        <Title value="ArmyCategory/Title/##id##"/>
+        <Description value="Button/Tooltip/##id##"/>
+        <Unit value="##id##"/>
+        <ArmyUpgradeArray value="Tech_##id##_1"/>
+        <ArmyUpgradeArray value="Tech_##id##_2"/>
+    </CArmyCategory>
+    <CArmyCategory id="Banshee">
+        <UpgradeArray value="BansheeCloak"/>
+    </CArmyCategory>
+    <CArmyCategory id="Battlecruiser">
+        <UpgradeArray value="BattlecruiserEnableSpecializations"/>
+    </CArmyCategory>
+    <CArmyCategory id="Bunker"/>
+    <CArmyCategory id="CommandCenter">
+        <AbilCommandArray value="TerranBuild,Build2"/>
+        <AbilCommandArray value="TerranBuildDrop,Build1"/>
+        <AbilCommandArray value="TerranBuild,Build8"/>
+        <AbilCommandArray value="TerranBuild,Build3"/>
+        <AbilCommandArray value="TerranBuild,Build19"/>
+    </CArmyCategory>
+    <CArmyCategory id="DevilDog">
+        <Flags index="Hidden" value="1"/>
+        <UpgradeArray value="Kit@DevilDogsRange"/>
+    </CArmyCategory>
+    <CArmyCategory id="Diamondback"/>
+    <CArmyCategory id="DukesRevenge">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="DuskWing">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Firebat"/>
+    <CArmyCategory id="Ghost">
+        <UpgradeArray value="PersonalCloaking"/>
+        <UpgradeArray value="Kit@GhostReducedNukeCalldown"/>
+    </CArmyCategory>
+    <CArmyCategory id="Goliath"/>
+    <CArmyCategory id="HammerSecurity">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Hellion"/>
+    <CArmyCategory id="HelsAngelFighter">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Hercules">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="HiveMindEmulator">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Marauder"/>
+    <CArmyCategory id="Marine"/>
+    <CArmyCategory id="Medic"/>
+    <CArmyCategory id="Medivac"/>
+    <CArmyCategory id="MissileTurret"/>
+    <CArmyCategory id="PerditionTurret">
+        <UpgradeArray value="DistortionSensors"/>
+    </CArmyCategory>
+    <CArmyCategory id="Predator"/>
+    <CArmyCategory id="PsiDisruptor">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Raven"/>
+    <CArmyCategory id="Reaper"/>
+    <CArmyCategory id="SCV"/>
+    <CArmyCategory id="ScienceVessel"/>
+    <CArmyCategory id="SiegeBreaker">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="SiegeTank"/>
+    <CArmyCategory id="SpartanCompany">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Spectre">
+        <UpgradeArray value="Kit@GhostReducedNukeCalldown"/>
+        <UpgradeArray value="UltrasonicPulseEnhanced"/>
+    </CArmyCategory>
+    <CArmyCategory id="Thor"/>
+    <CArmyCategory id="VikingFighter">
+        <ArmyUpgradeArray index="0" value="Tech_Viking_1"/>
+        <ArmyUpgradeArray index="1" value="Tech_Viking_2"/>
+    </CArmyCategory>
+    <CArmyCategory id="Vulture"/>
+    <CArmyCategory id="WarPig">
+        <Flags index="Hidden" value="1"/>
+    </CArmyCategory>
+    <CArmyCategory id="Wraith"/>
+    <CArmyCategory id="SensorTower">
+        <Flags index="Hidden" value="1"/>
+        <ArmyUpgradeArray index="0" removed="1"/>
+        <ArmyUpgradeArray index="1" removed="1"/>
+    </CArmyCategory>
+</Catalog>

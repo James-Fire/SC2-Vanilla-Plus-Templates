@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CTerrainTex id="VolcanoIsle_2">
+        <Heightmap value="Assets\Textures\VolcanoIsle_2Normal.dds"/>
+    </CTerrainTex>
+    <CTerrainTex id="VolcanoIsle_3">
+        <Heightmap value="Assets\Textures\VolcanoIsle_3Normal.dds"/>
+    </CTerrainTex>
+    <CTerrainTex id="VolcanoIsle_8">
+        <Heightmap value="Assets\Textures\VolcanoIsle_8Normal.dds"/>
+    </CTerrainTex>
+</Catalog>
